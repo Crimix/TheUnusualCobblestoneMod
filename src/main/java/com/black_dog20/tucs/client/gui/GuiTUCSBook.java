@@ -15,6 +15,7 @@ import com.black_dog20.tucs.utility.LogHelper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -31,16 +32,19 @@ public class GuiTUCSBook extends GuiScreen {
 	private static final int BUTTON_PREV = 1;
 
 	private int pageIndex = 0;
-	private int maxPage = 6;
+	private int maxPage = 10;
 	private int xCraft = 64;
 	private int yCraft = 102;
 	private int MouseX;
 	private int MouseY;
+	private String text;
 	private float RenderPartials;
 	private GuiButtonChangePage nextPage;
 	private GuiButtonChangePage prevPage;
+	private EntityPlayer player;
 
-	public GuiTUCSBook() {
+	public GuiTUCSBook(EntityPlayer player) {
+		this.player=player;
 	}
 
 	@Override
@@ -111,7 +115,7 @@ public class GuiTUCSBook extends GuiScreen {
 			drawRecipePageBot(gold, false, cobblestoneium, false, gold, false, cobblestoneium, false, craftingTable, true, cobblestoneium, false, gold, false, cobblestoneium, false, gold, false, craftingTable, bookXStart);
 			break;
 		case 4:
-			String text="This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. To get the ingot smelt the ore";
+			text="This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. To get the ingot smelt the ore";
 			drawPage("Cobblestoneium", text, new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
 			break;
 		case 5:
@@ -121,12 +125,20 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack rcsi3 = new ItemStack(Items.gunpowder);
 			ItemStack rcsi4 = new ItemStack(ModItems.tool, 1, OreDictionary.WILDCARD_VALUE);
 			drawRecipePageBot(rcsi1, true, rcsi2, false, null, false, rcsi3, false, rcsi4, false, null, false, null, false, null, false, null, false, new ItemStack(Blocks.crafting_table), bookXStart);
-
+			break;
+		case 6:
+			text="This ingot is an alloy of iron and cobblestone";
+			drawPage("Cobblestoneium", text, new ItemStack(ModItems.ingotCobblestoneium), bookXStart);
+			break;
+		case 7:
+			text="This ingot have the combined durability of iron and stone";
+			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(Blocks.furnace), bookXStart);
 			break;
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
 			super.drawScreen(mouseX, mouseY, renderPartials);
+			DrawDontUnderstandPage(bookXStart);
 			break;
 
 		}
@@ -238,10 +250,36 @@ public class GuiTUCSBook extends GuiScreen {
 		}
 	}
 	
-	public void DrawFurnaceRecipe(ItemStack input, ItemStack Output, ItemStack crafting, int bookXStart){
+	public void DrawFurnaceRecipe(String title, String tip, ItemStack input, ItemStack output, ItemStack crafting, int bookXStart){
+		
+		mc.renderEngine.bindTexture(texture);
+		this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
+		super.drawScreen(MouseX, MouseY, RenderPartials);
+
 		
 		mc.renderEngine.bindTexture(textureF);
-		this.drawTexturedModalRect(bookXStart + 62, 100, 28, 15, 56, 56);
+		this.drawTexturedModalRect(bookXStart + 52, 100, 54, 15, 84, 55);
 		super.drawScreen(MouseX, MouseY, RenderPartials);
+		
+		fontRendererObj.drawString("\u00A7l" + "\u00A7n" + title, bookXStart + 52, 17, 0x000000);
+		fontRendererObj.drawSplitString("\u00A7r" + tip, bookXStart + 34, 35, 120, 0x000000);
+		
+		fontRendererObj.drawString("\u00A7r" + "\u00A7n" + "Smelted in a", bookXStart + 35, 70, 0x000000);
+		fontRendererObj.drawString("\u00A7r" + crafting.getDisplayName(), bookXStart + 53, 84, 0x000000);
+		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, crafting, bookXStart + 35, 80);
+		
+		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, input, bookXStart + 54, 102);
+		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, output, bookXStart + 114, 120);
+		
+		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, output, bookXStart + 34, 15);
+		
+	}
+	
+	public void DrawDontUnderstandPage(int bookXStart){
+		mc.renderEngine.bindTexture(texture);
+		this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
+		super.drawScreen(MouseX, MouseY, RenderPartials);
+		fontRendererObj.drawString("\u00A7l" + "\u00A7n" + "§k" + "Youdont", bookXStart + 52, 17, 0x000000);
+		fontRendererObj.drawSplitString("\u00A7r" + "§k" + "you dont understand this, find a page to fully undestand this", bookXStart + 34, 35, 120, 0x000000);
 	}
 }

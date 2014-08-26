@@ -13,11 +13,10 @@ import net.minecraft.item.ItemStack;
 
 public class ItemArmorTUCS extends ItemArmor {
 	
-	 public final static int armorType = 0;
 	 public final static int render = 0;
 	 public final static ArmorMaterial material = null;
 	
-	public ItemArmorTUCS(ArmorMaterial material, int render, int armortype){
+	public ItemArmorTUCS(ArmorMaterial material, int render, int armorType){
 		
 		super(material, render, armorType);
 		

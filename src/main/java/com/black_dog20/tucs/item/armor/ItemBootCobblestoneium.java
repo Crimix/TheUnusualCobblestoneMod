@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 public class ItemBootCobblestoneium extends ItemArmorTUCS {
 
 	public ItemBootCobblestoneium(ArmorMaterial Material, int armortype, String Name) {
-		super(Material, 0, armortype);
+		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
@@ -25,7 +25,7 @@ public class ItemBootCobblestoneium extends ItemArmorTUCS {
 	{
 		if(stack.getItem() == ModItems.bootsCobblestoneium)
 		{
-			return Reference.MOD_ID + ":models/armor/Cobblestoneium_2.png";
+			return Reference.MOD_ID + ":models/armor/Cobblestoneium_1.png";
 		}
 		else
 		{

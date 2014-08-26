@@ -282,4 +282,8 @@ public class GuiTUCSBook extends GuiScreen {
 		fontRendererObj.drawString("\u00A7l" + "\u00A7n" + "§k" + "Youdont", bookXStart + 52, 17, 0x000000);
 		fontRendererObj.drawSplitString("\u00A7r" + "§k" + "you dont understand this, find a page to fully undestand this", bookXStart + 34, 35, 120, 0x000000);
 	}
+	
+	public void DrawPageNumber(int pageNumber, int bookXStart){
+		
+	}
 }

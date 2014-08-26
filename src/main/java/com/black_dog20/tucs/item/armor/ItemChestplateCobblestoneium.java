@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class ItemChestplateCobblestoneium extends ItemArmorTUCS{
 
 	public ItemChestplateCobblestoneium(ArmorMaterial Material, int armortype, String Name) {
-		super(Material, 0, armortype);
+		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}

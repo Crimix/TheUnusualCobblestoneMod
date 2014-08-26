@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 public class ItemLegCobblestoneium extends ItemArmorTUCS {
 
 	public ItemLegCobblestoneium(ArmorMaterial Material, int armortype, String Name) {
-		super(Material, 0, armortype);
+		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}

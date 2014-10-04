@@ -2,7 +2,7 @@
 item.tucs:TLSOC.name=The Legendary Sword of The lost fighter
 item.tucs:ingotCobblestoneium.name=Cobblestoneium Ingot
 item.tucs:ingotCobblestonedium.name=Cobblestonedium Ingot
-item.tucs:Tool.name=The Tool
+item.tucs:Tool.name=Cobblestone Lighter
 item.tucs:ShovelCobblestoneium.name=Cobblestoneium Shovel
 item.tucs:SwordCobblestoneium.name=Cobblestoneium Sword
 item.tucs:HatchetCobblestoneium.name=Cobblestoneium Axe
@@ -13,6 +13,7 @@ item.tucs:leggingsCobblestoneium.name=Cobblestoneium Leggings
 item.tucs:bootsCobblestoneium.name=Cobblestoneium Boots
 item.tucs:chestplateCobblestoneium.name=Cobblestoneium Chestplate
 item.tucs:TUCSbook.name=The Ancient book
+item.tucs:cobbleCoal.name=Cobblestone Coal
 item.tucs:TUCSDebug.name=Debug Tool
 
 
@@ -21,7 +22,10 @@ tile.tucs:ancientTable.name=Ancient Table
 tile.tucs:oreCobblestoneium.name=Cobblestoneium Ore
 tile.tucs:blockCobblestoneium.name=Cobblestoneium Block
 tile.tucs:blockCobblestonedium.name=Cobblestonedium Block
+tile.tucs:ancientForge.name=Ancient Forge
 
+//Container
+container.tucs:AncientForge=AncientForge
 
 //Misc
 itemGroup.TUCS=The Unusual Cobblestone Mod

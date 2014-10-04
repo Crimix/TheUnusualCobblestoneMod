@@ -80,8 +80,6 @@ public class ContainerAncientTable extends Container {
     		this.craftResult.setInventorySlotContents(0, AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     	}		
     	
-    	//this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
-    	
     }
 
 	/**

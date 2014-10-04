@@ -3,6 +3,7 @@ package com.black_dog20.tucs.init;
 
 import net.minecraft.tileentity.TileEntity;
 
+import com.black_dog20.tucs.block.BlockAncientForge;
 import com.black_dog20.tucs.block.BlockAncientTable;
 import com.black_dog20.tucs.block.BlockCobblestonedium;
 import com.black_dog20.tucs.block.BlockCobblestoneium;
@@ -20,6 +21,8 @@ public class ModBlocks {
 	public static final BlockOreCobblestoneium oreCobblestoneium = new BlockOreCobblestoneium();
 	public static final BlockCobblestoneium blockCobblestoneium = new BlockCobblestoneium();
 	public static final BlockCobblestonedium blockCobblestonedium = new BlockCobblestonedium();
+	public static final BlockAncientForge blockAncientForge = (BlockAncientForge) new BlockAncientForge(false).setCreativeTab(CreativeTabTUCS.TUCS_TAB);
+	public static final BlockAncientForge blockAncientForge_lit = new BlockAncientForge(true);
 
 	public static void init()
 	{
@@ -27,6 +30,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(oreCobblestoneium, "oreCobblestoneium");
 		GameRegistry.registerBlock(blockCobblestoneium, "blocCobblestoneium");
 		GameRegistry.registerBlock(blockCobblestonedium, "blocCobblestonedium");
+		GameRegistry.registerBlock(blockAncientForge, "blockAncientForge");
+		GameRegistry.registerBlock(blockAncientForge_lit, "blockAncientForge_lit");
 
 	}
 }

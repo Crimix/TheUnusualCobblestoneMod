@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.utility.TucsRegistry;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -41,11 +42,10 @@ public class AncientTableManager
 
     private AncientTableManager()
     {
-    	this.addRecipe(new ItemStack(ModItems.ingotCobblestonedium), new Object[] {" c ", "cdc" , " c " , 'c', ModItems.ingotCobblestoneium , 'd' , Items.diamond});
-    	this.addRecipe(new ItemStack(ModBlocks.blockCobblestonedium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , ModItems.ingotCobblestonedium });
-		this.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestonedium , 9) , new ItemStack(ModBlocks.blockCobblestonedium));
         Collections.sort(this.recipes, new AncientTableRecipeSorter(this));
     }
+
+    
     
     public AncientTableShapedRecipes addRecipe(ItemStack p_92103_1_, Object ... p_92103_2_)
     {

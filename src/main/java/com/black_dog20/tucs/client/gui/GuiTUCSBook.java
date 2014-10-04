@@ -132,7 +132,7 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 7:
 			text="This ingot have the combined durability of iron and stone";
-			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(Blocks.furnace), bookXStart);
+			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium,2), new ItemStack(ModBlocks.blockAncientForge), bookXStart);
 			break;
 		default:
 			mc.renderEngine.bindTexture(texture);
@@ -270,6 +270,7 @@ public class GuiTUCSBook extends GuiScreen {
 		
 		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, input, bookXStart + 54, 102);
 		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, output, bookXStart + 114, 120);
+		itemRender.renderItemOverlayIntoGUI(fontRendererObj, mc.renderEngine, output, bookXStart + 114, 120);
 		
 		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, output, bookXStart + 34, 15);
 		

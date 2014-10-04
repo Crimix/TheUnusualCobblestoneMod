@@ -11,6 +11,7 @@ import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.init.Recipes;
 import com.black_dog20.tucs.proxies.IProxy;
 import com.black_dog20.tucs.reference.Reference;
+import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.utility.LogHelper;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -33,7 +34,7 @@ public class tucs {
 	public static IProxy Proxy;
 	
 	public static final int guiIDAncientTable = 1;
-	public static final int guiIDTUCSFurnace = 2;
+	public static final int guiIDAncientForge = 2;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
@@ -55,6 +56,7 @@ public class tucs {
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		LogHelper.info("Initialization Complete!");
 		Recipes.init();
+		GameRegistry.registerTileEntity(TileEntityAncientForge.class, "AncientForge");
 	}
 	
 	@Mod.EventHandler

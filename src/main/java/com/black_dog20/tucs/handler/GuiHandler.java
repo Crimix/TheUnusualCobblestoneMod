@@ -1,9 +1,12 @@
 package com.black_dog20.tucs.handler;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.client.gui.GuiAncientForge;
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
+import com.black_dog20.tucs.container.ContainerAncientForge;
 import com.black_dog20.tucs.container.ContainerAncientTable;
 import com.black_dog20.tucs.init.ModBlocks;
+import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -16,6 +19,17 @@ public class GuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,	int x, int y, int z) {
 		TileEntity entity = world.getTileEntity(x, y, z);
 
+		if(entity != null) {
+			switch(ID) {
+			case tucs.guiIDAncientForge:
+				if (entity instanceof TileEntityAncientForge) {
+					return new ContainerAncientForge(player.inventory, (TileEntityAncientForge) entity);
+				}
+				return null;
+		}
+			
+		}
+		
 		if(ID == tucs.guiIDAncientTable) {
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new ContainerAncientTable(player.inventory, world, x, y, z) : null;
 		}
@@ -26,6 +40,16 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world,	int x, int y, int z) {
 		TileEntity entity = world.getTileEntity(x, y, z);
+		
+		if(entity != null) {
+			switch(ID) {
+			case tucs.guiIDAncientForge:
+				if (entity instanceof TileEntityAncientForge) {
+					return new GuiAncientForge(player.inventory, (TileEntityAncientForge) entity);
+				}
+				return null;
+			}
+		}
 
 		if(ID == tucs.guiIDAncientTable) {
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new GuiAncientTable(player.inventory, world, x, y, z) : null;

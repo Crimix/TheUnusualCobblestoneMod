@@ -5,6 +5,7 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 
 import com.black_dog20.tucs.item.ItemBook;
+import com.black_dog20.tucs.item.ItemCobbleCoal;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
@@ -44,6 +45,7 @@ public class ModItems {
 	public static final ItemChestplateCobblestoneium chestplateCobblestoneium = new ItemChestplateCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 1, "chestplateCobblestoneium");
 	public static final ItemBook TUCSbook = new ItemBook();
 	public static final ItemTUCSDebug TUCSdebug = new ItemTUCSDebug();
+	public static final ItemCobbleCoal CobbleCoal = new ItemCobbleCoal();
 	
 	public static void init(){
 
@@ -63,6 +65,7 @@ public class ModItems {
 		GameRegistry.registerItem(chestplateCobblestoneium, "chestplateCobblestoneium");
 		GameRegistry.registerItem(TUCSbook , "TUCSBook");
 		GameRegistry.registerItem(TUCSdebug , "TUCSdebug");
+		GameRegistry.registerItem(CobbleCoal, "CobbleCoal");
 	}
 
 }

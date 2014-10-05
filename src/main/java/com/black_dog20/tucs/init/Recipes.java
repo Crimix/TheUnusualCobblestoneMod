@@ -59,7 +59,8 @@ public class Recipes {
 		
 		
 		//Items
-		TucsRegistry.addRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,"cobblestoneLigthers"});
+		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,"cobblestoneLigthers"}));
+		TucsRegistry.addRecipe(new ItemStack(Blocks.torch,5), new Object[] {"X", "#", 'X', ModItems.CobbleCoal, '#', Items.stick});
 		
 		
 	}

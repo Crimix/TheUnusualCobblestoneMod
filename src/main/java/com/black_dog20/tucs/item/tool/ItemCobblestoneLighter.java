@@ -9,11 +9,11 @@ import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.item.ItemTUCS;
 
-public class ItemTool extends ItemTUCS {
+public class ItemCobblestoneLighter extends ItemTUCS {
 
-	public ItemTool(){
+	public ItemCobblestoneLighter(){
 		super();
-		this.setUnlocalizedName("Tool");
+		this.setUnlocalizedName("cobblestoneLighter");
 		this.setMaxDamage(128);
 		this.setNoRepair();
 		this.setMaxStackSize(1);

@@ -123,7 +123,7 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack rcsi1 = new ItemStack(Blocks.cobblestone);
 			ItemStack rcsi2 = new ItemStack(Items.iron_ingot);
 			ItemStack rcsi3 = new ItemStack(Items.gunpowder);
-			ItemStack rcsi4 = new ItemStack(ModItems.tool, 1, OreDictionary.WILDCARD_VALUE);
+			ItemStack rcsi4 = new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE);
 			drawRecipePageBot(rcsi1, true, rcsi2, false, null, false, rcsi3, false, rcsi4, false, null, false, null, false, null, false, null, false, new ItemStack(Blocks.crafting_table), bookXStart);
 			break;
 		case 6:

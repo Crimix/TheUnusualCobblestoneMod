@@ -13,13 +13,15 @@ import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestoneium;
+import com.black_dog20.tucs.item.tool.ItemCobblestonediumLighter;
+import com.black_dog20.tucs.item.tool.ItemCobblestoneiumLighter;
 import com.black_dog20.tucs.item.tool.ItemHatchetCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemHoeCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemPickaxeCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemShovelCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemSwordCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
-import com.black_dog20.tucs.item.tool.ItemTool;
+import com.black_dog20.tucs.item.tool.ItemCobblestoneLighter;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -33,7 +35,7 @@ public class ModItems {
 	public static final ItemTLSOC TLSOC = new ItemTLSOC(COBBLESTONEDIUM_MATERIAL);
 	public static final ItemIngotCobblestoneium ingotCobblestoneium = new ItemIngotCobblestoneium();
 	public static final ItemIngotCobblestonedium ingotCobblestonedium = new ItemIngotCobblestonedium();
-	public static final ItemTool tool = new ItemTool();
+	public static final ItemCobblestoneLighter cobblestoneLighter = new ItemCobblestoneLighter();
 	public static final ItemShovelCobblestoneium shovelCobblestoneium = new ItemShovelCobblestoneium(COBBLESTONEIUM_MATERIAL);
 	public static final ItemSwordCobblestoneium swordCobblestoneium = new ItemSwordCobblestoneium(COBBLESTONEIUM_MATERIAL);
 	public static final ItemHatchetCobblestoneium hatchetCobblestoneium = new ItemHatchetCobblestoneium(COBBLESTONEIUM_MATERIAL);
@@ -46,6 +48,8 @@ public class ModItems {
 	public static final ItemBook TUCSbook = new ItemBook();
 	public static final ItemTUCSDebug TUCSdebug = new ItemTUCSDebug();
 	public static final ItemCobbleCoal CobbleCoal = new ItemCobbleCoal();
+	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
+	public static final ItemCobblestoneiumLighter cobblestoneiumLighter = new ItemCobblestoneiumLighter();
 	
 	public static void init(){
 
@@ -53,7 +57,7 @@ public class ModItems {
 		GameRegistry.registerItem(TLSOC, "TLSOC");
 		GameRegistry.registerItem(ingotCobblestoneium, "ingotCobblestoneium");
 		GameRegistry.registerItem(ingotCobblestonedium, "ingotCobblestonedium");
-		GameRegistry.registerItem(tool, "tool");
+		GameRegistry.registerItem(cobblestoneLighter, "cobblestoneLighter");
 		GameRegistry.registerItem(shovelCobblestoneium, "shovelCobblestoneium");
 		GameRegistry.registerItem(swordCobblestoneium, "swordCobblestoneium");
 		GameRegistry.registerItem(hatchetCobblestoneium, "hatchetCobblestoneium");
@@ -66,6 +70,8 @@ public class ModItems {
 		GameRegistry.registerItem(TUCSbook , "TUCSBook");
 		GameRegistry.registerItem(TUCSdebug , "TUCSdebug");
 		GameRegistry.registerItem(CobbleCoal, "CobbleCoal");
+		GameRegistry.registerItem(cobblestonediumLighter, "cobblestonediumLighter");
+		GameRegistry.registerItem(cobblestoneiumLighter, "cobblestoneiumLighter");
 	}
 
 }

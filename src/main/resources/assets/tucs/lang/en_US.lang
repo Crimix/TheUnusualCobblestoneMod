@@ -2,7 +2,9 @@
 item.tucs:TLSOC.name=The Legendary Sword of The lost fighter
 item.tucs:ingotCobblestoneium.name=Cobblestoneium Ingot
 item.tucs:ingotCobblestonedium.name=Cobblestonedium Ingot
-item.tucs:Tool.name=Cobblestone Lighter
+item.tucs:cobblestoneLighter.name=Cobblestone Lighter
+item.tucs:cobblestonediumLighter.name=Cobblestonedium Lighter
+item.tucs:cobblestoneiumLighter.name=Cobblestoneium Lighter
 item.tucs:ShovelCobblestoneium.name=Cobblestoneium Shovel
 item.tucs:SwordCobblestoneium.name=Cobblestoneium Sword
 item.tucs:HatchetCobblestoneium.name=Cobblestoneium Axe

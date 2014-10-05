@@ -24,7 +24,6 @@ public class ItemBook extends ItemTUCS  {
 	public ItemBook(){
 		super();
 		this.setUnlocalizedName("TUCSbook");
-		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 		this.setMaxStackSize(1);
 	    
 	}

@@ -115,22 +115,49 @@ public class GuiTUCSBook extends GuiScreen {
 			drawRecipePageBot(gold, false, cobblestoneium, false, gold, false, cobblestoneium, false, craftingTable, true, cobblestoneium, false, gold, false, cobblestoneium, false, gold, false, craftingTable, bookXStart);
 			break;
 		case 4:
+			String  clText = "This Lighter can be used like a flint and steel";
+			drawPage("Cobblestone Lighter", clText, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
+			break;
+		case 5:
+			drawRecipePageTop("Recipe", "It can be used in crafting", new ItemStack(ModItems.cobblestoneLighter), bookXStart);
+
+			drawRecipePageBot(null, false, new ItemStack(Items.flint_and_steel), false, null, false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Items.gunpowder), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.cobblestone), true, new ItemStack(Items.gunpowder), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.crafting_table), bookXStart);
+			break;
+		case 6:
+			String  cilText = "This Lighter can be used like a flint and steel";
+			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
+			break;
+		case 7:
+			drawRecipePageTop("Recipe", "It can be used in crafting, it has more durability than a Cobblestone Lighter", new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
+
+			drawRecipePageBot(null, false, new ItemStack(Items.flint_and_steel), false, null, false, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.ingotCobblestoneium), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.cobblestoneLighter), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.crafting_table), bookXStart);
+			break;
+		case 8:
+			String  cdilText = "This Lighter can be used like a flint and steel";
+			drawPage("Cobblestonedium Lighter", cdilText, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			break;
+		case 9:
+			drawRecipePageTop("Recipe", "It can be used in crafting, it can't be broken", new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+
+			drawRecipePageBot(null, false, new ItemStack(Items.flint_and_steel), false, null, false, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.ingotCobblestonedium), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.cobblestoneiumLighter), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.crafting_table), bookXStart);
+			break;
+		case 10:
 			text="This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. To get the ingot smelt the ore";
 			drawPage("Cobblestoneium", text, new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
 			break;
-		case 5:
-			drawRecipePageTop("Recipe", "This Material have the combined durability of iron and stone ", new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
+		case 11:
+			drawRecipePageTop("Recipe", "This Material have the combined durability of iron and stone \n Any Lighter made of cobblestone or it's alloys will work ", new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
 			ItemStack rcsi1 = new ItemStack(Blocks.cobblestone);
 			ItemStack rcsi2 = new ItemStack(Items.iron_ingot);
 			ItemStack rcsi3 = new ItemStack(Items.gunpowder);
 			ItemStack rcsi4 = new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE);
 			drawRecipePageBot(rcsi1, true, rcsi2, false, null, false, rcsi3, false, rcsi4, false, null, false, null, false, null, false, null, false, new ItemStack(Blocks.crafting_table), bookXStart);
 			break;
-		case 6:
+		case 12:
 			text="This ingot is an alloy of iron and cobblestone";
 			drawPage("Cobblestoneium", text, new ItemStack(ModItems.ingotCobblestoneium), bookXStart);
 			break;
-		case 7:
+		case 13:
 			text="This ingot have the combined durability of iron and stone";
 			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium,2), new ItemStack(ModBlocks.blockAncientForge), bookXStart);
 			break;

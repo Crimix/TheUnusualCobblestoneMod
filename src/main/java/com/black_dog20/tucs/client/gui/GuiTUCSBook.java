@@ -89,6 +89,10 @@ public class GuiTUCSBook extends GuiScreen {
 		}
 	}
 
+	public void onGuiClosed() {
+		super.onGuiClosed();
+	}
+	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float renderPartials) {
 		this.MouseX = mouseX;

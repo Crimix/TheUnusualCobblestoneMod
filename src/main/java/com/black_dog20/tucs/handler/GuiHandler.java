@@ -29,12 +29,14 @@ public class GuiHandler implements IGuiHandler {
 					return new ContainerAncientForge(player.inventory, (TileEntityAncientForge) entity);
 				}
 				return null;
+			}
 		}
-			
-		}
-		
+
 		if(ID == tucs.guiIDAncientTable) {
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new ContainerAncientTable(player.inventory, world, x, y, z) : null;
+		}
+		if(ID == tucs.guiIDBook){
+			return new ContainerDummy(null, null);
 		}
 
 		return null;
@@ -43,7 +45,7 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world,	int x, int y, int z) {
 		TileEntity entity = world.getTileEntity(x, y, z);
-		
+
 		if(entity != null) {
 			switch(ID) {
 			case tucs.guiIDAncientForge:
@@ -56,6 +58,11 @@ public class GuiHandler implements IGuiHandler {
 
 		if(ID == tucs.guiIDAncientTable) {
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new GuiAncientTable(player.inventory, world, x, y, z) : null;
+		}
+		
+		if(ID == tucs.guiIDBook){
+			
+			return new  GuiTUCSBook(player);
 		}
 
 		return null;

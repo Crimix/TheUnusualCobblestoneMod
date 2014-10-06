@@ -27,11 +27,6 @@ import net.minecraft.world.World;
 			this.ySize = 165;
 			
 		}
-
-		
-		public void onGuiClosed() {
-			super.onGuiClosed();
-		}
 		
 		protected void drawGuiContainerForegroundLayer(int i, int j) {
 			

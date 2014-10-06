@@ -53,6 +53,8 @@ public class ItemBook extends ItemTUCS  {
 				}
 				else if(openBefore == true){
 					if(!world.isRemote){
+						
+						player.openGui(tucs.instance, tucs.guiIDBook, world, 0, 0, 0);
 					tucs.Proxy.openBook(player);
 					}
 					

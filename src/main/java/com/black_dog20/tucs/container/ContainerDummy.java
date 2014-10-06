@@ -15,18 +15,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
 
-public class ContainerDummy extends Container
-{
+public class ContainerDummy extends Container{
 
 
-    public ContainerDummy(InventoryPlayer IPlayer, TileEntityAncientForge tileForge)
+    public ContainerDummy(EntityPlayer Player)
     {
         
     }
 
 	@Override
-	public boolean canInteractWith(EntityPlayer p_75145_1_) {
+	public boolean canInteractWith(EntityPlayer EPlayer) {
 
-		return false;
+		return true;
 	}
 }

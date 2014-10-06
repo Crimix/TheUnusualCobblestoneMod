@@ -36,7 +36,7 @@ public class GuiHandler implements IGuiHandler {
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new ContainerAncientTable(player.inventory, world, x, y, z) : null;
 		}
 		if(ID == tucs.guiIDBook){
-			return new ContainerDummy(null, null);
+			return new ContainerDummy(player);
 		}
 
 		return null;

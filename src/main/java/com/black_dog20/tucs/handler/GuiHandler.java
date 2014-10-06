@@ -3,11 +3,14 @@ package com.black_dog20.tucs.handler;
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.gui.GuiAncientForge;
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
+import com.black_dog20.tucs.client.gui.GuiTUCSBook;
 import com.black_dog20.tucs.container.ContainerAncientForge;
 import com.black_dog20.tucs.container.ContainerAncientTable;
+import com.black_dog20.tucs.container.ContainerDummy;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;

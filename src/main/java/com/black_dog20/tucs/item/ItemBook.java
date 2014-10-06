@@ -5,9 +5,16 @@ import java.util.List;
 import javax.print.attribute.standard.Sides;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.client.gui.GuiTUCSBook;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.proxies.ClientProxy;
+import com.black_dog20.tucs.reference.Reference;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemEditableBook;
@@ -45,7 +52,10 @@ public class ItemBook extends ItemTUCS  {
 					nbt.setBoolean("TUCSBook_open", true); 
 				}
 				else if(openBefore == true){
+					if(!world.isRemote){
 					tucs.Proxy.openBook(player);
+					}
+					
 				}
 			}
 			

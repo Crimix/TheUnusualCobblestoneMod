@@ -1,5 +1,7 @@
 package com.black_dog20.tucs.proxies;
 
+import net.minecraft.entity.player.EntityPlayer;
+
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.handler.GuiHandler;
 

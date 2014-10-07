@@ -52,11 +52,7 @@ public class ItemBook extends ItemTUCS  {
 					nbt.setBoolean("TUCSBook_open", true); 
 				}
 				else if(openBefore == true){
-					if(!world.isRemote){
-						
-					tucs.Proxy.openBook(player);
-					}
-					
+					tucs.Proxy.openBook(player);					
 				}
 			}
 			

@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.LogHelper;
 
@@ -21,6 +22,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -44,6 +46,7 @@ public class GuiTUCSBook extends GuiScreen {
 	private GuiButtonChangePage nextPage;
 	private GuiButtonChangePage prevPage;
 	private EntityPlayer player;
+	private NBTTagCompound nbt;
 
 	public GuiTUCSBook(EntityPlayer player) {
 		this.player=player;
@@ -132,31 +135,61 @@ public class GuiTUCSBook extends GuiScreen {
 			drawRecipePageBot(cobblestone, cobblestone, cobblestone, cobblestone, book, cobblestone, cobblestone, cobblestone, cobblestone, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TUCSbook), bookXStart);
 			break;
 		case 6:
+			if(checkRecipe(PageTypes.FLAME)){
 			String  clText = " \nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestone Lighter", clText, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 7:
+			if(checkRecipe(PageTypes.FLAME)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 8:
+			if(checkRecipe(PageTypes.FLAME)){
 			String  cilText = "\nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 9:
+			if(checkRecipe(PageTypes.FLAME)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 10:
+			if(checkRecipe(PageTypes.FLAME)){
 			String  cdilText = "\nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestonedium Lighter", cdilText, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 11:
+			if(checkRecipe(PageTypes.FLAME)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, it can't be broken";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestonedium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneiumLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 12:
 			text="This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. To get the ingot smelt the ore \nAny Lighter made of cobblestone or it's alloys will also work ";
@@ -334,5 +367,15 @@ public class GuiTUCSBook extends GuiScreen {
 	
 	public void DrawPageNumber(int pageNumber, int bookXStart){
 		
+	}
+	
+	public boolean checkRecipe(String type){
+		nbt = player.getEntityData();
+		return nbt.getBoolean(type);
+	}
+	public void DrawNothing(int bookXStart){
+		mc.renderEngine.bindTexture(texture);
+		this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
+		super.drawScreen(MouseX, MouseY, RenderPartials);
 	}
 }

@@ -17,7 +17,8 @@ item.tucs:chestplateCobblestoneium.name=Cobblestoneium Chestplate
 item.tucs:TUCSbook.name=The Ancient book
 item.tucs:cobbleCoal.name=Cobblestone Coal
 item.tucs:TUCSDebug.name=Debug Tool
-
+item.tucs:page.name=Page
+item.tucs:TUCSPageDebug.name=Page Debug Tool
 
 //Blocks
 tile.tucs:ancientTable.name=Ancient Table

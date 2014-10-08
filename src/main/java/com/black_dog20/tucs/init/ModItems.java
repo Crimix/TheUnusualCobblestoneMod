@@ -8,7 +8,9 @@ import com.black_dog20.tucs.item.ItemBook;
 import com.black_dog20.tucs.item.ItemCobbleCoal;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
+import com.black_dog20.tucs.item.ItemPage;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
+import com.black_dog20.tucs.item.ItemTUCSPageDebug;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
@@ -22,6 +24,7 @@ import com.black_dog20.tucs.item.tool.ItemShovelCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemSwordCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneLighter;
+import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -50,6 +53,10 @@ public class ModItems {
 	public static final ItemCobbleCoal CobbleCoal = new ItemCobbleCoal();
 	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
 	public static final ItemCobblestoneiumLighter cobblestoneiumLighter = new ItemCobblestoneiumLighter();
+	public static final ItemPage page = new ItemPage(null);
+	public static final ItemPage page2 = new ItemPage(PageTypes.FLAME);
+	public static final ItemTUCSPageDebug TUCSPagedebug = new ItemTUCSPageDebug();
+	
 	
 	public static void init(){
 
@@ -72,6 +79,9 @@ public class ModItems {
 		GameRegistry.registerItem(CobbleCoal, "CobbleCoal");
 		GameRegistry.registerItem(cobblestonediumLighter, "cobblestonediumLighter");
 		GameRegistry.registerItem(cobblestoneiumLighter, "cobblestoneiumLighter");
+		GameRegistry.registerItem(page , "page");
+		GameRegistry.registerItem(page2 , "page2");
+		GameRegistry.registerItem(TUCSPagedebug , "TUCSPagedebug");
 	}
 
 }

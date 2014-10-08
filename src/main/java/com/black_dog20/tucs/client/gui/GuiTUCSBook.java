@@ -19,6 +19,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
@@ -117,53 +118,64 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack gold = new ItemStack(Items.gold_ingot);
 			ItemStack cobblestoneium = new ItemStack(ModItems.ingotCobblestoneium);
 			ItemStack craftingTable = new ItemStack(Blocks.crafting_table);
-			drawRecipePageBot(gold, false, cobblestoneium, false, gold, false, cobblestoneium, false, craftingTable, true, cobblestoneium, false, gold, false, cobblestoneium, false, gold, false, craftingTable, text, new ItemStack(ModBlocks.ancientTable), true, bookXStart);
+			drawRecipePageBot(gold, cobblestoneium, gold, cobblestoneium, craftingTable, cobblestoneium, gold, cobblestoneium, gold, craftingTable, text, new ItemStack(ModBlocks.ancientTable), bookXStart);
 			break;
 		case 4:
-			String  clText = " \nThis Lighter can be used like a flint and steel";
-			drawPage("Cobblestone Lighter", clText, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
+			text = "The book which has the magic properties to hold all the knowledge you have found out about Cobblestoneia and it's traditions";
+			drawPage("The Ancient book", text, new ItemStack(ModItems.TUCSbook), bookXStart);
 			break;
 		case 5:
 			drawRecipePageTop(bookXStart);
-			text = "It can be used in crafting";
-			drawRecipePageBot(null, false, new ItemStack(Items.flint_and_steel), false, null, false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Items.gunpowder), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.cobblestone), true, new ItemStack(Items.gunpowder), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestoneLighter), false, bookXStart);
+			text = "This book kan be crafted so you never lose the knowledge of the ancint society";
+			ItemStack cobblestone= new ItemStack(Blocks.cobblestone);
+			ItemStack book = new ItemStack(Items.book);
+			drawRecipePageBot(cobblestone, cobblestone, cobblestone, cobblestone, book, cobblestone, cobblestone, cobblestone, cobblestone, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TUCSbook), bookXStart);
 			break;
 		case 6:
-			String  cilText = "\nThis Lighter can be used like a flint and steel";
-			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
+			String  clText = " \nThis Lighter can be used like a flint and steel";
+			drawPage("Cobblestone Lighter", clText, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
 			break;
 		case 7:
 			drawRecipePageTop(bookXStart);
-			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
-			drawRecipePageBot(null, false, new ItemStack(Items.flint_and_steel), false, null, false, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.ingotCobblestoneium), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.cobblestoneLighter), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestoneiumLighter), false, bookXStart);
+			text = "It can be used in crafting";
+			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
 			break;
 		case 8:
-			String  cdilText = "\nThis Lighter can be used like a flint and steel";
-			drawPage("Cobblestonedium Lighter", cdilText, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			String  cilText = "\nThis Lighter can be used like a flint and steel";
+			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
 			break;
 		case 9:
 			drawRecipePageTop(bookXStart);
-			text = "It can be used in crafting, it can't be broken";
-			drawRecipePageBot(null, false, new ItemStack(Items.flint_and_steel), false, null, false, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.ingotCobblestonedium), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.cobblestone), true, new ItemStack(ModItems.cobblestoneiumLighter), false, new ItemStack(Blocks.cobblestone), true, new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestonediumLighter), false, bookXStart);
+			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
+			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
 			break;
 		case 10:
+			String  cdilText = "\nThis Lighter can be used like a flint and steel";
+			drawPage("Cobblestonedium Lighter", cdilText, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			break;
+		case 11:
+			drawRecipePageTop(bookXStart);
+			text = "It can be used in crafting, it can't be broken";
+			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestonedium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneiumLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			break;
+		case 12:
 			text="This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. To get the ingot smelt the ore \nAny Lighter made of cobblestone or it's alloys will also work ";
 			drawPage("Cobblestoneium", text, new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
 			break;
-		case 11:
+		case 13:
 			drawRecipePageTop(bookXStart);
 			text = "This Material have the combined durability of iron and stone ";
 			ItemStack rcsi1 = new ItemStack(Blocks.cobblestone);
 			ItemStack rcsi2 = new ItemStack(Items.iron_ingot);
 			ItemStack rcsi3 = new ItemStack(Items.gunpowder);
 			ItemStack rcsi4 = new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE);
-			drawRecipePageBot(rcsi1, true, rcsi2, false, null, false, rcsi3, false, rcsi4, false, null, false, null, false, null, false, null, false, new ItemStack(Blocks.crafting_table), text, new ItemStack(ModBlocks.oreCobblestoneium), false, bookXStart);
+			drawRecipePageBot(rcsi1, rcsi2, null, rcsi3, rcsi4, null, null, null, null, new ItemStack(Blocks.crafting_table), text, new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
 			break;
-		case 12:
+		case 14:
 			text="This ingot is an alloy of iron and cobblestone";
 			drawPage("Cobblestoneium", text, new ItemStack(ModItems.ingotCobblestoneium), bookXStart);
 			break;
-		case 13:
+		case 15:
 			text="This ingot have the combined durability of iron and stone";
 			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium,2), new ItemStack(ModBlocks.blockAncientForge), bookXStart);
 			break;
@@ -213,7 +225,7 @@ public class GuiTUCSBook extends GuiScreen {
 		super.drawScreen(MouseX, MouseY, RenderPartials);
 	}
 
-	public void drawRecipePageBot(ItemStack r1c1, Boolean r1c1_a_block, ItemStack r1c2, Boolean r1c2_a_block, ItemStack r1c3, Boolean r1c3_a_block, ItemStack r2c1, Boolean r2c1_a_block, ItemStack r2c2, Boolean r2c2_a_block, ItemStack r2c3, Boolean r2c3_a_block, ItemStack r3c1, Boolean r3c1_a_block, ItemStack r3c2, Boolean r3c2_a_block, ItemStack r3c3, Boolean r3c3_a_block, ItemStack crafting, String tip, ItemStack item, boolean item_a_block, int bookXStart){
+	public void drawRecipePageBot(ItemStack r1c1, ItemStack r1c2, ItemStack r1c3, ItemStack r2c1, ItemStack r2c2, ItemStack r2c3, ItemStack r3c1, ItemStack r3c2, ItemStack r3c3, ItemStack crafting, String tip, ItemStack item, int bookXStart){
 		mc.renderEngine.bindTexture(textureC);
 		this.drawTexturedModalRect(bookXStart + 62, 100, 28, 15, 56, 56);
 		super.drawScreen(MouseX, MouseY, RenderPartials);
@@ -224,64 +236,64 @@ public class GuiTUCSBook extends GuiScreen {
 		fontRendererObj.drawSplitString("\u00A7r" + tip, bookXStart + 34, 35, 120, 0x000000);
 		fontRendererObj.drawString("\u00A7r" + crafting.getDisplayName(), bookXStart + 53, 84, 0x000000);
 		
-		if(item_a_block){
+		if(item.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, item, bookXStart + 34, 15);
 		}
-		if(r1c1_a_block && r1c1 != null){
+		if(r1c1 != null && r1c1.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r1c1, bookXStart + xCraft, yCraft);
 		}
-		if(r1c2_a_block  && r1c2 != null){
+		if(r1c2 != null && r1c2.getItem() instanceof ItemBlock ){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r1c2, bookXStart + xCraft + 18, yCraft);
 		}
-		if(r1c3_a_block  && r1c3 != null){
+		if(r1c3 != null && r1c3.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r1c3, bookXStart + xCraft + (2*18), yCraft);
 		}
-		if(r2c1_a_block  && r2c1 != null){
+		if(r2c1 != null && r2c1.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r2c1, bookXStart + xCraft, yCraft + 18);
 		}
-		if(r2c2_a_block  && r2c2 != null){
+		if(r2c2 != null && r2c2.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r2c2, bookXStart + xCraft + 18, yCraft + 18);
 		}
-		if(r2c3_a_block  && r2c3 != null){
+		if(r2c3 != null && r2c3.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r2c3, bookXStart + xCraft + (2*18), yCraft + 18);
 		}
-		if(r3c1_a_block  && r3c1 != null){
+		if(r3c1 != null && r3c1.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r3c1, bookXStart + xCraft, yCraft + (2*18));
 		}
-		if(r3c2_a_block  && r3c2 != null){
+		if(r3c2 != null && r3c2.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r3c2, bookXStart + xCraft + 18, yCraft + (2*18));
 		}
-		if(r3c3_a_block  && r3c3 != null){
+		if(r3c3 != null && r3c3.getItem() instanceof ItemBlock){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r3c3, bookXStart + xCraft + (2*18), yCraft + (2*18));
 		}
-		if(!item_a_block){
+		if(!(item.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, item, bookXStart + 34, 15);
 		}
-		if(r1c1_a_block.equals(false)  && r1c1 != null){
+		if(r1c1 != null && !(r1c1.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r1c1, bookXStart + xCraft, yCraft);
 		}
-		if(r1c2_a_block.equals(false)  && r1c2 != null){
+		if(r1c2 != null && !(r1c2.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r1c2, bookXStart + xCraft + 18, yCraft);
 		}
-		if(r1c3_a_block.equals(false)  && r1c3 != null){
+		if(r1c3 != null && !(r1c3.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r1c3, bookXStart + xCraft + (2*18), yCraft);
 		}
-		if(r2c1_a_block.equals(false)  && r2c1 != null){
+		if(r2c1 != null && !(r2c1.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r2c1, bookXStart + xCraft, yCraft + 18);
 		}
-		if(r2c2_a_block.equals(false)  && r2c2 != null){
+		if(r2c2 != null && !(r2c2.getItem() instanceof ItemBlock )){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r2c2, bookXStart + xCraft + 18, yCraft + 18);
 		}
-		if(r2c3_a_block.equals(false)  && r2c3 != null){
+		if(r2c3 != null && !(r2c3.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r2c3, bookXStart + xCraft + (2*18), yCraft + 18);
 		}
-		if(r3c1_a_block.equals(false)  && r3c1 != null){
+		if(r3c1 != null && !(r3c1.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r3c1, bookXStart + xCraft, yCraft + (2*18));
 		}
-		if(r3c2_a_block.equals(false)  && r3c2 != null){
+		if(r3c2 != null && !(r3c2.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r3c2, bookXStart + xCraft + 18, yCraft + (2*18));
 		}
-		if(r3c3_a_block.equals(false)  && r3c3 != null){
+		if(r3c3 != null && !(r3c3.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r3c3, bookXStart + xCraft + (2*18), yCraft + (2*18));
 		}
 	}

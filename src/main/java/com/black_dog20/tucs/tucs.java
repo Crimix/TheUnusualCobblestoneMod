@@ -13,6 +13,7 @@ import com.black_dog20.tucs.proxies.IProxy;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.utility.LogHelper;
+import com.black_dog20.tucs.utility.PageHelper;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;

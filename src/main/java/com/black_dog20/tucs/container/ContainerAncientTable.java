@@ -4,6 +4,7 @@ import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.utility.LogHelper;
+import com.black_dog20.tucs.utility.PageHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -28,6 +29,7 @@ public class ContainerAncientTable extends Container {
     private int posX;
     private int posY;
     private int posZ;
+    private EntityPlayer EPlayer;
    // private static final String __OBFID = "CL_00001744";
 
     public ContainerAncientTable(InventoryPlayer IPlayer, World world, int x, int y, int z)
@@ -36,6 +38,7 @@ public class ContainerAncientTable extends Container {
         this.posX = x;
         this.posY = y;
         this.posZ = z;
+        this.EPlayer = IPlayer.player;
         
         
         
@@ -77,7 +80,10 @@ public class ContainerAncientTable extends Container {
     		this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     	}
     	else{
-    		this.craftResult.setInventorySlotContents(0, AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+    		ItemStack item = AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
+    		if(PageHelper.check(item, EPlayer)){
+    			this.craftResult.setInventorySlotContents(0, AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+    		}
     	}		
     	
     }

@@ -47,7 +47,7 @@ public class AncientTableManager
 
     
     
-    public AncientTableShapedRecipes addRecipe(ItemStack p_92103_1_, Object ... p_92103_2_)
+    public AncientTableShapedRecipes addRecipe(ItemStack p_92103_1_,  Object ... p_92103_2_)
     {
         String s = "";
         int i = 0;

@@ -13,15 +13,17 @@ import net.minecraft.nbt.NBTTagCompound;
 public class PageHelper {
 	public static boolean check(ItemStack result , EntityPlayer player){
 		
-		HashMap<ItemStack,String> pageCraft= new HashMap<ItemStack,String>();
-		pageCraft.put(new ItemStack(ModItems.cobblestonediumLighter), PageTypes.FLAME);
-		pageCraft.put(new ItemStack(ModItems.cobblestoneiumLighter), PageTypes.FLAME);
-		pageCraft.put(new ItemStack(ModItems.cobblestoneLighter), PageTypes.FLAME);
+		HashMap<String,String> pageCraft= new HashMap<String,String>();
+		pageCraft.put(new ItemStack(ModItems.cobblestonediumLighter).getDisplayName(), PageTypes.FLAME);
+		pageCraft.put(new ItemStack(ModItems.cobblestoneiumLighter).getDisplayName(), PageTypes.FLAME);
+		pageCraft.put(new ItemStack(ModItems.cobblestoneLighter).getDisplayName(), PageTypes.FLAME);
 		
-		String n = pageCraft.get(result);
-		System.out.println(n);
-		NBTTagCompound nbt = player.getEntityData();
-		boolean test = nbt.getBoolean(n);
-		return test;
+		if(result != null){
+			String n = pageCraft.get(result.getDisplayName());
+			NBTTagCompound nbt = player.getEntityData();
+			boolean test = nbt.getBoolean(n);
+			return test;
+		}
+		return false;
 	}
 }

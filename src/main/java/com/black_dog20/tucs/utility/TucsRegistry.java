@@ -8,7 +8,7 @@ import net.minecraft.item.crafting.IRecipe;
 
 public class TucsRegistry {
 
-	 public static void addRecipe(ItemStack output, Object... params)
+	 public static void addRecipe(ItemStack output,  Object... params)
 	    {
 	        addShapedRecipe(output, params);
 	    }

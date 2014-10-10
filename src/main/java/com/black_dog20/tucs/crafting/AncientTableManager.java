@@ -1,20 +1,29 @@
 package com.black_dog20.tucs.crafting;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import com.black_dog20.tucs.container.ContainerAncientTable;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.ItemTUCS;
+import com.black_dog20.tucs.utility.PageHelper;
 import com.black_dog20.tucs.utility.TucsRegistry;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -25,197 +34,225 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class AncientTableManager
 {
-    /** The static instance of this class */
-    private static final AncientTableManager instance = new AncientTableManager();
-    /** A list of all the recipes added */
-    private List recipes = new ArrayList();
-    private static final String __OBFID = "CL_00000090";
+	/** The static instance of this class */
+	private static final AncientTableManager instance = new AncientTableManager();
+	/** A list of all the recipes added */
+	private List recipes = new ArrayList();
+	private static final String __OBFID = "CL_00000090";
 
-    /**
-     * Returns the static instance of this class
-     */
-    public static final AncientTableManager getInstance()
-    {
-        /** The static instance of this class */
-        return instance;
-    }
+	/**
+	 * Returns the static instance of this class
+	 */
+	public static final AncientTableManager getInstance()
+	{
+		/** The static instance of this class */
+		return instance;
+	}
 
-    private AncientTableManager()
-    {
-        Collections.sort(this.recipes, new AncientTableRecipeSorter(this));
-    }
+	private AncientTableManager()
+	{
+		Collections.sort(this.recipes, new AncientTableRecipeSorter(this));
+	}
 
-    
-    
-    public AncientTableShapedRecipes addRecipe(ItemStack p_92103_1_,  Object ... p_92103_2_)
-    {
-        String s = "";
-        int i = 0;
-        int j = 0;
-        int k = 0;
 
-        if (p_92103_2_[i] instanceof String[])
-        {
-            String[] astring = (String[])((String[])p_92103_2_[i++]);
 
-            for (int l = 0; l < astring.length; ++l)
-            {
-                String s1 = astring[l];
-                ++k;
-                j = s1.length();
-                s = s + s1;
-            }
-        }
-        else
-        {
-            while (p_92103_2_[i] instanceof String)
-            {
-                String s2 = (String)p_92103_2_[i++];
-                ++k;
-                j = s2.length();
-                s = s + s2;
-            }
-        }
+	public AncientTableShapedRecipes addRecipe(ItemStack item,  Object ... params)
+	{
+		String s = "";
+		int i = 0;
+		int j = 0;
+		int k = 0;
 
-        HashMap hashmap;
+		if (params[i] instanceof String[])
+		{
+			String[] astring = (String[])((String[])params[i++]);
 
-        for (hashmap = new HashMap(); i < p_92103_2_.length; i += 2)
-        {
-            Character character = (Character)p_92103_2_[i];
-            ItemStack itemstack1 = null;
+			for (int l = 0; l < astring.length; ++l)
+			{
+				String s1 = astring[l];
+				++k;
+				j = s1.length();
+				s = s + s1;
+			}
+		}
+		else
+		{
+			while (params[i] instanceof String)
+			{
+				String s2 = (String)params[i++];
+				++k;
+				j = s2.length();
+				s = s + s2;
+			}
+		}
 
-            if (p_92103_2_[i + 1] instanceof Item)
-            {
-                itemstack1 = new ItemStack((Item)p_92103_2_[i + 1]);
-            }
-            else if (p_92103_2_[i + 1] instanceof Block)
-            {
-                itemstack1 = new ItemStack((Block)p_92103_2_[i + 1], 1, 32767);
-            }
-            else if (p_92103_2_[i + 1] instanceof ItemStack)
-            {
-                itemstack1 = (ItemStack)p_92103_2_[i + 1];
-            }
+		HashMap hashmap;
 
-            hashmap.put(character, itemstack1);
-        }
+		for (hashmap = new HashMap(); i < params.length; i += 2)
+		{
+			Character character = (Character)params[i];
+			ItemStack itemstack1 = null;
 
-        ItemStack[] aitemstack = new ItemStack[j * k];
+			if (params[i + 1] instanceof Item)
+			{
+				itemstack1 = new ItemStack((Item)params[i + 1]);
+			}
+			else if (params[i + 1] instanceof Block)
+			{
+				itemstack1 = new ItemStack((Block)params[i + 1], 1, 32767);
+			}
+			else if (params[i + 1] instanceof ItemStack)
+			{
+				itemstack1 = (ItemStack)params[i + 1];
+			}
 
-        for (int i1 = 0; i1 < j * k; ++i1)
-        {
-            char c0 = s.charAt(i1);
+			hashmap.put(character, itemstack1);
+		}
 
-            if (hashmap.containsKey(Character.valueOf(c0)))
-            {
-                aitemstack[i1] = ((ItemStack)hashmap.get(Character.valueOf(c0))).copy();
-            }
-            else
-            {
-                aitemstack[i1] = null;
-            }
-        }
+		ItemStack[] aitemstack = new ItemStack[j * k];
 
-        AncientTableShapedRecipes shapedrecipes = new AncientTableShapedRecipes(j, k, aitemstack, p_92103_1_);
-        this.recipes.add(shapedrecipes);
-        return shapedrecipes;
-    }
+		for (int i1 = 0; i1 < j * k; ++i1)
+		{
+			char c0 = s.charAt(i1);
 
-    public void addShapelessRecipe(ItemStack p_77596_1_, Object ... p_77596_2_)
-    {
-        ArrayList arraylist = new ArrayList();
-        Object[] aobject = p_77596_2_;
-        int i = p_77596_2_.length;
+			if (hashmap.containsKey(Character.valueOf(c0)))
+			{
+				aitemstack[i1] = ((ItemStack)hashmap.get(Character.valueOf(c0))).copy();
+			}
+			else
+			{
+				aitemstack[i1] = null;
+			}
+		}
 
-        for (int j = 0; j < i; ++j)
-        {
-            Object object1 = aobject[j];
+		AncientTableShapedRecipes shapedrecipes = new AncientTableShapedRecipes(j, k, aitemstack, item);
+		this.recipes.add(shapedrecipes);
+		return shapedrecipes;
+	}
 
-            if (object1 instanceof ItemStack)
-            {
-                arraylist.add(((ItemStack)object1).copy());
-            }
-            else if (object1 instanceof Item)
-            {
-                arraylist.add(new ItemStack((Item)object1));
-            }
-            else
-            {
-                if (!(object1 instanceof Block))
-                {
-                    throw new RuntimeException("Invalid shapeless recipy!");
-                }
+	public void addShapelessRecipe(ItemStack item, Object ... params)
+	{
+		ArrayList arraylist = new ArrayList();
+		Object[] aobject = params;
+		int i = params.length;
 
-                arraylist.add(new ItemStack((Block)object1));
-            }
-        }
+		for (int j = 0; j < i; ++j)
+		{
+			Object object1 = aobject[j];
 
-        this.recipes.add(new AncientTableShapelessRecipes(p_77596_1_, arraylist));
-    }
+			if (object1 instanceof ItemStack)
+			{
+				arraylist.add(((ItemStack)object1).copy());
+			}
+			else if (object1 instanceof Item)
+			{
+				arraylist.add(new ItemStack((Item)object1));
+			}
+			else
+			{
+				if (!(object1 instanceof Block))
+				{
+					throw new RuntimeException("Invalid shapeless recipy!");
+				}
 
-    public ItemStack findMatchingRecipe(InventoryCrafting p_82787_1_, World p_82787_2_)
-    {
-        int i = 0;
-        ItemStack itemstack = null;
-        ItemStack itemstack1 = null;
-        int j;
+				arraylist.add(new ItemStack((Block)object1));
+			}
+		}
 
-        for (j = 0; j < p_82787_1_.getSizeInventory(); ++j)
-        {
-            ItemStack itemstack2 = p_82787_1_.getStackInSlot(j);
+		this.recipes.add(new AncientTableShapelessRecipes(item, arraylist));
+	}
 
-            if (itemstack2 != null)
-            {
-                if (i == 0)
-                {
-                    itemstack = itemstack2;
-                }
+	public ItemStack findMatchingRecipe(InventoryCrafting invC, World world)
+	{
+		int i = 0;
+		ItemStack itemstack = null;
+		ItemStack itemstack1 = null;
+		int j;
 
-                if (i == 1)
-                {
-                    itemstack1 = itemstack2;
-                }
+		for (j = 0; j < invC.getSizeInventory(); ++j)
+		{
+			ItemStack itemstack2 = invC.getStackInSlot(j);
 
-                ++i;
-            }
-        }
+			if (itemstack2 != null)
+			{
+				if (i == 0)
+				{
+					itemstack = itemstack2;
+				}
 
-        if (i == 2 && itemstack.getItem() == itemstack1.getItem() && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isRepairable())
-        {
-            Item item = itemstack.getItem();
-            int j1 = item.getMaxDamage() - itemstack.getItemDamageForDisplay();
-            int k = item.getMaxDamage() - itemstack1.getItemDamageForDisplay();
-            int l = j1 + k + item.getMaxDamage() * 5 / 100;
-            int i1 = item.getMaxDamage() - l;
+				if (i == 1)
+				{
+					itemstack1 = itemstack2;
+				}
 
-            if (i1 < 0)
-            {
-                i1 = 0;
-            }
+				++i;
+			}
+		}
 
-            return new ItemStack(itemstack.getItem(), 1, i1);
-        }
-        else
-        {
-            for (j = 0; j < this.recipes.size(); ++j)
-            {
-                IRecipe irecipe = (IRecipe)this.recipes.get(j);
+		if (i == 2 && itemstack.getItem() == itemstack1.getItem() && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isRepairable())
+		{
+			Item item = itemstack.getItem();
+			int j1 = item.getMaxDamage() - itemstack.getItemDamageForDisplay();
+			int k = item.getMaxDamage() - itemstack1.getItemDamageForDisplay();
+			int l = j1 + k + item.getMaxDamage() * 5 / 100;
+			int i1 = item.getMaxDamage() - l;
 
-                if (irecipe.matches(p_82787_1_, p_82787_2_))
-                {
-                    return irecipe.getCraftingResult(p_82787_1_);
-                }
-            }
+			if (i1 < 0)
+			{
+				i1 = 0;
+			}
 
-            return null;
-        }
-    }
+			return new ItemStack(itemstack.getItem(), 1, i1);
+		}
+		else
+		{
+			for (j = 0; j < this.recipes.size(); ++j)
+			{
+				IRecipe irecipe = (IRecipe)this.recipes.get(j);
 
-    /**
-     * returns the List<> of all recipes
-     */
-    public List getRecipeList()
-    {
-        return this.recipes;
-    }
+				if (irecipe.matches(invC, world))
+				{
+					return irecipe.getCraftingResult(invC);
+				}
+			}
+
+			return null;
+		}
+	}
+
+	/**
+	 * returns the List<> of all recipes
+	 */
+	public List getRecipeList()
+	{
+		return this.recipes;
+	}
+
+	private static final Field eventHandlerField = ReflectionHelper.findField(InventoryCrafting.class, "eventHandler");
+	private static final Field containerPlayerPlayerField = ReflectionHelper.findField(ContainerPlayer.class, "thePlayer");
+	private static final Field slotCraftingPlayerField = ReflectionHelper.findField(SlotCrafting.class, "thePlayer");
+
+	private static EntityPlayer findPlayer(InventoryCrafting inv) {
+		try {
+			Container container = (Container) eventHandlerField.get(inv);
+			if (container instanceof ContainerPlayer) {
+				return (EntityPlayer) containerPlayerPlayerField.get(container);
+			} else if (container instanceof ContainerAncientTable) {
+				return (EntityPlayer) slotCraftingPlayerField.get(container.getSlot(0));
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public ItemStack matches(InventoryCrafting invC, World world, boolean checkItem) {
+		EntityPlayer player = findPlayer(invC);
+		ItemStack result = findMatchingRecipe(invC, world);
+		if(result != null && PageHelper.myItem(result) && checkItem){
+			return findMatchingRecipe(invC, world);
+		}
+		return null;
+	}
 }

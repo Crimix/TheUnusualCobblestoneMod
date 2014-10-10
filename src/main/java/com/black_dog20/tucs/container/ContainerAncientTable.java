@@ -76,15 +76,12 @@ public class ContainerAncientTable extends Container {
     public void onCraftMatrixChanged(IInventory inventory)
     {
     	Result = AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
-    	boolean Check = PageHelper.check(Result, EPlayer);
+    	boolean checkItem = PageHelper.check(Result, EPlayer);
     	if(Result == null){
     		this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     	}
     	else{
-    			if(Check){
-    			AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
-    			this.craftResult.setInventorySlotContents(0, AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
-    			}
+    			this.craftResult.setInventorySlotContents(0, AncientTableManager.getInstance().matches(this.craftMatrix, this.worldObj, checkItem));
     	}		
     	
     }

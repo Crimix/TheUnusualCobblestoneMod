@@ -3,6 +3,7 @@ package com.black_dog20.tucs.container;
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.PageHelper;
 
@@ -17,6 +18,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
@@ -30,15 +32,17 @@ public class ContainerAncientTable extends Container {
     private int posY;
     private int posZ;
     private EntityPlayer EPlayer;
-   // private static final String __OBFID = "CL_00001744";
+    private NBTTagCompound nbt;
+    private String test;
 
-    public ContainerAncientTable(InventoryPlayer IPlayer, World world, int x, int y, int z)
+    public ContainerAncientTable(InventoryPlayer IPlayer, World world, int x, int y, int z, EntityPlayer eplayer)
     {
         this.worldObj = world;
         this.posX = x;
         this.posY = y;
         this.posZ = z;
-        this.EPlayer = IPlayer.player;
+        this.EPlayer = eplayer;
+        this.nbt = EPlayer.getEntityData();
         
         
         
@@ -76,12 +80,14 @@ public class ContainerAncientTable extends Container {
     public void onCraftMatrixChanged(IInventory inventory)
     {
     	Result = AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
-    	boolean checkItem = PageHelper.check(Result, EPlayer);
+    	test = nbt.getString(PageTypes.FLAME);
+    	System.out.println(test);
     	if(Result == null){
     		this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     	}
-    	else{
-    			this.craftResult.setInventorySlotContents(0, AncientTableManager.getInstance().matches(this.craftMatrix, this.worldObj, checkItem));
+    	else if(test.equals("ok")){
+    			this.craftResult.setInventorySlotContents(0, Result);
+    			
     	}		
     	
     }

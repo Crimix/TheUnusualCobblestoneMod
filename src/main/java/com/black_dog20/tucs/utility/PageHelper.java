@@ -21,8 +21,8 @@ public class PageHelper {
 		pageCraft.put(new ItemStack(ModItems.cobblestoneLighter).getDisplayName(), PageTypes.FLAME);
 		
 		if(result != null){
-			String n = pageCraft.get(result.getDisplayName());
-			if(nbt.getBoolean(n)){
+		String n = pageCraft.get(result.getDisplayName());
+			if(nbt.getBoolean(PageTypes.FLAME)){
 				return true;
 			}
 			else{

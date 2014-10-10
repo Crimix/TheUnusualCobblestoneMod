@@ -371,7 +371,13 @@ public class GuiTUCSBook extends GuiScreen {
 	
 	public boolean checkRecipe(String type){
 		nbt = player.getEntityData();
-		return nbt.getBoolean(type);
+		String test = nbt.getString(type);
+		if(test.equals("ok")){
+			return true;
+		}
+		else{
+		return false;
+		}
 	}
 	public void DrawNothing(int bookXStart){
 		mc.renderEngine.bindTexture(texture);

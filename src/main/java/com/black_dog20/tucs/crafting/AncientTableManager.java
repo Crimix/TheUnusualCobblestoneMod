@@ -228,31 +228,4 @@ public class AncientTableManager
 		return this.recipes;
 	}
 
-	private static final Field eventHandlerField = ReflectionHelper.findField(InventoryCrafting.class, "eventHandler");
-	private static final Field containerPlayerPlayerField = ReflectionHelper.findField(ContainerPlayer.class, "thePlayer");
-	private static final Field slotCraftingPlayerField = ReflectionHelper.findField(SlotCrafting.class, "thePlayer");
-
-	private static EntityPlayer findPlayer(InventoryCrafting inv) {
-		try {
-			Container container = (Container) eventHandlerField.get(inv);
-			if (container instanceof ContainerPlayer) {
-				return (EntityPlayer) containerPlayerPlayerField.get(container);
-			} else if (container instanceof ContainerAncientTable) {
-				return (EntityPlayer) slotCraftingPlayerField.get(container.getSlot(0));
-			} else {
-				return null;
-			}
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public ItemStack matches(InventoryCrafting invC, World world, boolean checkItem) {
-		EntityPlayer player = findPlayer(invC);
-		ItemStack result = findMatchingRecipe(invC, world);
-		if(result != null && PageHelper.myItem(result) && checkItem){
-			return findMatchingRecipe(invC, world);
-		}
-		return null;
-	}
 }

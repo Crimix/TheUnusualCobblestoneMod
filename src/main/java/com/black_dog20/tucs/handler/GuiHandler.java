@@ -33,7 +33,7 @@ public class GuiHandler implements IGuiHandler {
 		}
 
 		if(ID == tucs.guiIDAncientTable) {
-			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new ContainerAncientTable(player.inventory, world, x, y, z) : null;
+			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new ContainerAncientTable(player.inventory, world, x, y, z, player) : null;
 		}
 		if(ID == tucs.guiIDBook){
 			return new ContainerDummy(player);
@@ -57,7 +57,7 @@ public class GuiHandler implements IGuiHandler {
 		}
 
 		if(ID == tucs.guiIDAncientTable) {
-			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new GuiAncientTable(player.inventory, world, x, y, z) : null;
+			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new GuiAncientTable(player.inventory, world, x, y, z, player) : null;
 		}
 		
 		if(ID == tucs.guiIDBook){

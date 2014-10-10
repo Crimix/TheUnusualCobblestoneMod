@@ -10,6 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -20,8 +21,8 @@ import net.minecraft.world.World;
 
 		private ResourceLocation texture = new ResourceLocation("minecraft:textures/gui/container/crafting_table.png");
 		
-		public GuiAncientTable(InventoryPlayer invPlayer, World world, int x, int y, int z) {
-			super(new ContainerAncientTable(invPlayer, world, x, y, z));
+		public GuiAncientTable(InventoryPlayer invPlayer, World world, int x, int y, int z, EntityPlayer player) {
+			super(new ContainerAncientTable(invPlayer, world, x, y, z, player));
 			
 			this.xSize = 175;
 			this.ySize = 165;

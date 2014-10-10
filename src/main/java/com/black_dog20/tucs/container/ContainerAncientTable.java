@@ -81,7 +81,6 @@ public class ContainerAncientTable extends Container {
     {
     	Result = AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
     	test = nbt.getString(PageTypes.FLAME);
-    	System.out.println(test);
     	if(Result == null){
     		this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     	}

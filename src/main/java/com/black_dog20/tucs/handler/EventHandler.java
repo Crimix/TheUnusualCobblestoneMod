@@ -1,6 +1,7 @@
 package com.black_dog20.tucs.handler;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,56 +23,53 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
 public class EventHandler {
-	ItemStack item;
 	NBTTagCompound nbt;
-	
-	 @SubscribeEvent
-     public void onEntityDeath(PlayerDropsEvent event) {
-			 System.out.println("dead");
-			 EntityPlayer player = event.entityPlayer;
-			 getSoulbound(player.inventory);
 
-     }
-	 
-	 @SubscribeEvent
-	 public void onPlayerRespawn(PlayerRespawnEvent event){
-		 System.out.println("live");
-		 InventoryPlayer player = event.player.inventory;
-		 setSoulboundItems(player);
-	 }
-	 
-	 
-	 
-	 private void getSoulbound(InventoryPlayer IPlayer){
-			
-			for(int i = 0; i < IPlayer.getSizeInventory(); i++){
-				
-				item = IPlayer.getStackInSlot(i);
-				nbt = NBTHelper.getPlayerNBT(IPlayer.player);
-				if(item !=null){
-					String test= item.stackTagCompound.getString("TucsSoul");
-					System.out.println(test);
-				if(test.equals("ok")){
-					nbt.setString("TucsSoul "+ i, item.getDisplayName());
+	@SubscribeEvent
+	public void onEntityDeath(PlayerDropsEvent event) {
+		System.out.println("dead");
+		EntityPlayer player = event.entityPlayer;
+		int size = event.drops.size();
+		for(int i = 0; i < size;){
+			EntityItem item = event.drops.get(i);
+			ItemStack itemstack = item.getEntityItem();
+
+			nbt = NBTHelper.getPlayerNBT(player);
+			if(item !=null){
+				if(itemstack.hasTagCompound()){
+					NBTTagCompound itemT = itemstack.getTagCompound();
+					if(itemT.hasKey("TucsSoul")){
+						String test= itemT.getString("TucsSoul");
+						System.out.println(test);
+						if(test.equals("ok")){
+							nbt.setInteger("TucsDroplist",size);
+							nbt.setString("TucsSoul"+ i, itemstack.getDisplayName());
+							event.drops.remove(i);
+						}
+					}
 				}
-				}
-				
+			}
+			i++;
+		}
+
+	}
+
+	@SubscribeEvent
+	public void onPlayerRespawn(PlayerRespawnEvent event){
+		System.out.println("live");
+		EntityPlayer player = event.player;
+		nbt = NBTHelper.getPlayerNBT(player);
+		int size = nbt.getInteger("TucsDroplist");
+		for(int i = 0; i < size; i++){
+			String stringItem = nbt.getString("TucsSoul"+i);
+			nbt.removeTag("TucsSoul"+i);
+			System.out.println(stringItem);
+			switch(stringItem){
+			case "The Ancient book":
+				player.inventory.setInventorySlotContents(i, new ItemStack(ModItems.TUCSbook));
+				break;
 			}
 		}
-	 private void setSoulboundItems(InventoryPlayer IPlayer){
-		 
-		 for(int i = 0; i < IPlayer.getSizeInventory(); i++){
-				item = IPlayer.getStackInSlot(i);
-				nbt = NBTHelper.getPlayerNBT(IPlayer.player);
-				String stringItem = nbt.getString("TucsSoul"+1);
-				System.out.println(stringItem);
-				switch(stringItem){
-				case "The Ancient book":
-					IPlayer.setInventorySlotContents(i, new ItemStack(ModItems.TUCSbook));
-				break;
-				}
-				
-			}
-	 }
+	}
 
 }

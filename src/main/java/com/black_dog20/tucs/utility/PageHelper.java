@@ -14,7 +14,7 @@ public class PageHelper {
 	static NBTTagCompound nbt;
 	public static boolean check(ItemStack result , EntityPlayer player){
 		
-		nbt = player.getEntityData();
+		nbt = NBTHelper.getPlayerNBT(player);
 		HashMap<String,String> pageCraft= new HashMap<String,String>();
 		pageCraft.put(new ItemStack(ModItems.cobblestonediumLighter).getDisplayName(), PageTypes.FLAME);
 		pageCraft.put(new ItemStack(ModItems.cobblestoneiumLighter).getDisplayName(), PageTypes.FLAME);

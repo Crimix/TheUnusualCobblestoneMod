@@ -37,7 +37,7 @@ public class ItemPage extends ItemTUCS {
 	@Override
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		
-		nbt = player.getEntityData();
+		nbt = NBTHelper.getPlayerNBT(player);
 		nbt.setString(type, "ok");
 		--Item.stackSize;
 	

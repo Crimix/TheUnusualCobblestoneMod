@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.reference.PageTypes;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 public class ItemTUCSDebug extends ItemTUCS{
 	public ItemTUCSDebug(){
@@ -17,7 +18,7 @@ public class ItemTUCSDebug extends ItemTUCS{
 }
 	@Override
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
-		NBTTagCompound nbt =player.getEntityData();
+		NBTTagCompound nbt = NBTHelper.getPlayerNBT(player);
 		nbt.removeTag("TUCSBook");
 		nbt.removeTag("TUCSBook_open");
 		return Item;

@@ -5,6 +5,7 @@ import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.utility.LogHelper;
+import com.black_dog20.tucs.utility.NBTHelper;
 import com.black_dog20.tucs.utility.PageHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -42,7 +43,8 @@ public class ContainerAncientTable extends Container {
         this.posY = y;
         this.posZ = z;
         this.EPlayer = eplayer;
-        this.nbt = EPlayer.getEntityData();
+        this.nbt = NBTHelper.getPlayerNBT(EPlayer);
+       
         
         
         

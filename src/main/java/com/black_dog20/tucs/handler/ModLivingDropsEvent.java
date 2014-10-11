@@ -7,6 +7,7 @@ import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.ItemPage;
 import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.utility.LogHelper;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -35,7 +36,8 @@ public class ModLivingDropsEvent {
         		 
         		  
             	  if(event.entityLiving instanceof EntityZombie) {
-                  	 nbt = event.source.getEntity().getEntityData(); //Gets the nbt tag compound of the player
+            		  EntityPlayer player = (EntityPlayer) event.source.getEntity();
+                  	 nbt = NBTHelper.getPlayerNBT(player); //Gets the nbt tag compound of the player
                 	  Boolean cannotGetBook = nbt.getBoolean("TUCSBook"); //Checks if the player have got the book before 
                 	  if(cannotGetBook == false){ 
                 		  event.entityLiving.dropItem(ModItems.TUCSbook, 1); //Gives the player a book

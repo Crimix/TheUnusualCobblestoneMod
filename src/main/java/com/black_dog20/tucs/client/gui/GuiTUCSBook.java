@@ -13,6 +13,7 @@ import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.LogHelper;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -370,7 +371,7 @@ public class GuiTUCSBook extends GuiScreen {
 	}
 	
 	public boolean checkRecipe(String type){
-		nbt = player.getEntityData();
+		nbt = NBTHelper.getPlayerNBT(player);
 		String test = nbt.getString(type);
 		if(test.equals("ok")){
 			return true;

@@ -4,6 +4,7 @@
 import net.minecraftforge.common.MinecraftForge;
 
 import com.black_dog20.tucs.handler.ConfigurationHandler;
+import com.black_dog20.tucs.handler.EventHandler;
 import com.black_dog20.tucs.handler.GuiHandler;
 import com.black_dog20.tucs.handler.ModLivingDropsEvent;
 import com.black_dog20.tucs.init.ModBlocks;
@@ -44,6 +45,8 @@ public class tucs {
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 		MinecraftForge.EVENT_BUS.register(new ModLivingDropsEvent());
+		MinecraftForge.EVENT_BUS.register(new EventHandler());
+		FMLCommonHandler.instance().bus().register(new EventHandler());
 		ModItems.init();
 		ModBlocks.init();
 		

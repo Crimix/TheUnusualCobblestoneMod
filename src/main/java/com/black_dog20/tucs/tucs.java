@@ -3,6 +3,7 @@
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.handler.EventHandler;
 import com.black_dog20.tucs.handler.GuiHandler;
@@ -47,6 +48,7 @@ public class tucs {
 		MinecraftForge.EVENT_BUS.register(new ModLivingDropsEvent());
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
 		FMLCommonHandler.instance().bus().register(new EventHandler());
+		Proxy.registerKeyBindings();
 		ModItems.init();
 		ModBlocks.init();
 		
@@ -59,6 +61,7 @@ public class tucs {
 	public void init(FMLInitializationEvent event){
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 		LogHelper.info("Initialization Complete!");
 		Recipes.init();
 		GameRegistry.registerTileEntity(TileEntityAncientForge.class, "AncientForge");

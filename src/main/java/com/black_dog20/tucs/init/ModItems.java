@@ -6,6 +6,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 import com.black_dog20.tucs.item.ItemBook;
 import com.black_dog20.tucs.item.ItemCobbleCoal;
+import com.black_dog20.tucs.item.ItemFlightTalisman;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
 import com.black_dog20.tucs.item.ItemPage;
@@ -56,6 +57,7 @@ public class ModItems {
 	public static final ItemPage page = new ItemPage(null);
 	public static final ItemPage page2 = new ItemPage(PageTypes.FLAME);
 	public static final ItemTUCSPageDebug TUCSPagedebug = new ItemTUCSPageDebug();
+	public static final ItemFlightTalisman FlightTalisman = new ItemFlightTalisman();
 	
 	
 	public static void init(){
@@ -82,6 +84,7 @@ public class ModItems {
 		GameRegistry.registerItem(page , "page");
 		GameRegistry.registerItem(page2 , "page2");
 		GameRegistry.registerItem(TUCSPagedebug , "TUCSPagedebug");
+		GameRegistry.registerItem(FlightTalisman , "FlightTalisman");
 	}
 
 }

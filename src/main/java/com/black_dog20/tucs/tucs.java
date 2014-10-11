@@ -4,6 +4,7 @@
 import net.minecraftforge.common.MinecraftForge;
 
 import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
+import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.handler.EventHandler;
 import com.black_dog20.tucs.handler.GuiHandler;
@@ -17,6 +18,7 @@ import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.PageHelper;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -49,6 +51,7 @@ public class tucs {
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
 		FMLCommonHandler.instance().bus().register(new EventHandler());
 		Proxy.registerKeyBindings();
+		ClientRegistry.registerKeyBinding(Keybindings.fly);
 		ModItems.init();
 		ModBlocks.init();
 		

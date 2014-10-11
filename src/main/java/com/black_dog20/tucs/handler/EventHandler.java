@@ -15,7 +15,10 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.utility.NBTHelper;
@@ -70,21 +73,28 @@ public class EventHandler {
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
-	public void onItemLeaveInventory(ItemTossEvent event){
-		System.out.println("drop");
-		EntityPlayer player = event.player;
-		EntityItem item = event.entityItem;
-		ItemStack itemStack = item.getEntityItem();
-		
-		if(itemStack.areItemStacksEqual(itemStack, new ItemStack(ModItems.FlightTalisman))){
-			System.out.println("nofly");
-			player.capabilities.allowFlying=false;
-			player.capabilities.isFlying=false;
-			player.sendPlayerAbilities();
+	public void onLivingUpdatePlayer(LivingUpdateEvent event){
+		if(event.entity instanceof EntityPlayer){
+		EntityPlayer player = (EntityPlayer) event.entity;
+         if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
+        	 player.capabilities.allowFlying = false;
+        	 player.capabilities.isFlying = false;
+        	 player.sendPlayerAbilities();
+         }
 		}
 	}
 	
-	
+	@SubscribeEvent
+	public void onFall(LivingFallEvent event){
+		if (event.entityLiving instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer) event.entity;
+			if((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
+			event.setCanceled(true);
+			}
+		}
+	}
+
+
 }

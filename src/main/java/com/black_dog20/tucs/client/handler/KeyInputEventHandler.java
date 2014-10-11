@@ -2,9 +2,11 @@ package com.black_dog20.tucs.client.handler;
 
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 import com.black_dog20.tucs.client.settings.Keybindings;
+import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.Key;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
@@ -18,7 +20,7 @@ public class KeyInputEventHandler {
 	NBTTagCompound nbt;
 	 private static Key getPressedKeybinding()
 	    {
-	        if (Keybindings.Fly.isPressed())
+	        if (Keybindings.fly.isPressed())
 	        {
 	            return Key.FLY;
 	        }
@@ -31,31 +33,24 @@ public class KeyInputEventHandler {
 	    {
 	    	if(getPressedKeybinding() == Key.FLY){
 	    		System.out.println("test");
-	    	if(FMLClientHandler.instance().getClient().inGameHasFocus)
-	        {
 	            if(FMLClientHandler.instance().getClientPlayerEntity() != null)
 	            {
-	                EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
-	                nbt = NBTHelper.getPlayerNBT(entityPlayer);
-	                String test = nbt.getString("TucsFly");
-	                if(test.equals("nook")){
-	                	nbt.setString("TucsFly", "ok");
+	            	EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+	            	if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+	                if(!entityPlayer.capabilities.allowFlying){
 	                	entityPlayer.capabilities.allowFlying = true;
 	                	entityPlayer.capabilities.isFlying = true;
 	                	entityPlayer.capabilities.setFlySpeed(0.2F);
 	                	entityPlayer.sendPlayerAbilities();
 	                }
-	                else if(test.equals("ok")){
-	                	nbt.setString("TucsFly", "nook");
+	                else if(entityPlayer.capabilities.allowFlying){
 	                	entityPlayer.capabilities.allowFlying = false;
 	                	entityPlayer.capabilities.isFlying = false;
 	                	entityPlayer.sendPlayerAbilities();
 	                }
-	                
-	            }
 	        }
 
-	    	
+	            }
 	    	}
 	    }
 }

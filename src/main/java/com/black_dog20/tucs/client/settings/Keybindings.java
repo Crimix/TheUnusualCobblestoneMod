@@ -8,6 +8,6 @@ import net.minecraft.client.settings.KeyBinding;
 
 public class Keybindings {
 	
-	 public static KeyBinding Fly = new KeyBinding(Names.Keys.FLY, Keyboard.KEY_F, Names.Keys.CATEGORY);
+	 public static KeyBinding fly = new KeyBinding(Names.Keys.FLY, Keyboard.KEY_F, Names.Keys.CATEGORY);
 
 }

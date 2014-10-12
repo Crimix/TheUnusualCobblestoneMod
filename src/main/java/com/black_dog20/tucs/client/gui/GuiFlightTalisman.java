@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
@@ -12,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.container.ContainerAncientTable;
 import com.black_dog20.tucs.container.ContainerFlightTalisman;
+import com.black_dog20.tucs.init.ModItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 	@SideOnly(Side.CLIENT)
 	public class GuiFlightTalisman extends GuiContainer {
 
-		private ResourceLocation texture = new ResourceLocation("minecraft:textures/gui/container/crafting_table.png");
+		private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGUI2.png");
 		
 		public GuiFlightTalisman(World world, int x, int y, int z, EntityPlayer player) {
 			super(new ContainerFlightTalisman(world, x, y, z, player, player.getHeldItem()));
@@ -30,9 +32,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 		}
 		
 		protected void drawGuiContainerForegroundLayer(int i, int j) {
-			
-			this.fontRendererObj.drawString(StatCollector.translateToLocal("Ancient Table"), 28, 6, 4210752);
-			this.fontRendererObj.drawString(StatCollector.translateToLocal("Inventory"), 8, this.ySize - 96 + 2, 4210752);
 
 			
 		}

@@ -49,7 +49,6 @@ public class EventHandler {
 			
 			EntityItem item = litr.next();
 			ItemStack itemstack = item.getEntityItem();
-			System.out.println(itemstack.getDisplayName());
 			
 			nbt = NBTHelper.getPlayerNBT(player);
 			if(item !=null){
@@ -57,14 +56,12 @@ public class EventHandler {
 					itemstack.stackTagCompound = new NBTTagCompound();
 					}
 				if(itemstack.hasTagCompound()){
-					System.out.println(itemstack.getDisplayName());
 					NBTTagCompound itemT = itemstack.getTagCompound();
 					if(itemT.hasKey(NBTTags.SOULBOUND)){
 						String test= itemT.getString(NBTTags.SOULBOUND);
 						if(test.equals(NBTTags.OK)){
 							nbt.setInteger(NBTTags.DROPLIST, i);
 							nbt.setString(NBTTags.SOULBOUND + i, itemstack.getDisplayName());
-							System.out.println(itemstack.getDisplayName());
 							litr.remove();
 							i++;
 						}

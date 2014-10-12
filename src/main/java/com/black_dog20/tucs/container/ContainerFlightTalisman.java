@@ -2,7 +2,10 @@ package com.black_dog20.tucs.container;
 
 import java.util.List;
 
+import com.black_dog20.tucs.crafting.AncientForgeRecipes;
+import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.NBTTags;
+import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,6 +31,7 @@ public class ContainerFlightTalisman extends Container{
 	private EntityPlayer Player;
 	private NBTTagCompound nbt;
 	public IInventory craftResult = new InventoryCraftResult();
+	private final ItemStack invItem = new ItemStack(ModItems.FlightTalisman);
 
 	public ContainerFlightTalisman(World world, int x, int y, int z, EntityPlayer player, ItemStack item)
 	{
@@ -37,7 +41,7 @@ public class ContainerFlightTalisman extends Container{
 		this.posZ = z;
 		this.Player = player;
 
-		this.addSlotToContainer(new Slot(craftResult, 10, 10, 10));
+		this.addSlotToContainer(new SlotFlightTalisman(craftResult, 10, 75, 37));
 
 		bindPlayerInventory(player.inventory);
 
@@ -68,59 +72,24 @@ public class ContainerFlightTalisman extends Container{
 		}
 	}
 
+	 @Override
+	   public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
+		 ItemStack itemstack = null;
+	        Slot Sslot = (Slot)this.inventorySlots.get(slot);
+
+	        return itemstack;
+	    }
+	 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int parSlot){ 
-		ItemStack itemstack = null;
-		Slot slot = (Slot)this.inventorySlots.get(parSlot);
-
-		if (slot != null && slot.getHasStack())
-		{
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
-
-
-			if (parSlot == 1 )
-			{
-				if (!this.mergeItemStack(itemstack1, 0, 1, false))
-				{
-					return null;
-				}
-				else if (parSlot >= 3 && parSlot < 30)
-				{
-					if (!this.mergeItemStack(itemstack1, 30, 39, false))
-					{
-						return null;
-					}
-				}
-				else if (parSlot >= 30 && parSlot < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
-				{
-					return null;
-				}
-			}
-			if (itemstack1.stackSize == 0)
-			{
-				slot.putStack((ItemStack)null);
-			}
-			else
-			{
-				slot.onSlotChanged();
-			}
-
-			if (itemstack1.stackSize == itemstack.stackSize)
-			{
-				return null;
-			}
-
-			slot.onPickupFromSlot(player, itemstack1);
+	public boolean canInteractWith(EntityPlayer player){
+		if(player.getHeldItem() != null){
+		boolean test = player.getHeldItem().isItemEqual(invItem);
+		
+		return test;
 		}
-
-		return itemstack;
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer EPlayer) {
-
-		return true;
+		else{
+			return false;
+		}
 	}
 
 	@Override
@@ -152,5 +121,9 @@ public class ContainerFlightTalisman extends Container{
 			
 		}
 	}
+	
+	public boolean isItemValid(ItemStack itemstack) {
+	      return ItemStack.areItemStacksEqual(itemstack, new ItemStack(Blocks.stone));
+	   }
 
 }

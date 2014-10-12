@@ -100,7 +100,7 @@ public class ContainerFlightTalisman extends Container{
 		ItemStack itemstack = this.craftResult.getStackInSlotOnClosing(1);
 		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(Blocks.stone,1))){
 			ItemStack stack = player.getHeldItem();
-			if(!stack.hasTagCompound()){
+			if(stack != null && !stack.hasTagCompound()){
 				stack.stackTagCompound = new NBTTagCompound();
 			}
 			NBTTagCompound NBT = stack.getTagCompound();

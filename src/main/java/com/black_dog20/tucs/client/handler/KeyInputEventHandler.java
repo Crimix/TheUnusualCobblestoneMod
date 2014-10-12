@@ -42,7 +42,7 @@ public class KeyInputEventHandler {
 	                if(!entityPlayer.capabilities.allowFlying){
 	                	entityPlayer.capabilities.allowFlying = true;
 	                	entityPlayer.capabilities.isFlying = true;
-	                	entityPlayer.capabilities.setFlySpeed(0.2F);
+	                	entityPlayer.capabilities.setFlySpeed(0.1F);
 	                	entityPlayer.sendPlayerAbilities();
 	                }
 	                else if(entityPlayer.capabilities.allowFlying && !entityPlayer.capabilities.isCreativeMode){

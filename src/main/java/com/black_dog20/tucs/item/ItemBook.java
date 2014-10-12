@@ -9,6 +9,7 @@ import com.black_dog20.tucs.client.gui.GuiTUCSBook;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.proxies.ClientProxy;
+import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.NBTHelper;
 
@@ -40,20 +41,21 @@ public class ItemBook extends ItemTUCS  {
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
 	stack.stackTagCompound = new NBTTagCompound();
-	stack.stackTagCompound.setString("TucsSoul", "ok");
+	nbt = stack.getTagCompound();
+	nbt.setString(NBTTags.SOULBOUND,NBTTags.OK);
 	list.add("by The Lost Writer");
 	}
 	
 	@Override
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 			nbt = NBTHelper.getPlayerNBT(player);
-			Boolean cannotGetBook = nbt.getBoolean("TUCSBook"); //Checks if the player have got the book before
-			Boolean openBefore = nbt.getBoolean("TUCSBook_open"); //Checks if the player have opened the book before 
+			Boolean cannotGetBook = nbt.getBoolean(NBTTags.BOOK); //Checks if the player have got the book before
+			Boolean openBefore = nbt.getBoolean(NBTTags.BOOK_OPEN); //Checks if the player have opened the book before 
 			
 			if(cannotGetBook == true){
 				if(openBefore == false){
 					player.addChatMessage(new ChatComponentTranslation("msg.message_yfab.txt")); //Sends the message to the player
-					nbt.setBoolean("TUCSBook_open", true); 
+					nbt.setBoolean(NBTTags.BOOK_OPEN, true); 
 				}
 				else if(openBefore == true){
 					tucs.Proxy.openBook(player);					

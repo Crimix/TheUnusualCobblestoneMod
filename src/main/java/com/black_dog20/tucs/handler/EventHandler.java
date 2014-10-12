@@ -1,11 +1,17 @@
 package com.black_dog20.tucs.handler;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,6 +27,7 @@ import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -34,41 +41,69 @@ public class EventHandler {
 	@SubscribeEvent
 	public void onEntityDeath(PlayerDropsEvent event) {
 		EntityPlayer player = event.entityPlayer;
-		int size = event.drops.size();
-		for(int i = 0; i < size;){
-			EntityItem item = event.drops.get(i);
+		ArrayList<EntityItem> list = event.drops;
+		
+		ListIterator<EntityItem> litr = list.listIterator();
+		int i = 0;
+		while(litr.hasNext()){
+			
+			EntityItem item = litr.next();
 			ItemStack itemstack = item.getEntityItem();
-
+			System.out.println(itemstack.getDisplayName());
+			
 			nbt = NBTHelper.getPlayerNBT(player);
 			if(item !=null){
+				if(!itemstack.hasTagCompound()){
+					itemstack.stackTagCompound = new NBTTagCompound();
+					}
 				if(itemstack.hasTagCompound()){
+					System.out.println(itemstack.getDisplayName());
 					NBTTagCompound itemT = itemstack.getTagCompound();
-					if(itemT.hasKey("TucsSoul")){
-						String test= itemT.getString("TucsSoul");
-						if(test.equals("ok")){
-							nbt.setInteger("TucsDroplist",size);
-							nbt.setString("TucsSoul"+ i, itemstack.getDisplayName());
-							event.drops.remove(i);
+					if(itemT.hasKey(NBTTags.SOULBOUND)){
+						String test= itemT.getString(NBTTags.SOULBOUND);
+						if(test.equals(NBTTags.OK)){
+							nbt.setInteger(NBTTags.DROPLIST, i);
+							nbt.setString(NBTTags.SOULBOUND + i, itemstack.getDisplayName());
+							System.out.println(itemstack.getDisplayName());
+							litr.remove();
+							i++;
 						}
 					}
 				}
 			}
-			i++;
 		}
-
 	}
 
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		EntityPlayer player = event.player;
 		nbt = NBTHelper.getPlayerNBT(player);
-		int size = nbt.getInteger("TucsDroplist");
-		for(int i = 0; i < size; i++){
-			String stringItem = nbt.getString("TucsSoul"+i);
-			nbt.removeTag("TucsSoul"+i);
+		int size = nbt.getInteger(NBTTags.DROPLIST);
+		for(int i = 0; i <= size; i++){
+			String stringItem = nbt.getString(NBTTags.SOULBOUND +i);
+			nbt.removeTag(NBTTags.SOULBOUND +i);
+			ItemStack stack;
+			NBTTagCompound stackT;
 			switch(stringItem){
 			case "The Ancient book":
-				player.inventory.setInventorySlotContents(i, new ItemStack(ModItems.TUCSbook));
+				stack = new ItemStack(ModItems.TUCSbook,1);
+				if(!stack.hasTagCompound()){
+					stack.stackTagCompound = new NBTTagCompound();
+				}
+				stackT = stack.getTagCompound();
+				stackT.setString(NBTTags.SOULBOUND, NBTTags.OK);
+				player.inventory.setInventorySlotContents(i, stack);
+				break;
+			case "Semi-gods Talisman of flying":
+				stack = new ItemStack(ModItems.FlightTalisman,1);
+				
+				if(!stack.hasTagCompound()){
+					stack.stackTagCompound = new NBTTagCompound();
+				}
+				stackT = stack.getTagCompound();
+				stackT.setString(NBTTags.SOULBOUND, NBTTags.OK);
+				stackT.setString("slot", new ItemStack(Blocks.stone,1).getDisplayName());
+				player.inventory.setInventorySlotContents(i, stack);
 				break;
 			}
 		}

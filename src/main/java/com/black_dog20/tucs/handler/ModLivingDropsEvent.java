@@ -5,6 +5,7 @@ import scala.Console;
 
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.ItemPage;
+import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
@@ -38,10 +39,10 @@ public class ModLivingDropsEvent {
             	  if(event.entityLiving instanceof EntityZombie) {
             		  EntityPlayer player = (EntityPlayer) event.source.getEntity();
                   	 nbt = NBTHelper.getPlayerNBT(player); //Gets the nbt tag compound of the player
-                	  Boolean cannotGetBook = nbt.getBoolean("TUCSBook"); //Checks if the player have got the book before 
+                	  Boolean cannotGetBook = nbt.getBoolean(NBTTags.BOOK); //Checks if the player have got the book before 
                 	  if(cannotGetBook == false){ 
                 		  event.entityLiving.dropItem(ModItems.TUCSbook, 1); //Gives the player a book
-                		  nbt.setBoolean("TUCSBook", true); //Sets the boolean on the player for the book to true
+                		  nbt.setBoolean(NBTTags.BOOK, true); //Sets the boolean on the player for the book to true
 
                 	  }
             	  }

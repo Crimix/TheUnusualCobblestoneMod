@@ -1,5 +1,5 @@
 //Items
-item.tucs:TLSOC.name=The Legendary Sword of The lost fighter
+item.tucs:TLSOC.name=The Legendary Sword of The true fighter
 item.tucs:ingotCobblestoneium.name=Cobblestoneium Ingot
 item.tucs:ingotCobblestonedium.name=Cobblestonedium Ingot
 item.tucs:cobblestoneLighter.name=Cobblestone Lighter
@@ -19,6 +19,12 @@ item.tucs:cobbleCoal.name=Cobblestone Coal
 item.tucs:TUCSDebug.name=Debug Tool
 item.tucs:page.name=Page
 item.tucs:TUCSPageDebug.name=Page Debug Tool
+item.tucs:flightTalisman.name=Semi-gods Talisman of flying 
+item.tucs:talismanBase.name=Talisman Base
+item.tucs:unfinishedflightTalisman.name=Unfinished Talisman
+item.tucs:unenchantedflightTalisman.name=Unfinished Talisman
+item.tucs:swordBlade.name=Sword Blade
+item.tucs:swordHilt.name=Sword Hilt
 
 //Blocks
 tile.tucs:ancientTable.name=Ancient Table

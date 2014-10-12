@@ -16,6 +16,11 @@ import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestoneium;
+import com.black_dog20.tucs.item.crafting.ItemSwordBlade;
+import com.black_dog20.tucs.item.crafting.ItemSwordHilt;
+import com.black_dog20.tucs.item.crafting.ItemTalismanBase;
+import com.black_dog20.tucs.item.crafting.ItemUnfinshedflightTalisman;
+import com.black_dog20.tucs.item.crafting.ItemUngoldenflightTalisman;
 import com.black_dog20.tucs.item.tool.ItemCobblestonediumLighter;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneiumLighter;
 import com.black_dog20.tucs.item.tool.ItemHatchetCobblestoneium;
@@ -58,6 +63,11 @@ public class ModItems {
 	public static final ItemPage page2 = new ItemPage(PageTypes.FLAME);
 	public static final ItemTUCSPageDebug TUCSPagedebug = new ItemTUCSPageDebug();
 	public static final ItemFlightTalisman FlightTalisman = new ItemFlightTalisman();
+	public static final ItemUnfinshedflightTalisman UnfinshedFlightTalisman = new ItemUnfinshedflightTalisman();
+	public static final ItemUngoldenflightTalisman ungoldenFligtTalisman = new ItemUngoldenflightTalisman();
+	public static final ItemTalismanBase TalismanBase = new ItemTalismanBase();
+	public static final ItemSwordBlade SwordBlade = new ItemSwordBlade();
+	public static final ItemSwordHilt SwordHilt = new ItemSwordHilt();
 	
 	
 	public static void init(){
@@ -85,6 +95,11 @@ public class ModItems {
 		GameRegistry.registerItem(page2 , "page2");
 		GameRegistry.registerItem(TUCSPagedebug , "TUCSPagedebug");
 		GameRegistry.registerItem(FlightTalisman , "FlightTalisman");
+		GameRegistry.registerItem(UnfinshedFlightTalisman , "UnfinshedFlightTalisman");
+		GameRegistry.registerItem(ungoldenFligtTalisman , "ungoldenFligtTalisman");
+		GameRegistry.registerItem(TalismanBase , "TalismanBase");
+		GameRegistry.registerItem(SwordBlade , "SwordBlade");
+		GameRegistry.registerItem(SwordHilt , "SwordHilt");
 	}
 
 }

@@ -32,7 +32,6 @@ public class KeyInputEventHandler {
 	    public void handleKeyInputEvent(InputEvent.KeyInputEvent event)
 	    {
 	    	if(getPressedKeybinding() == Key.FLY){
-	    		System.out.println("test");
 	            if(FMLClientHandler.instance().getClientPlayerEntity() != null)
 	            {
 	            	EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();

@@ -18,4 +18,10 @@ public class ServerProxy extends CommonProxy {
 		
 	}
 
+	@Override
+	public void keyinput() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

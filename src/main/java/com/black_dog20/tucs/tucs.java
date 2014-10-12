@@ -27,6 +27,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 @Mod(modid=Reference.MOD_ID, name=Reference.MOD_NAME, version=Reference.VERSION, guiFactory=Reference.GUI_FACTORY_CLASS)
@@ -52,7 +54,6 @@ public class tucs {
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
 		FMLCommonHandler.instance().bus().register(new EventHandler());
 		Proxy.registerKeyBindings();
-		ClientRegistry.registerKeyBinding(Keybindings.fly);
 		ModItems.init();
 		ModBlocks.init();
 		
@@ -65,8 +66,8 @@ public class tucs {
 	public void init(FMLInitializationEvent event){
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 		LogHelper.info("Initialization Complete!");
+		Proxy.keyinput();
 		Recipes.init();
 		GameRegistry.registerTileEntity(TileEntityAncientForge.class, "AncientForge");
 	}

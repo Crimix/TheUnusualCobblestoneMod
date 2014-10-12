@@ -7,5 +7,7 @@ public interface IProxy {
 	void openBook(EntityPlayer player);
 	
 	 public abstract void registerKeyBindings();
+	 
+	 public abstract void keyinput();
 
 }

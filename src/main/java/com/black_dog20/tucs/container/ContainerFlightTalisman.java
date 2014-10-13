@@ -19,8 +19,10 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
 
 public class ContainerFlightTalisman extends Container{
 
@@ -29,8 +31,7 @@ public class ContainerFlightTalisman extends Container{
 	private int posY;
 	private int posZ;
 	private EntityPlayer Player;
-	private NBTTagCompound nbt;
-	public IInventory craftResult = new InventoryCraftResult();
+	public IInventory slot = new InvetoryTalisman();
 	private final ItemStack invItem = new ItemStack(ModItems.FlightTalisman);
 
 	public ContainerFlightTalisman(World world, int x, int y, int z, EntityPlayer player, ItemStack item)
@@ -41,23 +42,28 @@ public class ContainerFlightTalisman extends Container{
 		this.posZ = z;
 		this.Player = player;
 
-		this.addSlotToContainer(new SlotFlightTalisman(craftResult, 10, 75, 37));
-
-		bindPlayerInventory(player.inventory);
-
+		this.addSlotToContainer(new SlotFlightTalisman(slot, 0, 75, 37));
+		
 		if(!item.hasTagCompound()){
 			item.stackTagCompound = new NBTTagCompound();
 		}
-		nbt = item.getTagCompound();
-		if(nbt.hasKey("slot")){
-			String itemS = nbt.getString("slot");
-			nbt.removeTag("slot");
-			//Change later
-			if(itemS.equalsIgnoreCase("Stone")){
-				itemS = null;
-				this.craftResult.setInventorySlotContents(1,  new ItemStack(Blocks.stone,1));
+		if(item.hasTagCompound()){
+		NBTTagCompound nbt = item.getTagCompound();
+		NBTTagList nbttaglist = nbt.getTagList("TalismanItems", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i <= nbttaglist.tagCount(); i++){
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			byte b0 = nbttagcompound1.getByte("Slot");
+			ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+			if(slotItem !=null){
+			this.slot.setInventorySlotContents(0 ,ItemStack.loadItemStackFromNBT(nbttagcompound1));
+			nbttaglist.removeTag(i);
 			}
 		}
+		}
+
+		bindPlayerInventory(player.inventory);
+
+		
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -118,26 +124,37 @@ public class ContainerFlightTalisman extends Container{
 	{
 		
 		super.onContainerClosed(player);
-		ItemStack itemstack = this.craftResult.getStackInSlotOnClosing(1);
+		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
 		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(Blocks.stone,1))){
 			ItemStack stack = player.getHeldItem();
 			if(stack != null && !stack.hasTagCompound()){
 				stack.stackTagCompound = new NBTTagCompound();
 			}
+			if(stack != null && stack.hasTagCompound()){
 			NBTTagCompound NBT = stack.getTagCompound();
-			NBT.setString("slot", itemstack.getDisplayName());
+			NBTTagList nbttaglist = new NBTTagList();
+			NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+			nbttagcompound1.setByte("Slot", (byte)1);
+			itemstack.writeToNBT(nbttagcompound1);
+			nbttaglist.appendTag(nbttagcompound1);
+			NBT.setTag("TalismanItems", nbttaglist);
+			
+			
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
+			}
 		}
 		else{
-			if (itemstack != null)
+			if (itemstack == null)
 			{
 				ItemStack stack = player.getHeldItem();
-				if(!stack.hasTagCompound()){
+				if(stack != null &&!stack.hasTagCompound()){
 					stack.stackTagCompound = new NBTTagCompound();
 				}
+				if(stack != null && stack.hasTagCompound()){
 				NBTTagCompound NBT = stack.getTagCompound();
 				NBT.removeTag(NBTTags.SOULBOUND);
 				player.dropPlayerItemWithRandomChoice(itemstack, false);
+				}
 			}
 			
 		}

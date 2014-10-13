@@ -45,13 +45,14 @@ public class EventHandler {
 		ArrayList<EntityItem> list = event.drops;
 		NBTTagList nbttaglist = new NBTTagList();
 		ListIterator<EntityItem> litr = list.listIterator();
+		nbt = NBTHelper.getPlayerNBT(player);
 		int i = 0;
 		while(litr.hasNext()){
 			
 			EntityItem item = litr.next();
 			ItemStack itemstack = item.getEntityItem();
 			
-			nbt = NBTHelper.getPlayerNBT(player);
+			
 			if(item !=null){
 				if(!itemstack.hasTagCompound()){
 					itemstack.stackTagCompound = new NBTTagCompound();

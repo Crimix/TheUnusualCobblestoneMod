@@ -18,6 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -42,7 +43,7 @@ public class EventHandler {
 	public void onEntityDeath(PlayerDropsEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		ArrayList<EntityItem> list = event.drops;
-		
+		NBTTagList nbttaglist = new NBTTagList();
 		ListIterator<EntityItem> litr = list.listIterator();
 		int i = 0;
 		while(litr.hasNext()){
@@ -60,49 +61,30 @@ public class EventHandler {
 					if(itemT.hasKey(NBTTags.SOULBOUND)){
 						String test= itemT.getString(NBTTags.SOULBOUND);
 						if(test.equals(NBTTags.OK)){
-							nbt.setInteger(NBTTags.DROPLIST, i);
-							nbt.setString(NBTTags.SOULBOUND + i, itemstack.getDisplayName());
-							litr.remove();
-							i++;
+						NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+						nbttagcompound1.setByte("Slot", (byte)i);
+						itemstack.writeToNBT(nbttagcompound1);
+						nbttaglist.appendTag(nbttagcompound1);
+						litr.remove();
+						i++;
 						}
 					}
 				}
 			}
 		}
+		nbt.setTag("SoulboundItems", nbttaglist);
+		
 	}
 
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		EntityPlayer player = event.player;
 		nbt = NBTHelper.getPlayerNBT(player);
-		int size = nbt.getInteger(NBTTags.DROPLIST);
-		for(int i = 0; i <= size; i++){
-			String stringItem = nbt.getString(NBTTags.SOULBOUND +i);
-			nbt.removeTag(NBTTags.SOULBOUND +i);
-			ItemStack stack;
-			NBTTagCompound stackT;
-			switch(stringItem){
-			case "The Ancient book":
-				stack = new ItemStack(ModItems.TUCSbook,1);
-				if(!stack.hasTagCompound()){
-					stack.stackTagCompound = new NBTTagCompound();
-				}
-				stackT = stack.getTagCompound();
-				stackT.setString(NBTTags.SOULBOUND, NBTTags.OK);
-				player.inventory.setInventorySlotContents(i, stack);
-				break;
-			case "Semi-gods Talisman of flying":
-				stack = new ItemStack(ModItems.FlightTalisman,1);
-				
-				if(!stack.hasTagCompound()){
-					stack.stackTagCompound = new NBTTagCompound();
-				}
-				stackT = stack.getTagCompound();
-				stackT.setString(NBTTags.SOULBOUND, NBTTags.OK);
-				stackT.setString("slot", new ItemStack(Blocks.stone,1).getDisplayName());
-				player.inventory.setInventorySlotContents(i, stack);
-				break;
-			}
+		NBTTagList nbttaglist = nbt.getTagList("SoulboundItems", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i <= nbttaglist.tagCount(); i++){
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			byte b0 = nbttagcompound1.getByte("Slot");
+			player.inventory.addItemStackToInventory(ItemStack.loadItemStackFromNBT(nbttagcompound1));
 		}
 	}
 
@@ -127,6 +109,5 @@ public class EventHandler {
 			}
 		}
 	}
-
 
 }

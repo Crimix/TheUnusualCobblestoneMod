@@ -112,104 +112,54 @@ public class GuiTUCSBook extends GuiScreen {
 			drawTitle("Introduction", introductionText, bookXStart);
 			break;
 		case 2:
-			if(checkRecipe(PageTypes.BASIC)){
 			String  atText = "This table is used to craft the higher tier of items and tools, it has been used for many centuries to make the finest tools of stone. It is also the only table that can handle the alloy of diamonds and cobblestone";
 			drawPage("Ancient Table", atText, new ItemStack(ModBlocks.ancientTable), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 3:
-			if(checkRecipe(PageTypes.BASIC)){
 			drawRecipePageTop(bookXStart);
 			text = "This Crafting Table can also be used to vailla recipes";
 			ItemStack gold = new ItemStack(Items.gold_ingot);
 			ItemStack cobblestoneium = new ItemStack(ModItems.ingotCobblestoneium);
 			ItemStack craftingTable = new ItemStack(Blocks.crafting_table);
 			drawRecipePageBot(gold, cobblestoneium, gold, cobblestoneium, craftingTable, cobblestoneium, gold, cobblestoneium, gold, craftingTable, text, new ItemStack(ModBlocks.ancientTable), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 4:
-			if(checkRecipe(PageTypes.BASIC)){
 			text = "The book which has the magic properties to hold all the knowledge you have found out about Cobblestoneia and it's traditions";
 			drawPage("The Ancient book", text, new ItemStack(ModItems.TUCSbook), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 5:
-			if(checkRecipe(PageTypes.BASIC)){
 			drawRecipePageTop(bookXStart);
 			text = "This book kan be crafted so you never lose the knowledge of the ancint society";
 			ItemStack cobblestone= new ItemStack(Blocks.cobblestone);
 			ItemStack book = new ItemStack(Items.book);
 			drawRecipePageBot(cobblestone, cobblestone, cobblestone, cobblestone, book, cobblestone, cobblestone, cobblestone, cobblestone, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TUCSbook), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 6:
-			if(checkRecipe(PageTypes.BASIC)){
 			String  clText = " \nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestone Lighter", clText, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 7:
-			if(checkRecipe(PageTypes.BASIC)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 8:
-			if(checkRecipe(PageTypes.LIGHTERS)){
 			String  cilText = "\nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 9:
-			if(checkRecipe(PageTypes.LIGHTERS)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 10:
-			if(checkRecipe(PageTypes.LIGHTERS)){
 			String  cdilText = "\nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestonedium Lighter", cdilText, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 11:
-			if(checkRecipe(PageTypes.LIGHTERS)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, it can't be broken";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestonedium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneiumLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
-			}
-			else{
-				DrawNothing(bookXStart);
-			}
 			break;
 		case 12:
 			text="This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. To get the ingot smelt the ore \nAny Lighter made of cobblestone or it's alloys will also work ";

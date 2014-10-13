@@ -82,12 +82,10 @@ public class ContainerAncientTable extends Container {
     public void onCraftMatrixChanged(IInventory inventory)
     {
     	Result = AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
-    	String itemString = PageTypes.getPageType(Result);
-    	test = nbt.getString(itemString);
     	if(Result == null){
     		this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     	}
-    	else if(test.equals(PageTypes.OK_TAG)){
+    	else{
     			this.craftResult.setInventorySlotContents(0, Result);
     			
     	}		

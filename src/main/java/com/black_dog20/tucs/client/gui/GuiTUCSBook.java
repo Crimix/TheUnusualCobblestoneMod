@@ -47,7 +47,6 @@ public class GuiTUCSBook extends GuiScreen {
 	private GuiButtonChangePage nextPage;
 	private GuiButtonChangePage prevPage;
 	private EntityPlayer player;
-	private NBTTagCompound nbt;
 
 	public GuiTUCSBook(EntityPlayer player) {
 		this.player=player;
@@ -113,8 +112,13 @@ public class GuiTUCSBook extends GuiScreen {
 			drawTitle("Introduction", introductionText, bookXStart);
 			break;
 		case 2:
+			if(checkRecipe(PageTypes.BASIC)){
 			String  atText = "This table is used to craft the higher tier of items and tools, it has been used for many centuries to make the finest tools of stone. It is also the only table that can handle the alloy of diamonds and cobblestone";
 			drawPage("Ancient Table", atText, new ItemStack(ModBlocks.ancientTable), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 3:
 			drawRecipePageTop(bookXStart);
@@ -136,7 +140,7 @@ public class GuiTUCSBook extends GuiScreen {
 			drawRecipePageBot(cobblestone, cobblestone, cobblestone, cobblestone, book, cobblestone, cobblestone, cobblestone, cobblestone, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TUCSbook), bookXStart);
 			break;
 		case 6:
-			if(checkRecipe(PageTypes.FLAME)){
+			if(checkRecipe(PageTypes.BASIC)){
 			String  clText = " \nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestone Lighter", clText, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
 			}
@@ -145,7 +149,7 @@ public class GuiTUCSBook extends GuiScreen {
 			}
 			break;
 		case 7:
-			if(checkRecipe(PageTypes.FLAME)){
+			if(checkRecipe(PageTypes.BASIC)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
@@ -155,7 +159,7 @@ public class GuiTUCSBook extends GuiScreen {
 			}
 			break;
 		case 8:
-			if(checkRecipe(PageTypes.FLAME)){
+			if(checkRecipe(PageTypes.LIGHTERS)){
 			String  cilText = "\nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
 			}
@@ -164,7 +168,7 @@ public class GuiTUCSBook extends GuiScreen {
 			}
 			break;
 		case 9:
-			if(checkRecipe(PageTypes.FLAME)){
+			if(checkRecipe(PageTypes.LIGHTERS)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
@@ -174,7 +178,7 @@ public class GuiTUCSBook extends GuiScreen {
 			}
 			break;
 		case 10:
-			if(checkRecipe(PageTypes.FLAME)){
+			if(checkRecipe(PageTypes.LIGHTERS)){
 			String  cdilText = "\nThis Lighter can be used like a flint and steel";
 			drawPage("Cobblestonedium Lighter", cdilText, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
 			}
@@ -183,7 +187,7 @@ public class GuiTUCSBook extends GuiScreen {
 			}
 			break;
 		case 11:
-			if(checkRecipe(PageTypes.FLAME)){
+			if(checkRecipe(PageTypes.LIGHTERS)){
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, it can't be broken";
 			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestonedium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneiumLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
@@ -371,7 +375,7 @@ public class GuiTUCSBook extends GuiScreen {
 	}
 	
 	public boolean checkRecipe(String type){
-		nbt = NBTHelper.getPlayerNBT(player);
+		NBTTagCompound nbt = NBTHelper.getPlayerNBT(player);
 		String test = nbt.getString(type);
 		if(test.equals("ok")){
 			return true;

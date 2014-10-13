@@ -38,7 +38,7 @@ public class ItemPage extends ItemTUCS {
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		
 		nbt = NBTHelper.getPlayerNBT(player);
-		nbt.setString(type, "ok");
+		nbt.setString(type, PageTypes.OK_TAG);
 		--Item.stackSize;
 	
 		return Item;
@@ -47,7 +47,8 @@ public class ItemPage extends ItemTUCS {
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
 		if(type !=null){
-			list.add(type);
+			String info = type.replace("tucs", "");
+			list.add(info);
 		}
 	}
 

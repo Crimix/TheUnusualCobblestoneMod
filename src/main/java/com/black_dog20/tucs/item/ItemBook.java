@@ -10,6 +10,7 @@ import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.proxies.ClientProxy;
 import com.black_dog20.tucs.reference.NBTTags;
+import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.NBTHelper;
 
@@ -50,7 +51,8 @@ public class ItemBook extends ItemTUCS  {
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 			nbt = NBTHelper.getPlayerNBT(player);
 			Boolean cannotGetBook = nbt.getBoolean(NBTTags.BOOK); //Checks if the player have got the book before
-			Boolean openBefore = nbt.getBoolean(NBTTags.BOOK_OPEN); //Checks if the player have opened the book before 
+			Boolean openBefore = nbt.getBoolean(NBTTags.BOOK_OPEN); //Checks if the player have opened the book before
+			nbt.setString(PageTypes.BASIC,PageTypes.OK_TAG);
 			
 			if(cannotGetBook == true){
 				if(openBefore == false){

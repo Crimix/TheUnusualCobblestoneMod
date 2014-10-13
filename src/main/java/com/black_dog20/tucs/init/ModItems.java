@@ -60,7 +60,7 @@ public class ModItems {
 	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
 	public static final ItemCobblestoneiumLighter cobblestoneiumLighter = new ItemCobblestoneiumLighter();
 	public static final ItemPage page = new ItemPage(null);
-	public static final ItemPage page2 = new ItemPage(PageTypes.FLAME);
+	public static final ItemPage page2 = new ItemPage(PageTypes.LIGHTERS);
 	public static final ItemTUCSPageDebug TUCSPagedebug = new ItemTUCSPageDebug();
 	public static final ItemFlightTalisman FlightTalisman = new ItemFlightTalisman();
 	public static final ItemUnfinshedflightTalisman UnfinshedFlightTalisman = new ItemUnfinshedflightTalisman();

@@ -25,7 +25,7 @@ public class ItemTUCSPageDebug extends ItemTUCS{
 	@Override
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		NBTTagCompound nbt = NBTHelper.getPlayerNBT(player);
-		nbt.removeTag(PageTypes.FLAME);
+		nbt.removeTag(PageTypes.LIGHTERS);
 		return Item;
 		
 	    }

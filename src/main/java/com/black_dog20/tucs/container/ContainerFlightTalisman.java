@@ -72,13 +72,34 @@ public class ContainerFlightTalisman extends Container{
 		}
 	}
 
-	 @Override
+	@Override
 	   public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
-		 ItemStack itemstack = null;
-	        Slot Sslot = (Slot)this.inventorySlots.get(slot);
+	      Slot slotObject = (Slot) inventorySlots.get(slot);
+	      if(slotObject != null && slotObject.getHasStack()) {
+	         ItemStack stackInSlot = slotObject.getStack();
+	         ItemStack stack = stackInSlot.copy();
+	         if(slot <= 1) {
+	            if(!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
+	               return null;
+	         } else if(slot != 1 && stack.isItemEqual(new ItemStack(Blocks.stone)) && !getSlot(0).getHasStack()) {
+	            ItemStack copy = slotObject.decrStackSize(1);
+	            getSlot(0).putStack(copy);
+	            return null;
 
-	        return itemstack;
-	    }
+	         } else {
+	            return null;
+	         }
+
+	         if(stackInSlot.stackSize == 0)
+	            slotObject.putStack(null);
+	         else
+	            slotObject.onSlotChanged();
+
+	         return stack;
+	      }
+	      return null;
+	   }
+	   
 	 
 	@Override
 	public boolean canInteractWith(EntityPlayer player){

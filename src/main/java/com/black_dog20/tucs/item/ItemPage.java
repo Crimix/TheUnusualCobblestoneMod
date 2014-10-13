@@ -47,8 +47,7 @@ public class ItemPage extends ItemTUCS {
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
 		if(type !=null){
-			String info = type.replace("tucs", "");
-			list.add(info);
+			list.add(type);
 		}
 	}
 

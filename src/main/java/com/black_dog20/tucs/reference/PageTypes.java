@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 public class PageTypes {
 	
 	public static final int PAGES = 1;
-	public static final String BASIC = "TucsBasic";
-	public static final String LIGHTERS = "TucsCobblestone Lighters";
+	public static final String BASIC = "Basic";
+	public static final String LIGHTERS = "Cobblestone Lighters";
 	public static final String OK_TAG = "ok";
 
 	

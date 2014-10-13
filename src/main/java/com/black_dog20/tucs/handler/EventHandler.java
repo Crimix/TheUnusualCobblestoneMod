@@ -87,6 +87,7 @@ public class EventHandler {
 			byte b0 = nbttagcompound1.getByte("Slot");
 			player.inventory.addItemStackToInventory(ItemStack.loadItemStackFromNBT(nbttagcompound1));
 		}
+		nbt.removeTag("SoulboundItems");
 	}
 
 	@SubscribeEvent

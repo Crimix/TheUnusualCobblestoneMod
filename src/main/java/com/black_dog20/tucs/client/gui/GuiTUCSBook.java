@@ -121,23 +121,38 @@ public class GuiTUCSBook extends GuiScreen {
 			}
 			break;
 		case 3:
+			if(checkRecipe(PageTypes.BASIC)){
 			drawRecipePageTop(bookXStart);
 			text = "This Crafting Table can also be used to vailla recipes";
 			ItemStack gold = new ItemStack(Items.gold_ingot);
 			ItemStack cobblestoneium = new ItemStack(ModItems.ingotCobblestoneium);
 			ItemStack craftingTable = new ItemStack(Blocks.crafting_table);
 			drawRecipePageBot(gold, cobblestoneium, gold, cobblestoneium, craftingTable, cobblestoneium, gold, cobblestoneium, gold, craftingTable, text, new ItemStack(ModBlocks.ancientTable), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 4:
+			if(checkRecipe(PageTypes.BASIC)){
 			text = "The book which has the magic properties to hold all the knowledge you have found out about Cobblestoneia and it's traditions";
 			drawPage("The Ancient book", text, new ItemStack(ModItems.TUCSbook), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 5:
+			if(checkRecipe(PageTypes.BASIC)){
 			drawRecipePageTop(bookXStart);
 			text = "This book kan be crafted so you never lose the knowledge of the ancint society";
 			ItemStack cobblestone= new ItemStack(Blocks.cobblestone);
 			ItemStack book = new ItemStack(Items.book);
 			drawRecipePageBot(cobblestone, cobblestone, cobblestone, cobblestone, book, cobblestone, cobblestone, cobblestone, cobblestone, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TUCSbook), bookXStart);
+			}
+			else{
+				DrawNothing(bookXStart);
+			}
 			break;
 		case 6:
 			if(checkRecipe(PageTypes.BASIC)){

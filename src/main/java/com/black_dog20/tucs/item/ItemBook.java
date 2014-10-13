@@ -52,7 +52,6 @@ public class ItemBook extends ItemTUCS  {
 			nbt = NBTHelper.getPlayerNBT(player);
 			Boolean cannotGetBook = nbt.getBoolean(NBTTags.BOOK); //Checks if the player have got the book before
 			Boolean openBefore = nbt.getBoolean(NBTTags.BOOK_OPEN); //Checks if the player have opened the book before
-			nbt.setString(PageTypes.BASIC,PageTypes.OK_TAG);
 			
 			if(cannotGetBook == true){
 				if(openBefore == false){

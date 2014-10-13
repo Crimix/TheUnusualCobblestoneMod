@@ -43,6 +43,7 @@ public class ModLivingDropsEvent {
                 	  if(cannotGetBook == false){ 
                 		  event.entityLiving.dropItem(ModItems.TUCSbook, 1); //Gives the player a book
                 		  nbt.setBoolean(NBTTags.BOOK, true); //Sets the boolean on the player for the book to true
+              			  nbt.setString(PageTypes.BASIC,PageTypes.OK_TAG);
 
                 	  }
             	  }

@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.black_dog20.tucs.crafting.AncientForgeRecipes;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.inventory.InventoryTalisman;
 import com.black_dog20.tucs.reference.NBTTags;
+import com.black_dog20.tucs.slot.SlotFlightTalisman;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.utility.NBTHelper;
 
@@ -31,7 +33,7 @@ public class ContainerFlightTalisman extends Container{
 	private int posY;
 	private int posZ;
 	private EntityPlayer Player;
-	public IInventory slot = new InvetoryTalisman();
+	public IInventory slot = new InventoryTalisman();
 	private final ItemStack invItem = new ItemStack(ModItems.FlightTalisman);
 
 	public ContainerFlightTalisman(World world, int x, int y, int z, EntityPlayer player, ItemStack item)

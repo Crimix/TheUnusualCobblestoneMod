@@ -1,10 +1,10 @@
-package com.black_dog20.tucs.container;
+package com.black_dog20.tucs.inventory;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 
-public class InvetoryTalisman implements IInventory
+public class InventoryTalisman implements IInventory
 {
     /** A list of one item containing the result of the crafting formula */
     private ItemStack[] stackResult = new ItemStack[1];

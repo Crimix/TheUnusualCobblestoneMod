@@ -1,4 +1,4 @@
-package com.black_dog20.tucs.container;
+package com.black_dog20.tucs.slot;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;

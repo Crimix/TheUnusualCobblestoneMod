@@ -39,7 +39,7 @@ public class GuiHandler implements IGuiHandler {
 		}
 
 		if(ID == tucs.guiIDAncientTable) {
-			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.craftingTalisman))){
+			if(player.getHeldItem()!=null && player.getHeldItem().isItemEqual(new ItemStack(ModItems.craftingTalisman))){
 				return new ContainerAncientTable(player.inventory, world, x, y, z, player);
 			}
 			else{
@@ -71,8 +71,8 @@ public class GuiHandler implements IGuiHandler {
 		}
 
 		if(ID == tucs.guiIDAncientTable) {
-			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.craftingTalisman))){
-				return new ContainerAncientTable(player.inventory, world, x, y, z, player);
+			if(player.getHeldItem()!=null && player.getHeldItem().isItemEqual(new ItemStack(ModItems.craftingTalisman))){
+				return new GuiAncientTable(player.inventory, world, x, y, z, player);
 			}
 			else{
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new GuiAncientTable(player.inventory, world, x, y, z, player) : null;

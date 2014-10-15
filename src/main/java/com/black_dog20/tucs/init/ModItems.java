@@ -6,6 +6,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 import com.black_dog20.tucs.item.ItemBook;
 import com.black_dog20.tucs.item.ItemCobbleCoal;
+import com.black_dog20.tucs.item.ItemCraftingTalisman;
 import com.black_dog20.tucs.item.ItemFlightTalisman;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
@@ -71,7 +72,7 @@ public class ModItems {
 	public static final ItemTLHOWF TLHOWF = new ItemTLHOWF(COBBLESTONEDIUM_MATERIAL);
 	public static final ItemTLSOHD TLSOHD = new ItemTLSOHD(COBBLESTONEDIUM_MATERIAL);
 	public static final ItemTLPOLM TLPOLM = new ItemTLPOLM(COBBLESTONEDIUM_MATERIAL);
-
+	public static final ItemCraftingTalisman craftingTalisman = new ItemCraftingTalisman();
 	
 	public static void init(){
 		
@@ -111,6 +112,7 @@ public class ModItems {
 		GameRegistry.registerItem(TalismanBase , "TalismanBase");
 		GameRegistry.registerItem(SwordBlade , "SwordBlade");
 		GameRegistry.registerItem(SwordHilt , "SwordHilt");
+		GameRegistry.registerItem(craftingTalisman , "craftingTalisman");
 		
 
 	}

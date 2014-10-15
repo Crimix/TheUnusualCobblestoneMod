@@ -19,6 +19,8 @@ public class ItemTLSOC extends ItemSword {
 		this.setUnlocalizedName("TLSOC");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
+		this.setNoRepair();
+		this.canRepair = false;
 		
 	}
 

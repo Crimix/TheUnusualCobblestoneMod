@@ -2,12 +2,12 @@ package com.black_dog20.tucs.item.crafting;
 
 import com.black_dog20.tucs.item.ItemTUCS;
 
-public class ItemShowelHead extends ItemTUCS{
+public class ItemShovelHead extends ItemTUCS{
 	
-	public ItemShowelHead(){
+	public ItemShovelHead(){
 		
 		super();
-		this.setUnlocalizedName("showelHead");
+		this.setUnlocalizedName("shovelHead");
 		
 	}
 

@@ -17,14 +17,17 @@ item.tucs:chestplateCobblestoneium.name=Cobblestoneium Chestplate
 item.tucs:TUCSbook.name=The Ancient book
 item.tucs:cobbleCoal.name=Cobblestone Coal
 item.tucs:TUCSDebug.name=Debug Tool
-item.tucs:page.name=Page
-item.tucs:TUCSPageDebug.name=Page Debug Tool
 item.tucs:flightTalisman.name=Semi-gods Talisman of flying 
 item.tucs:talismanBase.name=Talisman Base
 item.tucs:unfinishedflightTalisman.name=Unfinished Talisman
 item.tucs:unenchantedflightTalisman.name=Unfinished Talisman
 item.tucs:swordBlade.name=Sword Blade
 item.tucs:swordHilt.name=Sword Hilt
+item.tucs:TLBOTB.name=The Legendary Axe of The Battlemaster
+item.tucs:TLHOWF.name=The Legendary Hoe of The Weird Farmer
+item.tucs:TLPOLM.name=The Legendary Pickaxe of The Lost Miner
+item.tucs:TLSOHD.name=The Legendary Shovel of The Hole Digger
+
 
 //Blocks
 tile.tucs:ancientTable.name=Ancient Table

@@ -4,7 +4,6 @@ package com.black_dog20.tucs.handler;
 import scala.Console;
 
 import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.item.ItemPage;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.utility.LogHelper;
@@ -46,14 +45,6 @@ public class ModLivingDropsEvent {
               			  nbt.setString(PageTypes.BASIC,PageTypes.OK_TAG);
 
                 	  }
-            	  }
-            	  if(event.entityLiving instanceof EntityCreeper){
-            		  double rand = Math.random();
-            		  
-            		  if(rand < 1.00d){
-            			  event.entityLiving.dropItem(ModItems.page2,1); //Gives the player a page
-            			  
-            		  }
             	  }
         	  }
 

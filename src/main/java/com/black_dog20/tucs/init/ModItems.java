@@ -9,9 +9,7 @@ import com.black_dog20.tucs.item.ItemCobbleCoal;
 import com.black_dog20.tucs.item.ItemFlightTalisman;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
-import com.black_dog20.tucs.item.ItemPage;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
-import com.black_dog20.tucs.item.ItemTUCSPageDebug;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
@@ -28,8 +26,12 @@ import com.black_dog20.tucs.item.tool.ItemHoeCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemPickaxeCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemShovelCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemSwordCobblestoneium;
+import com.black_dog20.tucs.item.tool.ItemTLBOTB;
+import com.black_dog20.tucs.item.tool.ItemTLHOWF;
+import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneLighter;
+import com.black_dog20.tucs.item.tool.ItemTLSOHD;
 import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.reference.Reference;
 
@@ -59,47 +61,58 @@ public class ModItems {
 	public static final ItemCobbleCoal CobbleCoal = new ItemCobbleCoal();
 	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
 	public static final ItemCobblestoneiumLighter cobblestoneiumLighter = new ItemCobblestoneiumLighter();
-	public static final ItemPage page = new ItemPage(null);
-	public static final ItemPage page2 = new ItemPage(PageTypes.LIGHTERS);
-	public static final ItemTUCSPageDebug TUCSPagedebug = new ItemTUCSPageDebug();
 	public static final ItemFlightTalisman FlightTalisman = new ItemFlightTalisman();
 	public static final ItemUnfinshedflightTalisman UnfinshedFlightTalisman = new ItemUnfinshedflightTalisman();
 	public static final ItemUngoldenflightTalisman ungoldenFligtTalisman = new ItemUngoldenflightTalisman();
 	public static final ItemTalismanBase TalismanBase = new ItemTalismanBase();
 	public static final ItemSwordBlade SwordBlade = new ItemSwordBlade();
 	public static final ItemSwordHilt SwordHilt = new ItemSwordHilt();
-	
+	public static final ItemTLBOTB TLBOTB = new ItemTLBOTB(COBBLESTONEDIUM_MATERIAL);
+	public static final ItemTLHOWF TLHOWF = new ItemTLHOWF(COBBLESTONEDIUM_MATERIAL);
+	public static final ItemTLSOHD TLSOHD = new ItemTLSOHD(COBBLESTONEDIUM_MATERIAL);
+	public static final ItemTLPOLM TLPOLM = new ItemTLPOLM(COBBLESTONEDIUM_MATERIAL);
+
 	
 	public static void init(){
-
 		
+		//TOOLS
 		GameRegistry.registerItem(TLSOC, "TLSOC");
-		GameRegistry.registerItem(ingotCobblestoneium, "ingotCobblestoneium");
-		GameRegistry.registerItem(ingotCobblestonedium, "ingotCobblestonedium");
-		GameRegistry.registerItem(cobblestoneLighter, "cobblestoneLighter");
+		GameRegistry.registerItem(TLBOTB, "TLBOTB");
+		GameRegistry.registerItem(TLHOWF, "TLHOWF");
+		GameRegistry.registerItem(TLSOHD, "TLSOHD");
+		GameRegistry.registerItem(TLPOLM, "TLPOLM");
 		GameRegistry.registerItem(shovelCobblestoneium, "shovelCobblestoneium");
 		GameRegistry.registerItem(swordCobblestoneium, "swordCobblestoneium");
 		GameRegistry.registerItem(hatchetCobblestoneium, "hatchetCobblestoneium");
 		GameRegistry.registerItem(hoeCobblestoneium, "hoeCobblestoneium");
 		GameRegistry.registerItem(pickaxeCobblestoneium, "pickaxeCobblestoneium");
+		
+		//ARMOR
 		GameRegistry.registerItem(helmetCobblestoneium, "helmetCobblestoneium");
 		GameRegistry.registerItem(leggingsCobblestoneium, "leggingsCobblestoneium");
 		GameRegistry.registerItem(bootsCobblestoneium, "bootsCobblestoneium");
 		GameRegistry.registerItem(chestplateCobblestoneium, "chestplateCobblestoneium");
+		
+		
+		//INGOTS
+		GameRegistry.registerItem(ingotCobblestoneium, "ingotCobblestoneium");
+		GameRegistry.registerItem(ingotCobblestonedium, "ingotCobblestonedium");
+		
+		//ITEMS
+		GameRegistry.registerItem(cobblestoneLighter, "cobblestoneLighter");
 		GameRegistry.registerItem(TUCSbook , "TUCSBook");
 		GameRegistry.registerItem(TUCSdebug , "TUCSdebug");
 		GameRegistry.registerItem(CobbleCoal, "CobbleCoal");
 		GameRegistry.registerItem(cobblestonediumLighter, "cobblestonediumLighter");
 		GameRegistry.registerItem(cobblestoneiumLighter, "cobblestoneiumLighter");
-		GameRegistry.registerItem(page , "page");
-		GameRegistry.registerItem(page2 , "page2");
-		GameRegistry.registerItem(TUCSPagedebug , "TUCSPagedebug");
 		GameRegistry.registerItem(FlightTalisman , "FlightTalisman");
 		GameRegistry.registerItem(UnfinshedFlightTalisman , "UnfinshedFlightTalisman");
 		GameRegistry.registerItem(ungoldenFligtTalisman , "ungoldenFligtTalisman");
 		GameRegistry.registerItem(TalismanBase , "TalismanBase");
 		GameRegistry.registerItem(SwordBlade , "SwordBlade");
 		GameRegistry.registerItem(SwordHilt , "SwordHilt");
+		
+
 	}
 
 }

@@ -48,33 +48,33 @@ public class EventHandler {
 		nbt = NBTHelper.getPlayerNBT(player);
 		int i = 0;
 		while(litr.hasNext()){
-			
+
 			EntityItem item = litr.next();
 			ItemStack itemstack = item.getEntityItem();
-			
-			
+
+
 			if(item !=null){
 				if(!itemstack.hasTagCompound()){
 					itemstack.stackTagCompound = new NBTTagCompound();
-					}
+				}
 				if(itemstack.hasTagCompound()){
 					NBTTagCompound itemT = itemstack.getTagCompound();
 					if(itemT.hasKey(NBTTags.SOULBOUND)){
 						String test= itemT.getString(NBTTags.SOULBOUND);
 						if(test.equals(NBTTags.OK)){
-						NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-						nbttagcompound1.setByte("Slot", (byte)i);
-						itemstack.writeToNBT(nbttagcompound1);
-						nbttaglist.appendTag(nbttagcompound1);
-						litr.remove();
-						i++;
+							NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+							nbttagcompound1.setByte("Slot", (byte)i);
+							itemstack.writeToNBT(nbttagcompound1);
+							nbttaglist.appendTag(nbttagcompound1);
+							litr.remove();
+							i++;
 						}
 					}
 				}
 			}
 		}
 		nbt.setTag("SoulboundItems", nbttaglist);
-		
+
 	}
 
 	@SubscribeEvent
@@ -93,21 +93,21 @@ public class EventHandler {
 	@SubscribeEvent
 	public void onLivingUpdatePlayer(LivingUpdateEvent event){
 		if(event.entity instanceof EntityPlayer){
-		EntityPlayer player = (EntityPlayer) event.entity;
-         if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
-        	 player.capabilities.allowFlying = false;
-        	 player.capabilities.isFlying = false;
-        	 player.sendPlayerAbilities();
-         }
+			EntityPlayer player = (EntityPlayer) event.entity;
+			if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
+				player.capabilities.allowFlying = false;
+				player.capabilities.isFlying = false;
+				player.sendPlayerAbilities();
+			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onFall(LivingFallEvent event){
 		if (event.entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) event.entity;
 			if((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
-			event.setCanceled(true);
+				event.setCanceled(true);
 			}
 		}
 	}

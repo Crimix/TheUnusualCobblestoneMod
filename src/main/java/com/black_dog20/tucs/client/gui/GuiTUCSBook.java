@@ -189,8 +189,8 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 17:
 			text="This sword is crafted by the finest materials ever known";
-			drawRecipeTop(bookXStart);
-			drawRecipeBot();
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot();
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
@@ -199,16 +199,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 
 		}
-	}
-
-	private void drawRecipeBot() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void drawRecipeTop() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

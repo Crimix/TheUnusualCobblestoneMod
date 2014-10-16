@@ -5,11 +5,13 @@ import com.black_dog20.tucs.client.gui.GuiAncientForge;
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
 import com.black_dog20.tucs.client.gui.GuiFlightTalisman;
 import com.black_dog20.tucs.client.gui.GuiTUCSBook;
+import com.black_dog20.tucs.client.gui.GuiUpgradeTools;
 import com.black_dog20.tucs.container.ContainerAncientForge;
 import com.black_dog20.tucs.container.ContainerAncientTable;
 import com.black_dog20.tucs.container.ContainerCraftingTalisman;
 import com.black_dog20.tucs.container.ContainerDummy;
 import com.black_dog20.tucs.container.ContainerFlightTalisman;
+import com.black_dog20.tucs.container.ContainerUpgradeTools;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
@@ -51,6 +53,9 @@ public class GuiHandler implements IGuiHandler {
 		if(ID == tucs.guiIDCraftingTalisman){
 			return new ContainerCraftingTalisman(player.inventory, world, x, y, z, player);
 		}
+		if(ID == tucs.guiIDUpgradeTools){
+			return new ContainerUpgradeTools(world, x, y, z, player, item);
+		}
 
 		return null;
 	}
@@ -82,6 +87,9 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if(ID == tucs.guiIDCraftingTalisman){
 			return new GuiAncientTable(player.inventory, world, x, y, z, player);
+		}
+		if(ID == tucs.guiIDUpgradeTools){
+			return new GuiUpgradeTools(world, x, y, z, player);
 		}
 
 		return null;

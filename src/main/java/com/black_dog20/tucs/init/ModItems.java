@@ -11,6 +11,7 @@ import com.black_dog20.tucs.item.ItemFlightTalisman;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
+import com.black_dog20.tucs.item.ItemTorchTalisman;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
@@ -83,6 +84,7 @@ public class ModItems {
 	public static final ItemPickaxeHead pickaxeHead = new ItemPickaxeHead();
 	public static final ItemHoeHead hoeHead = new ItemHoeHead();
 	public static final ItemToolRod toolRod = new ItemToolRod();
+	public static final ItemTorchTalisman torchTalisman = new ItemTorchTalisman();
 	
 	public static void init(){
 		
@@ -120,6 +122,10 @@ public class ModItems {
 		GameRegistry.registerItem(UnfinshedFlightTalisman, "UnfinshedFlightTalisman");
 		GameRegistry.registerItem(ungoldenFligtTalisman, "ungoldenFligtTalisman");
 		GameRegistry.registerItem(TalismanBase, "TalismanBase");
+		GameRegistry.registerItem(torchTalisman, "torchTalisman");
+		
+		
+		//TOOL PARTS
 		GameRegistry.registerItem(SwordBlade, "SwordBlade");
 		GameRegistry.registerItem(SwordHilt, "SwordHilt");
 		GameRegistry.registerItem(craftingTalisman, "craftingTalisman");

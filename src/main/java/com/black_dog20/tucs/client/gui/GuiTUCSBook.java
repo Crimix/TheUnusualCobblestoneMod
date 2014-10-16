@@ -186,7 +186,7 @@ public class GuiTUCSBook extends GuiScreen {
 			text="This sword has the power of the legendary fighter!";
 			ItemStack sword = new ItemStack(ModItems.TLSOC);
 			drawPage(sword.getDisplayName(), text, new ItemStack(ModItems.TLSOC), bookXStart);
-			
+			break;
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);

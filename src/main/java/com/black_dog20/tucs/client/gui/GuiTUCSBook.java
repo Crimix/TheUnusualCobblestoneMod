@@ -190,10 +190,18 @@ public class GuiTUCSBook extends GuiScreen {
 		case 17:
 			text="This sword is crafted by the finest materials ever known";
 			drawRecipePageTop(bookXStart);
-			ItemStack gold2 = new ItemStack(Items.gold_ingot);
+			ItemStack gold1 = new ItemStack(Items.gold_ingot);
 			ItemStack cobblestonedium = new ItemStack(ModItems.ingotCobblestonedium);
 			ItemStack diamond = new ItemStack(Items.diamond);
-			drawRecipePageBot(gold2, cobblestonedium, gold2, gold2, diamond, gold2, gold2, cobblestonedium, gold2, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordBlade), bookXStart);
+			drawRecipePageBot(gold1, cobblestonedium, gold1, gold1, diamond, gold1, gold1, cobblestonedium, gold1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordBlade), bookXStart);
+			break;
+		case 18:
+			text="To finaly complete this legendary sword you will need a Tilt";
+			drawRecipePageTop(bookXStart);
+			
+		case 19:
+			text="This hoe was given to us by the weird farmer";
+			ItemStack hoe
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);

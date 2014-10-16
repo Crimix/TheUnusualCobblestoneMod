@@ -182,6 +182,11 @@ public class GuiTUCSBook extends GuiScreen {
 			text="This ingot have the combined durability of iron and stone";
 			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium,2), new ItemStack(ModBlocks.blockAncientForge), bookXStart);
 			break;
+		case 16:
+			text="This sword has the power of the legendary fighter!";
+			ItemStack sword = new ItemStack(ModItems.TLSOC);
+			drawPage(sword.getDisplayName(), text, new ItemStack(ModItems.TLSOC), bookXStart);
+			
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);

@@ -4,12 +4,17 @@ import static net.minecraftforge.common.util.ForgeDirection.EAST;
 import static net.minecraftforge.common.util.ForgeDirection.NORTH;
 import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
 import static net.minecraftforge.common.util.ForgeDirection.WEST;
+
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.reference.NBTTags;
 
 public class ItemTorchTalisman extends ItemTUCS{
 
@@ -20,6 +25,45 @@ public class ItemTorchTalisman extends ItemTUCS{
 
 
 	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
+	{
+		
+		if(!stack.hasTagCompound()){
+			stack.stackTagCompound = new NBTTagCompound();
+		}
+		if(stack.hasTagCompound()){
+			NBTTagCompound nbt= stack.getTagCompound();
+			
+			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
+				list.add("Soulbound");
+			}
+			else{
+				list.remove("Soulbound");
+			}
+		}
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack stack){
+		
+		if(!stack.hasTagCompound()){
+			stack.stackTagCompound = new NBTTagCompound();
+		}
+		if(stack.hasTagCompound()){
+			NBTTagCompound nbt= stack.getTagCompound();
+			
+			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
+	}
+	
 	public boolean canPlaceBlockAt(World world, int x, int y, int z)
     {
         return world.isSideSolid(x - 1, y, z, EAST,  true) ||

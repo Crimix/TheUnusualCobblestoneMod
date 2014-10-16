@@ -80,12 +80,12 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TLBOTB), new Object[]{"e", "h", 'e', new ItemStack(ModItems.hatchetHead), 'h', new ItemStack(ModItems.toolRod)});
 		
 		//Tools Parts
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.SwordBlade), new Object[]{"gcg", "gdg","gcg", 'g', "ingotGold", 'c', "ingotCobblestoneium", 'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.SwordHilt), new Object[]{"gcg", " s "," e ", 'g', "ingotGold", 'c', "ingotCobblestoneium", 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hoeHead), new Object[]{"dc ", " gc", "  g", 'g', "ingotGold", 'c', "ingotCobblestoneium",  'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.shovelHead), new Object[]{" gc", "gdg", "dg ", 'g', "ingotGold", 'c', "ingotCobblestoneium", 'd', new ItemStack(Items.diamond)}));
+		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.SwordBlade), new Object[]{"gcg", "gdg","gcg", 'g', "ingotGold", 'c', "ingotCobblestonedium", 'd', new ItemStack(Items.diamond)}));
+		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.SwordHilt), new Object[]{"gcg", " s "," e ", 'g', "ingotGold", 'c', "ingotCobblestonedium", 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)}));
+		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hoeHead), new Object[]{"cd ", " cg", "  g", 'g', "ingotGold", 'c', "ingotCobblestonedium",  'd', new ItemStack(Items.diamond)}));
+		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.shovelHead), new Object[]{" cg", "gdg", "cg ", 'g', "ingotGold", 'c', "ingotCobblestoneium", 'd', new ItemStack(Items.diamond)}));
 		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hatchetHead), new Object[]{"c c", "gdg", "c c", 'g', "ingotGold", 'c', "ingotCobblestoneium", 'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.pickaxeHead), new Object[]{"cgc", "ddd", "ggg", 'g', "ingotGold", 'c', "ingotCobblestoneium", 'd', new ItemStack(Items.diamond)}));
+		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.pickaxeHead), new Object[]{"cgc", "cdc", "cgc", 'g', "ingotGold", 'c', "ingotCobblestoneium", 'd', new ItemStack(Items.diamond)}));
 		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.toolRod), new Object[]{"  s", " s ", "e  ", 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)}));
 	}
 	

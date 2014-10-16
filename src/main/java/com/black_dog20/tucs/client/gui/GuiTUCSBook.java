@@ -190,7 +190,10 @@ public class GuiTUCSBook extends GuiScreen {
 		case 17:
 			text="This sword is crafted by the finest materials ever known";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot();
+			ItemStack gold2 = new ItemStack(Items.gold_ingot);
+			ItemStack cobblestonedium = new ItemStack(ModItems.ingotCobblestonedium);
+			ItemStack diamond = new ItemStack(Items.diamond);
+			drawRecipePageBot(gold2, cobblestonedium, gold2, gold2, diamond, gold2, gold2, cobblestonedium, gold2, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordBlade), bookXStart);
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);

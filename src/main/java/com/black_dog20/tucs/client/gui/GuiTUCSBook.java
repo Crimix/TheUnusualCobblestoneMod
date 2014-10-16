@@ -198,10 +198,12 @@ public class GuiTUCSBook extends GuiScreen {
 		case 18:
 			text="To finaly complete this legendary sword you will need a Tilt";
 			drawRecipePageTop(bookXStart);
-			
-		case 19:
-			text="This hoe was given to us by the weird farmer";
-			ItemStack hoe
+			ItemStack cobblestonedium1 = new ItemStack(ModItems.ingotCobblestonedium);
+			ItemStack gold2 = new ItemStack(Items.gold_ingot);
+			ItemStack stick = new ItemStack(Items.stick);
+			ItemStack emerald = new ItemStack(Items.emerald);
+			drawRecipePageBot(gold2, cobblestonedium1, gold2, null, stick, null, null, emerald, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordHilt), bookXStart);
+			break;
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);

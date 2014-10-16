@@ -59,7 +59,7 @@ public class ItemBook extends ItemTUCS  {
 					nbt.setBoolean(NBTTags.BOOK_OPEN, true); 
 				}
 				else if(openBefore == true){
-					player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);					
+					tucs.Proxy.openBook(player);				
 				}
 			}
 			

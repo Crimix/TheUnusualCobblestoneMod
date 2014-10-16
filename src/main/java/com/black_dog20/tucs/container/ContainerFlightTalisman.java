@@ -89,7 +89,7 @@ public class ContainerFlightTalisman extends Container{
 	         if(slot <= 1) {
 	            if(!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
 	               return null;
-	         } else if(slot != 1 && stack.isItemEqual(new ItemStack(Blocks.stone)) && !getSlot(0).getHasStack()) {
+	         } else if(slot != 1 && stack.isItemEqual(new ItemStack(ModItems.soulboundUpgrade)) && !getSlot(0).getHasStack()) {
 	            ItemStack copy = slotObject.decrStackSize(1);
 	            getSlot(0).putStack(copy);
 	            return null;
@@ -127,7 +127,7 @@ public class ContainerFlightTalisman extends Container{
 		
 		super.onContainerClosed(player);
 		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
-		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(Blocks.stone,1))){
+		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
 			ItemStack stack = player.getHeldItem();
 			if(stack != null && !stack.hasTagCompound()){
 				stack.stackTagCompound = new NBTTagCompound();
@@ -163,7 +163,7 @@ public class ContainerFlightTalisman extends Container{
 	}
 	
 	public boolean isItemValid(ItemStack itemstack) {
-	      return ItemStack.areItemStacksEqual(itemstack, new ItemStack(Blocks.stone));
+	      return ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade));
 	   }
 
 }

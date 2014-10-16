@@ -1,5 +1,7 @@
 package com.black_dog20.tucs.slot;
 
+import com.black_dog20.tucs.init.ModItems;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -14,7 +16,7 @@ public class SlotFlightTalisman extends Slot {
 	
 	@Override
 	   public boolean isItemValid(ItemStack itemstack) {
-	      return ItemStack.areItemStacksEqual(itemstack, new ItemStack(Blocks.stone));
+	      return ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade));
 	   }
 
 	   @Override

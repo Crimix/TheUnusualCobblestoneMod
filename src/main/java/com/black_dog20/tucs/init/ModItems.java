@@ -10,6 +10,10 @@ import com.black_dog20.tucs.item.ItemCraftingTalisman;
 import com.black_dog20.tucs.item.ItemFlightTalisman;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
+import com.black_dog20.tucs.item.ItemLooting1Upgrade;
+import com.black_dog20.tucs.item.ItemLooting2Upgrade;
+import com.black_dog20.tucs.item.ItemLooting3Upgrade;
+import com.black_dog20.tucs.item.ItemSoulboundUpgrade;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
 import com.black_dog20.tucs.item.ItemTorchTalisman;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
@@ -22,10 +26,12 @@ import com.black_dog20.tucs.item.crafting.ItemPickaxeHead;
 import com.black_dog20.tucs.item.crafting.ItemShovelHead;
 import com.black_dog20.tucs.item.crafting.ItemSwordBlade;
 import com.black_dog20.tucs.item.crafting.ItemSwordHilt;
-import com.black_dog20.tucs.item.crafting.ItemTalismanBase;
+import com.black_dog20.tucs.item.crafting.ItemTalismanBaseT1;
+import com.black_dog20.tucs.item.crafting.ItemTalismanBaseT2;
 import com.black_dog20.tucs.item.crafting.ItemToolRod;
 import com.black_dog20.tucs.item.crafting.ItemUnfinshedflightTalisman;
 import com.black_dog20.tucs.item.crafting.ItemUngoldenflightTalisman;
+import com.black_dog20.tucs.item.crafting.ItemUpgradeBase;
 import com.black_dog20.tucs.item.tool.ItemCobblestonediumLighter;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneiumLighter;
 import com.black_dog20.tucs.item.tool.ItemHatchetCobblestoneium;
@@ -71,7 +77,7 @@ public class ModItems {
 	public static final ItemFlightTalisman FlightTalisman = new ItemFlightTalisman();
 	public static final ItemUnfinshedflightTalisman UnfinshedFlightTalisman = new ItemUnfinshedflightTalisman();
 	public static final ItemUngoldenflightTalisman ungoldenFligtTalisman = new ItemUngoldenflightTalisman();
-	public static final ItemTalismanBase TalismanBase = new ItemTalismanBase();
+	public static final ItemTalismanBaseT2 TalismanBase = new ItemTalismanBaseT2();
 	public static final ItemSwordBlade SwordBlade = new ItemSwordBlade();
 	public static final ItemSwordHilt SwordHilt = new ItemSwordHilt();
 	public static final ItemTLBOTB TLBOTB = new ItemTLBOTB(COBBLESTONEDIUM_MATERIAL);
@@ -85,6 +91,12 @@ public class ModItems {
 	public static final ItemHoeHead hoeHead = new ItemHoeHead();
 	public static final ItemToolRod toolRod = new ItemToolRod();
 	public static final ItemTorchTalisman torchTalisman = new ItemTorchTalisman();
+	public static final ItemTalismanBaseT1 talismanBaseT1 = new ItemTalismanBaseT1();
+	public static final ItemUpgradeBase upgradBase = new ItemUpgradeBase();
+	public static final ItemLooting1Upgrade looting1Upgrade = new ItemLooting1Upgrade();
+	public static final ItemLooting2Upgrade looting2Upgrade = new ItemLooting2Upgrade();
+	public static final ItemLooting3Upgrade looting3Upgrade = new ItemLooting3Upgrade();
+	public static final ItemSoulboundUpgrade soulboundUpgrade = new ItemSoulboundUpgrade();
 	
 	public static void init(){
 		
@@ -119,21 +131,30 @@ public class ModItems {
 		GameRegistry.registerItem(cobblestonediumLighter, "cobblestonediumLighter");
 		GameRegistry.registerItem(cobblestoneiumLighter, "cobblestoneiumLighter");
 		GameRegistry.registerItem(FlightTalisman, "FlightTalisman");
-		GameRegistry.registerItem(UnfinshedFlightTalisman, "UnfinshedFlightTalisman");
-		GameRegistry.registerItem(ungoldenFligtTalisman, "ungoldenFligtTalisman");
-		GameRegistry.registerItem(TalismanBase, "TalismanBase");
 		GameRegistry.registerItem(torchTalisman, "torchTalisman");
+		GameRegistry.registerItem(craftingTalisman, "craftingTalisman");
+		GameRegistry.registerItem(looting1Upgrade, "looting1Upgrade");
+		GameRegistry.registerItem(looting2Upgrade, "looting2Upgrade");
+		GameRegistry.registerItem(looting3Upgrade, "looting3Upgrade");
+		GameRegistry.registerItem(soulboundUpgrade, "soulboundUpgrade");
 		
 		
 		//TOOL PARTS
 		GameRegistry.registerItem(SwordBlade, "SwordBlade");
 		GameRegistry.registerItem(SwordHilt, "SwordHilt");
-		GameRegistry.registerItem(craftingTalisman, "craftingTalisman");
 		GameRegistry.registerItem(toolRod, "toolRod");
 		GameRegistry.registerItem(shovelHead, "shovelHead");
 		GameRegistry.registerItem(hatchetHead, "hatchetHead");
 		GameRegistry.registerItem(pickaxeHead, "pickaxeHead");
 		GameRegistry.registerItem(hoeHead, "hoeHead");
+		GameRegistry.registerItem(UnfinshedFlightTalisman, "UnfinshedFlightTalisman");
+		GameRegistry.registerItem(ungoldenFligtTalisman, "ungoldenFligtTalisman");
+		GameRegistry.registerItem(talismanBaseT1, "talismanBaseT1");
+		GameRegistry.registerItem(TalismanBase, "TalismanBase");
+		GameRegistry.registerItem(upgradBase, "upgradBase");
+
+
+		
 		
 
 	}

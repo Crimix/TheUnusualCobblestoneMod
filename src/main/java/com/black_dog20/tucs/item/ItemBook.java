@@ -33,7 +33,7 @@ public class ItemBook extends ItemTUCS  {
 	
 	public ItemBook(){
 		super();
-		this.setUnlocalizedName("TUCSbook");
+		this.setUnlocalizedName("tucsBook");
 		this.setMaxStackSize(1);
 	    
 	}
@@ -59,7 +59,7 @@ public class ItemBook extends ItemTUCS  {
 					nbt.setBoolean(NBTTags.BOOK_OPEN, true); 
 				}
 				else if(openBefore == true){
-					tucs.Proxy.openBook(player);					
+					player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);					
 				}
 			}
 			

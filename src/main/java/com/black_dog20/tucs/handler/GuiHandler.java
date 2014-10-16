@@ -7,6 +7,7 @@ import com.black_dog20.tucs.client.gui.GuiFlightTalisman;
 import com.black_dog20.tucs.client.gui.GuiTUCSBook;
 import com.black_dog20.tucs.container.ContainerAncientForge;
 import com.black_dog20.tucs.container.ContainerAncientTable;
+import com.black_dog20.tucs.container.ContainerCraftingTalisman;
 import com.black_dog20.tucs.container.ContainerDummy;
 import com.black_dog20.tucs.container.ContainerFlightTalisman;
 import com.black_dog20.tucs.init.ModBlocks;
@@ -39,18 +40,16 @@ public class GuiHandler implements IGuiHandler {
 		}
 
 		if(ID == tucs.guiIDAncientTable) {
-			if(player.getHeldItem()!=null && player.getHeldItem().isItemEqual(new ItemStack(ModItems.craftingTalisman))){
-				return new ContainerAncientTable(player.inventory, world, x, y, z, player);
-			}
-			else{
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new ContainerAncientTable(player.inventory, world, x, y, z, player) : null;
-			}
 		}
 		if(ID == tucs.guiIDBook){
 			return new ContainerDummy(player);
 		}
 		if(ID == tucs.guiIDFlightTalisman){
 			return new ContainerFlightTalisman(world, x, y, z, player, item);
+		}
+		if(ID == tucs.guiIDCraftingTalisman){
+			return new ContainerCraftingTalisman(player.inventory, world, x, y, z, player);
 		}
 
 		return null;
@@ -71,12 +70,7 @@ public class GuiHandler implements IGuiHandler {
 		}
 
 		if(ID == tucs.guiIDAncientTable) {
-			if(player.getHeldItem()!=null && player.getHeldItem().isItemEqual(new ItemStack(ModItems.craftingTalisman))){
-				return new GuiAncientTable(player.inventory, world, x, y, z, player);
-			}
-			else{
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new GuiAncientTable(player.inventory, world, x, y, z, player) : null;
-			}
 		}
 		
 		if(ID == tucs.guiIDBook){
@@ -85,6 +79,9 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if(ID == tucs.guiIDFlightTalisman){
 			return new GuiFlightTalisman(world, x, y, z, player);
+		}
+		if(ID == tucs.guiIDCraftingTalisman){
+			return new GuiAncientTable(player.inventory, world, x, y, z, player);
 		}
 
 		return null;

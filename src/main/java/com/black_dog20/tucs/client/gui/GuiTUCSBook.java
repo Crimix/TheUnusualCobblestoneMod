@@ -183,10 +183,14 @@ public class GuiTUCSBook extends GuiScreen {
 			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium,2), new ItemStack(ModBlocks.blockAncientForge), bookXStart);
 			break;
 		case 16:
-			text="This sword has the power of the legendary fighter!";
+			text="\nThis sword has the power of the legendary fighter";
 			ItemStack sword = new ItemStack(ModItems.TLSOC);
 			drawPage(sword.getDisplayName(), text, new ItemStack(ModItems.TLSOC), bookXStart);
 			break;
+		case 17:
+			text="This sword is crafted by the finest materials ever known";
+			drawRecipeTop(bookXStart);
+			drawRecipeBot();
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
@@ -195,6 +199,16 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 
 		}
+	}
+
+	private void drawRecipeBot() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void drawRecipeTop() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

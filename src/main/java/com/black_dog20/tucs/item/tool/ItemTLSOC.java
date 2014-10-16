@@ -58,6 +58,7 @@ public class ItemTLSOC extends ItemSword {
     @Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
+    	/*
 		
 		list.add("Shift right click to upgrade");
 		list.add("");
@@ -73,16 +74,17 @@ public class ItemTLSOC extends ItemSword {
 			else{
 				list.remove("Soulbound");
 			}
-		}
+		}*/
 	}
 	
 	
 	@Override
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		
+		/*
 			if(player.isSneaking()){
 				player.openGui(tucs.instance, tucs.guiIDUpgradeTools, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-			}
+			}*/
 			
 		return Item;
 		

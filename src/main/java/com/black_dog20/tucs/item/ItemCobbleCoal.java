@@ -24,7 +24,7 @@ public class ItemCobbleCoal extends ItemTUCS{
 	@Override
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		
-		
+		/*
 		if(!Item.isItemEnchanted()){
 			Item.addEnchantment(Enchantment.sharpness, 4);
 		}
@@ -39,7 +39,7 @@ public class ItemCobbleCoal extends ItemTUCS{
 		}
 		
 		
-		
+		*/
 		return Item;
 		
 	    }

@@ -5,6 +5,7 @@ import com.black_dog20.tucs.inventory.InventoryTalisman;
 import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.slot.SlotFlightTalisman;
+import com.black_dog20.tucs.slot.SlotUpgradeTools;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -34,8 +35,9 @@ public class ContainerUpgradeTools extends Container {
 		this.Player = player;
 
 		for(int i = 0; i < 3; i++){
-		this.addSlotToContainer(new SlotFlightTalisman(slot, i, 57+18*i, 37));
+		this.addSlotToContainer(new SlotUpgradeTools(slot, 0, 57+18*1, 37));
 		}
+		System.out.println("slot works");
 		
 		if(!item.hasTagCompound()){
 			item.stackTagCompound = new NBTTagCompound();
@@ -48,7 +50,8 @@ public class ContainerUpgradeTools extends Container {
 			byte b0 = nbttagcompound1.getByte("Slot");
 			ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			if(slotItem !=null){
-			this.slot.setInventorySlotContents(b0 ,ItemStack.loadItemStackFromNBT(nbttagcompound1));
+					this.slot.setInventorySlotContents(0 ,ItemStack.loadItemStackFromNBT(nbttagcompound1));
+			
 			nbttaglist.removeTag(i);
 			}
 		}
@@ -73,7 +76,7 @@ public class ContainerUpgradeTools extends Container {
 
 	@Override
 	   public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
-	      Slot slotObject = (Slot) inventorySlots.get(slot);
+	      /*Slot slotObject = (Slot) inventorySlots.get(slot);
 	      if(slotObject != null && slotObject.getHasStack()) {
 	         ItemStack stackInSlot = slotObject.getStack();
 	         ItemStack stack = stackInSlot.copy();
@@ -95,7 +98,7 @@ public class ContainerUpgradeTools extends Container {
 	            slotObject.onSlotChanged();
 
 	         return stack;
-	      }
+	      }*/
 	      return null;
 	   }
 	   
@@ -135,8 +138,7 @@ public class ContainerUpgradeTools extends Container {
 	{
 		
 		super.onContainerClosed(player);
-		for(int i = 0; i < 3;i++ ){
-		ItemStack itemstack = this.slot.getStackInSlotOnClosing(i);
+		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
 		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
 			ItemStack stack = player.getHeldItem();
 			if(stack != null && !stack.hasTagCompound()){
@@ -146,7 +148,7 @@ public class ContainerUpgradeTools extends Container {
 			NBTTagCompound NBT = stack.getTagCompound();
 			NBTTagList nbttaglist = new NBTTagList();
 			NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-			nbttagcompound1.setByte("Slot", (byte)i);
+			nbttagcompound1.setByte("Slot", (byte)0);
 			itemstack.writeToNBT(nbttagcompound1);
 			nbttaglist.appendTag(nbttagcompound1);
 			NBT.setTag("TalismanItems", nbttaglist);
@@ -166,7 +168,6 @@ public class ContainerUpgradeTools extends Container {
 				NBTTagCompound NBT = stack.getTagCompound();
 				NBT.removeTag(NBTTags.SOULBOUND);
 				player.dropPlayerItemWithRandomChoice(itemstack, false);
-				}
 			}
 			
 		}

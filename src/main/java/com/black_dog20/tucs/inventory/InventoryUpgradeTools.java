@@ -15,7 +15,7 @@ public class InventoryUpgradeTools implements IInventory
      */
     public int getSizeInventory()
     {
-        return 1;
+        return 3;
     }
 
     /**

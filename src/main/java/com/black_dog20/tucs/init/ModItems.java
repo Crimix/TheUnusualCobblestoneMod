@@ -15,9 +15,14 @@ import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestoneium;
+import com.black_dog20.tucs.item.crafting.ItemHatchetHead;
+import com.black_dog20.tucs.item.crafting.ItemHoeHead;
+import com.black_dog20.tucs.item.crafting.ItemPickaxeHead;
+import com.black_dog20.tucs.item.crafting.ItemShovelHead;
 import com.black_dog20.tucs.item.crafting.ItemSwordBlade;
 import com.black_dog20.tucs.item.crafting.ItemSwordHilt;
 import com.black_dog20.tucs.item.crafting.ItemTalismanBase;
+import com.black_dog20.tucs.item.crafting.ItemToolRod;
 import com.black_dog20.tucs.item.crafting.ItemUnfinshedflightTalisman;
 import com.black_dog20.tucs.item.crafting.ItemUngoldenflightTalisman;
 import com.black_dog20.tucs.item.tool.ItemCobblestonediumLighter;
@@ -73,6 +78,11 @@ public class ModItems {
 	public static final ItemTLSOHD TLSOHD = new ItemTLSOHD(COBBLESTONEDIUM_MATERIAL);
 	public static final ItemTLPOLM TLPOLM = new ItemTLPOLM(COBBLESTONEDIUM_MATERIAL);
 	public static final ItemCraftingTalisman craftingTalisman = new ItemCraftingTalisman();
+	public static final ItemShovelHead shovelHead = new ItemShovelHead();
+	public static final ItemHatchetHead hatchetHead = new ItemHatchetHead();
+	public static final ItemPickaxeHead pickaxeHead = new ItemPickaxeHead();
+	public static final ItemHoeHead hoeHead = new ItemHoeHead();
+	public static final ItemToolRod toolRod = new ItemToolRod();
 	
 	public static void init(){
 		
@@ -101,18 +111,23 @@ public class ModItems {
 		
 		//ITEMS
 		GameRegistry.registerItem(cobblestoneLighter, "cobblestoneLighter");
-		GameRegistry.registerItem(TUCSbook , "TUCSBook");
-		GameRegistry.registerItem(TUCSdebug , "TUCSdebug");
+		GameRegistry.registerItem(TUCSbook, "TUCSBook");
+		GameRegistry.registerItem(TUCSdebug, "TUCSdebug");
 		GameRegistry.registerItem(CobbleCoal, "CobbleCoal");
 		GameRegistry.registerItem(cobblestonediumLighter, "cobblestonediumLighter");
 		GameRegistry.registerItem(cobblestoneiumLighter, "cobblestoneiumLighter");
-		GameRegistry.registerItem(FlightTalisman , "FlightTalisman");
-		GameRegistry.registerItem(UnfinshedFlightTalisman , "UnfinshedFlightTalisman");
-		GameRegistry.registerItem(ungoldenFligtTalisman , "ungoldenFligtTalisman");
-		GameRegistry.registerItem(TalismanBase , "TalismanBase");
-		GameRegistry.registerItem(SwordBlade , "SwordBlade");
-		GameRegistry.registerItem(SwordHilt , "SwordHilt");
-		GameRegistry.registerItem(craftingTalisman , "craftingTalisman");
+		GameRegistry.registerItem(FlightTalisman, "FlightTalisman");
+		GameRegistry.registerItem(UnfinshedFlightTalisman, "UnfinshedFlightTalisman");
+		GameRegistry.registerItem(ungoldenFligtTalisman, "ungoldenFligtTalisman");
+		GameRegistry.registerItem(TalismanBase, "TalismanBase");
+		GameRegistry.registerItem(SwordBlade, "SwordBlade");
+		GameRegistry.registerItem(SwordHilt, "SwordHilt");
+		GameRegistry.registerItem(craftingTalisman, "craftingTalisman");
+		GameRegistry.registerItem(toolRod, "toolRod");
+		GameRegistry.registerItem(shovelHead, "shovelHead");
+		GameRegistry.registerItem(hatchetHead, "hatchetHead");
+		GameRegistry.registerItem(pickaxeHead, "pickaxeHead");
+		GameRegistry.registerItem(hoeHead, "hoeHead");
 		
 
 	}

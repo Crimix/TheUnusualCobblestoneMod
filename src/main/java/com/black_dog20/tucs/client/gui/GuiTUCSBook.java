@@ -223,7 +223,7 @@ public class GuiTUCSBook extends GuiScreen {
 	protected void keyTyped(char c, int key) {
 		char lowerCase = Character.toLowerCase(c);
 		if (key == Keyboard.KEY_ESCAPE) {
-			mc.displayGuiScreen(null);
+			mc.thePlayer.closeScreen();
 		}
 	}
 

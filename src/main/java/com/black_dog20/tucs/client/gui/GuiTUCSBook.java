@@ -37,7 +37,7 @@ public class GuiTUCSBook extends GuiScreen {
 	private static final int BUTTON_PREV = 1;
 
 	private int pageIndex = 0;
-	private int maxPage = 30;
+	private int maxPage = 28;
 	private int xCraft = 64;
 	private int yCraft = 102;
 	private int MouseX;
@@ -216,11 +216,57 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack emerald1 = new ItemStack(Items.emerald);
 			drawRecipePageBot(null, null, stick1, null, stick1, null, emerald1, null, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.toolRod), bookXStart);
 			break;
-			
 		case 21:
-			text="\nThis pickaxe was used by the lost miner!";
+			text="\nThis legendary pickaxe was used by the lost miner";
 			ItemStack pickaxe = new ItemStack(ModItems.TLPOLM);
 			drawPage(pickaxe.getDisplayName(), text, new ItemStack(ModItems.TLPOLM), bookXStart);
+			break;
+		case 22:
+			text="This legendary pickaxe will serve you through good and bad times";
+			drawRecipePageTop(bookXStart);
+			ItemStack cd = new ItemStack(ModItems.ingotCobblestonedium);
+			ItemStack g = new ItemStack(Items.gold_ingot);
+			ItemStack d = new ItemStack(Items.diamond);
+			drawRecipePageBot(cd, g, cd, cd, d, cd, cd, g, cd, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.pickaxeHead), bookXStart);
+			break;
+		case 23:
+			text="\nThe legendary hoe can be upgraded to help you in ways you can't yet understand";
+			ItemStack hoe = new ItemStack(ModItems.TLHOWF);
+			drawPage(hoe.getDisplayName(), text, new ItemStack(ModItems.TLHOWF), bookXStart);
+			break;
+		case 24:
+			text="The legendary hoe will make farming a breeze";
+			drawRecipePageTop(bookXStart);
+			ItemStack c1 = new ItemStack(ModItems.ingotCobblestonedium);
+			ItemStack g1 = new ItemStack(Items.gold_ingot);
+			ItemStack d1 = new ItemStack(Items.diamond);
+			drawRecipePageBot(c1, d1, null, null, c1, g1, null, null, g1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.hoeHead), bookXStart);
+			break;
+		case 25:
+			text="\nThe legendary BattleAxe will slay you'r enemies like anything you have ever seen";
+			ItemStack battle = new ItemStack(ModItems.TLBOTB);
+			drawPage(battle.getDisplayName(), text, new ItemStack(ModItems.TLBOTB), bookXStart);
+			break;
+		case 26:
+			text="The legendary BattleAxe was first used by The Legendary Battle Master";
+			drawRecipePageTop(bookXStart);
+			ItemStack c2 = new ItemStack(ModItems.ingotCobblestonedium);
+			ItemStack g2 = new ItemStack(Items.gold_ingot);
+			ItemStack d2 = new ItemStack(Items.diamond);
+			drawRecipePageBot(c2, null, c2, g2, d2, g2, c2, null, c2, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLBOTB), bookXStart);
+			break;
+		case 27:
+			text="This legendary shovel will make digging holes easier than ever";
+			ItemStack shovel = new ItemStack(ModItems.TLSOHD);
+			drawPage(shovel.getDisplayName(), text, new ItemStack(ModItems.TLSOHD), bookXStart);
+			break;
+		case 28:
+			text="The legendary shovel was first seen in the late 90's";
+			drawRecipePageTop(bookXStart);
+			ItemStack c3 = new ItemStack(ModItems.ingotCobblestonedium);
+			ItemStack g3 = new ItemStack(Items.gold_ingot);
+			ItemStack d3 = new ItemStack(Items.diamond);
+			drawRecipePageBot(null, c3, g3, g3, d3, g3, c3, g3, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLSOHD), bookXStart);
 			break;
 		default:
 			mc.renderEngine.bindTexture(texture);

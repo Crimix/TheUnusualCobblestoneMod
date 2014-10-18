@@ -37,7 +37,7 @@ public class GuiTUCSBook extends GuiScreen {
 	private static final int BUTTON_PREV = 1;
 
 	private int pageIndex = 0;
-	private int maxPage = 20;
+	private int maxPage = 30;
 	private int xCraft = 64;
 	private int yCraft = 102;
 	private int MouseX;
@@ -203,6 +203,16 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack stick = new ItemStack(Items.stick);
 			ItemStack emerald = new ItemStack(Items.emerald);
 			drawRecipePageBot(gold2, cobblestonedium1, gold2, null, stick, null, null, emerald, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordHilt), bookXStart);
+			break;
+		case 19:
+			text="To make you'r legendary tools you will need a tool rod";
+			ItemStack toolRod = new ItemStack(ModItems.toolRod);
+			drawPage(toolRod.getDisplayName(), text, new ItemStack(ModItems.toolRod), bookXStart);
+			break;
+		case 20:
+			text="\nThis pickaxe was used by the lost miner!";
+			ItemStack pickaxe = new ItemStack(ModItems.TLPOLM);
+			drawPage(pickaxe.getDisplayName(), text, new ItemStack(ModItems.TLPOLM), bookXStart);
 			break;
 		default:
 			mc.renderEngine.bindTexture(texture);

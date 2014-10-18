@@ -210,6 +210,14 @@ public class GuiTUCSBook extends GuiScreen {
 			drawPage(toolRod.getDisplayName(), text, new ItemStack(ModItems.toolRod), bookXStart);
 			break;
 		case 20:
+			text="The tool rod will make any ordinary tool legendary";
+			drawRecipePageTop(bookXStart);
+			ItemStack stick1 = new ItemStack(Items.stick);
+			ItemStack emerald1 = new ItemStack(Items.emerald);
+			drawRecipePageBot(null, null, stick1, null, stick1, null, emerald1, null, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.toolRod), bookXStart);
+			break;
+			
+		case 21:
 			text="\nThis pickaxe was used by the lost miner!";
 			ItemStack pickaxe = new ItemStack(ModItems.TLPOLM);
 			drawPage(pickaxe.getDisplayName(), text, new ItemStack(ModItems.TLPOLM), bookXStart);

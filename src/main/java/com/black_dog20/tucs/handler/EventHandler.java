@@ -54,9 +54,6 @@ public class EventHandler {
 
 
 			if(item !=null){
-				if(!itemstack.hasTagCompound()){
-					itemstack.stackTagCompound = new NBTTagCompound();
-				}
 				if(itemstack.hasTagCompound()){
 					NBTTagCompound itemT = itemstack.getTagCompound();
 					if(itemT.hasKey(NBTTags.SOULBOUND)){

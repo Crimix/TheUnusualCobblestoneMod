@@ -91,11 +91,13 @@ public class EventHandler {
 	public void onLivingUpdatePlayer(LivingUpdateEvent event){
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) event.entity;
+			if(player.capabilities.allowFlying){
 			if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
 				player.capabilities.allowFlying = false;
 				player.capabilities.isFlying = false;
 				player.sendPlayerAbilities();
 			}
+		}
 		}
 	}
 

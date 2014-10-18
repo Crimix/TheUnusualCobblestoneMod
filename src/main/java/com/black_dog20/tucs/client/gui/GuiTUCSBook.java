@@ -256,7 +256,7 @@ public class GuiTUCSBook extends GuiScreen {
 			drawRecipePageBot(c2, null, c2, g2, d2, g2, c2, null, c2, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLBOTB), bookXStart);
 			break;
 		case 27:
-			text="This legendary shovel will make digging holes easier than ever";
+			text="This legendary shovel has made digging holes easier than ever";
 			ItemStack shovel = new ItemStack(ModItems.TLSOHD);
 			drawPage(shovel.getDisplayName(), text, new ItemStack(ModItems.TLSOHD), bookXStart);
 			break;

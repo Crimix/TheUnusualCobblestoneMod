@@ -81,10 +81,9 @@ public class ItemTLSOC extends ItemSword {
 	@Override
 	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		
-		/*
-			if(player.isSneaking()){
+		if(player.isSneaking()){
 				player.openGui(tucs.instance, tucs.guiIDUpgradeTools, world, (int)player.posX, (int)player.posY, (int)player.posZ);
-			}*/
+		}
 			
 		return Item;
 		

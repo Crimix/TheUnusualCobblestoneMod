@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiUpgradeTools extends GuiContainer {
 
-	private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGUI1.png");
+	private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTools.png");
 	
 	public GuiUpgradeTools(World world, int x, int y, int z, EntityPlayer player) {
 		super(new ContainerFlightTalisman(world, x, y, z, player, player.getHeldItem()));

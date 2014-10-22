@@ -35,7 +35,7 @@ public class ContainerUpgradeTools extends Container {
 		this.Player = player;
 
 		for(int i = 0; i < 3; i++){
-		this.addSlotToContainer(new SlotUpgradeTools(slot, 0, 57+18*1, 37));
+		this.addSlotToContainer(new Slot(slot, i, 57+18*i, 37));
 		}
 		System.out.println("slot works");
 		
@@ -43,8 +43,8 @@ public class ContainerUpgradeTools extends Container {
 			item.stackTagCompound = new NBTTagCompound();
 		}
 		if(item.hasTagCompound()){
-		NBTTagCompound nbt = item.getTagCompound();
-		NBTTagList nbttaglist = nbt.getTagList("TalismanItems", Constants.NBT.TAG_COMPOUND);
+			NBTTagCompound nbt = item.getTagCompound();
+			NBTTagList nbttaglist = nbt.getTagList("TalismanItems", Constants.NBT.TAG_COMPOUND);
 		for(int i = 0; i <= nbttaglist.tagCount(); i++){
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");

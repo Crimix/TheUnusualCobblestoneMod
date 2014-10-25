@@ -24,28 +24,22 @@ public class ContainerUpgradeTools extends Container {
 	private int posY;
 	private int posZ;
 	private EntityPlayer Player;
-	private final InventoryUpgradeTools slotUpgrade;
+	public IInventory slotUpgrade = new InventoryUpgradeTools();
 	
 
 
 	public ContainerUpgradeTools(World world, int x, int y, int z, EntityPlayer player, ItemStack item)
 	{
-		System.out.println("call");
 		this.worldObj = world;
 		this.posX = x;
 		this.posY = y;
 		this.posZ = z;
 		this.Player = player;
-		this.slotUpgrade =  new InventoryUpgradeTools(item);
-
-		bindPlayerInventory(player.inventory);
-		System.out.println("player done");
+		
 		
 		for(int i = 0; i < 3; i++){
-		this.addSlotToContainer(new SlotUpgradeTools(slotUpgrade, i, 56+(i*18), 38));
+		this.addSlotToContainer(new SlotUpgradeTools(slotUpgrade, i, 57/* +(i*18)*/, 37));
 		}
-		
-		System.out.println("inventory done");
 		
 		if(!item.hasTagCompound()){
 			item.stackTagCompound = new NBTTagCompound();
@@ -65,21 +59,24 @@ public class ContainerUpgradeTools extends Container {
 		}
 		}
 
-		
+		bindPlayerInventory(Player.inventory);
 
 		
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-		for(int i = 0; i < 3; i++) {
-			for(int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-			}
-		}
+	    for (int l = 0; l < 3; ++l)
+        {
+            for (int i1 = 0; i1 < 9; ++i1)
+            {
+                this.addSlotToContainer(new Slot(inventoryPlayer, i1 + l * 9 + 9, 8 + i1 * 18, 84 + l * 18));
+            }
+        }
 
-		for(int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
-		}
+        for (int l = 0; l < 9; ++l)
+        {
+            this.addSlotToContainer(new Slot(inventoryPlayer, l, 8 + l * 18, 142));
+        }
 	}
 
 	@Override
@@ -88,7 +85,7 @@ public class ContainerUpgradeTools extends Container {
 	      if(slotObject != null && slotObject.getHasStack()) {
 	         ItemStack stackInSlot = slotObject.getStack();
 	         ItemStack stack = stackInSlot.copy();
-	         if(slot <= 1) {
+	         if(slot <= 3) {
 	            if(!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
 	               return null;
 	         } else if(slot != 1 && stack.isItemEqual(new ItemStack(ModItems.soulboundUpgrade)) && !getSlot(slot).getHasStack()) {
@@ -116,25 +113,23 @@ public class ContainerUpgradeTools extends Container {
 		boolean test;
 		if(player.getHeldItem() != null){
 			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOC))){
-				test = true;
+				return true;
 			}
 			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLBOTB))){
-				test = true;
+				return true;
 			}
 			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLHOWF))){
-				test = true;
+				return true;
 			}
 			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLPOLM))){
-				test = true;
+				return true;
 			}
 			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOHD))){
-				test = true;
+				return true;
 			}
 			else{
-				test = false;
+				return false;
 			}
-
-		return test;
 		}
 		else{
 			return false;
@@ -146,6 +141,11 @@ public class ContainerUpgradeTools extends Container {
 	{
 		
 		super.onContainerClosed(player);
+		for(int i = 0; i < 3; i++){
+			ItemStack item = this.slotUpgrade.getStackInSlot(i);
+			player.dropPlayerItemWithRandomChoice(item, false);
+		}
+		/*
 		ItemStack itemstack = this.slotUpgrade.getStackInSlotOnClosing(1);
 		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
 			ItemStack stack = player.getHeldItem();
@@ -179,12 +179,8 @@ public class ContainerUpgradeTools extends Container {
 			}
 			
 		}
-		}
+		}*/
 	}
-	
-	public boolean isItemValid(ItemStack itemstack) {
-	      return ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade));
-	   }
 
 
 }

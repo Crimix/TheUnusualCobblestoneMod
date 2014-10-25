@@ -19,47 +19,47 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class ItemTLSOC extends ItemSword {
-	
+
 	public ItemTLSOC(ToolMaterial Material){
-		
+
 		super(Material);
 		this.setUnlocalizedName("TLSOC");
 		this.setMaxStackSize(1);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 		this.setNoRepair();
 		this.canRepair = false;
-		
+
 	}
 
 	@Override
-    public String getUnlocalizedName()
-    {
-        return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-    }
+	public String getUnlocalizedName()
+	{
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	}
 
-    @Override
-    public String getUnlocalizedName(ItemStack itemStack)
-    {
-        return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-    }
+	@Override
+	public String getUnlocalizedName(ItemStack itemStack)
+	{
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister)
-    {
-    	itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "swordTLSOC");
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister iconRegister)
+	{
+		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "swordTLSOC");
+	}
 
-    protected String getUnwrappedUnlocalizedName(String unlocalizedName)
-    {
-        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
-    }
-    
-    @Override
+	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
+	{
+		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+	}
+
+	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-    	/*
-		
+		/*
+
 		list.add("Shift right click to upgrade");
 		list.add("");
 		if(!stack.hasTagCompound()){
@@ -67,7 +67,7 @@ public class ItemTLSOC extends ItemSword {
 		}
 		if(stack.hasTagCompound()){
 			NBTTagCompound nbt= stack.getTagCompound();
-			
+
 			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
 				list.add("Soulbound");
 			}
@@ -76,27 +76,31 @@ public class ItemTLSOC extends ItemSword {
 			}
 		}*/
 	}
-	
-	
+
+
 	@Override
-	 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
+	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		/*
-		if(player.isSneaking()){
+		if (!world.isRemote)
+		{
+			if(player.isSneaking()){
 				player.openGui(tucs.instance, tucs.guiIDUpgradeTools, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+			}
 		}
-			*/
+		*/
 		return Item;
-		
-	    }
+
+	}
+
 	@Override
 	public boolean hasEffect(ItemStack stack){
-		
+
 		if(!stack.hasTagCompound()){
 			stack.stackTagCompound = new NBTTagCompound();
 		}
 		if(stack.hasTagCompound()){
 			NBTTagCompound nbt= stack.getTagCompound();
-			
+
 			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
 				return true;
 			}
@@ -106,6 +110,6 @@ public class ItemTLSOC extends ItemSword {
 		}
 		return false;
 	}
-	
-	
+
+
 }

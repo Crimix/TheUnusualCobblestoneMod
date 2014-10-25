@@ -6,14 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class InventoryUpgradeTools implements IInventory
 {
-	protected ItemStack[] inventory;
-	
-	 public InventoryUpgradeTools(ItemStack itemStack)
-	    {
-	        inventory = new ItemStack[3];
-
-	    }
-
+	protected ItemStack[] inventory = new ItemStack[3];
 
     public int getSizeInventory()
     {
@@ -22,12 +15,7 @@ public class InventoryUpgradeTools implements IInventory
 
     public ItemStack getStackInSlot(int i)
     {
-    	if(i < inventory.length){
         return inventory[i];
-    	}
-    	else{
-    		return null;
-    	}
     }
 
     public String getInventoryName()

@@ -8,9 +8,9 @@ import com.black_dog20.tucs.init.ModItems;
 
 public class SlotUpgradeTools extends Slot {
 	
-	public SlotUpgradeTools(IInventory inventory, int par1,
-			int par2, int par3) {
-		super(inventory, par1, par2, par3);
+	public SlotUpgradeTools(IInventory inventory, int slotIndex,
+			int x, int y) {
+		super(inventory, slotIndex, x, y);
 	}
 	
 	@Override

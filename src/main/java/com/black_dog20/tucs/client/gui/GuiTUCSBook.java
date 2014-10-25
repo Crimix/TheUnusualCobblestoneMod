@@ -271,8 +271,7 @@ public class GuiTUCSBook extends GuiScreen {
 		default:
 			mc.renderEngine.bindTexture(texture);
 			this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
-			super.drawScreen(mouseX, mouseY, renderPartials);
-			DrawDontUnderstandPage(bookXStart);
+			super.drawScreen(MouseX, MouseY, RenderPartials);
 			break;
 
 		}
@@ -411,14 +410,6 @@ public class GuiTUCSBook extends GuiScreen {
 		
 		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, output, bookXStart + 34, 15);
 		
-	}
-	
-	public void DrawDontUnderstandPage(int bookXStart){
-		mc.renderEngine.bindTexture(texture);
-		this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
-		super.drawScreen(MouseX, MouseY, RenderPartials);
-		fontRendererObj.drawString("\u00A7l" + "\u00A7n" + "§k" + "Youdont", bookXStart + 52, 17, 0x000000);
-		fontRendererObj.drawSplitString("\u00A7r" + "§k" + "you dont understand this, find a page to fully undestand this", bookXStart + 34, 35, 120, 0x000000);
 	}
 	
 	public void DrawPageNumber(int pageNumber, int bookXStart){

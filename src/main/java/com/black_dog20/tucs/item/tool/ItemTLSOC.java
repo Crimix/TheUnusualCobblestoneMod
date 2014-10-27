@@ -12,6 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -88,6 +89,25 @@ public class ItemTLSOC extends ItemSword {
 		
 		return Item;
 
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack){
+		
+		if(!stack.hasTagCompound()){
+			stack.stackTagCompound = new NBTTagCompound();
+		}
+		if(stack.hasTagCompound()){
+			NBTTagCompound nbt= stack.getTagCompound();
+			
+			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		return false;
 	}
 
 

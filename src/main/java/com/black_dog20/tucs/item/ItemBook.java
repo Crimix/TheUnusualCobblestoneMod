@@ -39,11 +39,7 @@ public class ItemBook extends ItemTUCS  {
 	}
 	
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
-	{
-	stack.stackTagCompound = new NBTTagCompound();
-	nbt = stack.getTagCompound();
-	nbt.setString(NBTTags.SOULBOUND,NBTTags.OK);
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4){
 	list.add("by The Lost Writer");
 	}
 	

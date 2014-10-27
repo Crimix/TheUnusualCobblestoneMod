@@ -185,19 +185,15 @@ public class ContainerUpgradeTools extends Container {
 	void setEnchant(ItemStack ContainerItem, ItemStack UpgradeItem, NBTTagCompound NBT){
 		if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.soulboundUpgrade,1))){
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
-			ContainerItem.hasEffect(1);
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
 			ContainerItem.addEnchantment(Enchantment.looting, 1);
-			ContainerItem.hasEffect(1);
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
 			ContainerItem.addEnchantment(Enchantment.looting, 2);
-			ContainerItem.hasEffect(1);
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
 			ContainerItem.addEnchantment(Enchantment.looting, 3);
-			ContainerItem.hasEffect(1);
 		}
 	}
 
@@ -218,6 +214,8 @@ public class ContainerUpgradeTools extends Container {
 			return false;
 		}
 	}
+	
+	
 
 
 }

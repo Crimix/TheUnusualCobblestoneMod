@@ -90,24 +90,5 @@ public class ItemTLSOC extends ItemSword {
 
 	}
 
-	/*@Override
-	public boolean hasEffect(ItemStack stack){
-
-		if(!stack.hasTagCompound()){
-			stack.stackTagCompound = new NBTTagCompound();
-		}
-		if(stack.hasTagCompound()){
-			NBTTagCompound nbt= stack.getTagCompound();
-
-			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		return false;
-	}*/
-
 
 }

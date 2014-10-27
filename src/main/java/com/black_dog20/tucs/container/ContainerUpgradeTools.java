@@ -38,7 +38,7 @@ public class ContainerUpgradeTools extends Container {
 		
 		
 		for(int i = 0; i < 3; i++){
-		this.addSlotToContainer(new SlotUpgradeTools(slotUpgrade, i, 57/* +(i*18)*/, 37));
+		this.addSlotToContainer(new SlotUpgradeTools(slotUpgrade, i, 75/* +(i*18)*/, 37));
 		}
 		
 		if(!item.hasTagCompound()){
@@ -63,20 +63,17 @@ public class ContainerUpgradeTools extends Container {
 
 		
 	}
-
+	
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-	    for (int l = 0; l < 3; ++l)
-        {
-            for (int i1 = 0; i1 < 9; ++i1)
-            {
-                this.addSlotToContainer(new Slot(inventoryPlayer, i1 + l * 9 + 9, 8 + i1 * 18, 84 + l * 18));
-            }
-        }
+		for (int i = 0; i < 3; ++i){
+			for (int j = 0; j < 9; ++j){
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+			}
+		}
 
-        for (int l = 0; l < 9; ++l)
-        {
-            this.addSlotToContainer(new Slot(inventoryPlayer, l, 8 + l * 18, 142));
-        }
+		for (int i = 0; i < 9; ++i){
+			this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+		}
 	}
 
 	@Override

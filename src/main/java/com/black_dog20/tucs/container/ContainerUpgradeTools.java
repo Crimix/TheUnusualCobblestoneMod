@@ -1,10 +1,8 @@
 package com.black_dog20.tucs.container;
 
 import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.inventory.InventoryTalisman;
 import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
 import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.slot.SlotFlightTalisman;
 import com.black_dog20.tucs.slot.SlotUpgradeTools;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,6 +23,8 @@ public class ContainerUpgradeTools extends Container {
 	private int posZ;
 	private EntityPlayer Player;
 	public IInventory slotUpgrade = new InventoryUpgradeTools();
+	private static final int INV_START = 3, INV_END = INV_START+3,
+			HOTBAR_START = INV_END+1, HOTBAR_END = HOTBAR_START+8;
 	
 
 
@@ -36,10 +36,12 @@ public class ContainerUpgradeTools extends Container {
 		this.posZ = z;
 		this.Player = player;
 		
+			this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, 0, 57 , 70));
+			//this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, 1, 57+18 , 70));
 		
-		for(int k = 0; k < 3; k++){
-		this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, k, 57/* +(k*18)*/, 37));
-		}
+		/*for(int k = 0; k < 3; k++){
+		this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, k, 57 +(k*18), 37));
+		}*/
 		
 		if(!item.hasTagCompound()){
 			item.stackTagCompound = new NBTTagCompound();
@@ -78,36 +80,121 @@ public class ContainerUpgradeTools extends Container {
 
 	@Override
 	   public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
-	      Slot slotObject = (Slot) inventorySlots.get(slot);
-	      if(slotObject != null && slotObject.getHasStack()) {
-	         ItemStack stackInSlot = slotObject.getStack();
-	         ItemStack stack = stackInSlot.copy();
-	         if(slot <= 3) {
-	            if(!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
-	               return null;
-	         } else if(slot != 1 && stack.isItemEqual(new ItemStack(ModItems.soulboundUpgrade)) && !getSlot(slot).getHasStack()) {
-	            ItemStack copy = slotObject.decrStackSize(1);
-	            getSlot(slot).putStack(copy);
-	            return null;
+		ItemStack itemstack = null;
+		Slot Islot = (Slot) this.inventorySlots.get(slot);
 
-	         } else {
-	            return null;
-	         }
+		if (Islot != null && Islot.getHasStack())
+		{
+			ItemStack itemstack1 = Islot.getStack();
+			itemstack = itemstack1.copy();
 
-	         if(stackInSlot.stackSize == 0)
-	            slotObject.putStack(null);
-	         else
-	            slotObject.onSlotChanged();
+			// If item is in our custom Inventory or armor slot
+			if (slot < INV_START)
+			{
+				// try to place in player inventory / action bar
+				if (!this.mergeItemStack(itemstack1, INV_START, HOTBAR_END+1, true))
+				{
+					return null;
+				}
 
-	         return stack;
-	      }
-	      return null;
-	   }
+				Islot.onSlotChange(itemstack1, itemstack);
+			}
+			// Item is in inventory / hotbar, try to place in custom inventory or armor slots
+			else
+			{
+				/*
+				If your inventory only stores certain instances of Items,
+				you can implement shift-clicking to your inventory like this:
+				
+				// Check that the item is the right type
+				if (itemstack1.getItem() instanceof ItemCustom)
+				{
+					// Try to merge into your custom inventory slots
+					// We use 'InventoryItem.INV_SIZE' instead of INV_START just in case
+					// you also add armor or other custom slots
+					if (!this.mergeItemStack(itemstack1, 0, InventoryItem.INV_SIZE, false))
+					{
+						return null;
+					}
+				}
+				// If you added armor slots, check them here as well:
+				// Item being shift-clicked is armor - try to put in armor slot
+				if (itemstack1.getItem() instanceof ItemArmor)
+				{
+					int type = ((ItemArmor) itemstack1.getItem()).armorType;
+					if (!this.mergeItemStack(itemstack1, ARMOR_START + type, ARMOR_START + type + 1, false))
+					{
+						return null;
+					}
+				}
+				Otherwise, you have basically 2 choices:
+				1. shift-clicking between player inventory and custom inventory
+				2. shift-clicking between action bar and inventory
+				 
+				Be sure to choose only ONE of the following implementations!!!
+				*/
+				/**
+				 * Implementation number 1: Shift-click into your custom inventory
+				 */
+				if (slot >= INV_START)
+        		    	{
+            				// place in custom inventory
+        				if (!this.mergeItemStack(itemstack1, 0, INV_START, false))
+					{
+						return null;
+                			}
+            			}
+				
+				/**
+				 * Implementation number 2: Shift-click items between action bar and inventory
+				 */
+				// item is in player's inventory, but not in action bar
+				if (slot >= INV_START && slot < HOTBAR_START)
+				{
+					// place in action bar
+					if (!this.mergeItemStack(itemstack1, HOTBAR_START, HOTBAR_END+1, false))
+					{
+						return null;
+					}
+				}
+				// item in action bar - place in player inventory
+				else if (slot >= HOTBAR_START && slot < HOTBAR_END+1)	{
+					if (!this.mergeItemStack(itemstack1, INV_START, INV_END+1, false))
+					{
+						return null;
+					}
+				}
+			}
+
+			if (itemstack1.stackSize == 0){
+				Islot.putStack((ItemStack) null);
+			}
+			else{
+				Islot.onSlotChanged();
+			}
+
+			if (itemstack1.stackSize == itemstack.stackSize){
+				return null;
+			}
+
+			Islot.onPickupFromSlot(entityPlayer, itemstack1);
+		}
+		return itemstack;
+	}
+	
+	@Override
+	public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
+		// this will prevent the player from interacting with the item that opened the inventory:
+		if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
+			return null;
+		}
+		return super.slotClick(slot, button, flag, player);
+	}
 	   
 	 
 	@Override
 	public boolean canInteractWith(EntityPlayer player){
-		boolean test;
+		/*boolean test;
 		if(player.getHeldItem() != null){
 			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOC))){
 				return true;
@@ -130,7 +217,8 @@ public class ContainerUpgradeTools extends Container {
 		}
 		else{
 			return false;
-		}
+		}*/
+		return true;
 	}
 
 	@Override

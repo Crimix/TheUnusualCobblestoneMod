@@ -46,7 +46,7 @@ public class ContainerUpgradeTools extends Container {
 		}
 		if(item.hasTagCompound()){
 			NBTTagCompound nbt = item.getTagCompound();
-			NBTTagList nbttaglist = nbt.getTagList("TalismanItems", Constants.NBT.TAG_COMPOUND);
+			NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);
 		for(int i = 0; i <= nbttaglist.tagCount(); i++){
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
@@ -159,7 +159,7 @@ public class ContainerUpgradeTools extends Container {
 			nbttagcompound1.setByte("Slot", (byte)0);
 			itemstack.writeToNBT(nbttagcompound1);
 			nbttaglist.appendTag(nbttagcompound1);
-			NBT.setTag("TalismanItems", nbttaglist);
+			NBT.setTag("upgradeItems", nbttaglist);
 			
 			
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);

@@ -3,6 +3,7 @@ package com.black_dog20.tucs.client.gui;
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.container.ContainerFlightTalisman;
+import com.black_dog20.tucs.container.ContainerUpgradeTools;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -19,7 +20,7 @@ public class GuiUpgradeTools extends GuiContainer {
 	private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTools.png");
 	
 	public GuiUpgradeTools(World world, int x, int y, int z, EntityPlayer player) {
-		super(new ContainerFlightTalisman(world, x, y, z, player, player.getHeldItem()));
+		super(new ContainerUpgradeTools(world, x, y, z, player, player.getHeldItem()));
 		
 		this.xSize = 175;
 		this.ySize = 165;

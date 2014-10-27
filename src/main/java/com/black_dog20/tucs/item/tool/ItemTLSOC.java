@@ -58,8 +58,6 @@ public class ItemTLSOC extends ItemSword {
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
 	{
-		/*
-
 		list.add("Shift right click to upgrade");
 		list.add("");
 		if(!stack.hasTagCompound()){
@@ -74,7 +72,7 @@ public class ItemTLSOC extends ItemSword {
 			else{
 				list.remove("Soulbound");
 			}
-		}*/
+		}
 	}
 
 
@@ -92,7 +90,7 @@ public class ItemTLSOC extends ItemSword {
 
 	}
 
-	@Override
+	/*@Override
 	public boolean hasEffect(ItemStack stack){
 
 		if(!stack.hasTagCompound()){
@@ -109,7 +107,7 @@ public class ItemTLSOC extends ItemSword {
 			}
 		}
 		return false;
-	}
+	}*/
 
 
 }

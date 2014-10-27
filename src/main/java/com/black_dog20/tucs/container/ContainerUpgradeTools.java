@@ -5,6 +5,7 @@ import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.slot.SlotUpgradeTools;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -36,28 +37,30 @@ public class ContainerUpgradeTools extends Container {
 		this.posZ = z;
 		this.Player = player;
 		
-			this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, 0, 57 , 70));
-			//this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, 1, 57+18 , 70));
 		
-		/*for(int k = 0; k < 3; k++){
-		this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, k, 57 +(k*18), 37));
-		}*/
+		for(int i = 0; i < 3; i++){
+		this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, i, 58 +(i*18), 38));
+		}
 		
 		if(!item.hasTagCompound()){
 			item.stackTagCompound = new NBTTagCompound();
 		}
 		if(item.hasTagCompound()){
+			item.stackTagCompound.removeTag("ench");
+			item.stackTagCompound.removeTag(NBTTags.SOULBOUND);
+			item.hasEffect(0);
 			NBTTagCompound nbt = item.getTagCompound();
+			
 			NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);
 		for(int i = 0; i <= nbttaglist.tagCount(); i++){
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
+			int b0 = nbttagcompound1.getInteger("Slot");
 			ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			if(slotItem !=null){
-					this.slotUpgrade.setInventorySlotContents(b0 ,ItemStack.loadItemStackFromNBT(nbttagcompound1));
+					slotUpgrade.setInventorySlotContents(b0, slotItem);
 			
-			nbttaglist.removeTag(i);
 			}
+			nbt.removeTag("upgradeItems");
 		}
 		}
 
@@ -80,107 +83,32 @@ public class ContainerUpgradeTools extends Container {
 
 	@Override
 	   public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
-		ItemStack itemstack = null;
-		Slot Islot = (Slot) this.inventorySlots.get(slot);
+		 Slot slotObject = (Slot) inventorySlots.get(slot);
+	      if(slotObject != null && slotObject.getHasStack()) {
+	         ItemStack stackInSlot = slotObject.getStack();
+	         ItemStack stack = stackInSlot.copy();
+	         if(slot <= 3) {
+	            if(!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
+	               return null;
+	         }
+	         else if(slot != 1 && checkItem(stack) && !getSlot(0).getHasStack()) {
+	            ItemStack copy = slotObject.decrStackSize(1);
+	            getSlot(0).putStack(copy);
+	            return null;
+	          } 
+	         else {
+	            return null;
+	         }
 
-		if (Islot != null && Islot.getHasStack())
-		{
-			ItemStack itemstack1 = Islot.getStack();
-			itemstack = itemstack1.copy();
+	         if(stackInSlot.stackSize == 0)
+	            slotObject.putStack(null);
+	         else
+	            slotObject.onSlotChanged();
 
-			// If item is in our custom Inventory or armor slot
-			if (slot < INV_START)
-			{
-				// try to place in player inventory / action bar
-				if (!this.mergeItemStack(itemstack1, INV_START, HOTBAR_END+1, true))
-				{
-					return null;
-				}
-
-				Islot.onSlotChange(itemstack1, itemstack);
-			}
-			// Item is in inventory / hotbar, try to place in custom inventory or armor slots
-			else
-			{
-				/*
-				If your inventory only stores certain instances of Items,
-				you can implement shift-clicking to your inventory like this:
-				
-				// Check that the item is the right type
-				if (itemstack1.getItem() instanceof ItemCustom)
-				{
-					// Try to merge into your custom inventory slots
-					// We use 'InventoryItem.INV_SIZE' instead of INV_START just in case
-					// you also add armor or other custom slots
-					if (!this.mergeItemStack(itemstack1, 0, InventoryItem.INV_SIZE, false))
-					{
-						return null;
-					}
-				}
-				// If you added armor slots, check them here as well:
-				// Item being shift-clicked is armor - try to put in armor slot
-				if (itemstack1.getItem() instanceof ItemArmor)
-				{
-					int type = ((ItemArmor) itemstack1.getItem()).armorType;
-					if (!this.mergeItemStack(itemstack1, ARMOR_START + type, ARMOR_START + type + 1, false))
-					{
-						return null;
-					}
-				}
-				Otherwise, you have basically 2 choices:
-				1. shift-clicking between player inventory and custom inventory
-				2. shift-clicking between action bar and inventory
-				 
-				Be sure to choose only ONE of the following implementations!!!
-				*/
-				/**
-				 * Implementation number 1: Shift-click into your custom inventory
-				 */
-				if (slot >= INV_START)
-        		    	{
-            				// place in custom inventory
-        				if (!this.mergeItemStack(itemstack1, 0, INV_START, false))
-					{
-						return null;
-                			}
-            			}
-				
-				/**
-				 * Implementation number 2: Shift-click items between action bar and inventory
-				 */
-				// item is in player's inventory, but not in action bar
-				if (slot >= INV_START && slot < HOTBAR_START)
-				{
-					// place in action bar
-					if (!this.mergeItemStack(itemstack1, HOTBAR_START, HOTBAR_END+1, false))
-					{
-						return null;
-					}
-				}
-				// item in action bar - place in player inventory
-				else if (slot >= HOTBAR_START && slot < HOTBAR_END+1)	{
-					if (!this.mergeItemStack(itemstack1, INV_START, INV_END+1, false))
-					{
-						return null;
-					}
-				}
-			}
-
-			if (itemstack1.stackSize == 0){
-				Islot.putStack((ItemStack) null);
-			}
-			else{
-				Islot.onSlotChanged();
-			}
-
-			if (itemstack1.stackSize == itemstack.stackSize){
-				return null;
-			}
-
-			Islot.onPickupFromSlot(entityPlayer, itemstack1);
-		}
-		return itemstack;
-	}
+	         return stack;
+	      }
+	      return null;
+	   }
 	
 	@Override
 	public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
@@ -194,7 +122,6 @@ public class ContainerUpgradeTools extends Container {
 	 
 	@Override
 	public boolean canInteractWith(EntityPlayer player){
-		/*boolean test;
 		if(player.getHeldItem() != null){
 			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOC))){
 				return true;
@@ -217,54 +144,79 @@ public class ContainerUpgradeTools extends Container {
 		}
 		else{
 			return false;
-		}*/
-		return true;
+		}
 	}
 
 	@Override
 	public void onContainerClosed(EntityPlayer player)
 	{
+		ItemStack tool = player.getHeldItem();
+		if(tool != null && !tool.hasTagCompound()){
+			tool.stackTagCompound = new NBTTagCompound();
+		}
+		
+		NBTTagCompound NBT = tool.getTagCompound();
+		NBTTagList nbttaglist = new NBTTagList();
 		
 		super.onContainerClosed(player);
 		for(int i = 0; i < 3; i++){
-			ItemStack item = this.slotUpgrade.getStackInSlot(i);
-			player.dropPlayerItemWithRandomChoice(item, false);
+			ItemStack upgrade = this.slotUpgrade.getStackInSlot(i);
+			if(upgrade != null && checkItem(upgrade)){
+				if(tool != null && tool.hasTagCompound()){
+					NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+					nbttagcompound1.setInteger("Slot", i);
+					upgrade.writeToNBT(nbttagcompound1);
+					nbttaglist.appendTag(nbttagcompound1);
+					
+					setEnchant(tool, upgrade, NBT);
+
+				}
+			}
+			else{
+				if(upgrade != null){
+					player.dropPlayerItemWithRandomChoice(upgrade, false);
+				}
+			}
 		}
-		/*
-		ItemStack itemstack = this.slotUpgrade.getStackInSlotOnClosing(1);
-		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
-			ItemStack stack = player.getHeldItem();
-			if(stack != null && !stack.hasTagCompound()){
-				stack.stackTagCompound = new NBTTagCompound();
-			}
-			if(stack != null && stack.hasTagCompound()){
-			NBTTagCompound NBT = stack.getTagCompound();
-			NBTTagList nbttaglist = new NBTTagList();
-			NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-			nbttagcompound1.setByte("Slot", (byte)0);
-			itemstack.writeToNBT(nbttagcompound1);
-			nbttaglist.appendTag(nbttagcompound1);
-			NBT.setTag("upgradeItems", nbttaglist);
-			
-			
+		NBT.setTag("upgradeItems", nbttaglist);
+	}
+	
+
+	void setEnchant(ItemStack ContainerItem, ItemStack UpgradeItem, NBTTagCompound NBT){
+		if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.soulboundUpgrade,1))){
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
-			}
+			ContainerItem.hasEffect(1);
+		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
+			ContainerItem.addEnchantment(Enchantment.looting, 1);
+			ContainerItem.hasEffect(1);
+		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
+			ContainerItem.addEnchantment(Enchantment.looting, 2);
+			ContainerItem.hasEffect(1);
+		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
+			ContainerItem.addEnchantment(Enchantment.looting, 3);
+			ContainerItem.hasEffect(1);
+		}
+	}
+	
+	boolean checkItem(ItemStack UpgradeItem){
+		if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.soulboundUpgrade,1))){
+			return true;
+		}
+		else if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
+			return true;
+		}
+		else if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
+			return true;
+		}
+		else if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
+			return true;
 		}
 		else{
-			if (itemstack == null)
-			{
-				ItemStack stack = player.getHeldItem();
-				if(stack != null &&!stack.hasTagCompound()){
-					stack.stackTagCompound = new NBTTagCompound();
-				}
-				if(stack != null && stack.hasTagCompound()){
-				NBTTagCompound NBT = stack.getTagCompound();
-				NBT.removeTag(NBTTags.SOULBOUND);
-				player.dropPlayerItemWithRandomChoice(itemstack, false);
-			}
-			
+			return false;
 		}
-		}*/
 	}
 
 

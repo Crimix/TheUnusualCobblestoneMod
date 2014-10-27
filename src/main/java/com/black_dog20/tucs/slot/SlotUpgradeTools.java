@@ -15,7 +15,16 @@ public class SlotUpgradeTools extends Slot {
 	
 	@Override
 	   public boolean isItemValid(ItemStack itemstack) {
-		if(ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade))){
+		if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting1Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting2Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting3Upgrade,1))){
 			return true;
 		}
 		else{

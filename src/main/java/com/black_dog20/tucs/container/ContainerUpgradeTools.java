@@ -37,8 +37,8 @@ public class ContainerUpgradeTools extends Container {
 		this.Player = player;
 		
 		
-		for(int i = 0; i < 3; i++){
-		this.addSlotToContainer(new SlotUpgradeTools(slotUpgrade, i, 75/* +(i*18)*/, 37));
+		for(int k = 0; k < 3; k++){
+		this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, k, 57/* +(k*18)*/, 37));
 		}
 		
 		if(!item.hasTagCompound()){

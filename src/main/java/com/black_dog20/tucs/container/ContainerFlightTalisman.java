@@ -120,6 +120,15 @@ public class ContainerFlightTalisman extends Container{
 			return false;
 		}
 	}
+	
+	@Override
+	public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
+		// this will prevent the player from interacting with the item that opened the inventory:
+			if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
+				return null;
+			}
+			return super.slotClick(slot, button, flag, player);
+	}
 
 	@Override
 	public void onContainerClosed(EntityPlayer player)

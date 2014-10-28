@@ -24,9 +24,6 @@ public class ContainerUpgradeTools extends Container {
 	private int posZ;
 	private EntityPlayer Player;
 	public IInventory slotUpgrade = new InventoryUpgradeTools();
-	private static final int INV_START = 3, INV_END = INV_START+3,
-			HOTBAR_START = INV_END+1, HOTBAR_END = HOTBAR_START+8;
-
 
 
 	public ContainerUpgradeTools(World world, int x, int y, int z, EntityPlayer player, ItemStack item)
@@ -87,13 +84,23 @@ public class ContainerUpgradeTools extends Container {
 		if(slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			ItemStack stack = stackInSlot.copy();
-			if(slot <= 3) {
+			if(slot <= 1) {
 				if(!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
 					return null;
 			}
 			else if(slot != 1 && checkItem(stack) && !getSlot(0).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(0).putStack(copy);
+				return null;
+			} 
+			else if(slot != 2 && checkItem(stack) && !getSlot(1).getHasStack()) {
+				ItemStack copy = slotObject.decrStackSize(1);
+				getSlot(1).putStack(copy);
+				return null;
+			} 
+			else if(slot != 3 && checkItem(stack) && !getSlot(2).getHasStack()) {
+				ItemStack copy = slotObject.decrStackSize(1);
+				getSlot(2).putStack(copy);
 				return null;
 			} 
 			else {

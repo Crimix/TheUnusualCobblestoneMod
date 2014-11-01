@@ -100,7 +100,7 @@ public class ItemTLSOC extends ItemSword {
 		if(stack.hasTagCompound()){
 			NBTTagCompound nbt= stack.getTagCompound();
 			
-			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
+			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")){
 				return true;
 			}
 			else{

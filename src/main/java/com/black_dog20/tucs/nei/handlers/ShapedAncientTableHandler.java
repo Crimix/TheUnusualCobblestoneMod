@@ -164,12 +164,14 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	        }
 	    }
 
+	    /*
 	    @Override
 	    public void loadUsageRecipes(ItemStack ingredient) {
 	        for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
 	        	CachedShapedAncientTableRecipe recipe = null;
 	            if (irecipe instanceof AncientTableShapedRecipes)
 	                recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
+	            else if (irecipe instanceof ShapedOreRecipe)
 
 	            if (recipe == null || !recipe.contains(recipe.ingredients, ingredient.getItem()))
 	                continue;
@@ -180,7 +182,7 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	                arecipes.add(recipe);
 	            }
 	        }
-	    }
+	    }*/
 	    
 
 

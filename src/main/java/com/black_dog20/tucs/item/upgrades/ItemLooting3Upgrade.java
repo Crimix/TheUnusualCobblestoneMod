@@ -1,4 +1,6 @@
-package com.black_dog20.tucs.item;
+package com.black_dog20.tucs.item.upgrades;
+
+import com.black_dog20.tucs.item.ItemTUCS;
 
 
 public class ItemLooting3Upgrade extends ItemTUCS {

@@ -1,6 +1,8 @@
 package com.black_dog20.tucs.nei;
 
+import com.black_dog20.tucs.nei.handlers.AncientForgeHandler;
 import com.black_dog20.tucs.nei.handlers.ShapedAncientTableHandler;
+import com.black_dog20.tucs.nei.handlers.ShapelessAncientTableHandler;
 import com.black_dog20.tucs.reference.Reference;
 
 import codechicken.nei.api.API;
@@ -13,12 +15,11 @@ public class NEITucsConfig implements IConfigureNEI{
 
 		API.registerRecipeHandler(new ShapedAncientTableHandler());
 		API.registerUsageHandler(new ShapedAncientTableHandler());
-		/*
-		API.registerRecipeHandler(new ShapelessArcaneWorkbenchHandler());
-		API.registerUsageHandler(new ShapelessArcaneWorkbenchHandler());
+		API.registerRecipeHandler(new ShapelessAncientTableHandler());
+		API.registerUsageHandler(new ShapelessAncientTableHandler());
 
-		API.registerRecipeHandler(new CrucibleHandler());
-		API.registerUsageHandler(new CrucibleHandler());*/
+		API.registerRecipeHandler(new AncientForgeHandler());
+
 	 }
 
 	@Override

@@ -40,6 +40,12 @@ item.tucs:looting2Upgrade.name=Luck 2 Upgrade
 item.tucs:looting3Upgrade.name=Luck 3 Upgrade
 item.tucs:upgradeBase.name=Upgrade Base
 item.tucs:soulboundUpgrade.name=Soulbound Upgrade
+item.tucs:sharpness1Upgrade.name=Sharpness 1 Upgrade
+item.tucs:sharpness2Upgrade.name=Sharpness 2 Upgrade
+item.tucs:sharpness3Upgrade.name=Sharpness 3 Upgrade
+item.tucs:sharpness4Upgrade.name=Sharpness 4 Upgrade
+item.tucs:sharpness5Upgrade.name=Sharpness 5 Upgrade
+item.tucs:ingotYellowstoneium.name= Yellowstoneium Ingot
 
 
 

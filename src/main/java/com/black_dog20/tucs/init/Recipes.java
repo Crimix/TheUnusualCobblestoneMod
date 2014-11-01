@@ -19,8 +19,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Recipes {
 	
 	public static void init(){
+		
+		//ItemStack used in crafting
+		
+		ItemStack yellowstoneium = new ItemStack(ModItems.ingotYellowstoneium);
+		
 		//OreDictionary
 		OreDictionary.registerOre("ingotCobblestoneium", new ItemStack(ModItems.ingotCobblestoneium));
+		OreDictionary.registerOre("yellowstoneium", new ItemStack(ModItems.ingotCobblestoneium));
 		OreDictionary.registerOre("ingotCobblestonedium", new ItemStack(ModItems.ingotCobblestonedium));
 		OreDictionary.registerOre("cobblestoneLigthers", new ItemStack(ModItems.cobblestoneLighter,1,OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("cobblestoneLigthers", new ItemStack(ModItems.cobblestonediumLighter,1,OreDictionary.WILDCARD_VALUE));
@@ -50,25 +56,28 @@ public class Recipes {
 		//Blocks
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockCobblestoneium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , "ingotCobblestoneium"}));
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.ingotCobblestoneium , 9) , new ItemStack(ModBlocks.blockCobblestoneium)));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ancientTable), new Object[] {"gcg" , "cbc" , "gcg" , 'g' , "ingotGold", 'c', "ingotCobblestoneium" , 'b' , new ItemStack(Blocks.crafting_table)}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ancientTable), new Object[] {"gcg" , "cbc" , "gcg" , 'g' , yellowstoneium, 'c', "ingotCobblestoneium" , 'b' , new ItemStack(Blocks.crafting_table)}));
 		
 		//Items
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(ModBlocks.oreCobblestoneium), "cobblestoneLighters"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,"cobblestoneLigthers"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', "cobblestoneLigthers"}));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.dye,3,11), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,15), new ItemStack(Items.dye,1,15), "cobblestoneLigthers"));
+		
+		
+		//Ores
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(Blocks.cobblestone), "ingotIron", Items.gunpowder, "cobblestoneLigthers"));
 		
 		
 		//Recipes Ancient Table
-		//Ores
-		TucsRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(Blocks.cobblestone), "ingotIron", Items.gunpowder, "cobblestoneLigthers"));
-		
 		//Blocks
 		TucsRegistry.addRecipe(new ItemStack(ModBlocks.blockCobblestonedium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , ModItems.ingotCobblestonedium });
-		TucsRegistry.addRecipe(new ItemStack(ModBlocks.blockAncientForge) , new Object[] {"ggg", "gcg" , "glg" , 'c' , ModBlocks.blockCobblestoneium, 'g', Items.gold_ingot, 'l' ,ModItems.cobblestoneiumLighter });
+		TucsRegistry.addRecipe(new ItemStack(ModBlocks.blockAncientForge) , new Object[] {"ggg", "gcg" , "glg" , 'c' , ModBlocks.blockCobblestoneium, 'g', yellowstoneium, 'l' ,ModItems.cobblestoneiumLighter });
 		
 		//Items
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSbook), new Object[]{"ccc", "cbc", "ccc", 'c', Blocks.cobblestone, 'b', Items.book});
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotCobblestonedium), new Object[] {" c ", "cdc" , " c " , 'c', ModItems.ingotCobblestoneium , 'd' , Items.diamond}));
+		TucsRegistry.addRecipe(new ItemStack(ModItems.ingotCobblestonedium), new Object[] {" c ", "cdc" , " c " , 'c', ModItems.ingotCobblestoneium , 'd' , Items.diamond});
 		TucsRegistry.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestonedium , 9) , new ItemStack(ModBlocks.blockCobblestonedium));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,"cobblestoneLigthers"}));
 		TucsRegistry.addRecipe(new ItemStack(Blocks.torch,5), new Object[] {"c", "s", 'c', ModItems.CobbleCoal, 's', Items.stick});
 		TucsRegistry.addRecipe(new ItemStack(Items.emerald,2), new Object[]{"dbd", "beb", "dld", 'd', new ItemStack(Items.dye,1,10), 'b', new ItemStack(Items.diamond), 'e', new ItemStack(Items.emerald), 'l', new ItemStack(ModItems.cobblestonediumLighter,OreDictionary.WILDCARD_VALUE)});
 		
@@ -80,29 +89,36 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TLSOHD), new Object[]{"s", "h", 's', new ItemStack(ModItems.shovelHead), 'h', new ItemStack(ModItems.toolRod)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TLHOWF), new Object[]{"e", "h", 'e', new ItemStack(ModItems.hoeHead), 'h', new ItemStack(ModItems.toolRod)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TLBOTB), new Object[]{"e", "h", 'e', new ItemStack(ModItems.hatchetHead), 'h', new ItemStack(ModItems.toolRod)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.talismanBaseT1), new Object[]{"gcg", "cdc", "gcg", 'd', new ItemStack(Items.diamond), 'g', new ItemStack(Items.gold_ingot), 'c', new ItemStack(ModItems.ingotCobblestoneium)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.talismanBaseT1), new Object[]{"gcg", "cdc", "gcg", 'd', new ItemStack(Items.diamond), 'g', yellowstoneium, 'c', new ItemStack(ModItems.ingotCobblestoneium)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TalismanBase), new Object[]{"ded", "ete", "ded", 'd', new ItemStack(Items.diamond), 'e', new ItemStack(Items.emerald), 't', new ItemStack(ModItems.talismanBaseT1)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.UnfinshedFlightTalisman), new Object[]{"ccc", "ctc", "ccc", 'c', new ItemStack(ModItems.ingotCobblestonedium), 't', new ItemStack(ModItems.TalismanBase)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.ungoldenFligtTalisman), new Object[]{"ccc", "ctc", "ccc", 'c', new ItemStack(ModItems.ingotCobblestoneium), 't', new ItemStack(ModItems.UnfinshedFlightTalisman)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.FlightTalisman), new Object[]{"ggg", "gtg", "ggg", 'g', new ItemStack(Items.gold_ingot), 't', new ItemStack(ModItems.ungoldenFligtTalisman)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FlightTalisman), new Object[]{"ggg", "gtg", "ggg", 'g', yellowstoneium, 't', new ItemStack(ModItems.ungoldenFligtTalisman)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.craftingTalisman), new Object[]{"gcg", "cac", "gcg", 'g', new ItemStack(ModItems.ingotCobblestoneium), 'c', new ItemStack(Blocks.crafting_table), 'a', new ItemStack(ModBlocks.ancientTable)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.torchTalisman), new Object[]{"gcg", "cac", "gcg", 'g', new ItemStack(ModItems.ingotCobblestoneium), 'c', new ItemStack(Blocks.torch), 'a', new ItemStack(ModItems.cobblestoneiumLighter)});
 		Enchanted();
 		
 		//Tools Parts
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.SwordBlade), new Object[]{"gcg", "gdg","gcg", 'g', "ingotGold", 'c', "ingotCobblestonedium", 'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.SwordHilt), new Object[]{"gcg", " s "," e ", 'g', "ingotGold", 'c', "ingotCobblestonedium", 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hoeHead), new Object[]{"cd ", " cg", "  g", 'g', "ingotGold", 'c', "ingotCobblestonedium",  'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.shovelHead), new Object[]{" cg", "gdg", "cg ", 'g', "ingotGold", 'c', "ingotCobblestonedium", 'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.hatchetHead), new Object[]{"c c", "gdg", "c c", 'g', "ingotGold", 'c', "ingotCobblestonedium", 'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.pickaxeHead), new Object[]{"cgc", "cdc", "cgc", 'g', "ingotGold", 'c', "ingotCobblestonedium", 'd', new ItemStack(Items.diamond)}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.toolRod), new Object[]{"  s", " s ", "e  ", 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)}));
+		ItemStack cobblestondium = new ItemStack(ModItems.ingotCobblestonedium);
+		TucsRegistry.addRecipe(new ItemStack(ModItems.SwordBlade), new Object[]{"gcg", "gdg","gcg", 'g', yellowstoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.SwordHilt), new Object[]{"gcg", " s "," e ", 'g', yellowstoneium, 'c', cobblestondium, 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.hoeHead), new Object[]{"cd ", " cg", "  g", 'g', yellowstoneium, 'c', cobblestondium,  'd', new ItemStack(Items.diamond)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.shovelHead), new Object[]{" cg", "gdg", "cg ", 'g', yellowstoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.hatchetHead), new Object[]{"c c", "gdg", "c c", 'g', yellowstoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.pickaxeHead), new Object[]{"cgc", "cdc", "cgc", 'g', yellowstoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.toolRod), new Object[]{"  s", " s ", "e  ", 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)});
 		
 		//Upgrades
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.upgradBase), new Object[]{"ccc", "cdc","ccc", 'd', new ItemStack(Items.diamond), 'c', "ingotCobblestonedium"}));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.soulboundUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.soul_sand), 'c', "ingotCobblestonedium", 'u', new ItemStack(ModItems.upgradBase)}));
-		
-		
+		TucsRegistry.addRecipe(new ItemStack(ModItems.upgradBase), new Object[]{"ccc", "cdc","ccc", 'd', new ItemStack(Items.diamond), 'c', cobblestondium});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.soulboundUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.soul_sand), 'c', cobblestondium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.looting1Upgrade), new Object[]{"yly","lul","yly", 'y', yellowstoneium, 'l', new ItemStack(Items.dye,1,4), 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.looting2Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.looting1Upgrade)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.looting3Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.looting2Upgrade)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness1Upgrade), new Object[]{"yly","lul","yly", 'y', yellowstoneium, 'l', new ItemStack(Items.quartz), 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness2Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness1Upgrade)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness3Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness2Upgrade)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness4Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness3Upgrade)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness5Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness4Upgrade)});
 	}
 	
 	public static void Enchanted(){

@@ -194,27 +194,73 @@ public class ContainerUpgradeTools extends Container {
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
-			ContainerItem.addEnchantment(Enchantment.looting, 1);
+			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
+				ContainerItem.addEnchantment(Enchantment.looting, 1);
+			}
+			else{
+				ContainerItem.addEnchantment(Enchantment.fortune, 1);
+			}
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
-			ContainerItem.addEnchantment(Enchantment.looting, 2);
+			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
+				ContainerItem.addEnchantment(Enchantment.looting, 2);
+			}
+			else{
+				ContainerItem.addEnchantment(Enchantment.fortune, 2);
+			}
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
-			ContainerItem.addEnchantment(Enchantment.looting, 3);
+			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
+				ContainerItem.addEnchantment(Enchantment.looting, 3);
+			}
+			else{
+				ContainerItem.addEnchantment(Enchantment.fortune, 3);
+			}
 		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness1Upgrade,1))){				
+			ContainerItem.addEnchantment(Enchantment.sharpness, 1);
+		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness2Upgrade,1))){				
+			ContainerItem.addEnchantment(Enchantment.sharpness, 2);
+		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness3Upgrade,1))){				
+			ContainerItem.addEnchantment(Enchantment.sharpness, 3);
+		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness4Upgrade,1))){				
+			ContainerItem.addEnchantment(Enchantment.sharpness, 4);
+		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness5Upgrade,1))){				
+			ContainerItem.addEnchantment(Enchantment.sharpness, 5);
+		}
+		
 	}
 
-	boolean checkItem(ItemStack UpgradeItem){
-		if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.soulboundUpgrade,1))){
+	boolean checkItem(ItemStack itemstack){
+		if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
 			return true;
 		}
-		else if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting1Upgrade,1))){
 			return true;
 		}
-		else if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting2Upgrade,1))){
 			return true;
 		}
-		else if(UpgradeItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting3Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness1Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness2Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness3Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness4Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness5Upgrade,1))){
 			return true;
 		}
 		else{

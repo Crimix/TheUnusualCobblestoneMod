@@ -27,6 +27,21 @@ public class SlotUpgradeTools extends Slot {
 		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting3Upgrade,1))){
 			return true;
 		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness1Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness2Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness3Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness4Upgrade,1))){
+			return true;
+		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness5Upgrade,1))){
+			return true;
+		}
 		else{
 			return false;
 		}

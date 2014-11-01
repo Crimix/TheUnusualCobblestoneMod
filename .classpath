@@ -4,7 +4,7 @@
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
-	<classpathentry kind="lib" path="C:/Users/Computer/mods/1.7/tucs/lib/CodeChickenCore-1.7.10-1.0.2.9-dev.jar" sourcepath="/Minecraft/lib/CodeChickenCore-1.7.10-1.0.2.9-src.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Computer/mods/1.7/tucs/lib/NotEnoughItems-1.7.10-1.0.2.15-dev.jar" sourcepath="/Minecraft/lib/NotEnoughItems-1.7.10-1.0.2.15-src.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Christoffer/Mods/1.7/TUCS/lib/CodeChickenCore-1.7.10-1.0.2.9-dev.jar" sourcepath="/Minecraft/lib/CodeChickenCore-1.7.10-1.0.2.9-src.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Christoffer/Mods/1.7/TUCS/lib/NotEnoughItems-1.7.10-1.0.2.15-dev.jar" sourcepath="/Minecraft/lib/NotEnoughItems-1.7.10-1.0.2.15-src.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

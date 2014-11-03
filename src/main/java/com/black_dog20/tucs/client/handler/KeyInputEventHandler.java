@@ -27,16 +27,19 @@ public class KeyInputEventHandler {
 	        {
 	            return Key.FLY;
 	        }
-
+	        else if (Keybindings.flyspeed.isPressed())
+	        {
+	            return Key.FLYSPEED;
+	        }
+	        else{
 	        return Key.UNKNOWN;
+	        }
 	    }
 
 	    @SubscribeEvent
-	    public void handleKeyInputEvent(InputEvent.KeyInputEvent event)
-	    {
+	    public void handleKeyInputEvent(InputEvent.KeyInputEvent event){
 	    	if(getPressedKeybinding() == Key.FLY){
-	            if(FMLClientHandler.instance().getClientPlayerEntity() != null)
-	            {
+	            if(FMLClientHandler.instance().getClientPlayerEntity() != null){
 	            	EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 	            	if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))
 	                if(!entityPlayer.capabilities.allowFlying){
@@ -52,6 +55,17 @@ public class KeyInputEventHandler {
 	                }
 
 	            }
+	    	}
+	    	if(getPressedKeybinding() == Key.FLYSPEED){
+	    		 if(FMLClientHandler.instance().getClientPlayerEntity() != null){
+	    			 EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+	    			 if(entityPlayer.capabilities.getFlySpeed()== 0.1f){
+	    				 entityPlayer.capabilities.setFlySpeed(0.2F);
+	    			 }
+	    			 if(entityPlayer.capabilities.getFlySpeed()== 0.2f){
+	    				 entityPlayer.capabilities.setFlySpeed(0.1F);
+	    			 }
+		         }
 	    	}
 	    }
 }

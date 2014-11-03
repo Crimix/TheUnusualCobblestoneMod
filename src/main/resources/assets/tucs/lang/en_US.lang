@@ -65,6 +65,7 @@ itemGroup.TUCS=The Unusual Cobblestone Mod
 //Keys
 keys.tucs.category=The Unusual Cobblestone Mod
 keys.tucs.fly=Fly
+keys.tucs.flySpeed=Fly Speed
 
 //MSG
 msg.message_yfab.txt=I found a book, it looks to be very old, and some of the pages seems to be missing. Maybe I should open it and have a look!

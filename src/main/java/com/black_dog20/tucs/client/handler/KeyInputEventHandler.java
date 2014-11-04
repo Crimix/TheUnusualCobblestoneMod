@@ -21,69 +21,51 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class KeyInputEventHandler {
-	
+
 	String FIRSTFLY = "firstFlight";
-	String FLYSPEED = "TUCSflyspeed";
 
-	 private static Key getPressedKeybinding()
-	    {
-	        if (Keybindings.fly.isPressed())
-	        {
-	            return Key.FLY;
-	        }
-	        else if (Keybindings.flyspeed.isPressed())
-	        {
-	            return Key.FLYSPEED;
-	        }
-	        else{
-	        return Key.UNKNOWN;
-	        }
-	    }
+	@SubscribeEvent
+	public void handleKeyInputEvent(InputEvent.KeyInputEvent event){
+		if(Keybindings.fly.isPressed()){
+			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
+				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+				NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);
+				if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+					if(!entityPlayer.capabilities.allowFlying){
+						entityPlayer.capabilities.allowFlying = true;
+						entityPlayer.capabilities.isFlying = true;
+						if(nbt.getBoolean(FIRSTFLY) == false){
+							entityPlayer.capabilities.setFlySpeed(0.1F);
+							nbt.setBoolean(FIRSTFLY, true);
+						}
+						entityPlayer.sendPlayerAbilities();
+					}
+					else if(entityPlayer.capabilities.allowFlying && !entityPlayer.capabilities.isCreativeMode){
+						entityPlayer.capabilities.allowFlying = false;
+						entityPlayer.capabilities.isFlying = false;
+						entityPlayer.sendPlayerAbilities();
+					}
 
-	    @SubscribeEvent
-	    public void handleKeyInputEvent(InputEvent.KeyInputEvent event){
-	    	if(getPressedKeybinding() == Key.FLY){
-	    		if(FMLClientHandler.instance().getClientPlayerEntity() != null){
-	            	EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
-	            	NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);
-	            	if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))
-	                if(!entityPlayer.capabilities.allowFlying){
-	                	entityPlayer.capabilities.allowFlying = true;
-	                	entityPlayer.capabilities.isFlying = true;
-	                	if(nbt.getBoolean(FIRSTFLY) == false){
-	                		System.out.println("yes");
-	                		entityPlayer.capabilities.setFlySpeed(0.1F);
-	                		nbt.setBoolean(FIRSTFLY, true);
-	    				}
-	                	entityPlayer.sendPlayerAbilities();
-	                }
-	                else if(entityPlayer.capabilities.allowFlying && !entityPlayer.capabilities.isCreativeMode){
-	                	entityPlayer.capabilities.allowFlying = false;
-	                	entityPlayer.capabilities.isFlying = false;
-	                	entityPlayer.sendPlayerAbilities();
-	                }
-	            
 
-	            }
-	    	}
-	    	else if(getPressedKeybinding() == Key.FLYSPEED){
-	    		 if(FMLClientHandler.instance().getClientPlayerEntity() != null){
-	    			 System.out.println("test");
-	    			 EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
-	    			NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);
-	    			 if(nbt.getBoolean(FLYSPEED) == false){
-	    				 nbt.setBoolean(FLYSPEED, true);
-	    				 entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_normalfly.txt"));
-	    				 entityPlayer.capabilities.setFlySpeed(0.2F);
-	    				 entityPlayer.sendPlayerAbilities();
-	    			 }
-	    			 else if(nbt.getBoolean(FLYSPEED) == true){
-	    				 nbt.setBoolean(FLYSPEED, false);
-	    				 entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
-	    				 entityPlayer.capabilities.setFlySpeed(0.1F);
-	    				 entityPlayer.sendPlayerAbilities();
-	    			 }
-		         }
-	    	}
-	    }
+			}
+			}
+		}
+		else if(Keybindings.flyspeed.isPressed()){
+			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
+				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+				if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+				if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F)==0){
+					entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
+					entityPlayer.capabilities.setFlySpeed(0.2F);
+					entityPlayer.sendPlayerAbilities();
+				}
+				else if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.2F)==0){
+					entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_normalfly.txt"));
+					entityPlayer.capabilities.setFlySpeed(0.1F);
+					entityPlayer.sendPlayerAbilities();
+				}
+			}
+			}
+		}
+	}
 }

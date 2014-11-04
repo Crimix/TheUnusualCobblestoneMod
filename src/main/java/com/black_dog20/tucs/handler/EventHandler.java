@@ -24,6 +24,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 
@@ -109,6 +110,70 @@ public class EventHandler {
 				event.setCanceled(true);
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void onItemUseUp(PlayerDestroyItemEvent event){
+			EntityPlayer player = (EntityPlayer) event.entity;
+			System.out.println("test");
+			ItemStack item = event.original;
+			System.out.println(item.getDisplayName());
+			InventoryPlayer inv = player.inventory;
+					if(item.isItemEqual( new ItemStack(ModItems.TLSOC))){
+						ItemStack hilt = new ItemStack(ModItems.SwordHilt);
+						ItemStack blade = new ItemStack(ModItems.SwordBlade);
+						inv.addItemStackToInventory(blade);
+						inv.addItemStackToInventory(hilt);
+						
+						giveItems(item, inv);
+						
+					}
+					else if(item.isItemEqual( new ItemStack(ModItems.TLBOTB))){
+						ItemStack rod = new ItemStack(ModItems.toolRod);
+						ItemStack toolHead = new ItemStack(ModItems.hatchetHead);
+						inv.addItemStackToInventory(rod);
+						inv.addItemStackToInventory(toolHead);
+						
+						giveItems(item, inv);
+					}
+					else if(item.isItemEqual(new ItemStack(ModItems.TLHOWF))){
+						ItemStack rod = new ItemStack(ModItems.toolRod);
+						ItemStack toolHead = new ItemStack(ModItems.hoeHead);
+						inv.addItemStackToInventory(rod);
+						inv.addItemStackToInventory(toolHead);
+						
+						giveItems(item, inv);
+					}
+					else if(item.isItemEqual(new ItemStack(ModItems.TLPOLM))){
+						ItemStack rod = new ItemStack(ModItems.toolRod);
+						ItemStack toolHead = new ItemStack(ModItems.pickaxeHead);
+						inv.addItemStackToInventory(rod);
+						inv.addItemStackToInventory(toolHead);
+						
+						giveItems(item, inv);
+					}
+					else if(item.isItemEqual(new ItemStack(ModItems.TLSOHD))){
+						ItemStack rod = new ItemStack(ModItems.toolRod);
+						ItemStack toolHead = new ItemStack(ModItems.shovelHead);
+						inv.addItemStackToInventory(rod);
+						inv.addItemStackToInventory(toolHead);
+						
+						giveItems(item, inv);
+					}
+			}
+	
+	private void giveItems(ItemStack item, InventoryPlayer inv){
+		NBTTagCompound nbt = item.getTagCompound();
+		NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);
+		for(int i = 0; i <= nbttaglist.tagCount(); i++){
+			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+			int b0 = nbttagcompound1.getInteger("Slot");
+			ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+			if(slotItem !=null){
+				inv.addItemStackToInventory(slotItem);
+			}
+			nbt.removeTag("upgradeItems");
+	}
 	}
 
 }

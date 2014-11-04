@@ -112,13 +112,13 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.upgradBase), new Object[]{"ccc", "cdc","ccc", 'd', new ItemStack(Items.diamond), 'c', yellowstoneium});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.soulboundUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.soul_sand), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.looting1Upgrade), new Object[]{"yly","lul","yly", 'y', yellowstoneium, 'l', new ItemStack(Items.dye,1,4), 'u', new ItemStack(ModItems.upgradBase)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.looting2Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.looting1Upgrade)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.looting3Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.looting2Upgrade)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.looting2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.looting1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.looting3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.looting2Upgrade), 'r', Blocks.redstone_block});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness1Upgrade), new Object[]{"yly","lul","yly", 'y', yellowstoneium, 'l', new ItemStack(Items.quartz), 'u', new ItemStack(ModItems.upgradBase)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness2Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness1Upgrade)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness3Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness2Upgrade)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness4Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness3Upgrade)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness5Upgrade), new Object[]{"ll","ll", 'l', new ItemStack(ModItems.Sharpness4Upgrade)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Sharpness1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness3Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness4Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness5Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness4Upgrade), 'r', Blocks.redstone_block});
 	}
 	
 	public static void Enchanted(){

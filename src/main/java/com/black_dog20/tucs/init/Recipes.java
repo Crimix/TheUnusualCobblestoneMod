@@ -105,7 +105,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.hoeHead), new Object[]{"cd ", " cg", "  g", 'g', yellowstoneium, 'c', cobblestondium,  'd', new ItemStack(Items.diamond)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.shovelHead), new Object[]{" cg", "gdg", "cg ", 'g', yellowstoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.hatchetHead), new Object[]{"c c", "gdg", "c c", 'g', yellowstoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.pickaxeHead), new Object[]{"cgc", "cdc", "cgc", 'g', yellowstoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.pickaxeHead), new Object[]{"sgs", "cdc", "ggg", 'g', yellowstoneium, 's', ModItems.ingotCobblestoneium, 'c', cobblestondium, 'd', new ItemStack(Items.diamond)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.toolRod), new Object[]{"  s", " s ", "e  ", 's', new ItemStack(Items.stick), 'e', new ItemStack(Items.emerald)});
 		
 		//Upgrades

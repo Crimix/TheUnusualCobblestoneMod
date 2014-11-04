@@ -37,7 +37,7 @@ public class GuiTUCSBook extends GuiScreen {
 	private static final int BUTTON_PREV = 1;
 
 	private int pageIndex = 0;
-	private int maxPage = 28;
+	private int maxPage = 29;
 	private int xCraft = 64;
 	private int yCraft = 102;
 	private int MouseX;
@@ -118,7 +118,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 3:
 			drawRecipePageTop(bookXStart);
 			text = "This Crafting Table can also be used to vailla recipes";
-			ItemStack gold = new ItemStack(Items.gold_ingot);
+			ItemStack gold = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack cobblestoneium = new ItemStack(ModItems.ingotCobblestoneium);
 			ItemStack craftingTable = new ItemStack(Blocks.crafting_table);
 			drawRecipePageBot(gold, cobblestoneium, gold, cobblestoneium, craftingTable, cobblestoneium, gold, cobblestoneium, gold, craftingTable, text, new ItemStack(ModBlocks.ancientTable), bookXStart);
@@ -190,7 +190,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 17:
 			text="This sword is crafted by the finest materials ever known";
 			drawRecipePageTop(bookXStart);
-			ItemStack gold1 = new ItemStack(Items.gold_ingot);
+			ItemStack gold1 = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack cobblestonedium = new ItemStack(ModItems.ingotCobblestonedium);
 			ItemStack diamond = new ItemStack(Items.diamond);
 			drawRecipePageBot(gold1, cobblestonedium, gold1, gold1, diamond, gold1, gold1, cobblestonedium, gold1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordBlade), bookXStart);
@@ -199,7 +199,7 @@ public class GuiTUCSBook extends GuiScreen {
 			text="To finaly complete this legendary sword you will need a Tilt";
 			drawRecipePageTop(bookXStart);
 			ItemStack cobblestonedium1 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack gold2 = new ItemStack(Items.gold_ingot);
+			ItemStack gold2 = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack stick = new ItemStack(Items.stick);
 			ItemStack emerald = new ItemStack(Items.emerald);
 			drawRecipePageBot(gold2, cobblestonedium1, gold2, null, stick, null, null, emerald, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordHilt), bookXStart);
@@ -224,10 +224,11 @@ public class GuiTUCSBook extends GuiScreen {
 		case 22:
 			text="This legendary pickaxe will serve you through good and bad times";
 			drawRecipePageTop(bookXStart);
+			ItemStack cs = new ItemStack(ModItems.ingotCobblestoneium);
 			ItemStack cd = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g = new ItemStack(Items.gold_ingot);
+			ItemStack g = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack d = new ItemStack(Items.diamond);
-			drawRecipePageBot(cd, g, cd, cd, d, cd, cd, g, cd, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.pickaxeHead), bookXStart);
+			drawRecipePageBot(cs, g, cs, cd, d, cd, g, g, g, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.pickaxeHead), bookXStart);
 			break;
 		case 23:
 			text="\nThe legendary hoe can be upgraded to help you in ways you can't yet understand";
@@ -238,7 +239,7 @@ public class GuiTUCSBook extends GuiScreen {
 			text="The legendary hoe will make farming a breeze";
 			drawRecipePageTop(bookXStart);
 			ItemStack c1 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g1 = new ItemStack(Items.gold_ingot);
+			ItemStack g1 = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack d1 = new ItemStack(Items.diamond);
 			drawRecipePageBot(c1, d1, null, null, c1, g1, null, null, g1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.hoeHead), bookXStart);
 			break;
@@ -251,20 +252,20 @@ public class GuiTUCSBook extends GuiScreen {
 			text="The legendary BattleAxe was first used by The Legendary Battle Master";
 			drawRecipePageTop(bookXStart);
 			ItemStack c2 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g2 = new ItemStack(Items.gold_ingot);
+			ItemStack g2 = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack d2 = new ItemStack(Items.diamond);
 			drawRecipePageBot(c2, null, c2, g2, d2, g2, c2, null, c2, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLBOTB), bookXStart);
 			break;
 		case 27:
-			text="This legendary shovel has made digging holes easier than ever";
+			text="\nThis legendary shovel has made digging holes easier than ever";
 			ItemStack shovel = new ItemStack(ModItems.TLSOHD);
-			drawPage(shovel.getDisplayName(), text, new ItemStack(ModItems.TLSOHD), bookXStart);
+			drawPage(shovel.getDisplayName(), text, shovel, bookXStart);
 			break;
 		case 28:
 			text="The legendary shovel was first seen in the late 90's";
 			drawRecipePageTop(bookXStart);
 			ItemStack c3 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g3 = new ItemStack(Items.gold_ingot);
+			ItemStack g3 = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack d3 = new ItemStack(Items.diamond);
 			drawRecipePageBot(null, c3, g3, g3, d3, g3, c3, g3, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLSOHD), bookXStart);
 			break;

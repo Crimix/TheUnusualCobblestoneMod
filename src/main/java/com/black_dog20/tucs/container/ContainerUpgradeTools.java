@@ -4,6 +4,7 @@ import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.slot.SlotUpgradeTools;
+import com.black_dog20.tucs.utility.EnchantHelper;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -87,17 +88,17 @@ public class ContainerUpgradeTools extends Container {
 				if(!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
 					return null;
 			}
-			else if(slot != 1 && checkItem(stack) && !getSlot(0).getHasStack()) {
+			else if(slot != 1 && EnchantHelper.checkItem(stack) && !getSlot(0).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(0).putStack(copy);
 				return null;
 			} 
-			else if(slot != 2 && checkItem(stack) && !getSlot(1).getHasStack()) {
+			else if(slot != 2 && EnchantHelper.checkItem(stack) && !getSlot(1).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(1).putStack(copy);
 				return null;
 			} 
-			else if(slot != 3 && checkItem(stack) && !getSlot(2).getHasStack()) {
+			else if(slot != 3 && EnchantHelper.checkItem(stack) && !getSlot(2).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(2).putStack(copy);
 				return null;
@@ -167,14 +168,14 @@ public class ContainerUpgradeTools extends Container {
 		super.onContainerClosed(player);
 		for(int i = 0; i < 3; i++){
 			ItemStack upgrade = this.slotUpgrade.getStackInSlot(i);
-			if(upgrade != null && checkItem(upgrade)){
+			if(upgrade != null && EnchantHelper.checkItem(upgrade)){
 				if(tool != null && tool.hasTagCompound()){
 					NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 					nbttagcompound1.setInteger("Slot", i);
 					upgrade.writeToNBT(nbttagcompound1);
 					nbttaglist.appendTag(nbttagcompound1);
 
-					setEnchant(tool, upgrade, NBT);
+					EnchantHelper.setEnchant(tool, upgrade, NBT);
 
 				}
 			}
@@ -186,88 +187,6 @@ public class ContainerUpgradeTools extends Container {
 		}
 		NBT.setTag("upgradeItems", nbttaglist);
 	}
-
-
-	void setEnchant(ItemStack ContainerItem, ItemStack UpgradeItem, NBTTagCompound NBT){
-		if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.soulboundUpgrade,1))){
-			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
-				ContainerItem.addEnchantment(Enchantment.looting, 1);
-			}
-			else{
-				ContainerItem.addEnchantment(Enchantment.fortune, 1);
-			}
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
-				ContainerItem.addEnchantment(Enchantment.looting, 2);
-			}
-			else{
-				ContainerItem.addEnchantment(Enchantment.fortune, 2);
-			}
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
-				ContainerItem.addEnchantment(Enchantment.looting, 3);
-			}
-			else{
-				ContainerItem.addEnchantment(Enchantment.fortune, 3);
-			}
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness1Upgrade,1))){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 1);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness2Upgrade,1))){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 2);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness3Upgrade,1))){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 3);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness4Upgrade,1))){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 4);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness5Upgrade,1))){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 5);
-		}
-		
-	}
-
-	boolean checkItem(ItemStack itemstack){
-		if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting1Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting2Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting3Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness1Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness2Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness3Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness4Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness5Upgrade,1))){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
 	
-	
-
 
 }

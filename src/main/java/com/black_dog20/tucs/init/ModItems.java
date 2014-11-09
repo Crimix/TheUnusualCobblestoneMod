@@ -42,15 +42,16 @@ import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneLighter;
 import com.black_dog20.tucs.item.tool.ItemTLSOHD;
-import com.black_dog20.tucs.item.upgrades.ItemLooting1Upgrade;
-import com.black_dog20.tucs.item.upgrades.ItemLooting2Upgrade;
-import com.black_dog20.tucs.item.upgrades.ItemLooting3Upgrade;
-import com.black_dog20.tucs.item.upgrades.ItemSharpness1Upgrade;
-import com.black_dog20.tucs.item.upgrades.ItemSharpness2Upgrade;
-import com.black_dog20.tucs.item.upgrades.ItemSharpness3Upgrade;
-import com.black_dog20.tucs.item.upgrades.ItemSharpness4Upgrade;
-import com.black_dog20.tucs.item.upgrades.ItemSharpness5Upgrade;
+import com.black_dog20.tucs.item.upgrades.ItemBoAUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemEfficiencyUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemFireAspectUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemKnockbackUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemSharpnessUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemSliktouchUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemSmiteUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSoulboundUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemUnbreakingUpgrade;
 import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.reference.Reference;
 
@@ -116,15 +117,41 @@ public class ModItems {
 	
 	//Upgrades
 	public static final ItemUpgradeBase upgradBase = new ItemUpgradeBase();
-	public static final ItemLooting1Upgrade looting1Upgrade = new ItemLooting1Upgrade();
-	public static final ItemLooting2Upgrade looting2Upgrade = new ItemLooting2Upgrade();
-	public static final ItemLooting3Upgrade looting3Upgrade = new ItemLooting3Upgrade();
+	public static final ItemLootingUpgrade looting1Upgrade = new ItemLootingUpgrade(1);
+	public static final ItemLootingUpgrade looting2Upgrade = new ItemLootingUpgrade(2);
+	public static final ItemLootingUpgrade looting3Upgrade = new ItemLootingUpgrade(3);
 	public static final ItemSoulboundUpgrade soulboundUpgrade = new ItemSoulboundUpgrade();
-	public static final ItemSharpness1Upgrade Sharpness1Upgrade = new ItemSharpness1Upgrade();
-	public static final ItemSharpness2Upgrade Sharpness2Upgrade = new ItemSharpness2Upgrade();
-	public static final ItemSharpness3Upgrade Sharpness3Upgrade = new ItemSharpness3Upgrade();
-	public static final ItemSharpness4Upgrade Sharpness4Upgrade = new ItemSharpness4Upgrade();
-	public static final ItemSharpness5Upgrade Sharpness5Upgrade = new ItemSharpness5Upgrade();
+	public static final ItemSharpnessUpgrade Sharpness1Upgrade = new ItemSharpnessUpgrade(1);
+	public static final ItemSharpnessUpgrade Sharpness2Upgrade = new ItemSharpnessUpgrade(2);
+	public static final ItemSharpnessUpgrade Sharpness3Upgrade = new ItemSharpnessUpgrade(3);
+	public static final ItemSharpnessUpgrade Sharpness4Upgrade = new ItemSharpnessUpgrade(4);
+	public static final ItemSharpnessUpgrade Sharpness5Upgrade = new ItemSharpnessUpgrade(5);
+	public static final ItemBoAUpgrade BoA1Upgrade = new ItemBoAUpgrade(1);
+	public static final ItemBoAUpgrade BoA2Upgrade = new ItemBoAUpgrade(2);
+	public static final ItemBoAUpgrade BoA3Upgrade = new ItemBoAUpgrade(3);
+	public static final ItemBoAUpgrade BoA4Upgrade = new ItemBoAUpgrade(4);
+	public static final ItemBoAUpgrade BoA5Upgrade = new ItemBoAUpgrade(5);
+	public static final ItemEfficiencyUpgrade Efficiency1Upgrade = new ItemEfficiencyUpgrade(1);
+	public static final ItemEfficiencyUpgrade Efficiency2Upgrade = new ItemEfficiencyUpgrade(2);
+	public static final ItemEfficiencyUpgrade Efficiency3Upgrade = new ItemEfficiencyUpgrade(3);
+	public static final ItemEfficiencyUpgrade Efficiency4Upgrade = new ItemEfficiencyUpgrade(4);
+	public static final ItemEfficiencyUpgrade Efficiency5Upgrade = new ItemEfficiencyUpgrade(5);
+	public static final ItemSmiteUpgrade Smite1Upgrade = new ItemSmiteUpgrade(1);
+	public static final ItemSmiteUpgrade Smite2Upgrade = new ItemSmiteUpgrade(2);
+	public static final ItemSmiteUpgrade Smite3Upgrade = new ItemSmiteUpgrade(3);
+	public static final ItemSmiteUpgrade Smite4Upgrade = new ItemSmiteUpgrade(4);
+	public static final ItemSmiteUpgrade Smite5Upgrade = new ItemSmiteUpgrade(5);
+	public static final ItemFireAspectUpgrade FireAspect1Upgrade = new ItemFireAspectUpgrade(1);
+	public static final ItemFireAspectUpgrade FireAspect2Upgrade = new ItemFireAspectUpgrade(2);
+	public static final ItemKnockbackUpgrade Knockback1Upgrade = new ItemKnockbackUpgrade(1);
+	public static final ItemKnockbackUpgrade Knockback2Upgrade = new ItemKnockbackUpgrade(2);
+	public static final ItemSliktouchUpgrade Sliktouch1Upgrade = new ItemSliktouchUpgrade(1);
+	public static final ItemUnbreakingUpgrade Unbreaking1Upgrade = new ItemUnbreakingUpgrade(1);
+	public static final ItemUnbreakingUpgrade Unbreaking2Upgrade = new ItemUnbreakingUpgrade(2);
+	public static final ItemUnbreakingUpgrade Unbreaking3Upgrade = new ItemUnbreakingUpgrade(3);
+	
+
+	
 	
 	
 	public static void init(){
@@ -174,6 +201,7 @@ public class ModItems {
 		GameRegistry.registerItem(Sharpness3Upgrade, "sharpness3Upgrade");
 		GameRegistry.registerItem(Sharpness4Upgrade, "sharpness4Upgrade");
 		GameRegistry.registerItem(Sharpness5Upgrade, "sharpness5Upgrade");
+		GameRegistry.registerItem(Sliktouch1Upgrade, "Sliktouch1Upgrade");
 		
 		
 		//TOOL PARTS

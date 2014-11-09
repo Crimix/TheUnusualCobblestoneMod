@@ -39,6 +39,7 @@ import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 
 public class EventHandler {
 	NBTTagCompound nbt;
+	String FLY = "TUCSFly";
 
 	@SubscribeEvent
 	public void onEntityDeath(PlayerDropsEvent event) {
@@ -92,11 +93,16 @@ public class EventHandler {
 	public void onLivingUpdatePlayer(LivingUpdateEvent event){
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) event.entity;
-			if(player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
+			NBTTagCompound nbtt = NBTHelper.getPlayerNBT(player);
+			if(!nbtt.getBoolean(FLY) && player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+				nbtt.setBoolean(FLY, true);
+			}
+			if(nbtt.getBoolean(FLY) && player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
 			if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
 				player.capabilities.allowFlying = false;
 				player.capabilities.isFlying = false;
 				player.sendPlayerAbilities();
+				nbtt.setBoolean(FLY, false);
 			}
 		}
 		}

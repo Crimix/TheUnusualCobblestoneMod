@@ -17,6 +17,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ContainerUpgradeTools extends Container {
 	private World worldObj;
@@ -130,19 +131,19 @@ public class ContainerUpgradeTools extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer player){
 		if(player.getHeldItem() != null){
-			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOC))){
+			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
 				return true;
 			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLBOTB))){
+			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLBOTB,1,OreDictionary.WILDCARD_VALUE))){
 				return true;
 			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLHOWF))){
+			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLHOWF,1,OreDictionary.WILDCARD_VALUE))){
 				return true;
 			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLPOLM))){
+			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLPOLM,1,OreDictionary.WILDCARD_VALUE))){
 				return true;
 			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOHD))){
+			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOHD,1,OreDictionary.WILDCARD_VALUE))){
 				return true;
 			}
 			else{
@@ -157,6 +158,7 @@ public class ContainerUpgradeTools extends Container {
 	@Override
 	public void onContainerClosed(EntityPlayer player)
 	{
+		super.onContainerClosed(player);
 		ItemStack tool = player.getHeldItem();
 		if(tool != null && !tool.hasTagCompound()){
 			tool.stackTagCompound = new NBTTagCompound();
@@ -165,7 +167,6 @@ public class ContainerUpgradeTools extends Container {
 		NBTTagCompound NBT = tool.getTagCompound();
 		NBTTagList nbttaglist = new NBTTagList();
 
-		super.onContainerClosed(player);
 		for(int i = 0; i < 3; i++){
 			ItemStack upgrade = this.slotUpgrade.getStackInSlot(i);
 			if(upgrade != null && EnchantHelper.checkItem(upgrade)){

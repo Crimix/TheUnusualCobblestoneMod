@@ -37,7 +37,7 @@ public class GuiTUCSBook extends GuiScreen {
 	private static final int BUTTON_PREV = 1;
 
 	private int pageIndex = 0;
-	private int maxPage = 29;
+	private int maxPage = 40;
 	private int xCraft = 64;
 	private int yCraft = 102;
 	private int MouseX;
@@ -96,6 +96,17 @@ public class GuiTUCSBook extends GuiScreen {
 	public void onGuiClosed() {
 		super.onGuiClosed();
 	}
+	ItemStack yellowStoneium = new ItemStack(ModItems.ingotYellowstoneium);
+	ItemStack diamond2 = new ItemStack(Items.diamond);
+	ItemStack cobbleSTD = new ItemStack(ModItems.ingotCobblestonedium);
+	ItemStack cobbleSTN = new ItemStack(ModItems.ingotCobblestoneium);
+	ItemStack emerald2 = new ItemStack(Items.emerald);
+	ItemStack unfFlTa = new ItemStack(ModItems.UnfinshedFlightTalisman);
+	ItemStack tier1Base = new ItemStack(ModItems.talismanBaseT1);
+	ItemStack tier2Base = new ItemStack(ModItems.TalismanBase);
+	ItemStack unGolden = new ItemStack(ModItems.ungoldenFligtTalisman);
+	ItemStack flightTali = new ItemStack(ModItems.FlightTalisman);
+	
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float renderPartials) {
@@ -268,6 +279,36 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack g3 = new ItemStack(ModItems.ingotYellowstoneium);
 			ItemStack d3 = new ItemStack(Items.diamond);
 			drawRecipePageBot(null, c3, g3, g3, d3, g3, c3, g3, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLSOHD), bookXStart);
+			break;
+		case 29:
+			text="This is the legendary Talisman of flight which was given by the semi god of Norway!";
+			ItemStack flightTalisman = new ItemStack(ModItems.FlightTalisman);
+			drawPage(flightTalisman.getDisplayName(), text, flightTalisman, bookXStart);
+			break;
+		case 30:
+			text="To make the talisman you first need to make a talisman base";
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot(yellowStoneium, cobbleSTN, yellowStoneium, cobbleSTN, diamond2, cobbleSTN, yellowStoneium, cobbleSTN, yellowStoneium, new ItemStack(ModBlocks.ancientTable), text, tier1Base, bookXStart);
+			break;
+		case 31:
+			text="Then you will need to make the tier2 base!";
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot(diamond2, emerald2, diamond2, emerald2, tier1Base, emerald2, diamond2, emerald2, diamond2, new ItemStack(ModBlocks.ancientTable), text, tier2Base, bookXStart);
+			break;
+		case 32:
+			text="After that you will need to make the unnfinished flight talisman";
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot(cobbleSTD, cobbleSTD, cobbleSTD, cobbleSTD, tier2Base, cobbleSTD, cobbleSTD, cobbleSTD, cobbleSTD, new ItemStack(ModBlocks.ancientTable), text, unfFlTa, bookXStart);
+			break;
+		case 33:
+			text="This is the last thing you will need to make i promise";
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot(cobbleSTN, cobbleSTN, cobbleSTN, cobbleSTN, tier2Base, cobbleSTN, cobbleSTN, cobbleSTN, cobbleSTN, new ItemStack(ModBlocks.ancientTable), text, unGolden, bookXStart);
+			break;
+		case 34:
+			text="Oh wait there is actually one last step";
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot(yellowStoneium, yellowStoneium, yellowStoneium, yellowStoneium, unGolden, yellowStoneium, yellowStoneium, yellowStoneium, yellowStoneium, new ItemStack(ModBlocks.ancientTable), text, flightTali, bookXStart);
 			break;
 		default:
 			mc.renderEngine.bindTexture(texture);

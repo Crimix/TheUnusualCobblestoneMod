@@ -207,7 +207,7 @@ public class GuiTUCSBook extends GuiScreen {
 			drawRecipePageBot(gold1, cobblestonedium, gold1, gold1, diamond, gold1, gold1, cobblestonedium, gold1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordBlade), bookXStart);
 			break;
 		case 18:
-			text="To finaly complete this legendary sword you will need a Tilt";
+			text="To finaly complete this legendary sword you will need a hilt";
 			drawRecipePageTop(bookXStart);
 			ItemStack cobblestonedium1 = new ItemStack(ModItems.ingotCobblestonedium);
 			ItemStack gold2 = new ItemStack(ModItems.ingotYellowstoneium);

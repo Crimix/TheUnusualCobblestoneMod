@@ -194,11 +194,29 @@ public class GuiTUCSBook extends GuiScreen {
 			DrawFurnaceRecipe("Recipe", text, new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.ingotCobblestoneium,2), new ItemStack(ModBlocks.blockAncientForge), bookXStart);
 			break;
 		case 16:
+			text="This ingot is an alloy of diamond and cobblestone";
+			drawPage("Cobblestonedium", text, new ItemStack(ModItems.ingotCobblestonedium), bookXStart);
+			break;
+		case 17:
+			text="This ingot have the combined durability of diamond and stone";
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot(null, cobbleSTN, null, cobbleSTN, diamond2, cobbleSTN, null, cobbleSTN, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.ingotCobblestonedium), bookXStart);
+			break;
+		case 18:
+			text="This ingot is just stone and dye. You wil get 2 pr crafting";
+			drawPage(yellowStoneium.getDisplayName(), text, yellowStoneium, bookXStart);
+			break;
+		case 19:
+			text="This ingot is kind of plain an nice to craft with";
+			drawRecipePageTop(bookXStart);
+			drawRecipePageBot(new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Items.dye,1,11), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneLighter), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.crafting_table), text, yellowStoneium, bookXStart);
+			break;
+		case 20:
 			text="\nThis sword has the power of the legendary fighter";
 			ItemStack sword = new ItemStack(ModItems.TLSOC);
 			drawPage(sword.getDisplayName(), text, new ItemStack(ModItems.TLSOC), bookXStart);
 			break;
-		case 17:
+		case 21:
 			text="This sword is crafted by the finest materials ever known";
 			drawRecipePageTop(bookXStart);
 			ItemStack gold1 = new ItemStack(ModItems.ingotYellowstoneium);
@@ -206,7 +224,7 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack diamond = new ItemStack(Items.diamond);
 			drawRecipePageBot(gold1, cobblestonedium, gold1, gold1, diamond, gold1, gold1, cobblestonedium, gold1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordBlade), bookXStart);
 			break;
-		case 18:
+		case 22:
 			text="To finaly complete this legendary sword you will need a hilt";
 			drawRecipePageTop(bookXStart);
 			ItemStack cobblestonedium1 = new ItemStack(ModItems.ingotCobblestonedium);
@@ -215,24 +233,24 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack emerald = new ItemStack(Items.emerald);
 			drawRecipePageBot(gold2, cobblestonedium1, gold2, null, stick, null, null, emerald, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordHilt), bookXStart);
 			break;
-		case 19:
+		case 23:
 			text="To make you'r legendary tools you will need a tool rod";
 			ItemStack toolRod = new ItemStack(ModItems.toolRod);
 			drawPage(toolRod.getDisplayName(), text, new ItemStack(ModItems.toolRod), bookXStart);
 			break;
-		case 20:
+		case 24:
 			text="The tool rod will make any ordinary tool legendary";
 			drawRecipePageTop(bookXStart);
 			ItemStack stick1 = new ItemStack(Items.stick);
 			ItemStack emerald1 = new ItemStack(Items.emerald);
 			drawRecipePageBot(null, null, stick1, null, stick1, null, emerald1, null, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.toolRod), bookXStart);
 			break;
-		case 21:
+		case 25:
 			text="\nThis legendary pickaxe was used by the lost miner";
 			ItemStack pickaxe = new ItemStack(ModItems.TLPOLM);
 			drawPage(pickaxe.getDisplayName(), text, new ItemStack(ModItems.TLPOLM), bookXStart);
 			break;
-		case 22:
+		case 26:
 			text="This legendary pickaxe will serve you through good and bad times";
 			drawRecipePageTop(bookXStart);
 			ItemStack cs = new ItemStack(ModItems.ingotCobblestoneium);
@@ -241,12 +259,12 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack d = new ItemStack(Items.diamond);
 			drawRecipePageBot(cs, g, cs, cd, d, cd, g, g, g, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.pickaxeHead), bookXStart);
 			break;
-		case 23:
+		case 27:
 			text="\nThe legendary hoe can be upgraded to help you in ways you can't yet understand";
 			ItemStack hoe = new ItemStack(ModItems.TLHOWF);
 			drawPage(hoe.getDisplayName(), text, new ItemStack(ModItems.TLHOWF), bookXStart);
 			break;
-		case 24:
+		case 28:
 			text="The legendary hoe will make farming a breeze";
 			drawRecipePageTop(bookXStart);
 			ItemStack c1 = new ItemStack(ModItems.ingotCobblestonedium);
@@ -254,12 +272,12 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack d1 = new ItemStack(Items.diamond);
 			drawRecipePageBot(c1, d1, null, null, c1, g1, null, null, g1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.hoeHead), bookXStart);
 			break;
-		case 25:
+		case 29:
 			text="\nThe legendary BattleAxe will slay you'r enemies like anything you have ever seen";
 			ItemStack battle = new ItemStack(ModItems.TLBOTB);
 			drawPage(battle.getDisplayName(), text, new ItemStack(ModItems.TLBOTB), bookXStart);
 			break;
-		case 26:
+		case 30:
 			text="The legendary BattleAxe was first used by The Legendary Battle Master";
 			drawRecipePageTop(bookXStart);
 			ItemStack c2 = new ItemStack(ModItems.ingotCobblestonedium);
@@ -267,12 +285,12 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack d2 = new ItemStack(Items.diamond);
 			drawRecipePageBot(c2, null, c2, g2, d2, g2, c2, null, c2, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLBOTB), bookXStart);
 			break;
-		case 27:
+		case 31:
 			text="\nThis legendary shovel has made digging holes easier than ever";
 			ItemStack shovel = new ItemStack(ModItems.TLSOHD);
 			drawPage(shovel.getDisplayName(), text, shovel, bookXStart);
 			break;
-		case 28:
+		case 32:
 			text="The legendary shovel was first seen in the late 90's";
 			drawRecipePageTop(bookXStart);
 			ItemStack c3 = new ItemStack(ModItems.ingotCobblestonedium);
@@ -280,32 +298,32 @@ public class GuiTUCSBook extends GuiScreen {
 			ItemStack d3 = new ItemStack(Items.diamond);
 			drawRecipePageBot(null, c3, g3, g3, d3, g3, c3, g3, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLSOHD), bookXStart);
 			break;
-		case 29:
-			text="This is the legendary Talisman of flight which was given by the semi god of Norway!";
+		case 33:
+			text="\nThis is the legendary Talisman of flight which was given by the semi god of Norway!";
 			ItemStack flightTalisman = new ItemStack(ModItems.FlightTalisman);
 			drawPage(flightTalisman.getDisplayName(), text, flightTalisman, bookXStart);
 			break;
-		case 30:
+		case 34:
 			text="To make the talisman you first need to make a talisman base";
 			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(yellowStoneium, cobbleSTN, yellowStoneium, cobbleSTN, diamond2, cobbleSTN, yellowStoneium, cobbleSTN, yellowStoneium, new ItemStack(ModBlocks.ancientTable), text, tier1Base, bookXStart);
 			break;
-		case 31:
+		case 35:
 			text="Then you will need to make the tier2 base!";
 			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(diamond2, emerald2, diamond2, emerald2, tier1Base, emerald2, diamond2, emerald2, diamond2, new ItemStack(ModBlocks.ancientTable), text, tier2Base, bookXStart);
 			break;
-		case 32:
+		case 36:
 			text="After that you will need to make the unnfinished flight talisman";
 			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(cobbleSTD, cobbleSTD, cobbleSTD, cobbleSTD, tier2Base, cobbleSTD, cobbleSTD, cobbleSTD, cobbleSTD, new ItemStack(ModBlocks.ancientTable), text, unfFlTa, bookXStart);
 			break;
-		case 33:
+		case 37:
 			text="This is the last thing you will need to make i promise";
 			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(cobbleSTN, cobbleSTN, cobbleSTN, cobbleSTN, tier2Base, cobbleSTN, cobbleSTN, cobbleSTN, cobbleSTN, new ItemStack(ModBlocks.ancientTable), text, unGolden, bookXStart);
 			break;
-		case 34:
+		case 38:
 			text="Oh wait there is actually one last step";
 			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(yellowStoneium, yellowStoneium, yellowStoneium, yellowStoneium, unGolden, yellowStoneium, yellowStoneium, yellowStoneium, yellowStoneium, new ItemStack(ModBlocks.ancientTable), text, flightTali, bookXStart);

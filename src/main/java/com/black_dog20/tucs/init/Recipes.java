@@ -119,6 +119,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness3Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness2Upgrade), 'r', Blocks.redstone_block});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness4Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness3Upgrade), 'r', Blocks.redstone_block});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness5Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness4Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Sliktouch1Upgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.string), 'u', new ItemStack(ModItems.upgradBase)});
 	}
 	
 	public static void Enchanted(){
@@ -131,7 +132,7 @@ public class Recipes {
 			NBTTagCompound nbt= ct.getTagCompound();
 			nbt.setString(NBTTags.SOULBOUND, NBTTags.OK);
 			}
-		ItemStack tt = new ItemStack(ModItems.craftingTalisman);
+		ItemStack tt = new ItemStack(ModItems.torchTalisman);
 		if(!tt.hasTagCompound()){
 			tt.stackTagCompound = new NBTTagCompound();
 		}

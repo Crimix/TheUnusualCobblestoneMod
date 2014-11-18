@@ -69,7 +69,8 @@ public class ItemTorchTalisman extends ItemTUCS{
         return world.isSideSolid(x - 1, y, z, EAST,  true) ||
                world.isSideSolid(x + 1, y, z, WEST,  true) ||
                world.isSideSolid(x, y, z - 1, SOUTH, true) ||
-               world.isSideSolid(x, y, z + 1, NORTH, true);
+               world.isSideSolid(x, y, z + 1, NORTH, true) ||
+               false;
     }
 	
 	@Override
@@ -97,7 +98,7 @@ public class ItemTorchTalisman extends ItemTUCS{
 
 		if (player.canPlayerEdit(x, y, z, side, stack)){
 
-			if (canPlaceBlockAt(world, x, y, z) & world.setBlock(x, y, z, Blocks.torch)){
+			if (world.isAirBlock(x, y, z) && canPlaceBlockAt(world, x, y, z) & world.setBlock(x, y, z, Blocks.torch)){
 
 				return true;
 			}

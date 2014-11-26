@@ -3,6 +3,7 @@ package com.black_dog20.tucs.utility;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.upgrades.ItemTUCSUpgrades;
@@ -14,16 +15,16 @@ public class EnchantHelper {
 		if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.soulboundUpgrade,1))){
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
 		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1)) && Enchantment.looting.canApply(ContainerItem)){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
+			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
 				ContainerItem.addEnchantment(Enchantment.looting, 1);
 			}
 			else{
 				ContainerItem.addEnchantment(Enchantment.fortune, 1);
 			}
 		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1)) && Enchantment.looting.canApply(ContainerItem)){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC))){
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
+			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
 				ContainerItem.addEnchantment(Enchantment.looting, 2);
 			}
 			else{
@@ -31,7 +32,7 @@ public class EnchantHelper {
 			}
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC)) && Enchantment.looting.canApply(ContainerItem)){
+			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
 				ContainerItem.addEnchantment(Enchantment.looting, 3);
 			}
 			else{

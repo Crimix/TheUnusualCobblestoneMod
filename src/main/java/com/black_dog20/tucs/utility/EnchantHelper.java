@@ -1,6 +1,7 @@
 package com.black_dog20.tucs.utility;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
@@ -16,7 +17,7 @@ public class EnchantHelper {
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
+			if(Enchantment.looting.canApply(ContainerItem)){
 				ContainerItem.addEnchantment(Enchantment.looting, 1);
 			}
 			else{
@@ -24,7 +25,7 @@ public class EnchantHelper {
 			}
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
+			if(Enchantment.looting.canApply(ContainerItem)){
 				ContainerItem.addEnchantment(Enchantment.looting, 2);
 			}
 			else{
@@ -32,7 +33,7 @@ public class EnchantHelper {
 			}
 		}
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
-			if(ContainerItem.areItemStackTagsEqual(ContainerItem, new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
+			if(Enchantment.looting.canApply(ContainerItem)){
 				ContainerItem.addEnchantment(Enchantment.looting, 3);
 			}
 			else{
@@ -54,7 +55,7 @@ public class EnchantHelper {
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness5Upgrade,1)) && Enchantment.sharpness.canApply(ContainerItem)){				
 			ContainerItem.addEnchantment(Enchantment.sharpness, 5);
 		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sliktouch1Upgrade,1)) && Enchantment.silkTouch.canApply(ContainerItem)){				
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sliktouch1Upgrade,1))){				
 			ContainerItem.addEnchantment(Enchantment.silkTouch, 1);
 		}
 		

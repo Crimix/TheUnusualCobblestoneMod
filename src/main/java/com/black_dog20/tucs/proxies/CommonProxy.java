@@ -16,4 +16,8 @@ public abstract class CommonProxy implements IProxy {
 	public void openBook(){
 		
 	}
+	
+public void openToolUpgrade(){
+		
+	}
 }

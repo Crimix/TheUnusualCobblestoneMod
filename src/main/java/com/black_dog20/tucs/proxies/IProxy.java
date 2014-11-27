@@ -10,4 +10,6 @@ public interface IProxy {
 	 
 	 public abstract void keyinput();
 
+	void openToolUpgrade(EntityPlayer player);
+
 }

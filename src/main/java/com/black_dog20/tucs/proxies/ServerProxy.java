@@ -11,6 +11,11 @@ public class ServerProxy extends CommonProxy {
 		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
 		
 	}
+	
+	@Override
+	public void openToolUpgrade(EntityPlayer player){
+		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+	}
 
 	@Override
 	public void registerKeyBindings() {

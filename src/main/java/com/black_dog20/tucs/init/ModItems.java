@@ -196,11 +196,11 @@ public class ModItems {
 		GameRegistry.registerItem(looting2Upgrade, "looting2Upgrade");
 		GameRegistry.registerItem(looting3Upgrade, "looting3Upgrade");
 		GameRegistry.registerItem(soulboundUpgrade, "soulboundUpgrade");
-		GameRegistry.registerItem(Sharpness1Upgrade, "sharpness1Upgrade");
-		GameRegistry.registerItem(Sharpness2Upgrade, "sharpness2Upgrade");
-		GameRegistry.registerItem(Sharpness3Upgrade, "sharpness3Upgrade");
-		GameRegistry.registerItem(Sharpness4Upgrade, "sharpness4Upgrade");
-		GameRegistry.registerItem(Sharpness5Upgrade, "sharpness5Upgrade");
+		GameRegistry.registerItem(Sharpness1Upgrade, "Sharpness1Upgrade");
+		GameRegistry.registerItem(Sharpness2Upgrade, "Sharpness2Upgrade");
+		GameRegistry.registerItem(Sharpness3Upgrade, "Sharpness3Upgrade");
+		GameRegistry.registerItem(Sharpness4Upgrade, "Sharpness4Upgrade");
+		GameRegistry.registerItem(Sharpness5Upgrade, "Sharpness5Upgrade");
 		GameRegistry.registerItem(Sliktouch1Upgrade, "Sliktouch1Upgrade");
 		
 		

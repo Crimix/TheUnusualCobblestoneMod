@@ -131,28 +131,9 @@ public class ContainerUpgradeTools extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer player){
 		if(player.getHeldItem() != null){
-			if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
-				return true;
-			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLBOTB,1,OreDictionary.WILDCARD_VALUE))){
-				return true;
-			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLHOWF,1,OreDictionary.WILDCARD_VALUE))){
-				return true;
-			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLPOLM,1,OreDictionary.WILDCARD_VALUE))){
-				return true;
-			}
-			else if(player.getHeldItem().isItemEqual(new ItemStack(ModItems.TLSOHD,1,OreDictionary.WILDCARD_VALUE))){
-				return true;
-			}
-			else{
-				return false;
-			}
+			return true;
 		}
-		else{
-			return false;
-		}
+		return false;
 	}
 
 	@Override

@@ -121,50 +121,68 @@ public class EventHandler {
 	@SubscribeEvent
 	public void onItemUseUp(PlayerDestroyItemEvent event){
 			EntityPlayer player = (EntityPlayer) event.entity;
-			System.out.println("test");
 			ItemStack item = event.original;
-			System.out.println(item.getDisplayName());
 			InventoryPlayer inv = player.inventory;
 					if(item.isItemEqual( new ItemStack(ModItems.TLSOC))){
 						ItemStack hilt = new ItemStack(ModItems.SwordHilt);
 						ItemStack blade = new ItemStack(ModItems.SwordBlade);
-						inv.addItemStackToInventory(blade);
-						inv.addItemStackToInventory(hilt);
+						if(!inv.addItemStackToInventory(blade)){
+							player.dropPlayerItemWithRandomChoice(blade, false);
+						}
+						if(!inv.addItemStackToInventory(hilt)){
+							player.dropPlayerItemWithRandomChoice(hilt, false);
+						}
 						
-						giveItems(item, inv);
+						//giveItems(item, inv);
 						
 					}
 					else if(item.isItemEqual( new ItemStack(ModItems.TLBOTB))){
 						ItemStack rod = new ItemStack(ModItems.toolRod);
 						ItemStack toolHead = new ItemStack(ModItems.hatchetHead);
-						inv.addItemStackToInventory(rod);
-						inv.addItemStackToInventory(toolHead);
+						if(!inv.addItemStackToInventory(rod)){
+							player.dropPlayerItemWithRandomChoice(rod, false);
+						}
+						if(!inv.addItemStackToInventory(toolHead)){
+							player.dropPlayerItemWithRandomChoice(toolHead, false);
+						}
 						
-						giveItems(item, inv);
+						//giveItems(item, inv);
 					}
 					else if(item.isItemEqual(new ItemStack(ModItems.TLHOWF))){
 						ItemStack rod = new ItemStack(ModItems.toolRod);
 						ItemStack toolHead = new ItemStack(ModItems.hoeHead);
-						inv.addItemStackToInventory(rod);
-						inv.addItemStackToInventory(toolHead);
+						if(!inv.addItemStackToInventory(rod)){
+							player.dropPlayerItemWithRandomChoice(rod, false);
+						}
+						if(!inv.addItemStackToInventory(toolHead)){
+							player.dropPlayerItemWithRandomChoice(toolHead, false);
+						}
 						
-						giveItems(item, inv);
+						//giveItems(item, inv);
 					}
 					else if(item.isItemEqual(new ItemStack(ModItems.TLPOLM))){
 						ItemStack rod = new ItemStack(ModItems.toolRod);
 						ItemStack toolHead = new ItemStack(ModItems.pickaxeHead);
-						inv.addItemStackToInventory(rod);
-						inv.addItemStackToInventory(toolHead);
+						if(!inv.addItemStackToInventory(rod)){
+							player.dropPlayerItemWithRandomChoice(rod, false);
+						}
+						if(!inv.addItemStackToInventory(toolHead)){
+							player.dropPlayerItemWithRandomChoice(toolHead, false);
+						}
 						
-						giveItems(item, inv);
+						//giveItems(item, inv);
 					}
 					else if(item.isItemEqual(new ItemStack(ModItems.TLSOHD))){
 						ItemStack rod = new ItemStack(ModItems.toolRod);
 						ItemStack toolHead = new ItemStack(ModItems.shovelHead);
-						inv.addItemStackToInventory(rod);
-						inv.addItemStackToInventory(toolHead);
+						if(!inv.addItemStackToInventory(rod)){
+							player.dropPlayerItemWithRandomChoice(rod, false);
+						}
+						if(!inv.addItemStackToInventory(toolHead)){
+							player.dropPlayerItemWithRandomChoice(toolHead, false);
+						}
 						
-						giveItems(item, inv);
+						//giveItems(item, inv);
 					}
 			}
 	

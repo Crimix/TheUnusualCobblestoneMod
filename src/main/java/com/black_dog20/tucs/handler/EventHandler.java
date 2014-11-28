@@ -133,7 +133,7 @@ public class EventHandler {
 							player.dropPlayerItemWithRandomChoice(hilt, false);
 						}
 						
-						//giveItems(item, inv);
+						giveItems(item, inv);
 						
 					}
 					else if(item.isItemEqual( new ItemStack(ModItems.TLBOTB))){
@@ -146,7 +146,7 @@ public class EventHandler {
 							player.dropPlayerItemWithRandomChoice(toolHead, false);
 						}
 						
-						//giveItems(item, inv);
+						giveItems(item, inv);
 					}
 					else if(item.isItemEqual(new ItemStack(ModItems.TLHOWF))){
 						ItemStack rod = new ItemStack(ModItems.toolRod);
@@ -158,7 +158,7 @@ public class EventHandler {
 							player.dropPlayerItemWithRandomChoice(toolHead, false);
 						}
 						
-						//giveItems(item, inv);
+						giveItems(item, inv);
 					}
 					else if(item.isItemEqual(new ItemStack(ModItems.TLPOLM))){
 						ItemStack rod = new ItemStack(ModItems.toolRod);
@@ -170,7 +170,7 @@ public class EventHandler {
 							player.dropPlayerItemWithRandomChoice(toolHead, false);
 						}
 						
-						//giveItems(item, inv);
+						giveItems(item, inv);
 					}
 					else if(item.isItemEqual(new ItemStack(ModItems.TLSOHD))){
 						ItemStack rod = new ItemStack(ModItems.toolRod);
@@ -182,7 +182,7 @@ public class EventHandler {
 							player.dropPlayerItemWithRandomChoice(toolHead, false);
 						}
 						
-						//giveItems(item, inv);
+						giveItems(item, inv);
 					}
 			}
 	
@@ -194,7 +194,9 @@ public class EventHandler {
 			int b0 = nbttagcompound1.getInteger("Slot");
 			ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			if(slotItem !=null){
-				inv.addItemStackToInventory(slotItem);
+				if(!inv.addItemStackToInventory(slotItem)){
+					inv.player.dropPlayerItemWithRandomChoice(slotItem, false);
+				}
 			}
 			nbt.removeTag("upgradeItems");
 	}

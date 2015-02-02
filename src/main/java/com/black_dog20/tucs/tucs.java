@@ -46,6 +46,7 @@ public class tucs {
 	public static final int guiIDFlightTalisman = 4;
 	public static final int guiIDCraftingTalisman = 5;
 	public static final int guiIDUpgradeTools = 6;
+	public static final int guiSoulBinder = 7;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){

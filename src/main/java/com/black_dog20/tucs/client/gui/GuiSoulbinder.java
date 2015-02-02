@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.container.ContainerAncientTable;
 import com.black_dog20.tucs.container.ContainerFlightTalisman;
+import com.black_dog20.tucs.container.ContainerSoulbinder;
 import com.black_dog20.tucs.init.ModItems;
 
 import cpw.mods.fml.relauncher.Side;
@@ -24,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 		private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTalisman.png");
 		
 		public GuiSoulbinder(World world, int x, int y, int z, EntityPlayer player) {
-			super(new ContainerFlightTalisman(world, x, y, z, player, player.getHeldItem()));
+			super(new ContainerSoulbinder(world, x, y, z, player));
 			
 			this.xSize = 175;
 			this.ySize = 165;

@@ -34,6 +34,7 @@ public class KeyInputEventHandler {
 					if(!entityPlayer.capabilities.allowFlying){
 						entityPlayer.capabilities.allowFlying = true;
 						entityPlayer.capabilities.isFlying = true;
+						entityPlayer.sendPlayerAbilities();
 						if(nbt.getBoolean(FIRSTFLY) == false){
 							entityPlayer.capabilities.setFlySpeed(0.1F);
 							nbt.setBoolean(FIRSTFLY, true);

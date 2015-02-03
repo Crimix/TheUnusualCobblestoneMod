@@ -56,7 +56,7 @@ tile.tucs:oreCobblestoneium.name=Cobblestoneium Ore
 tile.tucs:blockCobblestoneium.name=Cobblestoneium Block
 tile.tucs:blockCobblestonedium.name=Cobblestonedium Block
 tile.tucs:ancientForge.name=Ancient Forge
-tile.tucs:blockSoulbind.name=Soul Binder
+tile.tucs:soulbinder.name=Soul Binder
 
 //Container
 container.tucs:AncientForge=AncientForge

@@ -7,6 +7,7 @@ import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.inventory.InventoryTUCS;
 import com.black_dog20.tucs.inventory.InventoryTalisman;
 import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
+import com.black_dog20.tucs.item.ItemTUCS;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.slot.SlotFlightTalisman;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
@@ -105,7 +106,8 @@ public class ContainerSoulbinder extends Container{
 			NBTTagCompound NBT = itemstack.getTagCompound();
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
 			}
-			itemstack.setTagInfo("ench", new NBTTagList());
+			//itemstack.setTagInfo("ench", new NBTTagList());
+			//itemstack.setStackDisplayName(itemstack.getDisplayName()+" (Soulbound)");
 			player.dropPlayerItemWithRandomChoice(itemstack, false);
 		}
 		
@@ -115,5 +117,7 @@ public class ContainerSoulbinder extends Container{
 	public boolean canInteractWith(EntityPlayer p_75145_1_) {
 		return true;
 	}
+	
+	
 
 }

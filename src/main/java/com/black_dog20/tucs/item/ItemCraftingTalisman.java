@@ -19,25 +19,7 @@ public class ItemCraftingTalisman extends ItemTUCS{
 		this.setMaxStackSize(1);
 	    
 	}
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
-	{
-		
-		if(!stack.hasTagCompound()){
-			stack.stackTagCompound = new NBTTagCompound();
-		}
-		if(stack.hasTagCompound()){
-			NBTTagCompound nbt= stack.getTagCompound();
-			
-			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
-				list.add("Soulbound");
-			}
-			else{
-				list.remove("Soulbound");
-			}
-		}
-	}
-
+	
 	@Override
 	public boolean hasEffect(ItemStack stack){
 		

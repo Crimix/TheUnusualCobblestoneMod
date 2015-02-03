@@ -24,6 +24,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
@@ -76,6 +77,23 @@ public class EventHandler {
 
 	}
 
+	@SubscribeEvent
+	public void Tool(ItemTooltipEvent event){
+		ItemStack item = event.itemStack;
+		List list = event.toolTip;
+		if(item.hasTagCompound()){
+			NBTTagCompound nbtTagCompound = item.getTagCompound();
+			if(nbtTagCompound.hasKey(NBTTags.SOULBOUND)){
+				String test= nbtTagCompound.getString(NBTTags.SOULBOUND);
+				if(test.equals(NBTTags.OK)){
+					list.add("\u00A7d"+"Soulbound");
+				}
+				else{
+					list.remove("Soulbound");
+				}
+			}
+		}
+	}
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		EntityPlayer player = event.player;

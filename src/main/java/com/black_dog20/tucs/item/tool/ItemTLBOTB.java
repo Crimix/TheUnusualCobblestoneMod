@@ -53,26 +53,6 @@ protected String getUnwrappedUnlocalizedName(String unlocalizedName)
     return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 }
 
-@Override
-public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
-{
-	list.add("Shift right click to upgrade");
-	list.add("");
-	if(!stack.hasTagCompound()){
-		stack.stackTagCompound = new NBTTagCompound();
-	}
-	if(stack.hasTagCompound()){
-		NBTTagCompound nbt= stack.getTagCompound();
-
-		if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)){
-			list.add("Soulbound");
-		}
-		else{
-			list.remove("Soulbound");
-		}
-	}
-}
-
 
 @Override
 public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){

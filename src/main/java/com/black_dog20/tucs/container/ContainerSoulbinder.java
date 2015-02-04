@@ -3,6 +3,7 @@ package com.black_dog20.tucs.container;
 import java.util.List;
 
 import com.black_dog20.tucs.crafting.AncientForgeRecipes;
+import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.inventory.InventoryTUCS;
 import com.black_dog20.tucs.inventory.InventoryTalisman;
@@ -20,9 +21,11 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -37,7 +40,8 @@ public class ContainerSoulbinder extends Container{
 	private int posY;
 	private int posZ;
 	private EntityPlayer Player;
-	public IInventory slot = new InventoryTUCS();
+	public InventoryCrafting slot = new InventoryCrafting(this, 1, 1);
+	
 
 	public ContainerSoulbinder(World world, int x, int y, int z, EntityPlayer player)
 	{
@@ -47,11 +51,11 @@ public class ContainerSoulbinder extends Container{
 		this.posZ = z;
 		this.Player = player;
 
-		this.addSlotToContainer(new Slot(slot, 0, 75, 37));
+		this.addSlotToContainer(new Slot(this.slot, 0, 75, 37));
 
 		bindPlayerInventory(player.inventory);
 
-		
+		 this.onCraftMatrixChanged(this.slot);
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -93,11 +97,9 @@ public class ContainerSoulbinder extends Container{
 	      }
 	      return null;
 	   }
-
-	@Override
-	public void onContainerClosed(EntityPlayer player){
-		super.onContainerClosed(player);
-		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
+	
+	public void onCraftMatrixChanged(IInventory inventory){
+		ItemStack itemstack = getSlot(0).getStack();
 		if(itemstack != null){
 			if(itemstack != null && !itemstack.hasTagCompound()){
 				itemstack.stackTagCompound = new NBTTagCompound();
@@ -106,11 +108,16 @@ public class ContainerSoulbinder extends Container{
 			NBTTagCompound NBT = itemstack.getTagCompound();
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
 			}
-			//itemstack.setTagInfo("ench", new NBTTagList());
-			//itemstack.setStackDisplayName(itemstack.getDisplayName()+" (Soulbound)");
-			player.dropPlayerItemWithRandomChoice(itemstack, false);
 		}
 		
+    	
+    }
+
+	@Override
+	public void onContainerClosed(EntityPlayer player){
+		super.onContainerClosed(player);
+		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
+		player.dropPlayerItemWithRandomChoice(itemstack, false);
 	}
 
 	@Override

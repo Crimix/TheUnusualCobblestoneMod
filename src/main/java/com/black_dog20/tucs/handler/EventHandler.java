@@ -88,7 +88,7 @@ public class EventHandler {
 				if(test.equals(NBTTags.OK)){
 					list.add("\u00A7d"+"Soulbound");
 				}
-				else{
+				else if(!test.equals(NBTTags.OK)){
 					list.remove("Soulbound");
 				}
 			}

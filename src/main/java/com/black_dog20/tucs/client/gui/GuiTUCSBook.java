@@ -15,6 +15,7 @@ import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;

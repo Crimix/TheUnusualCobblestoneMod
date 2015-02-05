@@ -8,6 +8,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.crafting.AncientTableManager;
+import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.PageTypes;
@@ -16,6 +18,7 @@ import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.RenderHelper;
@@ -24,6 +27,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
@@ -33,6 +39,10 @@ public class GuiTUCSBook extends GuiScreen {
 	static final ResourceLocation textureC = new ResourceLocation("minecraft:textures/gui/container/crafting_table.png");
 	static final ResourceLocation textureF = new ResourceLocation("minecraft:textures/gui/container/furnace.png");
 	private int postion;
+	private List MCList = CraftingManager.getInstance().getRecipeList();
+	private List TUCSList = AncientTableManager.getInstance().getRecipeList();
+	ItemStack[] itemList;
+	Block crafting;
 
 	private static final int BUTTON_NEXT = 0;
 	private static final int BUTTON_PREV = 1;
@@ -51,6 +61,7 @@ public class GuiTUCSBook extends GuiScreen {
 
 	public GuiTUCSBook(EntityPlayer player) {
 		this.player=player;
+		
 	}
 
 	@Override
@@ -59,6 +70,7 @@ public class GuiTUCSBook extends GuiScreen {
 		@SuppressWarnings("unchecked")
 		List<GuiButton> buttons = buttonList;
 		int bookXBegin = (width - 192) / 2;
+
 
 		buttons.add(nextPage = new GuiButtonChangePage(BUTTON_NEXT, bookXBegin + 120, 2 + 154, false));
 		buttons.add(prevPage = new GuiButtonChangePage(BUTTON_PREV, bookXBegin + 38, 2 + 154, true));
@@ -475,6 +487,30 @@ public class GuiTUCSBook extends GuiScreen {
 	
 	public void DrawPageNumber(int pageNumber, int bookXStart){
 		
+	}
+	public void test(ItemStack testItem){
+		for (int j = 0; j < this.MCList.size(); ++j)
+		{
+			IRecipe irecipeMC = (IRecipe)this.MCList.get(j);
+
+			ItemStack itemMC = irecipeMC.getRecipeOutput();
+			if (itemMC.areItemStacksEqual(itemMC, testItem))
+			{
+				ShapedRecipes recipe = (ShapedRecipes) irecipeMC;
+				itemList = recipe.recipeItems;
+				crafting = Blocks.crafting_table;
+			}
+			
+			IRecipe irecipe = (IRecipe)this.MCList.get(j);
+
+			ItemStack item = irecipe.getRecipeOutput();
+			if (item.areItemStacksEqual(item, testItem))
+			{
+				AncientTableShapedRecipes recipe = (AncientTableShapedRecipes) irecipe;
+				itemList = recipe.recipeItems;
+				crafting = ModBlocks.ancientTable;
+			}
+		}
 	}
 	
 	public boolean checkRecipe(String type){

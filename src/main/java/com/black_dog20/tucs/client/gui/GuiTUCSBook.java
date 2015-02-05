@@ -1,5 +1,6 @@
 package com.black_dog20.tucs.client.gui;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.lwjgl.opengl.GL11;
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
+import com.black_dog20.tucs.crafting.AncientTableShapelessRecipes;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.PageTypes;
@@ -30,9 +32,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class GuiTUCSBook extends GuiScreen {
 	static final ResourceLocation texture = new ResourceLocation("minecraft:textures/gui/book.png");
@@ -41,8 +46,8 @@ public class GuiTUCSBook extends GuiScreen {
 	private int postion;
 	private List MCList = CraftingManager.getInstance().getRecipeList();
 	private List TUCSList = AncientTableManager.getInstance().getRecipeList();
-	ItemStack[] itemList;
-	Block crafting;
+	Block craftingB;
+
 
 	private static final int BUTTON_NEXT = 0;
 	private static final int BUTTON_PREV = 1;
@@ -109,16 +114,6 @@ public class GuiTUCSBook extends GuiScreen {
 	public void onGuiClosed() {
 		super.onGuiClosed();
 	}
-	ItemStack yellowStoneium = new ItemStack(ModItems.ingotYellowstoneium);
-	ItemStack diamond2 = new ItemStack(Items.diamond);
-	ItemStack cobbleSTD = new ItemStack(ModItems.ingotCobblestonedium);
-	ItemStack cobbleSTN = new ItemStack(ModItems.ingotCobblestoneium);
-	ItemStack emerald2 = new ItemStack(Items.emerald);
-	ItemStack unfFlTa = new ItemStack(ModItems.UnfinshedFlightTalisman);
-	ItemStack tier1Base = new ItemStack(ModItems.talismanBaseT1);
-	ItemStack tier2Base = new ItemStack(ModItems.TalismanBase);
-	ItemStack unGolden = new ItemStack(ModItems.ungoldenFligtTalisman);
-	ItemStack flightTali = new ItemStack(ModItems.FlightTalisman);
 	
 	
 	@Override
@@ -142,10 +137,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 3:
 			drawRecipePageTop(bookXStart);
 			text = "This Crafting Table can also be used to vailla recipes";
-			ItemStack gold = new ItemStack(ModItems.ingotYellowstoneium);
-			ItemStack cobblestoneium = new ItemStack(ModItems.ingotCobblestoneium);
-			ItemStack craftingTable = new ItemStack(Blocks.crafting_table);
-			drawRecipePageBot(gold, cobblestoneium, gold, cobblestoneium, craftingTable, cobblestoneium, gold, cobblestoneium, gold, craftingTable, text, new ItemStack(ModBlocks.ancientTable), bookXStart);
+			drawRecipePageBot(new ItemStack(ModBlocks.ancientTable), text,  bookXStart);
 			break;
 		case 4:
 			text = "The book which has the magic properties to hold all the knowledge you have found out about Cobblestoneia and it's traditions";
@@ -154,9 +146,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 5:
 			drawRecipePageTop(bookXStart);
 			text = "This book kan be crafted so you never lose the knowledge of the ancint society";
-			ItemStack cobblestone= new ItemStack(Blocks.cobblestone);
-			ItemStack book = new ItemStack(Items.book);
-			drawRecipePageBot(cobblestone, cobblestone, cobblestone, cobblestone, book, cobblestone, cobblestone, cobblestone, cobblestone, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TUCSbook), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.TUCSbook), text,  bookXStart);
 			break;
 		case 6:
 			String  clText = " \nThis Lighter can be used like a flint and steel";
@@ -165,7 +155,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 7:
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting";
-			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Items.gunpowder), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.crafting_table), text, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.cobblestoneLighter), text,  bookXStart);
 			break;
 		case 8:
 			String  cilText = "\nThis Lighter can be used like a flint and steel";
@@ -174,7 +164,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 9:
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
-			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.cobblestoneiumLighter), text,  bookXStart);
 			break;
 		case 10:
 			String  cdilText = "\nThis Lighter can be used like a flint and steel";
@@ -183,7 +173,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 11:
 			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, it can't be broken";
-			drawRecipePageBot(null, new ItemStack(Items.flint_and_steel), null, new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.ingotCobblestonedium), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneiumLighter), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.cobblestonediumLighter), text,  bookXStart);
 			break;
 		case 12:
 			text="This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. To get the ingot smelt the ore \nAny Lighter made of cobblestone or it's alloys will also work ";
@@ -192,11 +182,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 13:
 			drawRecipePageTop(bookXStart);
 			text = "This Material have the combined durability of iron and stone ";
-			ItemStack rcsi1 = new ItemStack(Blocks.cobblestone);
-			ItemStack rcsi2 = new ItemStack(Items.iron_ingot);
-			ItemStack rcsi3 = new ItemStack(Items.gunpowder);
-			ItemStack rcsi4 = new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE);
-			drawRecipePageBot(rcsi1, rcsi2, null, rcsi3, rcsi4, null, null, null, null, new ItemStack(Blocks.crafting_table), text, new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
+			drawRecipePageBot(new ItemStack(ModBlocks.oreCobblestoneium), text,  bookXStart);
 			break;
 		case 14:
 			text="This ingot is an alloy of iron and cobblestone";
@@ -213,16 +199,16 @@ public class GuiTUCSBook extends GuiScreen {
 		case 17:
 			text="This ingot have the combined durability of diamond and stone";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot(null, cobbleSTN, null, cobbleSTN, diamond2, cobbleSTN, null, cobbleSTN, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.ingotCobblestonedium), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.ingotCobblestonedium), text,  bookXStart);
 			break;
 		case 18:
 			text="This ingot is just stone and dye. You wil get 2 pr crafting";
-			drawPage(yellowStoneium.getDisplayName(), text, yellowStoneium, bookXStart);
+			drawPage(new ItemStack(ModItems.ingotYellowstoneium).getDisplayName(), text, new ItemStack(ModItems.ingotYellowstoneium), bookXStart);
 			break;
 		case 19:
 			text="This ingot is kind of plain an nice to craft with";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot(new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Items.dye,1,11), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(ModItems.cobblestoneLighter), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.crafting_table), text, yellowStoneium, bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.ingotYellowstoneium), text,  bookXStart);
 			break;
 		case 20:
 			text="\nThis sword has the power of the legendary fighter";
@@ -232,19 +218,12 @@ public class GuiTUCSBook extends GuiScreen {
 		case 21:
 			text="This sword is crafted by the finest materials ever known";
 			drawRecipePageTop(bookXStart);
-			ItemStack gold1 = new ItemStack(ModItems.ingotYellowstoneium);
-			ItemStack cobblestonedium = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack diamond = new ItemStack(Items.diamond);
-			drawRecipePageBot(gold1, cobblestonedium, gold1, gold1, diamond, gold1, gold1, cobblestonedium, gold1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordBlade), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.SwordBlade), text,  bookXStart);
 			break;
 		case 22:
 			text="To finaly complete this legendary sword you will need a hilt";
 			drawRecipePageTop(bookXStart);
-			ItemStack cobblestonedium1 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack gold2 = new ItemStack(ModItems.ingotYellowstoneium);
-			ItemStack stick = new ItemStack(Items.stick);
-			ItemStack emerald = new ItemStack(Items.emerald);
-			drawRecipePageBot(gold2, cobblestonedium1, gold2, null, stick, null, null, emerald, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.SwordHilt), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.SwordHilt), text,  bookXStart);
 			break;
 		case 23:
 			text="To make you'r legendary tools you will need a tool rod";
@@ -254,9 +233,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 24:
 			text="The tool rod will make any ordinary tool legendary";
 			drawRecipePageTop(bookXStart);
-			ItemStack stick1 = new ItemStack(Items.stick);
-			ItemStack emerald1 = new ItemStack(Items.emerald);
-			drawRecipePageBot(null, null, stick1, null, stick1, null, emerald1, null, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.toolRod), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.toolRod), text,  bookXStart);
 			break;
 		case 25:
 			text="\nThis legendary pickaxe was used by the lost miner";
@@ -266,11 +243,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 26:
 			text="This legendary pickaxe will serve you through good and bad times";
 			drawRecipePageTop(bookXStart);
-			ItemStack cs = new ItemStack(ModItems.ingotCobblestoneium);
-			ItemStack cd = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g = new ItemStack(ModItems.ingotYellowstoneium);
-			ItemStack d = new ItemStack(Items.diamond);
-			drawRecipePageBot(cs, g, cs, cd, d, cd, g, g, g, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.pickaxeHead), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.pickaxeHead), text,  bookXStart);
 			break;
 		case 27:
 			text="\nThe legendary hoe can be upgraded to help you in ways you can't yet understand";
@@ -280,10 +253,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 28:
 			text="The legendary hoe will make farming a breeze";
 			drawRecipePageTop(bookXStart);
-			ItemStack c1 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g1 = new ItemStack(ModItems.ingotYellowstoneium);
-			ItemStack d1 = new ItemStack(Items.diamond);
-			drawRecipePageBot(c1, d1, null, null, c1, g1, null, null, g1, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.hoeHead), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.hoeHead), text,  bookXStart);
 			break;
 		case 29:
 			text="\nThe legendary BattleAxe will slay you'r enemies like anything you have ever seen";
@@ -293,10 +263,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 30:
 			text="The legendary BattleAxe was first used by The Legendary Battle Master";
 			drawRecipePageTop(bookXStart);
-			ItemStack c2 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g2 = new ItemStack(ModItems.ingotYellowstoneium);
-			ItemStack d2 = new ItemStack(Items.diamond);
-			drawRecipePageBot(c2, null, c2, g2, d2, g2, c2, null, c2, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLBOTB), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.hatchetHead), text,  bookXStart);
 			break;
 		case 31:
 			text="\nThis legendary shovel has made digging holes easier than ever";
@@ -306,10 +273,7 @@ public class GuiTUCSBook extends GuiScreen {
 		case 32:
 			text="The legendary shovel was first seen in the late 90's";
 			drawRecipePageTop(bookXStart);
-			ItemStack c3 = new ItemStack(ModItems.ingotCobblestonedium);
-			ItemStack g3 = new ItemStack(ModItems.ingotYellowstoneium);
-			ItemStack d3 = new ItemStack(Items.diamond);
-			drawRecipePageBot(null, c3, g3, g3, d3, g3, c3, g3, null, new ItemStack(ModBlocks.ancientTable), text, new ItemStack(ModItems.TLSOHD), bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.shovelHead), text,  bookXStart);
 			break;
 		case 33:
 			text="\nThis is the legendary Talisman of flight which was given by the semi god of Norway!";
@@ -319,27 +283,27 @@ public class GuiTUCSBook extends GuiScreen {
 		case 34:
 			text="To make the talisman you first need to make a talisman base";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot(yellowStoneium, cobbleSTN, yellowStoneium, cobbleSTN, diamond2, cobbleSTN, yellowStoneium, cobbleSTN, yellowStoneium, new ItemStack(ModBlocks.ancientTable), text, tier1Base, bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.talismanBaseT1), text,  bookXStart);
 			break;
 		case 35:
 			text="Then you will need to make the tier2 base!";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot(diamond2, emerald2, diamond2, emerald2, tier1Base, emerald2, diamond2, emerald2, diamond2, new ItemStack(ModBlocks.ancientTable), text, tier2Base, bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.TalismanBase), text,  bookXStart);
 			break;
 		case 36:
-			text="After that you will need to make the unnfinished flight talisman";
+			text="After that you will need to make the unfinished flight talisman";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot(cobbleSTD, cobbleSTD, cobbleSTD, cobbleSTD, tier2Base, cobbleSTD, cobbleSTD, cobbleSTD, cobbleSTD, new ItemStack(ModBlocks.ancientTable), text, unfFlTa, bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.UnfinshedFlightTalisman), text,  bookXStart);
 			break;
 		case 37:
 			text="This is the last thing you will need to make i promise";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot(cobbleSTN, cobbleSTN, cobbleSTN, cobbleSTN, tier2Base, cobbleSTN, cobbleSTN, cobbleSTN, cobbleSTN, new ItemStack(ModBlocks.ancientTable), text, unGolden, bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.ungoldenFligtTalisman), text,  bookXStart);
 			break;
 		case 38:
 			text="Oh wait there is actually one last step";
 			drawRecipePageTop(bookXStart);
-			drawRecipePageBot(yellowStoneium, yellowStoneium, yellowStoneium, yellowStoneium, unGolden, yellowStoneium, yellowStoneium, yellowStoneium, yellowStoneium, new ItemStack(ModBlocks.ancientTable), text, flightTali, bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.FlightTalisman), text,  bookXStart);
 			break;
 		default:
 			mc.renderEngine.bindTexture(texture);
@@ -386,6 +350,58 @@ public class GuiTUCSBook extends GuiScreen {
 		super.drawScreen(MouseX, MouseY, RenderPartials);
 	}
 
+	public void drawRecipePageBot(ItemStack item, String tip, int bookXStart){
+		mc.renderEngine.bindTexture(textureC);
+		this.drawTexturedModalRect(bookXStart + 62, 100, 28, 15, 56, 56);
+		super.drawScreen(MouseX, MouseY, RenderPartials);
+		ItemStack[] list = test(item);
+		ItemStack crafting = new ItemStack(craftingB);
+		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, crafting, bookXStart + 35, 80);
+		fontRendererObj.drawString("\u00A7r" + "\u00A7n" + "Crafted in a", bookXStart + 35, 70, 0x000000);
+		fontRendererObj.drawString("\u00A7l" + "\u00A7n" + "Recipe", bookXStart + 52, 17, 0x000000);
+		fontRendererObj.drawSplitString("\u00A7r" + tip, bookXStart + 34, 35, 120, 0x000000);
+		fontRendererObj.drawString("\u00A7r" + crafting.getDisplayName(), bookXStart + 53, 84, 0x000000);
+		
+		if(item.getItem() instanceof ItemBlock){
+			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, item, bookXStart + 34, 15);
+		}
+		int counter = 0;
+		int j = 0;
+		int k = 0;
+		if(list != null){
+			for(int i = 0; i < list.length; i++){
+				if(list[i] != null && list[i].getItem() instanceof ItemBlock){
+					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, list[i], bookXStart + xCraft+(k*18), yCraft+(j*18));
+				}
+				counter++;
+				k++;
+				if(counter == 3){
+					j++;
+					k = 0;
+					counter = 0;
+				}
+			}
+			if(!(item.getItem() instanceof ItemBlock)){
+				itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, item, bookXStart + 34, 15);
+			}
+			counter = 0;
+			j = 0;
+			k = 0;
+			for(int i = 0; i < list.length; i++){
+				if(list[i] != null && !(list[i].getItem() instanceof ItemBlock)){
+					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, list[i], bookXStart + xCraft+(k*18), yCraft+(j*18));
+				}
+				counter++;
+				k++;
+				if(counter == 3){
+					j++;
+					k = 0;
+					counter = 0;
+				}
+			}
+		}
+	}
+	/*
 	public void drawRecipePageBot(ItemStack r1c1, ItemStack r1c2, ItemStack r1c3, ItemStack r2c1, ItemStack r2c2, ItemStack r2c3, ItemStack r3c1, ItemStack r3c2, ItemStack r3c3, ItemStack crafting, String tip, ItemStack item, int bookXStart){
 		mc.renderEngine.bindTexture(textureC);
 		this.drawTexturedModalRect(bookXStart + 62, 100, 28, 15, 56, 56);
@@ -457,7 +473,7 @@ public class GuiTUCSBook extends GuiScreen {
 		if(r3c3 != null && !(r3c3.getItem() instanceof ItemBlock)){
 			itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, r3c3, bookXStart + xCraft + (2*18), yCraft + (2*18));
 		}
-	}
+	}*/
 	
 	public void DrawFurnaceRecipe(String title, String tip, ItemStack input, ItemStack output, ItemStack crafting, int bookXStart){
 		
@@ -488,30 +504,68 @@ public class GuiTUCSBook extends GuiScreen {
 	public void DrawPageNumber(int pageNumber, int bookXStart){
 		
 	}
-	public void test(ItemStack testItem){
-		for (int j = 0; j < this.MCList.size(); ++j)
-		{
-			IRecipe irecipeMC = (IRecipe)this.MCList.get(j);
+	public ItemStack[] test(ItemStack testItem){
+		ItemStack[] itemList = null;
+		List shapeless = null;
 
-			ItemStack itemMC = irecipeMC.getRecipeOutput();
-			if (itemMC.areItemStacksEqual(itemMC, testItem))
-			{
-				ShapedRecipes recipe = (ShapedRecipes) irecipeMC;
-				itemList = recipe.recipeItems;
-				crafting = Blocks.crafting_table;
+		for(int i = 0; i < this.TUCSList.size();i++){
+			IRecipe irecipe = (IRecipe)this.TUCSList.get(i);
+			ItemStack item = null;
+			if(irecipe != null){
+				item = irecipe.getRecipeOutput();
 			}
 			
-			IRecipe irecipe = (IRecipe)this.MCList.get(j);
-
-			ItemStack item = irecipe.getRecipeOutput();
-			if (item.areItemStacksEqual(item, testItem))
-			{
-				AncientTableShapedRecipes recipe = (AncientTableShapedRecipes) irecipe;
-				itemList = recipe.recipeItems;
-				crafting = ModBlocks.ancientTable;
+			if (item != null && item.areItemStacksEqual(item, testItem)){
+				if(irecipe instanceof AncientTableShapedRecipes){
+					AncientTableShapedRecipes recipe = (AncientTableShapedRecipes) irecipe;
+					itemList = recipe.recipeItems;
+				}
+				if(irecipe instanceof AncientTableShapelessRecipes){
+					AncientTableShapelessRecipes recipe = (AncientTableShapelessRecipes) irecipe;
+					shapeless = recipe.recipeItems;
+				}
+				craftingB = ModBlocks.ancientTable;
 			}
 		}
+		for (int j = 0; j < this.MCList.size(); ++j){
+			IRecipe irecipeMC = (IRecipe)this.MCList.get(j);
+			ItemStack itemMC = null;
+			if(irecipeMC != null){
+				itemMC = irecipeMC.getRecipeOutput();
+			}
+			if (itemMC != null && itemMC.areItemStacksEqual(itemMC, testItem)){
+				if(irecipeMC instanceof ShapedOreRecipe){
+					ShapedOreRecipe recipe = (ShapedOreRecipe) irecipeMC;
+					Object[] itemListMC = recipe.getInput();
+					//itemList = (ItemStack[]) itemListMC;
+				}
+				if(irecipeMC instanceof ShapelessOreRecipe){
+					ShapelessOreRecipe recipe = (ShapelessOreRecipe) irecipeMC;
+					ArrayList<Object> itemListMC = recipe.getInput();
+					//itemList = (ItemStack[]) itemListMC;
+				}
+				if(irecipeMC instanceof ShapelessRecipes){
+					ShapelessRecipes recipe = (ShapelessRecipes) irecipeMC;
+					shapeless = recipe.recipeItems;
+					//itemList = (ItemStack[]) itemListMC;
+				}
+				if(irecipeMC instanceof ShapedRecipes){
+					ShapedRecipes recipe = (ShapedRecipes) irecipeMC;
+					itemList = recipe.recipeItems;
+					//itemList = (ItemStack[]) itemListMC;
+				}
+				craftingB = Blocks.crafting_table;
+			}
+		}
+		if(shapeless != null){
+			for(int i = 0; i < shapeless.size(); i ++){
+				//itemList[i] = (ItemStack) shapeless.get(i);
+			}
+		}
+			
+		return itemList;
 	}
+	
 	
 	public boolean checkRecipe(String type){
 		NBTTagCompound nbt = NBTHelper.getPlayerNBT(player);

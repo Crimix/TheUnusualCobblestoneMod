@@ -131,11 +131,10 @@ public class GuiTUCSBook extends GuiScreen {
 			drawTitle("Introduction", introductionText, bookXStart);
 			break;
 		case 2:
-			String  atText = "This table is used to craft the higher tier of items and tools, it has been used for many centuries to make the finest tools of stone. It is also the only table that can handle the alloy of diamonds and cobblestone";
-			drawPage("Ancient Table", atText, new ItemStack(ModBlocks.ancientTable), bookXStart);
+			text = "This table is used to craft the higher tier of items and tools, it has been used for many centuries to make the finest tools of stone. It is also the only table that can handle the alloy of diamonds and cobblestone";
+			drawPage("Ancient Table", text, new ItemStack(ModBlocks.ancientTable), bookXStart);
 			break;
 		case 3:
-			drawRecipePageTop(bookXStart);
 			text = "This Crafting Table can also be used to vailla recipes";
 			drawRecipePageBot(new ItemStack(ModBlocks.ancientTable), text,  bookXStart);
 			break;
@@ -144,16 +143,14 @@ public class GuiTUCSBook extends GuiScreen {
 			drawPage("The Ancient book", text, new ItemStack(ModItems.TUCSbook), bookXStart);
 			break;
 		case 5:
-			drawRecipePageTop(bookXStart);
 			text = "This book kan be crafted so you never lose the knowledge of the ancint society";
 			drawRecipePageBot(new ItemStack(ModItems.TUCSbook), text,  bookXStart);
 			break;
 		case 6:
-			String  clText = " \nThis Lighter can be used like a flint and steel";
-			drawPage("Cobblestone Lighter", clText, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
+			text = " \nThis Lighter can be used like a flint and steel";
+			drawPage("Cobblestone Lighter", text, new ItemStack(ModItems.cobblestoneLighter), bookXStart);
 			break;
 		case 7:
-			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting";
 			drawRecipePageBot(new ItemStack(ModItems.cobblestoneLighter), text,  bookXStart);
 			break;
@@ -162,16 +159,14 @@ public class GuiTUCSBook extends GuiScreen {
 			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
 			break;
 		case 9:
-			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
 			drawRecipePageBot(new ItemStack(ModItems.cobblestoneiumLighter), text,  bookXStart);
 			break;
 		case 10:
-			String  cdilText = "\nThis Lighter can be used like a flint and steel";
-			drawPage("Cobblestonedium Lighter", cdilText, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
+			text = "\nThis Lighter can be used like a flint and steel";
+			drawPage("Cobblestonedium Lighter", text, new ItemStack(ModItems.cobblestonediumLighter), bookXStart);
 			break;
 		case 11:
-			drawRecipePageTop(bookXStart);
 			text = "It can be used in crafting, it can't be broken";
 			drawRecipePageBot(new ItemStack(ModItems.cobblestonediumLighter), text,  bookXStart);
 			break;
@@ -180,7 +175,6 @@ public class GuiTUCSBook extends GuiScreen {
 			drawPage("Cobblestoneium", text, new ItemStack(ModBlocks.oreCobblestoneium), bookXStart);
 			break;
 		case 13:
-			drawRecipePageTop(bookXStart);
 			text = "This Material have the combined durability of iron and stone ";
 			drawRecipePageBot(new ItemStack(ModBlocks.oreCobblestoneium), text,  bookXStart);
 			break;
@@ -198,7 +192,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 17:
 			text="This ingot have the combined durability of diamond and stone";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.ingotCobblestonedium), text,  bookXStart);
 			break;
 		case 18:
@@ -207,7 +200,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 19:
 			text="This ingot is kind of plain an nice to craft with";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.ingotYellowstoneium), text,  bookXStart);
 			break;
 		case 20:
@@ -217,12 +209,10 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 21:
 			text="This sword is crafted by the finest materials ever known";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.SwordBlade), text,  bookXStart);
 			break;
 		case 22:
 			text="To finaly complete this legendary sword you will need a hilt";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.SwordHilt), text,  bookXStart);
 			break;
 		case 23:
@@ -232,7 +222,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 24:
 			text="The tool rod will make any ordinary tool legendary";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.toolRod), text,  bookXStart);
 			break;
 		case 25:
@@ -242,7 +231,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 26:
 			text="This legendary pickaxe will serve you through good and bad times";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.pickaxeHead), text,  bookXStart);
 			break;
 		case 27:
@@ -252,7 +240,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 28:
 			text="The legendary hoe will make farming a breeze";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.hoeHead), text,  bookXStart);
 			break;
 		case 29:
@@ -262,7 +249,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 30:
 			text="The legendary BattleAxe was first used by The Legendary Battle Master";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.hatchetHead), text,  bookXStart);
 			break;
 		case 31:
@@ -272,7 +258,6 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 32:
 			text="The legendary shovel was first seen in the late 90's";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.shovelHead), text,  bookXStart);
 			break;
 		case 33:
@@ -282,27 +267,22 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 34:
 			text="To make the talisman you first need to make a talisman base";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.talismanBaseT1), text,  bookXStart);
 			break;
 		case 35:
 			text="Then you will need to make the tier2 base!";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.TalismanBase), text,  bookXStart);
 			break;
 		case 36:
 			text="After that you will need to make the unfinished flight talisman";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.UnfinshedFlightTalisman), text,  bookXStart);
 			break;
 		case 37:
 			text="This is the last thing you will need to make i promise";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.ungoldenFligtTalisman), text,  bookXStart);
 			break;
 		case 38:
 			text="Oh wait there is actually one last step";
-			drawRecipePageTop(bookXStart);
 			drawRecipePageBot(new ItemStack(ModItems.FlightTalisman), text,  bookXStart);
 			break;
 		default:
@@ -351,6 +331,7 @@ public class GuiTUCSBook extends GuiScreen {
 	}
 
 	public void drawRecipePageBot(ItemStack item, String tip, int bookXStart){
+		drawRecipePageTop(bookXStart);
 		mc.renderEngine.bindTexture(textureC);
 		this.drawTexturedModalRect(bookXStart + 62, 100, 28, 15, 56, 56);
 		super.drawScreen(MouseX, MouseY, RenderPartials);
@@ -491,22 +472,5 @@ public class GuiTUCSBook extends GuiScreen {
 		}
 			
 		return itemList;
-	}
-	
-	
-	public boolean checkRecipe(String type){
-		NBTTagCompound nbt = NBTHelper.getPlayerNBT(player);
-		String test = nbt.getString(type);
-		if(test.equals("ok")){
-			return true;
-		}
-		else{
-		return false;
-		}
-	}
-	public void DrawNothing(int bookXStart){
-		mc.renderEngine.bindTexture(texture);
-		this.drawTexturedModalRect(bookXStart, 2, 0, 0, 192, 192);
-		super.drawScreen(MouseX, MouseY, RenderPartials);
 	}
 }

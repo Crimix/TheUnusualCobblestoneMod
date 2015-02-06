@@ -37,10 +37,12 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 import com.black_dog20.tucs.block.BlockSoulbind;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.NBTHelper;
 
@@ -142,14 +144,32 @@ public class EventHandler {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent.Specials.Post event){
-		if(event.entityPlayer.worldObj.isRemote){
-			if(event.entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
-			//RenderPlayer render = (RenderPlayer) RenderManager.instance.getEntityRenderObject(event.entityPlayer);
+		EntityPlayer player = event.entityPlayer;
+		InventoryPlayer IPlayer = player.inventory;
+		
+		if(player.worldObj.isRemote){
+			if(NBTHelper.getPlayerNBT(player).hasKey(FLY)){
+				float offset = 0.25F;
+				float size = 0.425F;
 				GL11.glPushMatrix();
-				GL11.glRotatef(0.0F, 0.0F, 0.0F, 0.0F);
-				GL11.glRotatef(0.0F, 0.0F, 0.0F, 0.0F);
-				RenderManager.instance.itemRenderer.renderItem(event.entityPlayer, new ItemStack(ModItems.FlightTalisman), 0);
+                GL11.glScalef(size, size, size);
+                GL11.glTranslatef(1.3F, -0.3F, offset);
+                GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
+				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
 				GL11.glPopMatrix();
+			}
+			if(IPlayer.hasItem(ModItems.TLSOC)){
+				ItemStack item = player.getHeldItem();
+				if(item == null || !(item.getItem() instanceof ItemTLSOC)){
+					float offset = 0F;
+					float size = 0.525F;
+					GL11.glPushMatrix();
+					GL11.glScalef(size, size, size);
+					GL11.glTranslatef(0.3F, 0F, offset);
+					GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
+					RenderManager.instance.itemRenderer.renderItem(event.entityPlayer, new ItemStack(ModItems.TLSOC), 0);
+					GL11.glPopMatrix();
+				}
 			}
 		}
 	}

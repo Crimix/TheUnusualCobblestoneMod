@@ -7,6 +7,8 @@ import java.util.ListIterator;
 
 import org.lwjgl.opengl.GL11;
 
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -46,6 +48,8 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandler {
 	NBTTagCompound nbt;
@@ -125,17 +129,29 @@ public class EventHandler {
 				nbtt.setBoolean(FLY, true);
 			}
 			if(nbtt.getBoolean(FLY) && player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
-			if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
-				player.capabilities.allowFlying = false;
-				player.capabilities.isFlying = false;
-				player.sendPlayerAbilities();
-				nbtt.setBoolean(FLY, false);
+				if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
+					player.capabilities.allowFlying = false;
+					player.capabilities.isFlying = false;
+					player.sendPlayerAbilities();
+					nbtt.setBoolean(FLY, false);
+				}
 			}
-		}
+
 		}
 	}
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent.Specials.Post event){
+		if(event.entityPlayer.worldObj.isRemote){
+			if(event.entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+			//RenderPlayer render = (RenderPlayer) RenderManager.instance.getEntityRenderObject(event.entityPlayer);
+				GL11.glPushMatrix();
+				GL11.glRotatef(0.0F, 0.0F, 0.0F, 0.0F);
+				GL11.glRotatef(0.0F, 0.0F, 0.0F, 0.0F);
+				RenderManager.instance.itemRenderer.renderItem(event.entityPlayer, new ItemStack(ModItems.FlightTalisman), 0);
+				GL11.glPopMatrix();
+			}
+		}
 	}
 
 

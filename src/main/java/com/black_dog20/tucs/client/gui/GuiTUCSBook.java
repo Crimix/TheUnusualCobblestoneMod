@@ -445,6 +445,9 @@ public class GuiTUCSBook extends GuiScreen {
 				if(irecipeMC instanceof ShapedOreRecipe){
 					ShapedOreRecipe recipe = (ShapedOreRecipe) irecipeMC;
 					Object[] itemListMC = recipe.getInput();
+					for(int i = 0; i < itemListMC.length; i++){
+						System.out.println(itemListMC[i]);
+					}
 					//itemList = (ItemStack[]) itemListMC;
 				}
 				if(irecipeMC instanceof ShapelessOreRecipe){

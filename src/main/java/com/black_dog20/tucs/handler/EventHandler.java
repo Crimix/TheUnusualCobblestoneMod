@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
@@ -17,6 +20,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.IItemRenderer.ItemRenderType;
+import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
@@ -29,6 +36,8 @@ import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 
+import com.black_dog20.tucs.block.BlockSoulbind;
+import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.NBTHelper;
@@ -125,6 +134,10 @@ public class EventHandler {
 		}
 		}
 	}
+	@SubscribeEvent
+	public void onRenderPlayer(RenderPlayerEvent.Specials.Post event){
+	}
+
 
 	@SubscribeEvent
 	public void onFall(LivingFallEvent event){

@@ -155,8 +155,8 @@ public class GuiTUCSBook extends GuiScreen {
 			drawRecipePageBot(new ItemStack(ModItems.cobblestoneLighter), text,  bookXStart);
 			break;
 		case 8:
-			String  cilText = "\nThis Lighter can be used like a flint and steel";
-			drawPage("Cobblestoneium Lighter", cilText, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
+			text = "\nThis Lighter can be used like a flint and steel";
+			drawPage("Cobblestoneium Lighter", text, new ItemStack(ModItems.cobblestoneiumLighter), bookXStart);
 			break;
 		case 9:
 			text = "It can be used in crafting, more durability than a Cobblestone Lighter";
@@ -414,7 +414,8 @@ public class GuiTUCSBook extends GuiScreen {
 	}
 	public ItemStack[] test(ItemStack testItem){
 		ItemStack[] itemList = null;
-		List shapeless = null;
+		ArrayList shapeless = null;
+		boolean sl = false;
 
 		for(int i = 0; i < this.TUCSList.size();i++){
 			IRecipe irecipe = (IRecipe)this.TUCSList.get(i);
@@ -430,7 +431,8 @@ public class GuiTUCSBook extends GuiScreen {
 				}
 				if(irecipe instanceof AncientTableShapelessRecipes){
 					AncientTableShapelessRecipes recipe = (AncientTableShapelessRecipes) irecipe;
-					shapeless = recipe.recipeItems;
+					shapeless = new ArrayList(recipe.recipeItems);
+					sl = true;
 				}
 				craftingB = ModBlocks.ancientTable;
 			}
@@ -442,36 +444,32 @@ public class GuiTUCSBook extends GuiScreen {
 				itemMC = irecipeMC.getRecipeOutput();
 			}
 			if (itemMC != null && itemMC.areItemStacksEqual(itemMC, testItem)){
-				if(irecipeMC instanceof ShapedOreRecipe){
-					ShapedOreRecipe recipe = (ShapedOreRecipe) irecipeMC;
-					Object[] itemListMC = recipe.getInput();
-					for(int i = 0; i < itemListMC.length; i++){
-						System.out.println(itemListMC[i]);
-					}
-					//itemList = (ItemStack[]) itemListMC;
-				}
-				if(irecipeMC instanceof ShapelessOreRecipe){
-					ShapelessOreRecipe recipe = (ShapelessOreRecipe) irecipeMC;
-					ArrayList<Object> itemListMC = recipe.getInput();
-					//itemList = (ItemStack[]) itemListMC;
-				}
 				if(irecipeMC instanceof ShapelessRecipes){
 					ShapelessRecipes recipe = (ShapelessRecipes) irecipeMC;
-					shapeless = recipe.recipeItems;
-					//itemList = (ItemStack[]) itemListMC;
+					shapeless = new ArrayList(recipe.recipeItems);
+					sl = true;
+					
 				}
 				if(irecipeMC instanceof ShapedRecipes){
 					ShapedRecipes recipe = (ShapedRecipes) irecipeMC;
 					itemList = recipe.recipeItems;
-					//itemList = (ItemStack[]) itemListMC;
 				}
 				craftingB = Blocks.crafting_table;
 			}
 		}
-		if(shapeless != null){
-			for(int i = 0; i < shapeless.size(); i ++){
-				//itemList[i] = (ItemStack) shapeless.get(i);
-			}
+		if(sl){
+			Iterator iterator = shapeless.iterator();
+			while (iterator.hasNext())
+            {
+                ItemStack itemstack1 = (ItemStack)iterator.next();
+
+                if (itemstack.getItem() == itemstack1.getItem() && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage()))
+                {
+                    flag = true;
+                    arraylist.remove(itemstack1);
+                    break;
+                }
+            }
 		}
 			
 		return itemList;

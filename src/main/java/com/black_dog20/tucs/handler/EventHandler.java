@@ -7,6 +7,7 @@ import java.util.ListIterator;
 
 import org.lwjgl.opengl.GL11;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
@@ -21,6 +22,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.IItemRenderer.ItemRenderType;
@@ -42,6 +45,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import com.black_dog20.tucs.block.BlockSoulbind;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.ItemTorchTalisman;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.reference.NBTTags;
@@ -60,6 +64,8 @@ public class EventHandler {
 	String AllowFly = "TUCSFlyRender";
 	String PickAxeRender = "TUCSPicKAxeRender";
 	String SwordRender =  "TUCSSwordRender";
+	String night ="TUCSNight";
+	float old_value = Minecraft.getMinecraft().gameSettings.gammaSetting;
 
 
 	@SubscribeEvent
@@ -143,6 +149,25 @@ public class EventHandler {
 					nbtt.setBoolean(FLY, false);
 				}
 			}
+			if(nbtt.hasKey("TUCSNightA")){
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id,500,1,false));
+			}
+			if(player.inventory.hasItem(ModItems.torchTalisman)){
+				nbtt.setBoolean(night, true);
+			}
+			else if(!player.inventory.hasItem(ModItems.torchTalisman)){
+				nbtt.removeTag(night);
+			}
+			if(nbtt.hasKey("TUCSNightA") && !(player.inventory.hasItem(ModItems.torchTalisman))){
+				player.removePotionEffect(Potion.nightVision.id);
+				nbtt.removeTag("TUCSNightA");
+			}
+			if(!(nbtt.hasKey(AllowFly)) && player.inventory.hasItem(ModItems.torchTalisman)){
+				nbtt.setBoolean(night, true);
+			}
+			else if(nbtt.hasKey(AllowFly) && !(player.inventory.hasItem(ModItems.torchTalisman))){
+				nbtt.removeTag(night);
+			}
 			if(!(nbtt.hasKey(AllowFly)) && player.inventory.hasItem(ModItems.FlightTalisman)){
 				nbtt.setBoolean(AllowFly, true);
 			}
@@ -173,13 +198,13 @@ public class EventHandler {
 		if(player.worldObj.isRemote){
 			if(NBTHelper.getPlayerNBT(player).hasKey(AllowFly)){
 				float offset = 0.25F;
-				float size = 0.425F;
+				float size = 0.325F;
 				float dis = 0F;
 				if(IPlayer.armorInventory[2] != null){
-					dis = 1.35F;
+					dis = 1.71F;
 				}
 				else{
-					dis = 1.2F;
+					dis = 1.6F;
 				}
 				GL11.glPushMatrix();
                 GL11.glScalef(size, size, size);
@@ -228,6 +253,23 @@ public class EventHandler {
 					RenderManager.instance.itemRenderer.renderItem(event.entityPlayer, new ItemStack(ModItems.TLPOLM), 0);
 					GL11.glPopMatrix();
 				}
+			}
+			if(NBTHelper.getPlayerNBT(player).hasKey(night)){
+					float offset = 0.45F;
+					float size = 0.325F;
+					if(IPlayer.armorInventory[2] != null){
+						offset = -0.7F;
+					}
+					else{
+						offset = -0.45F;
+					}	
+					GL11.glPushMatrix();
+					GL11.glScalef(size, size, size);
+					GL11.glTranslatef(-0.4F, 1.4F, offset);
+					GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
+					GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
+					RenderManager.instance.itemRenderer.renderItem(event.entityPlayer, new ItemStack(ModItems.torchTalisman), 0);
+					GL11.glPopMatrix();
 			}
 		}
 	}
@@ -309,6 +351,7 @@ public class EventHandler {
 						giveItems(item, inv);
 					}
 			}
+	
 	
 	private void giveItems(ItemStack item, InventoryPlayer inv){
 		NBTTagCompound nbt = item.getTagCompound();

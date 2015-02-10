@@ -18,6 +18,7 @@ import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
+import com.sun.org.apache.bcel.internal.generic.StackConsumer;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -27,6 +28,7 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -200,7 +202,7 @@ public class GuiTUCSBook extends GuiScreen {
 			break;
 		case 19:
 			text="This ingot is kind of plain an nice to craft with";
-			drawRecipePageBot(new ItemStack(ModItems.ingotYellowstoneium), text,  bookXStart);
+			drawRecipePageBot(new ItemStack(ModItems.ingotYellowstoneium,2), text,  bookXStart);
 			break;
 		case 20:
 			text="\nThis sword has the power of the legendary fighter";
@@ -332,10 +334,19 @@ public class GuiTUCSBook extends GuiScreen {
 
 	public void drawRecipePageBot(ItemStack item, String tip, int bookXStart){
 		drawRecipePageTop(bookXStart);
+		ItemStack[] list = null;
+		List listSL = null;
 		mc.renderEngine.bindTexture(textureC);
 		this.drawTexturedModalRect(bookXStart + 62, 100, 28, 15, 56, 56);
 		super.drawScreen(MouseX, MouseY, RenderPartials);
-		ItemStack[] list = test(item);
+		Object obj = test(item);
+		if(obj instanceof ItemStack[]){
+			list = (ItemStack[]) obj;
+		}
+		else if(obj instanceof List){
+			listSL = (List) obj;
+		}
+			
 		ItemStack crafting = new ItemStack(craftingB);
 		itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, crafting, bookXStart + 35, 80);
 		fontRendererObj.drawString("\u00A7r" + "\u00A7n" + "Crafted in a", bookXStart + 35, 70, 0x000000);
@@ -381,6 +392,38 @@ public class GuiTUCSBook extends GuiScreen {
 				}
 			}
 		}
+		else if(listSL != null){
+			for(int i = 0; i < listSL.size(); i++){
+				if(listSL.get(i) != null && ((ItemStack) listSL.get(i)).getItem() instanceof ItemBlock){
+					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, (ItemStack)listSL.get(i), bookXStart + xCraft+(k*18), yCraft+(j*18));
+				}
+				counter++;
+				k++;
+				if(counter == 3){
+					j++;
+					k = 0;
+					counter = 0;
+				}
+			}
+			if(!(item.getItem() instanceof ItemBlock)){
+				itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, item, bookXStart + 34, 15);
+			}
+			counter = 0;
+			j = 0;
+			k = 0;
+			for(int i = 0; i < listSL.size(); i++){
+				if(listSL.get(i) != null && !(((ItemStack) listSL.get(i)).getItem() instanceof ItemBlock)){
+					itemRender.renderItemAndEffectIntoGUI(fontRendererObj, mc.renderEngine, (ItemStack)listSL.get(i), bookXStart + xCraft+(k*18), yCraft+(j*18));
+				}
+				counter++;
+				k++;
+				if(counter == 3){
+					j++;
+					k = 0;
+					counter = 0;
+				}
+			}
+		}
 	}
 	
 	public void DrawFurnaceRecipe(String title, String tip, ItemStack input, ItemStack output, ItemStack crafting, int bookXStart){
@@ -412,11 +455,8 @@ public class GuiTUCSBook extends GuiScreen {
 	public void DrawPageNumber(int pageNumber, int bookXStart){
 		
 	}
-	public ItemStack[] test(ItemStack testItem){
-		ItemStack[] itemList = null;
-		ArrayList shapeless = null;
-		boolean sl = false;
-
+	public Object test(ItemStack testItem){
+		Object itemList = null;
 		for(int i = 0; i < this.TUCSList.size();i++){
 			IRecipe irecipe = (IRecipe)this.TUCSList.get(i);
 			ItemStack item = null;
@@ -431,12 +471,11 @@ public class GuiTUCSBook extends GuiScreen {
 				}
 				if(irecipe instanceof AncientTableShapelessRecipes){
 					AncientTableShapelessRecipes recipe = (AncientTableShapelessRecipes) irecipe;
-					shapeless = new ArrayList(recipe.recipeItems);
-					sl = true;
+					itemList = recipe.recipeItems;
 				}
 				craftingB = ModBlocks.ancientTable;
 			}
-		}
+		}	
 		for (int j = 0; j < this.MCList.size(); ++j){
 			IRecipe irecipeMC = (IRecipe)this.MCList.get(j);
 			ItemStack itemMC = null;
@@ -446,8 +485,7 @@ public class GuiTUCSBook extends GuiScreen {
 			if (itemMC != null && itemMC.areItemStacksEqual(itemMC, testItem)){
 				if(irecipeMC instanceof ShapelessRecipes){
 					ShapelessRecipes recipe = (ShapelessRecipes) irecipeMC;
-					shapeless = new ArrayList(recipe.recipeItems);
-					sl = true;
+					itemList = recipe.recipeItems;
 					
 				}
 				if(irecipeMC instanceof ShapedRecipes){
@@ -457,21 +495,9 @@ public class GuiTUCSBook extends GuiScreen {
 				craftingB = Blocks.crafting_table;
 			}
 		}
-		if(sl){
-			Iterator iterator = shapeless.iterator();
-			while (iterator.hasNext())
-            {
-                ItemStack itemstack1 = (ItemStack)iterator.next();
-
-                if (itemstack.getItem() == itemstack1.getItem() && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage()))
-                {
-                    flag = true;
-                    arraylist.remove(itemstack1);
-                    break;
-                }
-            }
-		}
-			
+	
 		return itemList;
 	}
+	
+	
 }

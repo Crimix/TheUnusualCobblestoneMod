@@ -1,9 +1,12 @@
 package com.black_dog20.tucs.client.handler;
 
+import ibxm.Player;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 
 import com.black_dog20.tucs.client.settings.Keybindings;
@@ -23,6 +26,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class KeyInputEventHandler {
 
 	String FIRSTFLY = "firstFlight";
+	String night ="TUCSNight";
+	String nightA ="TUCSNightA";
 
 	@SubscribeEvent
 	public void handleKeyInputEvent(InputEvent.KeyInputEvent event){
@@ -55,17 +60,31 @@ public class KeyInputEventHandler {
 			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
-				if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F)==0){
-					entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
-					entityPlayer.capabilities.setFlySpeed(0.2F);
-					entityPlayer.sendPlayerAbilities();
-				}
-				else if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.2F)==0){
-					entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_normalfly.txt"));
-					entityPlayer.capabilities.setFlySpeed(0.1F);
-					entityPlayer.sendPlayerAbilities();
-				}
+					if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F)==0){
+						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
+						entityPlayer.capabilities.setFlySpeed(0.2F);
+						entityPlayer.sendPlayerAbilities();
+					}
+					else if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.2F)==0){
+						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_normalfly.txt"));
+						entityPlayer.capabilities.setFlySpeed(0.1F);
+						entityPlayer.sendPlayerAbilities();
+					}
+				}	
 			}
+		}
+		else if(Keybindings.night.isPressed()){
+			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
+				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+				NBTTagCompound nbtp = NBTHelper.getPlayerNBT(entityPlayer);
+				if(nbtp.hasKey(night) && !(nbtp.hasKey(nightA))){
+					entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id,500,1,false));
+					nbtp.setBoolean(nightA, true);
+				}
+				else if(nbtp.hasKey(night) && nbtp.hasKey(nightA)){
+					entityPlayer.removePotionEffect(Potion.nightVision.id);
+					nbtp.removeTag(nightA);
+				}
 			}
 		}
 	}

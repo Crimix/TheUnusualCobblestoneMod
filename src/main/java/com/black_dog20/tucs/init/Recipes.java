@@ -54,20 +54,27 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.bootsCobblestoneium, new Object[] {"c c" , "c c" , 'c', "ingotCobblestoneium"}));
 		
 		//Blocks
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockCobblestoneium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , "ingotCobblestoneium"}));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.ingotCobblestoneium , 9) , new ItemStack(ModBlocks.blockCobblestoneium)));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ancientTable), new Object[] {"gcg" , "cbc" , "gcg" , 'g' , yellowstoneium, 'c', "ingotCobblestoneium" , 'b' , new ItemStack(Blocks.crafting_table)}));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.blockSoulbind),new Object[]{"ggg","gcg","ggg",'g', new ItemStack(ModItems.soulboundUpgrade),'c',new ItemStack(Items.nether_star)}));
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockCobblestoneium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , ModItems.ingotCobblestoneium});
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestoneium , 9) , new ItemStack(ModBlocks.blockCobblestoneium));
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.ancientTable), new Object[] {"gcg" , "cbc" , "gcg" , 'g' , yellowstoneium, 'c', ModItems.ingotCobblestoneium , 'b' , new ItemStack(Blocks.crafting_table)});
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockSoulbind),new Object[]{"ggg","gcg","ggg",'g', new ItemStack(ModItems.soulboundUpgrade),'c',new ItemStack(Items.nether_star)});
 		
 		//Items
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(ModBlocks.oreCobblestoneium), "cobblestoneLighters"));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,"cobblestoneLigthers"}));
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', "cobblestoneLigthers"}));
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Items.dye,3,11), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,15), new ItemStack(Items.dye,1,15), "cobblestoneLigthers"));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE));
 		
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE)});
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE)});
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE)});
 		
-		//Ores
-		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(Blocks.cobblestone), "ingotIron", Items.gunpowder, "cobblestoneLigthers"));
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE)});
+		//GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE)});
+		//GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE)});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,3,11), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,15), new ItemStack(Items.dye,1,15), new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE));
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,3,11), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,15), new ItemStack(Items.dye,1,15), new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE));
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,3,11), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,15), new ItemStack(Items.dye,1,15), new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE));
 		
 		
 		//Recipes Ancient Table

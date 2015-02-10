@@ -28,6 +28,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerKeyBindings() {
 		ClientRegistry.registerKeyBinding(Keybindings.fly);
 		ClientRegistry.registerKeyBinding(Keybindings.flyspeed);
+		ClientRegistry.registerKeyBinding(Keybindings.night);
 		
 	}
 

@@ -45,7 +45,7 @@ public class ItemTorchTalisman extends ItemTUCS{
 		return false;
 	}
 	
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
+	/*public boolean canPlaceBlockAt(World world, int x, int y, int z)
     {
         return world.isSideSolid(x - 1, y, z, EAST,  true) ||
                world.isSideSolid(x + 1, y, z, WEST,  true) ||
@@ -85,7 +85,7 @@ public class ItemTorchTalisman extends ItemTUCS{
 			}
 		}
 	return false;
-}
+}*/
 
 
 }

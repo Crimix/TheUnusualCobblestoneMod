@@ -62,7 +62,7 @@ public class ItemTLSOC extends ItemSword {
 			if(player.isSneaking()){
 				tucs.Proxy.openToolUpgrade(player);
 			}
-		
+			player.setItemInUse(Item, this.getMaxItemUseDuration(Item));
 		return Item;
 
 	}

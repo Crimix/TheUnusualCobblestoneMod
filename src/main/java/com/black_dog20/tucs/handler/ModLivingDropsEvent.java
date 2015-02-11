@@ -15,6 +15,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -33,7 +34,6 @@ public class ModLivingDropsEvent {
           public void onEntityDrop(LivingDropsEvent event) {
         	  boolean isPlayerCaused = event.source.getEntity() instanceof EntityPlayer; //Checks if the caused of death is by player
         	  if(isPlayerCaused == true){ 
-        		 
         		  
             	  if(event.entityLiving instanceof EntityZombie) {
             		  EntityPlayer player = (EntityPlayer) event.source.getEntity();
@@ -44,6 +44,19 @@ public class ModLivingDropsEvent {
                 		  nbt.setBoolean(NBTTags.BOOK, true); //Sets the boolean on the player for the book to true
 
                 	  }
+            	  }
+            	  if(event.entityLiving instanceof EntitySkeleton) {
+            		  EntitySkeleton skeleton = (EntitySkeleton) event.entityLiving;
+            		  if(skeleton.getSkeletonType() == 1){
+            			  EntityPlayer player = (EntityPlayer) event.source.getEntity();
+            			  if(/*player.getHeldItem().hasTagCompound()*/true){
+            				  NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
+            				  if(/*nbtt.hasKey("TUCSHead")*/true){
+            					  skeleton.entityDropItem(new ItemStack(Items.skull,1, 2), 1);
+            				  }
+            			  }
+            			  
+            		  }
             	  }
         	  }
 

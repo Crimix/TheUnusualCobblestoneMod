@@ -69,8 +69,8 @@ public class Recipes {
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.CobbleCoal), new Object[]{" c ", "ckc", "clc", 'c', Blocks.cobblestone, 'k', Items.coal, 'l' ,new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE)});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE)});
-		//GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE)});
-		//GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE)});
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE)});
+		GameRegistry.addShapedRecipe(new ItemStack(ModItems.ingotYellowstoneium,2), new Object[]{"ccc","cyc","clc", 'c', Blocks.cobblestone, 'y', new ItemStack(Items.dye,1,11), 'l', new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE)});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,3,11), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,15), new ItemStack(Items.dye,1,15), new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE));
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,3,11), new ItemStack(Items.dye,1,11), new ItemStack(Items.dye,1,15), new ItemStack(Items.dye,1,15), new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE));
@@ -103,8 +103,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.ungoldenFligtTalisman), new Object[]{"ccc", "ctc", "ccc", 'c', new ItemStack(ModItems.ingotCobblestoneium), 't', new ItemStack(ModItems.UnfinshedFlightTalisman)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.FlightTalisman), new Object[]{"ggg", "gtg", "ggg", 'g', yellowstoneium, 't', new ItemStack(ModItems.ungoldenFligtTalisman)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.craftingTalisman), new Object[]{"gcg", "cac", "gcg", 'g', new ItemStack(ModItems.ingotCobblestoneium), 'c', new ItemStack(Blocks.crafting_table), 'a', new ItemStack(ModBlocks.ancientTable)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.torchTalisman), new Object[]{"gcg", "cac", "gcg", 'g', new ItemStack(ModItems.ingotCobblestoneium), 'c', new ItemStack(Blocks.torch), 'a', new ItemStack(ModItems.cobblestoneiumLighter,1,OreDictionary.WILDCARD_VALUE)});
-		Enchanted();
+		TucsRegistry.addRecipe(new ItemStack(ModItems.torchTalisman), new Object[]{"gcg", "cac", "gcg", 'g', new ItemStack(ModItems.ingotCobblestoneium), 'c', new ItemStack(Blocks.torch), 'a', new ItemStack(ModItems.talismanBaseT1,1,OreDictionary.WILDCARD_VALUE)});
 		
 		//Tools Parts
 		ItemStack cobblestondium = new ItemStack(ModItems.ingotCobblestonedium);
@@ -130,7 +129,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sliktouch1Upgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.string), 'u', new ItemStack(ModItems.upgradBase)});
 	}
 	
-	public static void Enchanted(){
+	/*public static void Enchanted(){
 
 		ItemStack ct = new ItemStack(ModItems.craftingTalisman);
 		if(!ct.hasTagCompound()){
@@ -152,7 +151,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(ct, new Object[]{"g", "t", 'g', new ItemStack(ModItems.soulboundUpgrade), 't', new ItemStack(ModItems.craftingTalisman)});
 		TucsRegistry.addRecipe(tt, new Object[]{"g", "t", 'g', new ItemStack(ModItems.soulboundUpgrade), 't', new ItemStack(ModItems.torchTalisman)});	
 		
-	}
+	}*/
 	
 
 }

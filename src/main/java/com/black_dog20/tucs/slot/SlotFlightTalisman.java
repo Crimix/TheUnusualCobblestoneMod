@@ -1,11 +1,10 @@
 package com.black_dog20.tucs.slot;
 
-import com.black_dog20.tucs.init.ModItems;
-
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import com.black_dog20.tucs.init.ModItems;
 
 public class SlotFlightTalisman extends Slot {
 

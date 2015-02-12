@@ -1,17 +1,12 @@
 package com.black_dog20.tucs.item;
 
-import java.util.List;
-
-import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.utility.NBTHelper;
-
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
+
+import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.reference.NBTTags;
 
 public class ItemFlightTalisman extends ItemTUCS{
 	

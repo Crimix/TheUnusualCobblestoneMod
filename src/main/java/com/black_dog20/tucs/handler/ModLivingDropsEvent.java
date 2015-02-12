@@ -1,30 +1,19 @@
 package com.black_dog20.tucs.handler;
 
 
-import java.util.Random;
-
-import scala.Console;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.reference.PageTypes;
-import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.*;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 
 
 public class ModLivingDropsEvent {

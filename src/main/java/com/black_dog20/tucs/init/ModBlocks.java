@@ -1,15 +1,12 @@
 package com.black_dog20.tucs.init;
 
 
-import net.minecraft.tileentity.TileEntity;
-
 import com.black_dog20.tucs.block.BlockAncientForge;
 import com.black_dog20.tucs.block.BlockAncientTable;
 import com.black_dog20.tucs.block.BlockCobblestonedium;
 import com.black_dog20.tucs.block.BlockCobblestoneium;
 import com.black_dog20.tucs.block.BlockOreCobblestoneium;
 import com.black_dog20.tucs.block.BlockSoulbind;
-import com.black_dog20.tucs.block.BlockTUCS;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.reference.Reference;
 

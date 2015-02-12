@@ -1,19 +1,14 @@
 package com.black_dog20.tucs.nei;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.inventory.Slot;
-
-import com.black_dog20.tucs.client.gui.GuiAncientTable;
-import com.black_dog20.tucs.container.ContainerAncientTable;
-import com.black_dog20.tucs.nei.handlers.AncientForgeHandler;
-import com.black_dog20.tucs.nei.handlers.AncientTableOverlayHandler;
-import com.black_dog20.tucs.nei.handlers.ShapedAncientTableHandler;
-import com.black_dog20.tucs.nei.handlers.ShapelessAncientTableHandler;
-import com.black_dog20.tucs.reference.Reference;
-
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import codechicken.nei.recipe.DefaultOverlayHandler;
+
+import com.black_dog20.tucs.client.gui.GuiAncientTable;
+import com.black_dog20.tucs.nei.handlers.AncientForgeHandler;
+import com.black_dog20.tucs.nei.handlers.ShapedAncientTableHandler;
+import com.black_dog20.tucs.nei.handlers.ShapelessAncientTableHandler;
+import com.black_dog20.tucs.reference.Reference;
 
 public class NEITucsConfig implements IConfigureNEI{
 

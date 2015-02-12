@@ -1,16 +1,8 @@
 package com.black_dog20.tucs.item;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
-
-import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.utility.NBTHelper;
 
 public class ItemCobbleCoal extends ItemTUCS{
 	

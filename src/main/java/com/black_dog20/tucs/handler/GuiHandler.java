@@ -1,5 +1,10 @@
 package com.black_dog20.tucs.handler;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.gui.GuiAncientForge;
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
@@ -15,15 +20,8 @@ import com.black_dog20.tucs.container.ContainerFlightTalisman;
 import com.black_dog20.tucs.container.ContainerSoulbinder;
 import com.black_dog20.tucs.container.ContainerUpgradeTools;
 import com.black_dog20.tucs.init.ModBlocks;
-import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ContainerFurnace;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {

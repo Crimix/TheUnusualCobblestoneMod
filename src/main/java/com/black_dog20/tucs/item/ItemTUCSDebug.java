@@ -5,9 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
-import com.black_dog20.tucs.reference.PageTypes;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 public class ItemTUCSDebug extends ItemTUCS{

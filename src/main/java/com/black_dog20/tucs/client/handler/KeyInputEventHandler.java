@@ -1,7 +1,5 @@
 package com.black_dog20.tucs.client.handler;
 
-import ibxm.Player;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,9 +9,6 @@ import net.minecraft.util.ChatComponentTranslation;
 
 import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.reference.Key;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.client.FMLClientHandler;

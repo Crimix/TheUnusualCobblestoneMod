@@ -1,8 +1,8 @@
 package com.black_dog20.tucs.proxies;
 
-import com.black_dog20.tucs.tucs;
-
 import net.minecraft.entity.player.EntityPlayer;
+
+import com.black_dog20.tucs.tucs;
 
 public class ServerProxy extends CommonProxy {
 

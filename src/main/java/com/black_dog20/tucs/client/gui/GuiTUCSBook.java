@@ -1,45 +1,27 @@
 package com.black_dog20.tucs.client.gui;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.crafting.AncientTableManager;
-import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
-import com.black_dog20.tucs.crafting.AncientTableShapelessRecipes;
-import com.black_dog20.tucs.init.ModBlocks;
-import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.reference.PageTypes;
-import com.black_dog20.tucs.reference.Reference;
-import com.black_dog20.tucs.utility.LogHelper;
-import com.black_dog20.tucs.utility.NBTHelper;
-import com.sun.org.apache.bcel.internal.generic.StackConsumer;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import org.lwjgl.input.Keyboard;
+
+import com.black_dog20.tucs.crafting.AncientTableManager;
+import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
+import com.black_dog20.tucs.crafting.AncientTableShapelessRecipes;
+import com.black_dog20.tucs.init.ModBlocks;
+import com.black_dog20.tucs.init.ModItems;
 
 public class GuiTUCSBook extends GuiScreen {
 	static final ResourceLocation texture = new ResourceLocation("minecraft:textures/gui/book.png");

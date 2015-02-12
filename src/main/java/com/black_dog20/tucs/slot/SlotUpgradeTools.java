@@ -4,7 +4,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.utility.EnchantHelper;
 
 public class SlotUpgradeTools extends Slot {

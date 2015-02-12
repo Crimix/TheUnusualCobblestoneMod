@@ -2,24 +2,13 @@ package com.black_dog20.tucs.block;
 
 import java.util.Random;
 
-import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
-import com.black_dog20.tucs.init.ModBlocks;
-import com.black_dog20.tucs.reference.Reference;
-import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
-
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -29,6 +18,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.init.ModBlocks;
+import com.black_dog20.tucs.reference.Reference;
+import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAncientForge extends BlockContainer{
 	

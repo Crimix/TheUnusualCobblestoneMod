@@ -1,37 +1,16 @@
 package com.black_dog20.tucs.container;
 
-import java.util.List;
-
-import com.black_dog20.tucs.crafting.AncientForgeRecipes;
-import com.black_dog20.tucs.crafting.AncientTableManager;
-import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.inventory.InventoryTUCS;
-import com.black_dog20.tucs.inventory.InventoryTalisman;
-import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
-import com.black_dog20.tucs.item.ItemTUCS;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.slot.SlotFlightTalisman;
-import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
-import com.black_dog20.tucs.utility.NBTHelper;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryBasic;
-import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants;
+
+import com.black_dog20.tucs.reference.NBTTags;
 
 public class ContainerSoulbinder extends Container{
 

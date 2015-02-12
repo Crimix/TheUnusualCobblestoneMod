@@ -1,8 +1,10 @@
 package com.black_dog20.tucs.utility;
 
-import cpw.mods.fml.common.FMLLog;
 import org.apache.logging.log4j.Level;
+
 import com.black_dog20.tucs.reference.Reference;
+
+import cpw.mods.fml.common.FMLLog;
 
 public class LogHelper {
 

@@ -1,10 +1,9 @@
 package com.black_dog20.tucs.utility;
 
-import com.black_dog20.tucs.crafting.AncientTableManager;
-
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+
+import com.black_dog20.tucs.crafting.AncientTableManager;
 
 public class TucsRegistry {
 

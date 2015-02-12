@@ -1,19 +1,7 @@
 package com.black_dog20.tucs.container;
 
-import ibxm.Player;
-
-import com.black_dog20.tucs.crafting.AncientTableManager;
-import com.black_dog20.tucs.init.ModBlocks;
-import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.reference.PageTypes;
-import com.black_dog20.tucs.utility.LogHelper;
-import com.black_dog20.tucs.utility.NBTHelper;
-import com.black_dog20.tucs.utility.PageHelper;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
@@ -22,10 +10,12 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
+
+import com.black_dog20.tucs.crafting.AncientTableManager;
+import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 public class ContainerCraftingTalisman extends Container {
 	 /** The crafting matrix inventory (3x3). */

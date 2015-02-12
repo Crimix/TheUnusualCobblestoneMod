@@ -3,18 +3,12 @@ package com.black_dog20.tucs.client.gui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import com.black_dog20.tucs.container.ContainerAncientTable;
-import com.black_dog20.tucs.container.ContainerFlightTalisman;
 import com.black_dog20.tucs.container.ContainerSoulbinder;
-import com.black_dog20.tucs.init.ModItems;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

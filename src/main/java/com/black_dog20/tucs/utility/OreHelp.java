@@ -1,14 +1,6 @@
 package com.black_dog20.tucs.utility;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import com.black_dog20.tucs.init.ModBlocks;
-
-import scala.Console;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class OreHelp {
 

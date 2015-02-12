@@ -71,6 +71,6 @@ keys.tucs.flySpeed=Fly Speed
 keys.tucs.night=Night Vision
 
 //MSG
-msg.message_yfab.txt=I found a book, it looks to be very old, and some of the pages seems to be missing. Maybe I should open it and have a look!
+msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!
 msg.message_normalfly.txt=Normal flight speed activated
 msg.message_highfly.txt=High speed flight activated

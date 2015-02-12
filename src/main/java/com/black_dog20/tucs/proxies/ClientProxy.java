@@ -1,10 +1,8 @@
 package com.black_dog20.tucs.proxies;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
 import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.client.gui.GuiTUCSBook;
 import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
 import com.black_dog20.tucs.client.settings.Keybindings;
 

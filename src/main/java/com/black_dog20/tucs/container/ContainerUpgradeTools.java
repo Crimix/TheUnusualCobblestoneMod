@@ -1,12 +1,5 @@
 package com.black_dog20.tucs.container;
 
-import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.slot.SlotUpgradeTools;
-import com.black_dog20.tucs.utility.EnchantHelper;
-
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,7 +10,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.oredict.OreDictionary;
+
+import com.black_dog20.tucs.inventory.InventoryUpgradeTools;
+import com.black_dog20.tucs.reference.NBTTags;
+import com.black_dog20.tucs.slot.SlotUpgradeTools;
+import com.black_dog20.tucs.utility.EnchantHelper;
 
 public class ContainerUpgradeTools extends Container {
 	private World worldObj;

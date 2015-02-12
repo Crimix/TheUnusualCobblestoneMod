@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
+import com.black_dog20.tucs.reference.Reference;
 
 import codechicken.core.ReflectionManager;
 import codechicken.nei.NEIClientConfig;
@@ -19,6 +20,7 @@ import codechicken.nei.recipe.ShapedRecipeHandler.CachedShapedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiCrafting;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -64,7 +66,6 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
                 }
             }
         }
-
         @Override
         public List<PositionedStack> getIngredients() {
             return getCycledIngredients(cycleticks / 20, ingredients);
@@ -94,11 +95,15 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	public int recipiesPerPage() {
 		return 2;
 	}
+	@Override
+	public String getOverlayIdentifier() {
+	    return Reference.MOD_ID+"AncientTable";
+	}
 	
 	 @Override
-	    public void loadCraftingRecipes(String outputId, Object... results) {
-		 if (outputId.equals("ancient table") && getClass() == ShapedAncientTableHandler.class) {
-	            for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
+	 public void loadCraftingRecipes(String outputId, Object... results) {
+			 if (outputId.equals("ancient table") && getClass() == ShapedAncientTableHandler.class) {
+				for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
 	            	CachedShapedAncientTableRecipe recipe = null;
 	                if (irecipe instanceof AncientTableShapedRecipes)
 	                    recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
@@ -108,26 +113,30 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	                    continue;
 
 	                recipe.computeVisuals();
-	                arecipes.add(recipe);
+	                if(!recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
+	               		arecipes.add(recipe);
+	               	}
 	            }
-	        } else {
+			 } else {
 	            super.loadCraftingRecipes(outputId, results);
-	        }
-	    }
+			 }
+	 }
 	 
 	    @Override
 	    public void loadCraftingRecipes(ItemStack result) {
-	        for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
+	    	for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
 	        	if (NEIServerUtils.areStacksSameTypeCrafting(irecipe.getRecipeOutput(), result)) {
-	            	CachedShapedAncientTableRecipe recipe = null;
-	                if (irecipe instanceof AncientTableShapedRecipes)
-	                    recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
+	           		CachedShapedAncientTableRecipe recipe = null;
+	               	if (irecipe instanceof AncientTableShapedRecipes)
+	                   	recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
 
-	                if (recipe == null)
-	                    continue;
+	               	if (recipe == null)
+	                   	continue;
 
-	                recipe.computeVisuals();
-	                arecipes.add(recipe);
+	               	recipe.computeVisuals();
+	               	if(!recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
+	               		arecipes.add(recipe);
+	               	}
 	            }
 	        }
 	    }
@@ -141,7 +150,9 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	            	recipe.computeVisuals();
 	            	if (recipe.contains(recipe.ingredients, ingredient)) {
 	            		recipe.setIngredientPermutation(recipe.ingredients, ingredient);
-	            		arecipes.add(recipe);
+	            		if(!recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
+		               		arecipes.add(recipe);
+		               	}
 	            	}
 	            }
 	        }

@@ -6,6 +6,13 @@ public class NBTTags {
 	public static final String SOULBOUND = "TucsSoul";
 	public static final String BOOK = "TUCSBook";
 	public static final String BOOK_OPEN = "TUCSBook_open";
+	public static final String FLY = "TUCSFly";
+	public static final String AllowFly = "TUCSFlyRender";
+	public static final String PickAxeRender = "TUCSPicKAxeRender";
+	public static final String SwordRender =  "TUCSSwordRender";
+	public static final String night ="TUCSNight";
+	public static final String nightA = "TUCSNightA";
+	public static final String Beheading = "TUCSHead";
 	
 
 

@@ -1,6 +1,8 @@
 package com.black_dog20.tucs.handler;
 
 
+import java.util.Random;
+
 import scala.Console;
 
 import com.black_dog20.tucs.init.ModItems;
@@ -46,13 +48,14 @@ public class ModLivingDropsEvent {
                 	  }
             	  }
             	  if(event.entityLiving instanceof EntitySkeleton) {
+            		  double rand = Math.random();
             		  EntitySkeleton skeleton = (EntitySkeleton) event.entityLiving;
             		  if(skeleton.getSkeletonType() == 1){
             			  EntityPlayer player = (EntityPlayer) event.source.getEntity();
-            			  if(/*player.getHeldItem().hasTagCompound()*/true){
+            			  if(player.getHeldItem().hasTagCompound()){
             				  NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
-            				  if(/*nbtt.hasKey("TUCSHead")*/true){
-            					  skeleton.entityDropItem(new ItemStack(Items.skull,1, 2), 1);
+            				  if(nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D){
+            					  skeleton.entityDropItem(new ItemStack(Items.skull,1, 1), 1);
             				  }
             			  }
             			  

@@ -15,6 +15,7 @@ import java.util.List;
 
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapelessRecipes;
+import com.black_dog20.tucs.reference.Reference;
 
 public class ShapelessAncientTableHandler extends ShapedAncientTableHandler
 {
@@ -79,6 +80,10 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler
     public String getRecipeName() {
         return NEIClientUtils.translate("recipe.shapeless");
     }
+    @Override
+	public String getOverlayIdentifier() {
+	    return Reference.MOD_ID+"AncientTable";
+	}
 
     @Override
     public void loadCraftingRecipes(String outputId, Object... results) {

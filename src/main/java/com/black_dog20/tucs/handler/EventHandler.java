@@ -60,12 +60,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandler {
 	NBTTagCompound nbt;
-	String FLY = "TUCSFly";
-	String AllowFly = "TUCSFlyRender";
-	String PickAxeRender = "TUCSPicKAxeRender";
-	String SwordRender =  "TUCSSwordRender";
-	String night ="TUCSNight";
-	float old_value = Minecraft.getMinecraft().gameSettings.gammaSetting;
 
 
 	@SubscribeEvent
@@ -138,53 +132,53 @@ public class EventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) event.entity;
 			NBTTagCompound nbtt = NBTHelper.getPlayerNBT(player);
-			if(!nbtt.getBoolean(FLY) && player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
-				nbtt.setBoolean(FLY, true);
+			if(!nbtt.getBoolean(NBTTags.FLY) && player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+				nbtt.setBoolean(NBTTags.FLY, true);
 			}
-			else if(nbtt.getBoolean(FLY) && player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
+			else if(nbtt.getBoolean(NBTTags.FLY) && player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
 				if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
 					player.sendPlayerAbilities();
-					nbtt.setBoolean(FLY, false);
+					nbtt.setBoolean(NBTTags.FLY, false);
 				}
 			}
-			if(nbtt.hasKey("TUCSNightA")){
+			if(nbtt.hasKey(NBTTags.nightA)){
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id,500,1,false));
 			}
 			if(player.inventory.hasItem(ModItems.torchTalisman)){
-				nbtt.setBoolean(night, true);
+				nbtt.setBoolean(NBTTags.night, true);
 			}
 			else if(!player.inventory.hasItem(ModItems.torchTalisman)){
-				nbtt.removeTag(night);
+				nbtt.removeTag(NBTTags.night);
 			}
-			if(nbtt.hasKey("TUCSNightA") && !(player.inventory.hasItem(ModItems.torchTalisman))){
+			if(nbtt.hasKey(NBTTags.nightA) && !(player.inventory.hasItem(ModItems.torchTalisman))){
 				player.removePotionEffect(Potion.nightVision.id);
-				nbtt.removeTag("TUCSNightA");
+				nbtt.removeTag(NBTTags.nightA);
 			}
-			if(!(nbtt.hasKey(AllowFly)) && player.inventory.hasItem(ModItems.torchTalisman)){
-				nbtt.setBoolean(night, true);
+			if(!(nbtt.hasKey(NBTTags.AllowFly)) && player.inventory.hasItem(ModItems.torchTalisman)){
+				nbtt.setBoolean(NBTTags.night, true);
 			}
-			else if(nbtt.hasKey(AllowFly) && !(player.inventory.hasItem(ModItems.torchTalisman))){
-				nbtt.removeTag(night);
+			else if(nbtt.hasKey(NBTTags.AllowFly) && !(player.inventory.hasItem(ModItems.torchTalisman))){
+				nbtt.removeTag(NBTTags.night);
 			}
-			if(!(nbtt.hasKey(AllowFly)) && player.inventory.hasItem(ModItems.FlightTalisman)){
-				nbtt.setBoolean(AllowFly, true);
+			if(!(nbtt.hasKey(NBTTags.AllowFly)) && player.inventory.hasItem(ModItems.FlightTalisman)){
+				nbtt.setBoolean(NBTTags.AllowFly, true);
 			}
-			else if(nbtt.hasKey(AllowFly) && !(player.inventory.hasItem(ModItems.FlightTalisman))){
-				nbtt.removeTag(AllowFly);
+			else if(nbtt.hasKey(NBTTags.AllowFly) && !(player.inventory.hasItem(ModItems.FlightTalisman))){
+				nbtt.removeTag(NBTTags.AllowFly);
 			}
-			if(!(nbtt.hasKey(PickAxeRender)) && player.inventory.hasItem(ModItems.TLPOLM)){
-				nbtt.setBoolean(PickAxeRender, true);
+			if(!(nbtt.hasKey(NBTTags.PickAxeRender)) && player.inventory.hasItem(ModItems.TLPOLM)){
+				nbtt.setBoolean(NBTTags.PickAxeRender, true);
 			}
-			else if(nbtt.hasKey(PickAxeRender) && !(player.inventory.hasItem(ModItems.TLPOLM))){
-				nbtt.removeTag(PickAxeRender);
+			else if(nbtt.hasKey(NBTTags.PickAxeRender) && !(player.inventory.hasItem(ModItems.TLPOLM))){
+				nbtt.removeTag(NBTTags.PickAxeRender);
 			}
-			if(!(nbtt.hasKey(SwordRender)) && player.inventory.hasItem(ModItems.TLSOC)){
-				nbtt.setBoolean(SwordRender, true);
+			if(!(nbtt.hasKey(NBTTags.SwordRender)) && player.inventory.hasItem(ModItems.TLSOC)){
+				nbtt.setBoolean(NBTTags.SwordRender, true);
 			}
-			else if(nbtt.hasKey(SwordRender) && !(player.inventory.hasItem(ModItems.TLSOC))){
-				nbtt.removeTag(SwordRender);
+			else if(nbtt.hasKey(NBTTags.SwordRender) && !(player.inventory.hasItem(ModItems.TLSOC))){
+				nbtt.removeTag(NBTTags.SwordRender);
 			}
 
 		}
@@ -196,7 +190,7 @@ public class EventHandler {
 		InventoryPlayer IPlayer = player.inventory;
 		
 		if(player.worldObj.isRemote){
-			if(NBTHelper.getPlayerNBT(player).hasKey(AllowFly)){
+			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.AllowFly)){
 				float offset = 0.25F;
 				float size = 0.325F;
 				float dis = 0F;
@@ -213,7 +207,7 @@ public class EventHandler {
 				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
 				GL11.glPopMatrix();
 			}
-			if(NBTHelper.getPlayerNBT(player).hasKey(SwordRender)){
+			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.SwordRender)){
 				ItemStack item = player.getHeldItem();
 				if(item == null || !(item.getItem() instanceof ItemTLSOC)){
 					float offset = -0.5F;
@@ -234,7 +228,7 @@ public class EventHandler {
 					GL11.glPopMatrix();
 				}
 			}
-			if(NBTHelper.getPlayerNBT(player).hasKey(PickAxeRender)){
+			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.PickAxeRender)){
 				ItemStack item = player.getHeldItem();
 				if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
 					float offset = 0.45F;
@@ -254,7 +248,7 @@ public class EventHandler {
 					GL11.glPopMatrix();
 				}
 			}
-			if(NBTHelper.getPlayerNBT(player).hasKey(night)){
+			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.night)){
 					float offset = 0.45F;
 					float size = 0.325F;
 					if(IPlayer.armorInventory[2] != null){

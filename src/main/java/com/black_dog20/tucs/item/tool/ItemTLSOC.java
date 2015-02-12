@@ -62,6 +62,8 @@ public class ItemTLSOC extends ItemSword {
 			if(player.isSneaking()){
 				tucs.Proxy.openToolUpgrade(player);
 			}
+			NBTTagCompound nbtTagCompound = Item.getTagCompound();
+			nbtTagCompound.setBoolean(NBTTags.Beheading, true);
 			player.setItemInUse(Item, this.getMaxItemUseDuration(Item));
 		return Item;
 
@@ -77,6 +79,9 @@ public class ItemTLSOC extends ItemSword {
 			NBTTagCompound nbt= stack.getTagCompound();
 			
 			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")){
+				return true;
+			}
+			if(nbt.hasKey(NBTTags.Beheading) || nbt.hasKey("ench")){
 				return true;
 			}
 			else{

@@ -138,7 +138,7 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler
     }
 
     private CachedShapelessAncientTableRecipe shapelessRecipe(AncientTableShapelessRecipes recipe) {
-        if(recipe.recipeItems == null) //because some mod subclasses actually do this
+        if(recipe.recipeItems == null)
             return null;
 
         return new CachedShapelessAncientTableRecipe(recipe.recipeItems, recipe.getRecipeOutput());

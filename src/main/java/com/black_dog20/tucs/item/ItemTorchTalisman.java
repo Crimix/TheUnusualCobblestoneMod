@@ -33,48 +33,5 @@ public class ItemTorchTalisman extends ItemTUCS{
 		}
 		return false;
 	}
-	
-	/*public boolean canPlaceBlockAt(World world, int x, int y, int z)
-    {
-        return world.isSideSolid(x - 1, y, z, EAST,  true) ||
-               world.isSideSolid(x + 1, y, z, WEST,  true) ||
-               world.isSideSolid(x, y, z - 1, SOUTH, true) ||
-               world.isSideSolid(x, y, z + 1, NORTH, true) ||
-               false;
-    }
-	
-	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ){
-		switch (side){
-		case 0:
-			y--;
-			break;
-		case 1:
-			y++;
-			break;
-		case 2:
-			z--;
-			break;
-		case 3:
-			z++;
-			break;
-		case 4:
-			x--;
-			break;
-		case 5:
-			x++;
-			break;
-		}
-
-		if (player.canPlayerEdit(x, y, z, side, stack)){
-
-			if (world.isAirBlock(x, y, z) && canPlaceBlockAt(world, x, y, z) & world.setBlock(x, y, z, Blocks.torch)){
-
-				return true;
-			}
-		}
-	return false;
-}*/
-
 
 }

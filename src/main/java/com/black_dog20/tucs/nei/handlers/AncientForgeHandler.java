@@ -89,7 +89,7 @@ public class AncientForgeHandler extends TemplateRecipeHandler
 
     @Override
     public void loadCraftingRecipes(String outputId, Object... results) {
-        if (outputId.equals("smelting") && getClass() == AncientForgeHandler.class) {//don't want subclasses getting a hold of this
+        if (outputId.equals("smelting") && getClass() == AncientForgeHandler.class) {
             Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes.smelting().getSmeltingList();
             for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
                 arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
@@ -107,7 +107,7 @@ public class AncientForgeHandler extends TemplateRecipeHandler
 
     @Override
     public void loadUsageRecipes(String inputId, Object... ingredients) {
-        if (inputId.equals("fuel") && getClass() == AncientForgeHandler.class)//don't want subclasses getting a hold of this
+        if (inputId.equals("fuel") && getClass() == AncientForgeHandler.class)
             loadCraftingRecipes("smelting");
         else
             super.loadUsageRecipes(inputId, ingredients);

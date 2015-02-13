@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.7"
+version = "1.7.10-1.0.8"
 group= "com.black_dog20.tucs" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "tucs"
 
@@ -31,6 +31,8 @@ dependencies {
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
+    compile files ("lib/CodeChickenCore-1.7.10-1.0.2.9-dev.jar")
+    compile files ("lib/NotEnoughItems-1.7.10-1.0.2.15-dev.jar")
       
     // real examples
     //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env

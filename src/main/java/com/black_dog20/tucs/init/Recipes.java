@@ -122,6 +122,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness4Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness3Upgrade), 'r', Blocks.redstone_block});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness5Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness4Upgrade), 'r', Blocks.redstone_block});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sliktouch1Upgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.string), 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BeheadingUpgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.skull,1,2), 'u', new ItemStack(ModItems.upgradBase)});
 	}
 	
 	/*public static void Enchanted(){

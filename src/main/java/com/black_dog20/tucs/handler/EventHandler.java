@@ -88,6 +88,12 @@ public class EventHandler {
 					list.remove("Soulbound");
 				}
 			}
+			if(nbtTagCompound.hasKey(NBTTags.Beheading)){
+				list.add("\u00A7d"+"Beheading");
+			}
+			else if(!nbtTagCompound.hasKey(NBTTags.Beheading)){
+				list.remove("Beheading");
+			}
 		}
 	}
 	@SubscribeEvent

@@ -55,6 +55,9 @@ public class EnchantHelper {
 		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sliktouch1Upgrade,1))){				
 			ContainerItem.addEnchantment(Enchantment.silkTouch, 1);
 		}
+		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.BeheadingUpgrade,1))){
+			NBT.setBoolean(NBTTags.Beheading, true);
+		}
 		
 	}
 	
@@ -90,9 +93,13 @@ public class EnchantHelper {
 		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sliktouch1Upgrade,1))){
 			return true;
 		}
+		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.BeheadingUpgrade,1))){
+			return true;
+		}
 		else{
 			return false;
 		}
+		
 		
 	}
 

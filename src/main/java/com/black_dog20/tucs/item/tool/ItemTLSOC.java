@@ -58,8 +58,6 @@ public class ItemTLSOC extends ItemSword {
 			if(player.isSneaking()){
 				tucs.Proxy.openToolUpgrade(player);
 			}
-			NBTTagCompound nbtTagCompound = Item.getTagCompound();
-			nbtTagCompound.setBoolean(NBTTags.Beheading, true);
 			player.setItemInUse(Item, this.getMaxItemUseDuration(Item));
 		return Item;
 
@@ -86,6 +84,5 @@ public class ItemTLSOC extends ItemSword {
 		}
 		return false;
 	}
-
-
+	
 }

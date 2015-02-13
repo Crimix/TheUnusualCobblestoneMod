@@ -42,6 +42,7 @@ import com.black_dog20.tucs.item.tool.ItemTLHOWF;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemTLSOHD;
+import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBoAUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemEfficiencyUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemFireAspectUpgrade;
@@ -148,6 +149,7 @@ public class ModItems {
 	public static final ItemUnbreakingUpgrade Unbreaking1Upgrade = new ItemUnbreakingUpgrade(1);
 	public static final ItemUnbreakingUpgrade Unbreaking2Upgrade = new ItemUnbreakingUpgrade(2);
 	public static final ItemUnbreakingUpgrade Unbreaking3Upgrade = new ItemUnbreakingUpgrade(3);
+	public static final ItemBeheadingUpgrade BeheadingUpgrade = new ItemBeheadingUpgrade();
 	
 
 	
@@ -201,6 +203,7 @@ public class ModItems {
 		GameRegistry.registerItem(Sharpness4Upgrade, "Sharpness4Upgrade");
 		GameRegistry.registerItem(Sharpness5Upgrade, "Sharpness5Upgrade");
 		GameRegistry.registerItem(Sliktouch1Upgrade, "Sliktouch1Upgrade");
+		GameRegistry.registerItem(BeheadingUpgrade, "BeheadingUpgrade");
 		
 		
 		//TOOL PARTS

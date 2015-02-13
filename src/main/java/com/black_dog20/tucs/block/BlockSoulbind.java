@@ -40,10 +40,10 @@ public class BlockSoulbind extends BlockTUCS{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "ancientTable_side");
-		this.iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":" + "ancientTable_front");
+		this.blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "soulBinder_side");
+		this.iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":" + "soulBinder_side");
 		this.iconTop = iconRegister.registerIcon(Reference.MOD_ID + ":" + "ancientTable_top");
-		this.iconBot = iconRegister.registerIcon("minecraft:cobblestone");
+		this.iconBot = iconRegister.registerIcon("minecraft:soulsand");
 	}
 
 	@SideOnly(Side.CLIENT)

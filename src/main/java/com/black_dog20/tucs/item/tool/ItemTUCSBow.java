@@ -65,7 +65,20 @@ public class ItemTUCSBow extends ItemTUCS
         if (flag || Eplayer.inventory.hasItem(Items.arrow))
         {
 
-            EntityArrow entityarrow = spawnArrow(world, Eplayer);
+        	 float f = (float)j / 20.0F;
+             f = (f * f + f * 2.0F) / 3.0F;
+
+             if ((double)f < 0.1D)
+             {
+                 return;
+             }
+
+             if (f > 1.0F)
+             {
+                 f = 1.0F;
+             }
+        	
+            EntityArrow entityarrow = spawnArrow(world, Eplayer, f);
 
             stack.damageItem(1, Eplayer);
             world.playSoundAtEntity(Eplayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
@@ -77,6 +90,7 @@ public class ItemTUCSBow extends ItemTUCS
             else
             {
                 Eplayer.inventory.consumeInventoryItem(Items.arrow);
+                entityarrow.canBePickedUp = 1;
             }
 
             if (!world.isRemote)
@@ -118,7 +132,7 @@ public class ItemTUCSBow extends ItemTUCS
         }
 
         if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.MachineBow)){
-            EntityArrow entityarrow = spawnArrow(world, Eplayer);
+            EntityArrow entityarrow = spawnArrow(world, Eplayer, 1.0F);
             
             stack.damageItem(1, Eplayer);
             if (!world.isRemote)
@@ -136,8 +150,8 @@ public class ItemTUCSBow extends ItemTUCS
         return stack;
     }
     
-    public EntityArrow spawnArrow(World world, EntityPlayer Eplayer){
-    	EntityArrow entityarrow = new EntityArrow(world, Eplayer, 2.0F);
+    public EntityArrow spawnArrow(World world, EntityPlayer Eplayer, float f){
+    	EntityArrow entityarrow = new EntityArrow(world, Eplayer, f*2.0F);
 
         entityarrow.setIsCritical(true);
         entityarrow.setDamage(entityarrow.getDamage() +3D);

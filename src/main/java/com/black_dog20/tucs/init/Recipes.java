@@ -33,6 +33,8 @@ public class Recipes {
 		//Recipes vanilla
 		//Ore
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(Blocks.cobblestone), Items.iron_ingot, Items.gunpowder, new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(Blocks.cobblestone), Items.iron_ingot, Items.gunpowder, new ItemStack(ModItems.cobblestoneiumLighter, 1, OreDictionary.WILDCARD_VALUE));
+		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(Blocks.cobblestone), Items.iron_ingot, Items.gunpowder, new ItemStack(ModItems.cobblestonediumLighter, 1, OreDictionary.WILDCARD_VALUE));
 		
 		//Tools
 		GameRegistry.addShapedRecipe(new ItemStack(ModItems.cobblestoneLighter), new Object[] {" f ", "cgc" , "cgc" , 'f', new ItemStack(Items.flint_and_steel, 1, OreDictionary.WILDCARD_VALUE), 'g' , Items.gunpowder, 'c' , Blocks.cobblestone});

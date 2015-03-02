@@ -13,9 +13,17 @@ import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
 import com.black_dog20.tucs.item.ItemIngotYellowstoneium;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
 import com.black_dog20.tucs.item.ItemTorchTalisman;
+import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemBootCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
+import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
+import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
+import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemLegCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestoneium;
 import com.black_dog20.tucs.item.crafting.ItemHatchetHead;
 import com.black_dog20.tucs.item.crafting.ItemHoeHead;
@@ -42,6 +50,7 @@ import com.black_dog20.tucs.item.tool.ItemTLHOWF;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemTLSOHD;
+import com.black_dog20.tucs.item.tool.ItemTUCSBow;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBoAUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemEfficiencyUpgrade;
@@ -63,7 +72,8 @@ public class ModItems {
 	public static ToolMaterial COBBLESTONEDIUM_MATERIAL = EnumHelper.addToolMaterial("COBBLESTONEDIUM_MATERIAL", 3, 1692, 8.0F, 10.0F, 22);
 	public static ToolMaterial COBBLESTONEIUM_MATERIAL = EnumHelper.addToolMaterial("COBBLESTONEIUM_MATERIAL", 2, 381, 6.0F, 3.0F, 15);
 	public static ArmorMaterial COBBLESTONEIUM_ARMORMATERIAL = EnumHelper.addArmorMaterial("Cobblestoneium", 17 , new int[] {3,7,6,3}, 10);
-
+	public static ArmorMaterial COBBLESTONEdIUM_ARMORMATERIAL = EnumHelper.addArmorMaterial("Cobblestonedium", 66 , new int[] {4,9,7,4}, 0);
+	
 	//Ingots
 	public static final ItemIngotCobblestoneium ingotCobblestoneium = new ItemIngotCobblestoneium();
 	public static final ItemIngotCobblestonedium ingotCobblestonedium = new ItemIngotCobblestonedium();
@@ -79,6 +89,21 @@ public class ModItems {
 	public static final ItemLegCobblestoneium leggingsCobblestoneium = new ItemLegCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 2, "leggingsCobblestoneium");
 	public static final ItemBootCobblestoneium bootsCobblestoneium = new ItemBootCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 3, "bootsCobblestoneium");
 	public static final ItemChestplateCobblestoneium chestplateCobblestoneium = new ItemChestplateCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 1, "chestplateCobblestoneium");
+	
+	
+	//Cobblestondium armor
+	public static final ItemHelmetCobblestonedium helmetCobblestonedium = new ItemHelmetCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 0, "helmetCobblestonedium");
+	public static final ItemLegCobblestonedium leggingsCobblestonedium = new ItemLegCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 2, "leggingsCobblestonedium");
+	public static final ItemBootCobblestonedium bootsCobblestonedium = new ItemBootCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 3, "bootsCobblestonedium");
+	public static final ItemChestplateCobblestonedium chestplateCobblestonedium = new ItemChestplateCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium");
+	
+	public static final ItemHelmetCobblestonediumBroken helmetCobblestonediumBroken = new ItemHelmetCobblestonediumBroken();
+	public static final ItemLegCobblestonediumBroken leggingsCobblestonediumBroken = new ItemLegCobblestonediumBroken();
+	public static final ItemBootCobblestonediumBroken bootsCobblestonediumBroken = new ItemBootCobblestonediumBroken();
+	public static final ItemChestplateCobblestonediumBroken chestplateCobblestonediumBroken = new ItemChestplateCobblestonediumBroken();
+	
+	public static final ItemTUCSBow TUCSBow = new ItemTUCSBow();
+	
 	
 	//Mics items
 	public static final ItemBook TUCSbook = new ItemBook();
@@ -151,8 +176,6 @@ public class ModItems {
 	public static final ItemUnbreakingUpgrade Unbreaking3Upgrade = new ItemUnbreakingUpgrade(3);
 	public static final ItemBeheadingUpgrade BeheadingUpgrade = new ItemBeheadingUpgrade();
 	
-
-	
 	
 	
 	public static void init(){
@@ -174,6 +197,10 @@ public class ModItems {
 		GameRegistry.registerItem(leggingsCobblestoneium, "leggingsCobblestoneium");
 		GameRegistry.registerItem(bootsCobblestoneium, "bootsCobblestoneium");
 		GameRegistry.registerItem(chestplateCobblestoneium, "chestplateCobblestoneium");
+		GameRegistry.registerItem(helmetCobblestonedium, "helmetCobblestonedium");
+		GameRegistry.registerItem(leggingsCobblestonedium, "leggingsCobblestonedium");
+		GameRegistry.registerItem(bootsCobblestonedium, "bootsCobblestonedium");
+		GameRegistry.registerItem(chestplateCobblestonedium, "chestplateCobblestonedium");
 		
 		
 		//INGOTS
@@ -183,7 +210,7 @@ public class ModItems {
 		
 		//ITEMS
 		GameRegistry.registerItem(cobblestoneLighter, "cobblestoneLighter");
-		GameRegistry.registerItem(TUCSbook, "TUCSBook");
+		GameRegistry.registerItem(TUCSbook, "TUCSbook");
 		GameRegistry.registerItem(TUCSdebug, "TUCSdebug");
 		GameRegistry.registerItem(CobbleCoal, "CobbleCoal");
 		GameRegistry.registerItem(cobblestonediumLighter, "cobblestonediumLighter");
@@ -191,6 +218,14 @@ public class ModItems {
 		GameRegistry.registerItem(FlightTalisman, "FlightTalisman");
 		GameRegistry.registerItem(torchTalisman, "torchTalisman");
 		GameRegistry.registerItem(craftingTalisman, "craftingTalisman");
+		
+		GameRegistry.registerItem(TUCSBow, "TUCSBow");
+		
+		GameRegistry.registerItem(helmetCobblestonediumBroken, "helmetCobblestonediumBroken");
+		GameRegistry.registerItem(leggingsCobblestonediumBroken, "leggingsCobblestonediumBroken");
+		GameRegistry.registerItem(bootsCobblestonediumBroken, "bootsCobblestonediumBroken");
+		GameRegistry.registerItem(chestplateCobblestonediumBroken, "chestplateCobblestonediumBroken");
+		
 		
 		//UPGRADES
 		GameRegistry.registerItem(looting1Upgrade, "looting1Upgrade");
@@ -204,6 +239,30 @@ public class ModItems {
 		GameRegistry.registerItem(Sharpness5Upgrade, "Sharpness5Upgrade");
 		GameRegistry.registerItem(Sliktouch1Upgrade, "Sliktouch1Upgrade");
 		GameRegistry.registerItem(BeheadingUpgrade, "BeheadingUpgrade");
+		/*GameRegistry.registerItem(BoA1Upgrade, "BoA1Upgrade");
+		GameRegistry.registerItem(BoA2Upgrade, "BoA2Upgrade");
+		GameRegistry.registerItem(BoA3Upgrade, "BoA3Upgrade");
+		GameRegistry.registerItem(BoA4Upgrade, "BoA4Upgrade");
+		GameRegistry.registerItem(BoA5Upgrade, "BoA5Upgrade");
+		GameRegistry.registerItem(Efficiency1Upgrade, "Efficiency1Upgrade");
+		GameRegistry.registerItem(Efficiency2Upgrade, "Efficiency2Upgrade");
+		GameRegistry.registerItem(Efficiency3Upgrade, "Efficiency3Upgrade");
+		GameRegistry.registerItem(Efficiency4Upgrade, "Efficiency4Upgrade");
+		GameRegistry.registerItem(Efficiency5Upgrade, "Efficiency5Upgrade");
+		GameRegistry.registerItem(Smite1Upgrade, "Smite1Upgrade");
+		GameRegistry.registerItem(Smite2Upgrade, "Smite2Upgrade");
+		GameRegistry.registerItem(Smite3Upgrade, "Smite3Upgrade");
+		GameRegistry.registerItem(Smite4Upgrade, "Smite4Upgrade");
+		GameRegistry.registerItem(Smite5Upgrade, "Smite5Upgrade");
+		GameRegistry.registerItem(FireAspect1Upgrade, "FireAspect1Upgrade");
+		GameRegistry.registerItem(FireAspect2Upgrade, "FireAspect2Upgrade");
+		GameRegistry.registerItem(Knockback1Upgrade, "Knockback1Upgrade");
+		GameRegistry.registerItem(Knockback2Upgrade, "Knockback2Upgrade");
+		GameRegistry.registerItem(Unbreaking1Upgrade, "Unbreaking1Upgrade");
+		GameRegistry.registerItem(Unbreaking2Upgrade, "Unbreaking2Upgrade");
+		GameRegistry.registerItem(Unbreaking3Upgrade, "Unbreaking3Upgrade");*/
+		
+
 		
 		
 		//TOOL PARTS

@@ -1,61 +1,47 @@
 package com.black_dog20.tucs.utility;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemSharpnessUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemSliktouchUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemSoulboundUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemTUCSUpgrades;
 import com.black_dog20.tucs.reference.NBTTags;
 
 public class EnchantHelper {
 	
 	public static void setEnchant(ItemStack ContainerItem, ItemStack UpgradeItem, NBTTagCompound NBT){
-		if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.soulboundUpgrade,1))){
+		if(UpgradeItem.getItem() instanceof ItemSoulboundUpgrade){
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
 		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting1Upgrade,1))){
-			if(Enchantment.looting.canApply(ContainerItem)){
-				ContainerItem.addEnchantment(Enchantment.looting, 1);
+		else if(UpgradeItem.getItem() instanceof ItemLootingUpgrade){
+			String s = UpgradeItem.getUnlocalizedName();
+			int lvl = Integer.parseInt(s.replaceAll("[\\D]", ""));
+			if(Enchantment.looting.canApplyAtEnchantingTable(ContainerItem)){
+				ContainerItem.addEnchantment(Enchantment.looting, lvl);
 			}
 			else{
-				ContainerItem.addEnchantment(Enchantment.fortune, 1);
+				ContainerItem.addEnchantment(Enchantment.fortune, lvl);
 			}
 		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting2Upgrade,1))){
-			if(Enchantment.looting.canApply(ContainerItem)){
-				ContainerItem.addEnchantment(Enchantment.looting, 2);
-			}
-			else{
-				ContainerItem.addEnchantment(Enchantment.fortune, 2);
-			}
+		else if(UpgradeItem.getItem() instanceof ItemSharpnessUpgrade && Enchantment.sharpness.canApplyAtEnchantingTable(ContainerItem)){
+			String s = UpgradeItem.getUnlocalizedName();
+			int lvl = Integer.parseInt(s.replaceAll("[\\D]", ""));
+			ContainerItem.addEnchantment(Enchantment.sharpness, lvl);
 		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.looting3Upgrade,1))){
-			if(Enchantment.looting.canApply(ContainerItem)){
-				ContainerItem.addEnchantment(Enchantment.looting, 3);
-			}
-			else{
-				ContainerItem.addEnchantment(Enchantment.fortune, 3);
-			}
+		else if(UpgradeItem.getItem() instanceof ItemSliktouchUpgrade && Enchantment.silkTouch.canApplyAtEnchantingTable(ContainerItem)){
+			String s = UpgradeItem.getUnlocalizedName();
+			int lvl = Integer.parseInt(s.replaceAll("[\\D]", ""));
+			ContainerItem.addEnchantment(Enchantment.silkTouch, lvl);
 		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness1Upgrade,1)) && Enchantment.sharpness.canApply(ContainerItem)){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 1);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness2Upgrade,1)) && Enchantment.sharpness.canApply(ContainerItem)){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 2);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness3Upgrade,1)) && Enchantment.sharpness.canApply(ContainerItem)){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 3);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness4Upgrade,1)) && Enchantment.sharpness.canApply(ContainerItem)){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 4);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sharpness5Upgrade,1)) && Enchantment.sharpness.canApply(ContainerItem)){				
-			ContainerItem.addEnchantment(Enchantment.sharpness, 5);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.Sliktouch1Upgrade,1))){				
-			ContainerItem.addEnchantment(Enchantment.silkTouch, 1);
-		}
-		else if(ContainerItem.areItemStacksEqual(UpgradeItem, new ItemStack(ModItems.BeheadingUpgrade,1))){
+		else if(UpgradeItem.getItem() instanceof ItemBeheadingUpgrade){
 			NBT.setBoolean(NBTTags.Beheading, true);
 		}
 		
@@ -63,37 +49,21 @@ public class EnchantHelper {
 	
 	public static boolean checkItem(ItemStack itemstack){
 		
-		if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
+		Item item = itemstack.getItem();
+		
+		if(item instanceof ItemSoulboundUpgrade){
 			return true;
 		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting1Upgrade,1))){
+		else if(item instanceof ItemLootingUpgrade){
 			return true;
 		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting2Upgrade,1))){
+		else if(item instanceof ItemSharpnessUpgrade){
 			return true;
 		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.looting3Upgrade,1))){
+		else if(item instanceof ItemSliktouchUpgrade){
 			return true;
 		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness1Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness2Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness3Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness4Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sharpness5Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.Sliktouch1Upgrade,1))){
-			return true;
-		}
-		else if(itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.BeheadingUpgrade,1))){
+		else if(item instanceof ItemBeheadingUpgrade){
 			return true;
 		}
 		else{

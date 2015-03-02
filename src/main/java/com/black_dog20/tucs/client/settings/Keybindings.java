@@ -11,5 +11,6 @@ public class Keybindings {
 	 public static KeyBinding fly = new KeyBinding(Names.Keys.FLY, Keyboard.KEY_F, Names.Keys.CATEGORY);
 	 public static KeyBinding flyspeed = new KeyBinding(Names.Keys.FLYSPEED, Keyboard.KEY_V, Names.Keys.CATEGORY);
 	 public static KeyBinding night = new KeyBinding(Names.Keys.NIGHT, Keyboard.KEY_N, Names.Keys.CATEGORY);
+	 public static KeyBinding upgrade = new KeyBinding(Names.Keys.UPGRADE, Keyboard.KEY_U, Names.Keys.CATEGORY);
 
 }

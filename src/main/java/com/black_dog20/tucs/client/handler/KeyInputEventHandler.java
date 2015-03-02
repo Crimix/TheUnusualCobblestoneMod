@@ -7,8 +7,10 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 
+import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.tool.ItemTUCSBow;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.client.FMLClientHandler;
@@ -79,6 +81,16 @@ public class KeyInputEventHandler {
 				else if(nbtp.hasKey(night) && nbtp.hasKey(nightA)){
 					entityPlayer.removePotionEffect(Potion.nightVision.id);
 					nbtp.removeTag(nightA);
+				}
+			}
+		}
+		else if(Keybindings.upgrade.isPressed()){
+			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
+				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+				if(entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemTUCSBow){
+					if(entityPlayer.isSneaking()){
+						tucs.Proxy.openToolUpgrade(entityPlayer);
+					}
 				}
 			}
 		}

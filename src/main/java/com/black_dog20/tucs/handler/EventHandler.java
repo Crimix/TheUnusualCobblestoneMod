@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -20,12 +24,15 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
+import com.black_dog20.tucs.item.tool.ItemTUCSBow;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.NBTHelper;
 
@@ -36,7 +43,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandler {
 	NBTTagCompound nbt;
-
+	
 
 	@SubscribeEvent
 	public void onEntityDeath(PlayerDropsEvent event) {
@@ -55,16 +62,13 @@ public class EventHandler {
 			if(item !=null){
 				if(itemstack.hasTagCompound()){
 					NBTTagCompound itemT = itemstack.getTagCompound();
-					if(itemT.hasKey(NBTTags.SOULBOUND)){
-						String test= itemT.getString(NBTTags.SOULBOUND);
-						if(test.equals(NBTTags.OK)){
-							NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-							nbttagcompound1.setByte("Slot", (byte)i);
-							itemstack.writeToNBT(nbttagcompound1);
-							nbttaglist.appendTag(nbttagcompound1);
-							litr.remove();
-							i++;
-						}
+					if(itemT.hasKey(NBTTags.SOULBOUND) || itemT.hasKey(NBTTags.SOULBOUND_P)){
+						NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+						nbttagcompound1.setByte("Slot", (byte)i);
+						itemstack.writeToNBT(nbttagcompound1);
+						nbttaglist.appendTag(nbttagcompound1);
+						litr.remove();
+						i++;
 					}
 				}
 			}
@@ -77,23 +81,26 @@ public class EventHandler {
 	public void Tool(ItemTooltipEvent event){
 		ItemStack item = event.itemStack;
 		List list = event.toolTip;
+		list.add((item.getMaxDamage()-item.getItemDamage()) + "/" + item.getMaxDamage());
 		if(item.hasTagCompound()){
 			NBTTagCompound nbtTagCompound = item.getTagCompound();
 			if(nbtTagCompound.hasKey(NBTTags.SOULBOUND)){
-				String test= nbtTagCompound.getString(NBTTags.SOULBOUND);
-				if(test.equals(NBTTags.OK)){
-					list.add("\u00A7d"+"Soulbound");
-				}
-				else if(!test.equals(NBTTags.OK)){
-					list.remove("Soulbound");
-				}
+				list.add("\u00A7d"+"Soulbound");
 			}
+			else if(nbtTagCompound.hasKey(NBTTags.SOULBOUND_P)){
+				list.add("\u00A7d"+"Soulbound");
+			}
+			else{
+				list.remove("Soulbound");
+			}
+			
 			if(nbtTagCompound.hasKey(NBTTags.Beheading)){
 				list.add("\u00A7d"+"Beheading");
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.Beheading)){
 				list.remove("Beheading");
 			}
+			
 		}
 	}
 	@SubscribeEvent
@@ -165,14 +172,14 @@ public class EventHandler {
 
 		}
 	}
+	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent.Specials.Pre event){
 		EntityPlayer player = event.entityPlayer;
 		InventoryPlayer IPlayer = player.inventory;
 		
-		if(player.worldObj.isRemote){
-			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.AllowFly)){
+			if(IPlayer.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
 				float offset = 0.25F;
 				float size = 0.325F;
 				float dis = 0F;
@@ -189,7 +196,7 @@ public class EventHandler {
 				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
 				GL11.glPopMatrix();
 			}
-			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.SwordRender)){
+			if(IPlayer.hasItemStack(new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
 				ItemStack item = player.getHeldItem();
 				if(item == null || !(item.getItem() instanceof ItemTLSOC)){
 					float offset = -0.5F;
@@ -210,7 +217,7 @@ public class EventHandler {
 					GL11.glPopMatrix();
 				}
 			}
-			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.PickAxeRender)){
+			if(IPlayer.hasItemStack(new ItemStack(ModItems.TLPOLM,1,OreDictionary.WILDCARD_VALUE))){
 				ItemStack item = player.getHeldItem();
 				if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
 					float offset = 0.45F;
@@ -230,7 +237,7 @@ public class EventHandler {
 					GL11.glPopMatrix();
 				}
 			}
-			if(NBTHelper.getPlayerNBT(player).hasKey(NBTTags.night)){
+			if(IPlayer.hasItemStack(new ItemStack(ModItems.torchTalisman))){
 					float offset = 0.45F;
 					float size = 0.325F;
 					if(IPlayer.armorInventory[2] != null){
@@ -247,7 +254,6 @@ public class EventHandler {
 					RenderManager.instance.itemRenderer.renderItem(event.entityPlayer, new ItemStack(ModItems.torchTalisman), 0);
 					GL11.glPopMatrix();
 			}
-		}
 	}
 
 	@SubscribeEvent

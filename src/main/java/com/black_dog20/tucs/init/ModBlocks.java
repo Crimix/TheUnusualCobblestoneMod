@@ -27,11 +27,11 @@ public class ModBlocks {
 	{
 		GameRegistry.registerBlock(ancientTable, "ancientTable");
 		GameRegistry.registerBlock(oreCobblestoneium, "oreCobblestoneium");
-		GameRegistry.registerBlock(blockCobblestoneium, "blocCobblestoneium");
-		GameRegistry.registerBlock(blockCobblestonedium, "blocCobblestonedium");
+		GameRegistry.registerBlock(blockCobblestoneium, "blockCobblestoneium");
+		GameRegistry.registerBlock(blockCobblestonedium, "blockCobblestonedium");
 		GameRegistry.registerBlock(blockAncientForge, "blockAncientForge");
 		GameRegistry.registerBlock(blockAncientForge_lit, "blockAncientForge_lit");
-		GameRegistry.registerBlock(blockSoulbind, "blockSoulbindt");
+		GameRegistry.registerBlock(blockSoulbind, "blockSoulbind");
 
 	}
 }

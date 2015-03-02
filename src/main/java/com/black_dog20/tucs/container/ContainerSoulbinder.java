@@ -85,7 +85,7 @@ public class ContainerSoulbinder extends Container{
 			}
 			if(itemstack != null && itemstack.hasTagCompound()){
 			NBTTagCompound NBT = itemstack.getTagCompound();
-			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
+			NBT.setString(NBTTags.SOULBOUND_P, NBTTags.OK);
 			}
 		}
 		

@@ -76,6 +76,9 @@ public boolean hasEffect(ItemStack stack){
 		if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")){
 			return true;
 		}
+		if(nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")){
+			return true;
+		}
 		if(nbt.hasKey(NBTTags.Beheading) || nbt.hasKey("ench")){
 			return true;
 		}

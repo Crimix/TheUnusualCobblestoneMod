@@ -1,6 +1,7 @@
 package com.black_dog20.tucs.handler;
 
 
+import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
@@ -49,6 +50,43 @@ public class ModLivingDropsEvent {
             			  }
             			  
             		  }
+            		  else if(skeleton.getSkeletonType() == 0){
+            			  EntityPlayer player = (EntityPlayer) event.source.getEntity();
+            			  if(player.getHeldItem().hasTagCompound()){
+            				  NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
+            				  if(nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D){
+            					  skeleton.entityDropItem(new ItemStack(Items.skull,1, 0), 1);
+            				  }
+            			  }
+            			  
+            		  }
+            		  
+            	  }
+            	  if(event.entityLiving instanceof EntityZombie) {
+            		  double rand = Math.random();
+            		  EntityZombie zombie = (EntityZombie) event.entityLiving;
+            		  EntityPlayer player = (EntityPlayer) event.source.getEntity();
+            		  if(player.getHeldItem().hasTagCompound()){
+            			  NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
+            			  if(nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D){
+            				  zombie.entityDropItem(new ItemStack(Items.skull,1, 2), 1);
+            			  }
+            		          			  
+            		  }
+            		  
+            	  }
+            	  if(event.entityLiving instanceof EntityCreeper) {
+            		  double rand = Math.random();
+            		  EntityCreeper creeper = (EntityCreeper) event.entityLiving;
+            		  EntityPlayer player = (EntityPlayer) event.source.getEntity();
+            		  if(player.getHeldItem().hasTagCompound()){
+            			  NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
+            			  if(nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D){
+            				  creeper.entityDropItem(new ItemStack(Items.skull,1, 4), 1);
+            			  }
+            		          			  
+            		  }
+            		  
             	  }
         	  }
 

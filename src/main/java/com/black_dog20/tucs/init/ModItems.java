@@ -51,10 +51,12 @@ import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemTLSOHD;
 import com.black_dog20.tucs.item.tool.ItemTUCSBow;
+import com.black_dog20.tucs.item.tool.ItemTUCSBowBroken;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBoAUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemEfficiencyUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemFireAspectUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemInfiArrowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemKnockbackUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSharpnessUpgrade;
@@ -103,6 +105,7 @@ public class ModItems {
 	public static final ItemChestplateCobblestonediumBroken chestplateCobblestonediumBroken = new ItemChestplateCobblestonediumBroken();
 	
 	public static final ItemTUCSBow TUCSBow = new ItemTUCSBow();
+	public static final ItemTUCSBowBroken TUCSBowBroken = new ItemTUCSBowBroken();
 	
 	
 	//Mics items
@@ -175,7 +178,7 @@ public class ModItems {
 	public static final ItemUnbreakingUpgrade Unbreaking2Upgrade = new ItemUnbreakingUpgrade(2);
 	public static final ItemUnbreakingUpgrade Unbreaking3Upgrade = new ItemUnbreakingUpgrade(3);
 	public static final ItemBeheadingUpgrade BeheadingUpgrade = new ItemBeheadingUpgrade();
-	
+	public static final ItemInfiArrowUpgrade InfiUpgrade = new ItemInfiArrowUpgrade();
 	
 	
 	public static void init(){
@@ -220,6 +223,7 @@ public class ModItems {
 		GameRegistry.registerItem(craftingTalisman, "craftingTalisman");
 		
 		GameRegistry.registerItem(TUCSBow, "TUCSBow");
+		GameRegistry.registerItem(TUCSBowBroken, "TUCSBowBroken");
 		
 		GameRegistry.registerItem(helmetCobblestonediumBroken, "helmetCobblestonediumBroken");
 		GameRegistry.registerItem(leggingsCobblestonediumBroken, "leggingsCobblestonediumBroken");
@@ -261,7 +265,7 @@ public class ModItems {
 		GameRegistry.registerItem(Unbreaking1Upgrade, "Unbreaking1Upgrade");
 		GameRegistry.registerItem(Unbreaking2Upgrade, "Unbreaking2Upgrade");
 		GameRegistry.registerItem(Unbreaking3Upgrade, "Unbreaking3Upgrade");*/
-		
+		GameRegistry.registerItem(InfiUpgrade, "InfiUpgrade");
 
 		
 		

@@ -84,7 +84,7 @@ public class KeyInputEventHandler {
 				}
 			}
 		}
-		else if(Keybindings.upgrade.isPressed()){
+		/*else if(Keybindings.upgrade.isPressed()){
 			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				if(entityPlayer.inventory.getCurrentItem().getItem() instanceof ItemTUCSBow){
@@ -93,6 +93,6 @@ public class KeyInputEventHandler {
 					}
 				}
 			}
-		}
+		}*/
 	}
 }

@@ -81,7 +81,7 @@ public class EventHandler {
 	public void Tool(ItemTooltipEvent event){
 		ItemStack item = event.itemStack;
 		List list = event.toolTip;
-		list.add((item.getMaxDamage()-item.getItemDamage()) + "/" + item.getMaxDamage());
+		//list.add((item.getMaxDamage()-item.getItemDamage()) + "/" + item.getMaxDamage());
 		if(item.hasTagCompound()){
 			NBTTagCompound nbtTagCompound = item.getTagCompound();
 			if(nbtTagCompound.hasKey(NBTTags.SOULBOUND)){
@@ -99,6 +99,19 @@ public class EventHandler {
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.Beheading)){
 				list.remove("Beheading");
+			}
+			
+			if(nbtTagCompound.hasKey(NBTTags.MachineBow)){
+				list.add("\u00A7d"+"AutoBow");
+			}
+			else if(!nbtTagCompound.hasKey(NBTTags.MachineBow)){
+				list.remove("AutoBow");
+			}
+			if(nbtTagCompound.hasKey(NBTTags.NoArrow)){
+				list.add("\u00A7d"+"Infinity Arrow");
+			}
+			else if(!nbtTagCompound.hasKey(NBTTags.NoArrow)){
+				list.remove("Infinity Arrow");
 			}
 			
 		}
@@ -332,6 +345,47 @@ public class EventHandler {
 						
 						giveItems(item, inv);
 					}
+					else if(item.isItemEqual( new ItemStack(ModItems.helmetCobblestonedium))){
+						ItemStack arrmor = new ItemStack(ModItems.helmetCobblestonediumBroken);
+						if(!inv.addItemStackToInventory(arrmor)){
+							player.dropPlayerItemWithRandomChoice(arrmor, false);
+						}
+						
+						giveItems(item, inv);
+					}
+					else if(item.isItemEqual( new ItemStack(ModItems.chestplateCobblestonedium))){
+						ItemStack arrmor = new ItemStack(ModItems.chestplateCobblestonediumBroken);
+						if(!inv.addItemStackToInventory(arrmor)){
+							player.dropPlayerItemWithRandomChoice(arrmor, false);
+						}
+						
+						giveItems(item, inv);
+					}
+					else if(item.isItemEqual( new ItemStack(ModItems.leggingsCobblestonedium))){
+						ItemStack arrmor = new ItemStack(ModItems.leggingsCobblestonediumBroken);
+						if(!inv.addItemStackToInventory(arrmor)){
+							player.dropPlayerItemWithRandomChoice(arrmor, false);
+						}
+						
+						giveItems(item, inv);
+					}
+					else if(item.isItemEqual( new ItemStack(ModItems.bootsCobblestonedium))){
+						ItemStack arrmor = new ItemStack(ModItems.bootsCobblestonediumBroken);
+						if(!inv.addItemStackToInventory(arrmor)){
+							player.dropPlayerItemWithRandomChoice(arrmor, false);
+						}
+						
+						giveItems(item, inv);
+					}
+					else if(item.isItemEqual( new ItemStack(ModItems.TUCSBow))){
+						ItemStack arrmor = new ItemStack(ModItems.TUCSBowBroken);
+						if(!inv.addItemStackToInventory(arrmor)){
+							player.dropPlayerItemWithRandomChoice(arrmor, false);
+						}
+						
+						giveItems(item, inv);
+					}
+					
 			}
 	
 	

@@ -45,10 +45,20 @@ item.tucs:sharpness2Upgrade.name=Sharpness 2 Upgrade
 item.tucs:sharpness3Upgrade.name=Sharpness 3 Upgrade
 item.tucs:sharpness4Upgrade.name=Sharpness 4 Upgrade
 item.tucs:sharpness5Upgrade.name=Sharpness 5 Upgrade
+item.tucs:infiUpgrade.name=Infinity Upgrade
 item.tucs:sliktouch1Upgrade.name=Silk Touch Upgrade
 item.tucs:ingotYellowstoneium.name= Yellowstoneium Ingot
 item.tucs:beheadingUpgrade.name=Beheading Upgrade
 item.tucs:bowTLBOTH.name=The Legendary Bow of The Hunter
+item.tucs:bowTLBOTHBroken.name=The Broken Bow of The Hunter
+item.tucs:helmetCobblestonedium_broken.name=The Broken Helmet of The Warrior
+item.tucs:leggingsCobblestonedium_broken.name=The Broken Leggings of The Warrior
+item.tucs:bootsCobblestonedium_broken.name=The Broken Boots of The Warrior
+item.tucs:chestplateCobblestonedium_broken.name=The Broken Chestplate of The Warrior
+item.tucs:helmetCobblestonedium.name=The Legendary Helmet of The Warrior
+item.tucs:leggingsCobblestonedium.name=The Legendary Leggings of The Warrior
+item.tucs:bootsCobblestonedium.name=The Legendary Boots of The Warrior
+item.tucs:chestplateCobblestonedium.name=The Legendary Chestplate of The Warrior
 
 
 //Blocks
@@ -70,6 +80,7 @@ keys.tucs.category=The Unusual Cobblestone Mod
 keys.tucs.fly=Fly
 keys.tucs.flySpeed=Fly Speed
 keys.tucs.night=Night Vision
+keys.tucs.upgrade=Shift + (upgrade bow)
 
 //MSG
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!

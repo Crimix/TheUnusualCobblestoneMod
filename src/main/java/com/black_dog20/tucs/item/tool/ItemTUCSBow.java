@@ -60,7 +60,7 @@ public class ItemTUCSBow extends ItemTUCS
         }
         j = event.charge;
 
-        boolean flag = Eplayer.capabilities.isCreativeMode || stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.NoArrow);
+        boolean flag = Eplayer.capabilities.isCreativeMode || (stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.NoArrow));
 
         if (flag || Eplayer.inventory.hasItem(Items.arrow))
         {
@@ -105,7 +105,12 @@ public class ItemTUCSBow extends ItemTUCS
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer Eplayer)
     {
-        ArrowNockEvent event = new ArrowNockEvent(Eplayer, stack);
+       
+    	if(Eplayer.isSneaking()){
+			tucs.Proxy.openToolUpgrade(Eplayer);
+		}
+    	else{
+    	ArrowNockEvent event = new ArrowNockEvent(Eplayer, stack);
         MinecraftForge.EVENT_BUS.post(event);
         if (event.isCanceled())
         {
@@ -121,10 +126,11 @@ public class ItemTUCSBow extends ItemTUCS
                 world.spawnEntityInWorld(entityarrow);
             }
         }
-        else if (Eplayer.capabilities.isCreativeMode || Eplayer.inventory.hasItem(Items.arrow))
+        else if (Eplayer.capabilities.isCreativeMode || Eplayer.inventory.hasItem(Items.arrow) || (stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.NoArrow)))
         {
             Eplayer.setItemInUse(stack, this.getMaxItemUseDuration(stack));
         }
+    	}
         
 
         return stack;
@@ -134,7 +140,7 @@ public class ItemTUCSBow extends ItemTUCS
     	EntityArrow entityarrow = new EntityArrow(world, Eplayer, 2.0F);
 
         entityarrow.setIsCritical(true);
-        entityarrow.setDamage(entityarrow.getDamage() +100D);
+        entityarrow.setDamage(entityarrow.getDamage() +3D);
         entityarrow.setKnockbackStrength(1);
         entityarrow.canBePickedUp = 0;
         return entityarrow;

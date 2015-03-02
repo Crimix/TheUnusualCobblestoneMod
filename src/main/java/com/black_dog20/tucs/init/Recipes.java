@@ -123,7 +123,8 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sharpness5Upgrade), new Object[]{"rrr","rlr","rrr", 'l', new ItemStack(ModItems.Sharpness4Upgrade), 'r', Blocks.redstone_block});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sliktouch1Upgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.string), 'u', new ItemStack(ModItems.upgradBase)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.BeheadingUpgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.skull,1,2), 'u', new ItemStack(ModItems.upgradBase)});
-	
+		TucsRegistry.addRecipe(new ItemStack(ModItems.InfiUpgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.arrow), 'u', new ItemStack(ModItems.upgradBase)});
+		
 		TucsRegistry.addRecipe(new ItemStack(ModItems.helmetCobblestonedium), new Object[]{"cyc","chc","   ", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_helmet)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[]{"c c","ehe","dyd", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_chestplate), 'e' , Items.emerald, 'd' , Items.diamond});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"yyy","chc","c c", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_leggings)});
@@ -132,6 +133,9 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[]{"h","g", 'h', ModItems.chestplateCobblestonediumBroken, 'g', new ItemStack(Items.golden_chestplate)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"h","g", 'h', ModItems.leggingsCobblestonediumBroken, 'g', new ItemStack(Items.golden_leggings)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.bootsCobblestonedium), new Object[]{"h","g", 'h' , ModItems.bootsCobblestonediumBroken, 'g', new ItemStack(Items.golden_boots)});
+	
+		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{" dy","eby", " dy", 'd', Items.diamond, 'e', Items.emerald, 'b', new ItemStack(Items.bow), 'y', ModItems.ingotYellowstoneium});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{"b","n", 'b', ModItems.TUCSBowBroken, 'n', new ItemStack(Items.bow)});
 	}
 	
 	/*public static void Enchanted(){

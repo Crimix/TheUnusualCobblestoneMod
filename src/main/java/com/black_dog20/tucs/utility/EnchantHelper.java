@@ -8,6 +8,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemInfiArrowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSharpnessUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSliktouchUpgrade;
@@ -44,6 +45,9 @@ public class EnchantHelper {
 		else if(UpgradeItem.getItem() instanceof ItemBeheadingUpgrade){
 			NBT.setBoolean(NBTTags.Beheading, true);
 		}
+		else if(UpgradeItem.getItem() instanceof ItemInfiArrowUpgrade){
+			NBT.setBoolean(NBTTags.NoArrow, true);
+		}
 		
 	}
 	
@@ -64,6 +68,9 @@ public class EnchantHelper {
 			return true;
 		}
 		else if(item instanceof ItemBeheadingUpgrade){
+			return true;
+		}
+		else if(item instanceof ItemInfiArrowUpgrade){
 			return true;
 		}
 		else{

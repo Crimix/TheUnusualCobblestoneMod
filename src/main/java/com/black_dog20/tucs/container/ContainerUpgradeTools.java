@@ -45,6 +45,7 @@ public class ContainerUpgradeTools extends Container {
 			item.stackTagCompound.removeTag("ench");
 			item.stackTagCompound.removeTag(NBTTags.SOULBOUND);
 			item.stackTagCompound.removeTag(NBTTags.Beheading);
+			item.stackTagCompound.removeTag(NBTTags.NoArrow);
 			NBTTagCompound nbt = item.getTagCompound();
 
 			NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);

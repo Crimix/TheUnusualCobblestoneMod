@@ -158,10 +158,10 @@ public class EventHandler {
 				player.removePotionEffect(Potion.nightVision.id);
 				nbtt.removeTag(NBTTags.nightA);
 			}
-			if(!(nbtt.hasKey(NBTTags.AllowFly)) && player.inventory.hasItem(ModItems.torchTalisman)){
+			if(!(nbtt.hasKey(NBTTags.night)) && player.inventory.hasItem(ModItems.torchTalisman)){
 				nbtt.setBoolean(NBTTags.night, true);
 			}
-			else if(nbtt.hasKey(NBTTags.AllowFly) && !(player.inventory.hasItem(ModItems.torchTalisman))){
+			else if(nbtt.hasKey(NBTTags.night) && !(player.inventory.hasItem(ModItems.torchTalisman))){
 				nbtt.removeTag(NBTTags.night);
 			}
 			if(!(nbtt.hasKey(NBTTags.AllowFly)) && player.inventory.hasItem(ModItems.FlightTalisman)){
@@ -185,14 +185,13 @@ public class EventHandler {
 
 		}
 	}
-	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent.Specials.Pre event){
 		EntityPlayer player = event.entityPlayer;
 		InventoryPlayer IPlayer = player.inventory;
-		
-			if(IPlayer.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+		NBTTagCompound nbt = NBTHelper.getPlayerNBT(player);
+			if(nbt.hasKey(NBTTags.AllowFly)){
 				float offset = 0.25F;
 				float size = 0.325F;
 				float dis = 0F;
@@ -209,7 +208,7 @@ public class EventHandler {
 				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
 				GL11.glPopMatrix();
 			}
-			if(IPlayer.hasItemStack(new ItemStack(ModItems.TLSOC,1,OreDictionary.WILDCARD_VALUE))){
+			if(nbt.hasKey(NBTTags.SwordRender)){
 				ItemStack item = player.getHeldItem();
 				if(item == null || !(item.getItem() instanceof ItemTLSOC)){
 					float offset = -0.5F;
@@ -230,7 +229,7 @@ public class EventHandler {
 					GL11.glPopMatrix();
 				}
 			}
-			if(IPlayer.hasItemStack(new ItemStack(ModItems.TLPOLM,1,OreDictionary.WILDCARD_VALUE))){
+			if(nbt.hasKey(NBTTags.PickAxeRender)){
 				ItemStack item = player.getHeldItem();
 				if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
 					float offset = 0.45F;
@@ -250,7 +249,7 @@ public class EventHandler {
 					GL11.glPopMatrix();
 				}
 			}
-			if(IPlayer.hasItemStack(new ItemStack(ModItems.torchTalisman))){
+			if(nbt.hasKey(NBTTags.night)){
 					float offset = 0.45F;
 					float size = 0.325F;
 					if(IPlayer.armorInventory[2] != null){

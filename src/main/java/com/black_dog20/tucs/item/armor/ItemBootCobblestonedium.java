@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
-import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;

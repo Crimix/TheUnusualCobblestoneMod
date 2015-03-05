@@ -4,6 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 
 import com.black_dog20.tucs.tucs;
 
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+
 public class ServerProxy extends CommonProxy {
 
 	@Override
@@ -27,6 +29,19 @@ public class ServerProxy extends CommonProxy {
 	public void keyinput() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EntityPlayer getPlayerByIDFromMessageContext(int id,
+			MessageContext ctx) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

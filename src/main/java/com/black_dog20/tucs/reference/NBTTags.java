@@ -16,7 +16,10 @@ public class NBTTags {
 	public static final String Beheading = "TUCSHead";
 	public static final String NoArrow = "TUCSInfiArrow";
 	public static final String MachineBow = "TUCSMachineBow";
-	
+	public static final String NBTFLYRender = "TUCSNBTFlyRender";
+	public static final String NBTPickAxeRender = "TUCSNBTPicKAxeRender";
+	public static final String NBTSwordRender =  "TUCSNBTSwordRender";
+	public static final String NBTnight ="TUCSNBTNight";
 
 
 }

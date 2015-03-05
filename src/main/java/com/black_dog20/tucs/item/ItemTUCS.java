@@ -6,10 +6,8 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
-import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;

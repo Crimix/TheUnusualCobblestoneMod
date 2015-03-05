@@ -46,12 +46,12 @@ import com.black_dog20.tucs.item.tool.ItemPickaxeCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemShovelCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemSwordCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemTLBOTB;
+import com.black_dog20.tucs.item.tool.ItemTLBOTH;
+import com.black_dog20.tucs.item.tool.ItemTLBOTHBroken;
 import com.black_dog20.tucs.item.tool.ItemTLHOWF;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemTLSOHD;
-import com.black_dog20.tucs.item.tool.ItemTUCSBow;
-import com.black_dog20.tucs.item.tool.ItemTUCSBowBroken;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBoAUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemEfficiencyUpgrade;
@@ -104,8 +104,8 @@ public class ModItems {
 	public static final ItemBootCobblestonediumBroken bootsCobblestonediumBroken = new ItemBootCobblestonediumBroken();
 	public static final ItemChestplateCobblestonediumBroken chestplateCobblestonediumBroken = new ItemChestplateCobblestonediumBroken();
 	
-	public static final ItemTUCSBow TUCSBow = new ItemTUCSBow();
-	public static final ItemTUCSBowBroken TUCSBowBroken = new ItemTUCSBowBroken();
+	public static final ItemTLBOTH TUCSBow = new ItemTLBOTH();
+	public static final ItemTLBOTHBroken TUCSBowBroken = new ItemTLBOTHBroken();
 	
 	
 	//Mics items

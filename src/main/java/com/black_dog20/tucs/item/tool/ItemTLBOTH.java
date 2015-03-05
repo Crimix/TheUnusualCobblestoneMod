@@ -1,37 +1,34 @@
 package com.black_dog20.tucs.item.tool;
 
-import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
-import com.black_dog20.tucs.item.ItemTUCS;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.reference.Reference;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+
+import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.item.ItemBowTUCS;
+import com.black_dog20.tucs.item.ItemTUCS;
+import com.black_dog20.tucs.reference.NBTTags;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTUCSBow extends ItemTUCS
-{
+public class ItemTLBOTH extends ItemBowTUCS {
     public static final String[] bowPullIconNameArray = new String[] {"pulling_0", "pulling_1", "pulling_2"};
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
     private static final String __OBFID = "CL_00001777";
 
-    public ItemTUCSBow()
+    public ItemTLBOTH()
     {
     	this.setFull3D();
         this.maxStackSize = 1;

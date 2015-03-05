@@ -10,6 +10,7 @@ import com.black_dog20.tucs.handler.ModLivingDropsEvent;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.init.Recipes;
+import com.black_dog20.tucs.network.PacketHandler;
 import com.black_dog20.tucs.proxies.IProxy;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
@@ -53,6 +54,7 @@ public class tucs {
 		Proxy.registerKeyBindings();
 		ModItems.init();
 		ModBlocks.init();
+		PacketHandler.init();
 		
 		
 		LogHelper.info("Pre Initialization Complete!");

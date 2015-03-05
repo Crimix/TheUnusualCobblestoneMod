@@ -4,16 +4,13 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.oredict.OreDictionary;
 
-import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemInfiArrowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSharpnessUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSliktouchUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSoulboundUpgrade;
-import com.black_dog20.tucs.item.upgrades.ItemTUCSUpgrades;
 import com.black_dog20.tucs.reference.NBTTags;
 
 public class EnchantHelper {

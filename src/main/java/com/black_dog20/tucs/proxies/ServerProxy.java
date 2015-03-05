@@ -43,5 +43,4 @@ public class ServerProxy extends CommonProxy {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

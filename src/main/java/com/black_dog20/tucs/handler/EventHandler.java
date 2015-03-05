@@ -199,88 +199,97 @@ public class EventHandler {
 		EntityPlayer me = Minecraft.getMinecraft().thePlayer;
 		EntityPlayer player = event.entityPlayer;
 		NBTTagCompound nbt = NBTHelper.getPlayerNBT(me);
-		if(nbt.hasKey(Integer.toString(player.getEntityId()))){
-			nbt = (NBTTagCompound) nbt.getTag(Integer.toString(player.getEntityId()));
-			InventoryPlayer IPlayer = player.inventory;
-			if(nbt.hasKey(NBTTags.AllowFly)){
-				float offset = 0.25F;
-				float size = 0.325F;
+		if(me == player){
+			doRenderTools(nbt, me, me.inventory);
+		}
+		else{
+			if(nbt.hasKey(Integer.toString(player.getEntityId()))){
+				nbt = (NBTTagCompound) nbt.getTag(Integer.toString(player.getEntityId()));
+				doRenderTools(nbt, player, player.inventory);
+			}
+		}
+			
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void doRenderTools(NBTTagCompound nbt, EntityPlayer player, InventoryPlayer IPlayer){
+		if(nbt.hasKey(NBTTags.AllowFly)){
+			float offset = 0.25F;
+			float size = 0.325F;
+			float dis = 0F;
+			if(IPlayer.armorInventory[2] != null){
+				dis = 1.71F;
+			}
+			else{
+				dis = 1.6F;
+			}
+			GL11.glPushMatrix();
+			GL11.glScalef(size, size, size);
+			GL11.glTranslatef(dis, -0.25F, offset);
+			GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
+			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
+			GL11.glPopMatrix();
+		}
+		if(nbt.hasKey(NBTTags.SwordRender)){
+			ItemStack item = player.getHeldItem();
+			if(item == null || !(item.getItem() instanceof ItemTLSOC)){
+				float offset = -0.5F;
+				float size = 0.525F;
 				float dis = 0F;
-				if(IPlayer.armorInventory[2] != null){
-					dis = 1.71F;
+				if(IPlayer.armorInventory[1] != null){
+					dis = 0.6F;
 				}
 				else{
-					dis = 1.6F;
-				}
+					dis = 0.5F;
+				}		
 				GL11.glPushMatrix();
 				GL11.glScalef(size, size, size);
-				GL11.glTranslatef(dis, -0.25F, offset);
+				GL11.glTranslatef(dis, 0.9F, offset);
 				GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
-				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
+				GL11.glRotatef(45.0F-110, 1.0F, 0.0F, 1.0F);
+				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLSOC), 0);
 				GL11.glPopMatrix();
 			}
-			if(nbt.hasKey(NBTTags.SwordRender)){
-				ItemStack item = player.getHeldItem();
-				if(item == null || !(item.getItem() instanceof ItemTLSOC)){
-					float offset = -0.5F;
-					float size = 0.525F;
-					float dis = 0F;
-					if(IPlayer.armorInventory[1] != null){
-						dis = 0.6F;
-					}
-					else{
-						dis = 0.5F;
-					}		
-					GL11.glPushMatrix();
-					GL11.glScalef(size, size, size);
-					GL11.glTranslatef(dis, 0.9F, offset);
-					GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
-					GL11.glRotatef(45.0F-110, 1.0F, 0.0F, 1.0F);
-					RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLSOC), 0);
-					GL11.glPopMatrix();
-				}
-			}
-			if(nbt.hasKey(NBTTags.PickAxeRender)){
-				ItemStack item = player.getHeldItem();
-				if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
-					float offset = 0.45F;
-					float size = 0.6F;
-					if(IPlayer.armorInventory[2] != null){
-						offset = 0.45F;
-					}
-					else{
-						offset = 0.4F;
-					}	
-					GL11.glPushMatrix();
-					GL11.glScalef(size, size, size);
-					GL11.glTranslatef(-0.5F, -0.15F, offset);
-					GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
-					GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
-					RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLPOLM), 0);
-					GL11.glPopMatrix();
-				}
-			}
-			if(nbt.hasKey(NBTTags.night)){
+		}
+		if(nbt.hasKey(NBTTags.PickAxeRender)){
+			ItemStack item = player.getHeldItem();
+			if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
 				float offset = 0.45F;
-				float size = 0.325F;
+				float size = 0.6F;
 				if(IPlayer.armorInventory[2] != null){
-					offset = -0.7F;
+					offset = 0.45F;
 				}
 				else{
-					offset = -0.45F;
+					offset = 0.4F;
 				}	
 				GL11.glPushMatrix();
 				GL11.glScalef(size, size, size);
-				GL11.glTranslatef(-0.4F, 1.4F, offset);
+				GL11.glTranslatef(-0.5F, -0.15F, offset);
 				GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
 				GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
-				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.torchTalisman), 0);
+				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLPOLM), 0);
 				GL11.glPopMatrix();
-
 			}
 		}
-	}
+		if(nbt.hasKey(NBTTags.night)){
+			float offset = 0.45F;
+			float size = 0.325F;
+			if(IPlayer.armorInventory[2] != null){
+				offset = -0.7F;
+			}
+			else{
+				offset = -0.45F;
+			}	
+			GL11.glPushMatrix();
+			GL11.glScalef(size, size, size);
+			GL11.glTranslatef(-0.4F, 1.4F, offset);
+			GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
+			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.torchTalisman), 0);
+			GL11.glPopMatrix();
 
+		}
+	}
 
 
 	@SubscribeEvent

@@ -26,6 +26,10 @@ import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
 import com.black_dog20.tucs.item.tool.ItemTLBOTH;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
@@ -143,6 +147,7 @@ public class EventHandler {
 					nbtt.setBoolean(NBTTags.FLY, false);
 				}
 			}
+			checkForArmor(player);
 			if(nbtt.hasKey(NBTTags.nightA)){
 				player.addPotionEffect(new PotionEffect(Potion.nightVision.id,500,1,false));
 			}
@@ -368,38 +373,6 @@ public class EventHandler {
 
 			giveItems(item, inv);
 		}
-		else if(item.isItemEqual( new ItemStack(ModItems.helmetCobblestonedium))){
-			ItemStack arrmor = new ItemStack(ModItems.helmetCobblestonediumBroken);
-			if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
-			}
-
-			giveItems(item, inv);
-		}
-		else if(item.isItemEqual( new ItemStack(ModItems.chestplateCobblestonedium))){
-			ItemStack arrmor = new ItemStack(ModItems.chestplateCobblestonediumBroken);
-			if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
-			}
-
-			giveItems(item, inv);
-		}
-		else if(item.isItemEqual( new ItemStack(ModItems.leggingsCobblestonedium))){
-			ItemStack arrmor = new ItemStack(ModItems.leggingsCobblestonediumBroken);
-			if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
-			}
-
-			giveItems(item, inv);
-		}
-		else if(item.isItemEqual( new ItemStack(ModItems.bootsCobblestonedium))){
-			ItemStack arrmor = new ItemStack(ModItems.bootsCobblestonediumBroken);
-			if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
-			}
-
-			giveItems(item, inv);
-		}
 		else if(item.isItemEqual( new ItemStack(ModItems.TUCSBow))){
 			ItemStack arrmor = new ItemStack(ModItems.TUCSBowBroken);
 			if(!inv.addItemStackToInventory(arrmor)){
@@ -426,6 +399,61 @@ public class EventHandler {
 			}
 			nbt.removeTag("upgradeItems");
 		}
+	}
+	
+	private void checkForArmor(EntityPlayer player){
+		ItemStack boots = player.inventory.armorInventory[0];
+		ItemStack legs = player.inventory.armorInventory[1];
+		ItemStack chest = player.inventory.armorInventory[2];
+		ItemStack helmet = player.inventory.armorInventory[3];
+		InventoryPlayer inv = player.inventory;
+		
+		if(helmet != null && helmet.getItem() instanceof ItemHelmetCobblestonedium){
+			if(helmet.getItemDamage()-helmet.getMaxDamage() <= 1){
+				ItemStack arrmor = new ItemStack(ModItems.helmetCobblestonediumBroken);
+				if(!inv.addItemStackToInventory(arrmor)){
+				player.dropPlayerItemWithRandomChoice(arrmor, false);
+				}
+			}
+
+			giveItems(helmet, inv);
+			player.inventory.armorInventory[3] = null;
+		}
+		else if(chest != null && chest.getItem() instanceof ItemChestplateCobblestonedium){
+			if(chest.getItemDamage()-chest.getMaxDamage() <= 1){
+				ItemStack arrmor = new ItemStack(ModItems.chestplateCobblestonediumBroken);
+				if(!inv.addItemStackToInventory(arrmor)){
+				player.dropPlayerItemWithRandomChoice(arrmor, false);
+				}
+			}
+
+			giveItems(chest, inv);
+			player.inventory.armorInventory[2] = null;
+		}
+		else if(legs != null && legs.getItem() instanceof ItemLegCobblestonedium){
+			if(legs.getItemDamage()-legs.getMaxDamage() <= 1){
+				ItemStack arrmor = new ItemStack(ModItems.leggingsCobblestonediumBroken);
+				if(!inv.addItemStackToInventory(arrmor)){
+				player.dropPlayerItemWithRandomChoice(arrmor, false);
+				}
+			}
+
+			giveItems(legs, inv);
+			player.inventory.armorInventory[1] = null;
+		}
+		else if(boots != null && boots.getItem() instanceof ItemBootCobblestonedium){
+			if(boots.getItemDamage()-boots.getMaxDamage() <= 1){
+				ItemStack arrmor = new ItemStack(ModItems.bootsCobblestonediumBroken);
+				if(!inv.addItemStackToInventory(arrmor)){
+				player.dropPlayerItemWithRandomChoice(arrmor, false);
+				}
+			}
+
+			giveItems(boots, inv);
+			player.inventory.armorInventory[0] = null;
+		}
+		
+		
 	}
 
 }

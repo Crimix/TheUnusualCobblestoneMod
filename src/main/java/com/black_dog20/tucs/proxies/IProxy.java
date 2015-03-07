@@ -16,5 +16,7 @@ public interface IProxy {
 	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx);
 
 	EntityPlayer getPlayerByIDFromMessageContext(int id, MessageContext ctx);
+	
+	public void registerRenders();
 
 }

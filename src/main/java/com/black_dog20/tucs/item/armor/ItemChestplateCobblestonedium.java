@@ -39,6 +39,9 @@ public class ItemChestplateCobblestonedium extends ItemArmorTUCS{
 			if(player.isSneaking()){
 				tucs.Proxy.openToolUpgrade(player);
 			}
+			else{
+				this.euip(Item, world, player);
+			}
 		
 		return Item;
 

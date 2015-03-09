@@ -26,11 +26,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 			
 		}
 		
-		protected void drawGuiContainerForegroundLayer(int i, int j) {
-
-			
-		}
-		
 		@Override
 		protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 

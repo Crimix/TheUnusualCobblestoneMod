@@ -11,6 +11,7 @@ import com.black_dog20.tucs.item.ItemFlightTalisman;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
 import com.black_dog20.tucs.item.ItemIngotYellowstoneium;
+import com.black_dog20.tucs.item.ItemM1911Ammo;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
 import com.black_dog20.tucs.item.ItemTorchTalisman;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
@@ -40,6 +41,7 @@ import com.black_dog20.tucs.item.crafting.ItemUpgradeBase;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneLighter;
 import com.black_dog20.tucs.item.tool.ItemCobblestonediumLighter;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneiumLighter;
+import com.black_dog20.tucs.item.tool.ItemM1911;
 import com.black_dog20.tucs.item.tool.ItemHatchetCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemHoeCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemPickaxeCobblestoneium;
@@ -106,6 +108,8 @@ public class ModItems {
 	
 	public static final ItemTLBOTH TUCSBow = new ItemTLBOTH();
 	public static final ItemTLBOTHBroken TUCSBowBroken = new ItemTLBOTHBroken();
+	public static final ItemM1911 M1911 = new ItemM1911(false);
+	public static final ItemM1911Ammo ammo = new ItemM1911Ammo();
 	
 	
 	//Mics items
@@ -224,6 +228,8 @@ public class ModItems {
 		
 		GameRegistry.registerItem(TUCSBow, "TUCSBow");
 		GameRegistry.registerItem(TUCSBowBroken, "TUCSBowBroken");
+		GameRegistry.registerItem(M1911, "M1911");
+		GameRegistry.registerItem(ammo, "ammo");
 		
 		GameRegistry.registerItem(helmetCobblestonediumBroken, "helmetCobblestonediumBroken");
 		GameRegistry.registerItem(leggingsCobblestonediumBroken, "leggingsCobblestonediumBroken");

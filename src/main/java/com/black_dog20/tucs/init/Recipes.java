@@ -138,31 +138,7 @@ public class Recipes {
 	
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{" dy","eby", " dy", 'd', Items.diamond, 'e', Items.emerald, 'b', new ItemStack(Items.bow), 'y', ModItems.ingotYellowstoneium});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{"b","n", 'b', ModItems.TUCSBowBroken, 'n', new ItemStack(Items.bow)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.M1911), new Object[]{"ccc","dgc","  c", 'c', ModItems.ingotCobblestonedium, 'd', Blocks.dispenser, 'g', Items.gunpowder});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.ammo,4), new Object[]{"ccc","cgc","cic", 'c', Blocks.cobblestone, 'i', Items.iron_ingot, 'g', Items.gunpowder});
 	}
-	
-	/*public static void Enchanted(){
-
-		ItemStack ct = new ItemStack(ModItems.craftingTalisman);
-		if(!ct.hasTagCompound()){
-			ct.stackTagCompound = new NBTTagCompound();
-		}
-		if(ct.hasTagCompound()){
-			NBTTagCompound nbt= ct.getTagCompound();
-			nbt.setString(NBTTags.SOULBOUND, NBTTags.OK);
-			}
-		ItemStack tt = new ItemStack(ModItems.torchTalisman);
-		if(!tt.hasTagCompound()){
-			tt.stackTagCompound = new NBTTagCompound();
-		}
-		if(tt.hasTagCompound()){
-			NBTTagCompound nbt= tt.getTagCompound();
-			nbt.setString(NBTTags.SOULBOUND, NBTTags.OK);
-			}
-		
-		TucsRegistry.addRecipe(ct, new Object[]{"g", "t", 'g', new ItemStack(ModItems.soulboundUpgrade), 't', new ItemStack(ModItems.craftingTalisman)});
-		TucsRegistry.addRecipe(tt, new Object[]{"g", "t", 'g', new ItemStack(ModItems.soulboundUpgrade), 't', new ItemStack(ModItems.torchTalisman)});	
-		
-	}*/
-	
-
 }

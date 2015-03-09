@@ -65,7 +65,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenders() {
 		MinecraftForgeClient.registerItemRenderer(ModItems.TUCSBow, new TUCSWeaponOverlayRender());
-		
+		MinecraftForgeClient.registerItemRenderer(ModItems.M1911, new TUCSWeaponOverlayRender());
 	}
 
 }

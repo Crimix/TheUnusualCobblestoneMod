@@ -44,25 +44,24 @@ public class GuiHandler implements IGuiHandler {
 		if(ID == tucs.guiIDAncientTable) {
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new ContainerAncientTable(player.inventory, world, x, y, z, player) : null;
 		}
-		if(ID == tucs.guiIDBook){
+		else if(ID == tucs.guiIDBook){
 			return new ContainerDummy(player);
 		}
-		if(ID == tucs.guiIDFlightTalisman){
+		else if(ID == tucs.guiIDFlightTalisman){
 			return new ContainerFlightTalisman(world, x, y, z, player, item);
 		}
-		if(ID == tucs.guiIDFlightTalisman){
+		else if(ID == tucs.guiIDFlightTalisman){
 			return new ContainerFlightTalisman(world, x, y, z, player, item);
 		}
-		if(ID == tucs.guiIDCraftingTalisman){
+		else if(ID == tucs.guiIDCraftingTalisman){
 			return new ContainerCraftingTalisman(player.inventory, world, x, y, z, player);
 		}
-		if(ID == tucs.guiIDUpgradeTools){
+		else if(ID == tucs.guiIDUpgradeTools){
 			return new ContainerUpgradeTools(world, x, y, z, player, item);
 		}
-		if(ID == tucs.guiSoulBinder){
+		else if(ID == tucs.guiSoulBinder){
 			return new ContainerSoulbinder(world, x, y, z, player);
 		}
-
 		return null;
 	}
 
@@ -84,20 +83,20 @@ public class GuiHandler implements IGuiHandler {
 			return ID == tucs.guiIDAncientTable && world.getBlock(x, y, z) == ModBlocks.ancientTable ? new GuiAncientTable(player.inventory, world, x, y, z, player) : null;
 		}
 		
-		if(ID == tucs.guiIDBook){
+		else if(ID == tucs.guiIDBook){
 			
 			return new  GuiTUCSBook(player);
 		}
-		if(ID == tucs.guiIDFlightTalisman){
+		else if(ID == tucs.guiIDFlightTalisman){
 			return new GuiFlightTalisman(world, x, y, z, player);
 		}
-		if(ID == tucs.guiIDCraftingTalisman){
+		else if(ID == tucs.guiIDCraftingTalisman){
 			return new GuiAncientTable(player.inventory, world, x, y, z, player);
 		}
-		if(ID == tucs.guiIDUpgradeTools){
+		else if(ID == tucs.guiIDUpgradeTools){
 			return new GuiUpgradeTools(world, x, y, z, player);
 		}
-		if(ID == tucs.guiSoulBinder){
+		else if(ID == tucs.guiSoulBinder){
 			return new GuiSoulbinder(world, x, y, z, player);
 		}
 

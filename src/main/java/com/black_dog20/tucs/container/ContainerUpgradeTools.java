@@ -120,10 +120,10 @@ public class ContainerUpgradeTools extends Container {
 	@Override
 	public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
 		// this will prevent the player from interacting with the item that opened the inventory:
-			if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
-				return null;
-			}
-			return super.slotClick(slot, button, flag, player);
+		if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
+			return null;
+		}
+		return super.slotClick(slot, button, flag, player);
 	}
 
 
@@ -144,30 +144,33 @@ public class ContainerUpgradeTools extends Container {
 			tool.stackTagCompound = new NBTTagCompound();
 		}
 
-		NBTTagCompound NBT = tool.getTagCompound();
-		NBTTagList nbttaglist = new NBTTagList();
+		if(tool.hasTagCompound()){
+			NBTTagCompound NBT = tool.getTagCompound();
 
-		for(int i = 0; i < 3; i++){
-			ItemStack upgrade = this.slotUpgrade.getStackInSlot(i);
-			if(upgrade != null && EnchantHelper.checkItem(upgrade)){
-				if(tool != null && tool.hasTagCompound()){
-					NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-					nbttagcompound1.setInteger("Slot", i);
-					upgrade.writeToNBT(nbttagcompound1);
-					nbttaglist.appendTag(nbttagcompound1);
+			NBTTagList nbttaglist = new NBTTagList();
 
-					EnchantHelper.setEnchant(tool, upgrade, NBT);
+			for(int i = 0; i < 3; i++){
+				ItemStack upgrade = this.slotUpgrade.getStackInSlot(i);
+				if(upgrade != null && EnchantHelper.checkItem(upgrade)){
+					if(tool != null && tool.hasTagCompound()){
+						NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+						nbttagcompound1.setInteger("Slot", i);
+						upgrade.writeToNBT(nbttagcompound1);
+						nbttaglist.appendTag(nbttagcompound1);
 
+						EnchantHelper.setEnchant(tool, upgrade, NBT);
+
+					}
+				}
+				else{
+					if(upgrade != null){
+						player.dropPlayerItemWithRandomChoice(upgrade, false);
+					}
 				}
 			}
-			else{
-				if(upgrade != null){
-					player.dropPlayerItemWithRandomChoice(upgrade, false);
-				}
-			}
+			NBT.setTag("upgradeItems", nbttaglist);
 		}
-		NBT.setTag("upgradeItems", nbttaglist);
 	}
-	
+
 
 }

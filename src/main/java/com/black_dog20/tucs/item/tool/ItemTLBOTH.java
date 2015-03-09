@@ -151,8 +151,8 @@ public class ItemTLBOTH extends ItemBowTUCS {
     	EntityArrow entityarrow = new EntityArrow(world, Eplayer, f*2.0F);
 
         entityarrow.setIsCritical(true);
-        entityarrow.setDamage(entityarrow.getDamage() +3D);
-        entityarrow.setKnockbackStrength(1);
+        entityarrow.setDamage(entityarrow.getDamage() +2D);
+        //entityarrow.setKnockbackStrength(1);
         entityarrow.canBePickedUp = 0;
         return entityarrow;
     }

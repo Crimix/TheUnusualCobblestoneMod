@@ -8,7 +8,6 @@ public final class Names {
 	        public static final String FLY = "keys.tucs.fly";
 	        public static final String FLYSPEED = "keys.tucs.flySpeed";
 	        public static final String NIGHT = "keys.tucs.night";
-	        public static final String RELOAD = "keys.tucs.reload";
 	    }
 
 }

@@ -6,11 +6,14 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
+import com.black_dog20.tucs.client.render.RoundRender;
 import com.black_dog20.tucs.client.render.TUCSWeaponOverlayRender;
 import com.black_dog20.tucs.client.settings.Keybindings;
+import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.init.ModItems;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
@@ -66,6 +69,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenders() {
 		MinecraftForgeClient.registerItemRenderer(ModItems.TUCSBow, new TUCSWeaponOverlayRender());
 		MinecraftForgeClient.registerItemRenderer(ModItems.M1911, new TUCSWeaponOverlayRender());
+		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
 	}
 
 }

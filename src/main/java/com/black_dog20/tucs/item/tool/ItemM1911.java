@@ -13,6 +13,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.item.ItemBowTUCS;
 import com.black_dog20.tucs.utility.M1911Helper;
 
@@ -64,7 +65,7 @@ public class ItemM1911 extends ItemBowTUCS {
             return;
         }
 
-        EntityArrow round = spawnRound(world, Eplayer, 6.0F);
+        EntityRound round = spawnRound(world, Eplayer, 6.0F);
 
             
             	if (!world.isRemote)
@@ -97,8 +98,8 @@ public class ItemM1911 extends ItemBowTUCS {
         return stack;
     }
     
-    public EntityArrow spawnRound(World world, EntityPlayer Eplayer, float f){
-    	EntityArrow round = new EntityArrow(world, Eplayer, f*2.0F);
+    public EntityRound spawnRound(World world, EntityPlayer Eplayer, float f){
+    	EntityRound round = new EntityRound(world, Eplayer, f*2.0F);
 
         round.setIsCritical(true);
         round.setDamage(round.getDamage() +3D);

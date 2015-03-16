@@ -3,6 +3,7 @@
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.handler.EventHandler;
 import com.black_dog20.tucs.handler.GuiHandler;
@@ -59,6 +60,7 @@ public class tucs {
 		ModBlocks.init();
 		PacketHandler.init();
 		Proxy.registerRenders();
+		EntityRegistry.registerModEntity(EntityRound.class, "round", 1, this, 1000, 1, true);
 		
 		LogHelper.info("Pre Initialization Complete!");
 	}

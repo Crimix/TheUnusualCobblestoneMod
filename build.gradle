@@ -17,13 +17,24 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.9"
+version = "1.7.10-1.0.10"
 group= "com.black_dog20.tucs" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "tucs"
 
 minecraft {
-    version = "1.7.10-10.13.2.1230"
+    version = "1.7.10-10.13.2.1291"
     assetDir = "eclipse/assets"
+}
+
+repositories {
+    maven { // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven { // the repo from which to get NEI and stuff 
+        name 'CB Repo'
+        url "http://chickenbones.net/maven/"
+    }
 }
 
 dependencies {
@@ -31,8 +42,7 @@ dependencies {
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
-    compile files ("lib/CodeChickenCore-1.7.10-1.0.2.9-dev.jar")
-    compile files ("lib/NotEnoughItems-1.7.10-1.0.2.15-dev.jar")
+    compile "mcp.mobius.waila:Waila:1.5.10_1.7.10"
       
     // real examples
     //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env

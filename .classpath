@@ -3,7 +3,5 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
-	<classpathentry kind="lib" path="/Minecraft/eclipse/mods/CodeChickenCore-1.7.10-1.0.2.9-dev.jar"/>
-	<classpathentry kind="lib" path="/Minecraft/eclipse/mods/NotEnoughItems-1.7.10-1.0.2.15-dev.jar" sourcepath="/Minecraft/eclipse/mods/NotEnoughItems-1.7.10-1.0.2.15-dev.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

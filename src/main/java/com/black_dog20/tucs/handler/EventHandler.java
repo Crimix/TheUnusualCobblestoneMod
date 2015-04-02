@@ -6,6 +6,7 @@ import java.util.ListIterator;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -14,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.util.Constants;
@@ -30,9 +32,9 @@ import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
-import com.black_dog20.tucs.item.tool.ItemTLBOTH;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
+import com.black_dog20.tucs.item.tool.ItemTLSOTD;
 import com.black_dog20.tucs.network.PacketHandler;
 import com.black_dog20.tucs.network.message.MessageToolRender;
 import com.black_dog20.tucs.reference.NBTTags;
@@ -45,6 +47,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandler {
 	NBTTagCompound nbt;
+	boolean hasChanged = false;
 
 
 	@SubscribeEvent
@@ -78,7 +81,7 @@ public class EventHandler {
 		nbt.setTag("SoulboundItems", nbttaglist);
 
 	}
-
+	
 	@SubscribeEvent
 	public void Tool(ItemTooltipEvent event){
 		ItemStack item = event.itemStack;
@@ -87,30 +90,30 @@ public class EventHandler {
 		if(item.hasTagCompound()){
 			NBTTagCompound nbtTagCompound = item.getTagCompound();
 			if(nbtTagCompound.hasKey(NBTTags.SOULBOUND)){
-				list.add("\u00A7d"+"Soulbound");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+"Soulbound");
 			}
 			else if(nbtTagCompound.hasKey(NBTTags.SOULBOUND_P)){
-				list.add("\u00A7d"+"Soulbound");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+"Soulbound");
 			}
 			else{
 				list.remove("Soulbound");
 			}
 
 			if(nbtTagCompound.hasKey(NBTTags.Beheading)){
-				list.add("\u00A7d"+"Beheading");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+"Beheading");
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.Beheading)){
 				list.remove("Beheading");
 			}
 
 			if(nbtTagCompound.hasKey(NBTTags.MachineBow)){
-				list.add("\u00A7d"+"AutoBow");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+"AutoBow");
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.MachineBow)){
 				list.remove("AutoBow");
 			}
 			if(nbtTagCompound.hasKey(NBTTags.NoArrow)){
-				list.add("\u00A7d"+"Infinity Arrow");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+"Infinity Arrow");
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.NoArrow)){
 				list.remove("Infinity Arrow");
@@ -136,11 +139,11 @@ public class EventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) event.entity;
 			NBTTagCompound nbtt = NBTHelper.getPlayerNBT(player);
-			if(!nbtt.getBoolean(NBTTags.FLY) && player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+			if(!nbtt.getBoolean(NBTTags.FLY) && (player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD)))){
 				nbtt.setBoolean(NBTTags.FLY, true);
 			}
 			else if(nbtt.getBoolean(NBTTags.FLY) && player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
-				if(player.capabilities.allowFlying && !(player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
+				if(player.capabilities.allowFlying && !((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))))){
 					player.capabilities.allowFlying = false;
 					player.capabilities.isFlying = false;
 					player.sendPlayerAbilities();
@@ -157,36 +160,48 @@ public class EventHandler {
 			}
 			if(!(nbtt.hasKey(NBTTags.night)) && player.inventory.hasItem(ModItems.torchTalisman)){
 				nbtt.setBoolean(NBTTags.night, true);
-				send(player);
+				hasChanged = true;
 			}
 			else if(nbtt.hasKey(NBTTags.night) && !(player.inventory.hasItem(ModItems.torchTalisman))){
 				nbtt.removeTag(NBTTags.night);
-				send(player);
+				hasChanged = true;
 			}
 			if(!(nbtt.hasKey(NBTTags.AllowFly)) && player.inventory.hasItem(ModItems.FlightTalisman)){
 				nbtt.setBoolean(NBTTags.AllowFly, true);
-				send(player);
+				hasChanged = true;
 			}
 			else if(nbtt.hasKey(NBTTags.AllowFly) && !(player.inventory.hasItem(ModItems.FlightTalisman))){
 				nbtt.removeTag(NBTTags.AllowFly);
-				send(player);
+				hasChanged = true;
 			}
 			if(!(nbtt.hasKey(NBTTags.PickAxeRender)) && player.inventory.hasItem(ModItems.TLPOLM)){
 				nbtt.setBoolean(NBTTags.PickAxeRender, true);
-				send(player);
+				hasChanged = true;
 			}
 			else if(nbtt.hasKey(NBTTags.PickAxeRender) && !(player.inventory.hasItem(ModItems.TLPOLM))){
 				nbtt.removeTag(NBTTags.PickAxeRender);
-				send(player);
+				hasChanged = true;
 			}
 			if(!(nbtt.hasKey(NBTTags.SwordRender)) && player.inventory.hasItem(ModItems.TLSOC)){
 				nbtt.setBoolean(NBTTags.SwordRender, true);
-				send(player);
+				hasChanged = true;
 			}
 			else if(nbtt.hasKey(NBTTags.SwordRender) && !(player.inventory.hasItem(ModItems.TLSOC))){
 				nbtt.removeTag(NBTTags.SwordRender);
+				hasChanged = true;
+			}
+			if(!(nbtt.hasKey(NBTTags.TLSOTD)) && player.inventory.hasItem(ModItems.TLSOTD)){
+				nbtt.setBoolean(NBTTags.TLSOTD, true);
+				hasChanged = true;
+			}
+			else if(nbtt.hasKey(NBTTags.TLSOTD) && !(player.inventory.hasItem(ModItems.TLSOTD))){
+				nbtt.removeTag(NBTTags.TLSOTD);
+				hasChanged = true;
+			}
+			if(hasChanged){
 				send(player);
 			}
+
 		}
 	}
 	public void send(EntityPlayer player){
@@ -213,12 +228,12 @@ public class EventHandler {
 				doRenderTools(nbt, player, player.inventory);
 			}
 		}
-			
+
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void doRenderTools(NBTTagCompound nbt, EntityPlayer player, InventoryPlayer IPlayer){
-		if(nbt.hasKey(NBTTags.AllowFly)){
+		if(nbt.hasKey(NBTTags.AllowFly) && !(nbt.hasKey(NBTTags.TLSOTD))){
 			float offset = 0.25F;
 			float size = 0.325F;
 			float dis = 0F;
@@ -235,7 +250,7 @@ public class EventHandler {
 			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
 			GL11.glPopMatrix();
 		}
-		if(nbt.hasKey(NBTTags.SwordRender)){
+		if(nbt.hasKey(NBTTags.SwordRender) && !(nbt.hasKey(NBTTags.TLSOTD))){
 			ItemStack item = player.getHeldItem();
 			if(item == null || !(item.getItem() instanceof ItemTLSOC)){
 				float offset = -0.5F;
@@ -294,6 +309,27 @@ public class EventHandler {
 			GL11.glPopMatrix();
 
 		}
+		if(nbt.hasKey(NBTTags.TLSOTD)){
+			ItemStack item = player.getHeldItem();
+			if(item == null || !(item.getItem() instanceof ItemTLSOTD)){
+				float offset = -0.5F;
+				float size = 0.525F;
+				float dis = 0F;
+				if(IPlayer.armorInventory[1] != null){
+					dis = 0.6F;
+				}
+				else{
+					dis = 0.5F;
+				}		
+				GL11.glPushMatrix();
+				GL11.glScalef(size, size, size);
+				GL11.glTranslatef(dis, 0.9F, offset);
+				GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
+				GL11.glRotatef(45.0F-110, 1.0F, 0.0F, 1.0F);
+				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLSOTD), 0);
+				GL11.glPopMatrix();
+			}
+		}
 	}
 
 
@@ -301,7 +337,7 @@ public class EventHandler {
 	public void onFall(LivingFallEvent event){
 		if (event.entityLiving instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) event.entity;
-			if((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)))){
+			if((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))||player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD)))){
 				event.setCanceled(true);
 			}
 		}
@@ -400,19 +436,19 @@ public class EventHandler {
 			nbt.removeTag("upgradeItems");
 		}
 	}
-	
+
 	private void checkForArmor(EntityPlayer player){
 		ItemStack boots = player.inventory.armorInventory[0];
 		ItemStack legs = player.inventory.armorInventory[1];
 		ItemStack chest = player.inventory.armorInventory[2];
 		ItemStack helmet = player.inventory.armorInventory[3];
 		InventoryPlayer inv = player.inventory;
-		
+
 		if(helmet != null && helmet.getItem() instanceof ItemHelmetCobblestonedium){
 			if(helmet.getItemDamage()-helmet.getMaxDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.helmetCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
+					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
 			}
 
@@ -423,7 +459,7 @@ public class EventHandler {
 			if(chest.getItemDamage()-chest.getMaxDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.chestplateCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
+					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
 			}
 
@@ -434,7 +470,7 @@ public class EventHandler {
 			if(legs.getItemDamage()-legs.getMaxDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.leggingsCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
+					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
 			}
 
@@ -445,15 +481,15 @@ public class EventHandler {
 			if(boots.getItemDamage()-boots.getMaxDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.bootsCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
-				player.dropPlayerItemWithRandomChoice(arrmor, false);
+					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
 			}
 
 			giveItems(boots, inv);
 			player.inventory.armorInventory[0] = null;
 		}
-		
-		
+
+
 	}
 
 }

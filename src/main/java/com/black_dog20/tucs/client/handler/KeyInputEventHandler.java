@@ -30,7 +30,7 @@ public class KeyInputEventHandler {
 			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);
-				if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+				if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))){
 					if(!entityPlayer.capabilities.allowFlying){
 						entityPlayer.capabilities.allowFlying = true;
 						entityPlayer.capabilities.isFlying = true;
@@ -54,7 +54,7 @@ public class KeyInputEventHandler {
 		else if(Keybindings.flyspeed.isPressed()){
 			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
-				if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))){
+				if(entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))){
 					if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F)==0){
 						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.2F);

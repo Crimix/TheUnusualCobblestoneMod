@@ -1,6 +1,7 @@
 package com.black_dog20.tucs.item.upgrades;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -17,6 +18,10 @@ public class ItemTUCSUpgrades extends Item {
 		super();
 		this.setCreativeTab(CreativeTabTUCS.TUCS_UPGRADETAB);
 		
+	}
+	
+	public Enchantment getEnchantment(){
+		return null;
 	}
 	
 	@Override

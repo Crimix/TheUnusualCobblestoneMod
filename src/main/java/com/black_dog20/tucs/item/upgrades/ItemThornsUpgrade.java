@@ -3,17 +3,17 @@ package com.black_dog20.tucs.item.upgrades;
 import net.minecraft.enchantment.Enchantment;
 
 
-public class ItemBoAUpgrade extends ItemTUCSUpgrades {
+public class ItemThornsUpgrade extends ItemTUCSUpgrades {
 
-	public ItemBoAUpgrade(int lvl){
+	public ItemThornsUpgrade(int lvl){
 
 		super();
-		this.setUnlocalizedName("boa"+lvl+"Upgrade");
+		this.setUnlocalizedName("thorns"+lvl+"Upgrade");
 
 	}
 	@Override
 	public Enchantment getEnchantment(){
-		return Enchantment.baneOfArthropods;
+		return Enchantment.thorns;
 	}
 
 }

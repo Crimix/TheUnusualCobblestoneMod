@@ -5,17 +5,18 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import com.black_dog20.tucs.item.upgrades.ItemAutoBowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemInfiArrowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
-import com.black_dog20.tucs.item.upgrades.ItemSharpnessUpgrade;
-import com.black_dog20.tucs.item.upgrades.ItemSliktouchUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSoulboundUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemTUCSUpgrades;
 import com.black_dog20.tucs.reference.NBTTags;
 
 public class EnchantHelper {
 	
 	public static void setEnchant(ItemStack ContainerItem, ItemStack UpgradeItem, NBTTagCompound NBT){
+		ItemTUCSUpgrades item = (ItemTUCSUpgrades) UpgradeItem.getItem();
 		if(UpgradeItem.getItem() instanceof ItemSoulboundUpgrade){
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);
 		}
@@ -29,21 +30,21 @@ public class EnchantHelper {
 				ContainerItem.addEnchantment(Enchantment.fortune, lvl);
 			}
 		}
-		else if(UpgradeItem.getItem() instanceof ItemSharpnessUpgrade && Enchantment.sharpness.canApplyAtEnchantingTable(ContainerItem)){
-			String s = UpgradeItem.getUnlocalizedName();
-			int lvl = Integer.parseInt(s.replaceAll("[\\D]", ""));
-			ContainerItem.addEnchantment(Enchantment.sharpness, lvl);
-		}
-		else if(UpgradeItem.getItem() instanceof ItemSliktouchUpgrade && Enchantment.silkTouch.canApplyAtEnchantingTable(ContainerItem)){
-			String s = UpgradeItem.getUnlocalizedName();
-			int lvl = Integer.parseInt(s.replaceAll("[\\D]", ""));
-			ContainerItem.addEnchantment(Enchantment.silkTouch, lvl);
-		}
 		else if(UpgradeItem.getItem() instanceof ItemBeheadingUpgrade){
 			NBT.setBoolean(NBTTags.Beheading, true);
 		}
 		else if(UpgradeItem.getItem() instanceof ItemInfiArrowUpgrade){
 			NBT.setBoolean(NBTTags.NoArrow, true);
+		}
+		else if(UpgradeItem.getItem() instanceof ItemAutoBowUpgrade){
+			NBT.setBoolean(NBTTags.MachineBow, true);
+		}else{
+			Enchantment enchant = item.getEnchantment();
+			String s = UpgradeItem.getUnlocalizedName();
+			int lvl = Integer.parseInt(s.replaceAll("[\\D]", ""));
+			if(enchant.canApplyAtEnchantingTable(ContainerItem)){
+				ContainerItem.addEnchantment(enchant, lvl);
+			}
 		}
 		
 	}
@@ -52,22 +53,7 @@ public class EnchantHelper {
 		
 		Item item = itemstack.getItem();
 		
-		if(item instanceof ItemSoulboundUpgrade){
-			return true;
-		}
-		else if(item instanceof ItemLootingUpgrade){
-			return true;
-		}
-		else if(item instanceof ItemSharpnessUpgrade){
-			return true;
-		}
-		else if(item instanceof ItemSliktouchUpgrade){
-			return true;
-		}
-		else if(item instanceof ItemBeheadingUpgrade){
-			return true;
-		}
-		else if(item instanceof ItemInfiArrowUpgrade){
+		if(item instanceof ItemTUCSUpgrades){
 			return true;
 		}
 		else{

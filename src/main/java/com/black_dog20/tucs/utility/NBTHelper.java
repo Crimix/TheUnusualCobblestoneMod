@@ -1,9 +1,6 @@
 package com.black_dog20.tucs.utility;
 
-import com.black_dog20.tucs.reference.NBTTags;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class NBTHelper

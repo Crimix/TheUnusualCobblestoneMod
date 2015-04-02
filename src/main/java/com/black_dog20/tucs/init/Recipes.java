@@ -101,6 +101,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.FlightTalisman), new Object[]{"ggg", "gtg", "ggg", 'g', yellowstoneium, 't', new ItemStack(ModItems.ungoldenFligtTalisman)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.craftingTalisman), new Object[]{"gcg", "cac", "gcg", 'g', new ItemStack(ModItems.ingotCobblestoneium), 'c', new ItemStack(Blocks.crafting_table), 'a', new ItemStack(ModBlocks.ancientTable)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.torchTalisman), new Object[]{"gcg", "cac", "gcg", 'g', new ItemStack(ModItems.ingotCobblestoneium), 'c', new ItemStack(Blocks.torch), 'a', new ItemStack(ModItems.talismanBaseT1,1,OreDictionary.WILDCARD_VALUE)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.TLSOTD), new Object[]{"sns","efe", "dcd", 's' , new ItemStack(ModItems.TLSOC), 'n', new ItemStack(Items.nether_star), 'e', new ItemStack(Blocks.emerald_block),'f', new ItemStack(ModItems.FlightTalisman),'d', new ItemStack(Items.diamond),'c', new ItemStack(ModBlocks.blockCobblestonedium)});
 		
 		//Tools Parts
 		ItemStack cobblestondium = new ItemStack(ModItems.ingotCobblestonedium);

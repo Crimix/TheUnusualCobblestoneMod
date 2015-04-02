@@ -1,6 +1,5 @@
 package com.black_dog20.tucs.nei;
 
-import mcp.mobius.waila.Waila;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import codechicken.nei.recipe.DefaultOverlayHandler;

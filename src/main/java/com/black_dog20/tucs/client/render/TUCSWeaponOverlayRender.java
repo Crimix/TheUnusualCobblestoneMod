@@ -1,10 +1,18 @@
 package com.black_dog20.tucs.client.render;
 
-import javax.swing.Icon;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IIcon;
+import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.tool.ItemM1911;
 import com.black_dog20.tucs.item.tool.ItemTLBOTH;
@@ -12,16 +20,6 @@ import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.InventoryHelper;
 import com.black_dog20.tucs.utility.M1911Helper;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.IIcon;
-import net.minecraftforge.client.IItemRenderer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -61,7 +59,7 @@ public class TUCSWeaponOverlayRender implements IItemRenderer
         			text = Integer.toString(InventoryHelper.findItem(Items.arrow, player.inventory));
         		}
         		if(nbt.hasKey(NBTTags.NoArrow)){
-        			text = "\u221E";
+        			text = EnumChatFormatting.GOLD+"\u221E";
         		}
         	}
         	else if(!player.capabilities.isCreativeMode){

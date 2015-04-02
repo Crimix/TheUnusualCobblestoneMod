@@ -16,6 +16,7 @@ public class NBTTags {
 	public static final String Beheading = "TUCSHead";
 	public static final String NoArrow = "TUCSInfiArrow";
 	public static final String MachineBow = "TUCSMachineBow";
+	public static final String TLSOTD = "TUCSTLSOTD";
 
 
 }

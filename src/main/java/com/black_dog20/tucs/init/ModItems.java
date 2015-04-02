@@ -54,21 +54,35 @@ import com.black_dog20.tucs.item.tool.ItemTLHOWF;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemTLSOHD;
+import com.black_dog20.tucs.item.tool.ItemTLSOTD;
+import com.black_dog20.tucs.item.upgrades.ItemAquaAffinityUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemAutoBowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemBlastProtectionUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBoAUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemEfficiencyUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemFeatherFallingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemFireAspectUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemFireProtectionUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemFlameUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemInfiArrowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemKnockbackUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemPowerUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemProjectileProtectionUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemProtectionUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemPunchUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemRespirationUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSharpnessUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSliktouchUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSmiteUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSoulboundUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemThornsUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemUnbreakingUpgrade;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class ModItems {
@@ -77,6 +91,7 @@ public class ModItems {
 	public static ToolMaterial COBBLESTONEIUM_MATERIAL = EnumHelper.addToolMaterial("COBBLESTONEIUM_MATERIAL", 2, 381, 6.0F, 3.0F, 15);
 	public static ArmorMaterial COBBLESTONEIUM_ARMORMATERIAL = EnumHelper.addArmorMaterial("Cobblestoneium", 17 , new int[] {3,7,6,3}, 10);
 	public static ArmorMaterial COBBLESTONEdIUM_ARMORMATERIAL = EnumHelper.addArmorMaterial("Cobblestonedium", 66 , new int[] {4,9,7,4}, 0);
+	public static ToolMaterial COBBLESTONEDIUM_UBER_MATERIAL = EnumHelper.addToolMaterial("COBBLESTONEDIUM_UBER_MATERIAL", 3, -100, 16.0F, 20.0F, 22);
 	
 	//Ingots
 	public static final ItemIngotCobblestoneium ingotCobblestoneium = new ItemIngotCobblestoneium();
@@ -128,6 +143,7 @@ public class ModItems {
 	public static final ItemTLSOHD TLSOHD = new ItemTLSOHD(COBBLESTONEDIUM_MATERIAL);
 	public static final ItemTLPOLM TLPOLM = new ItemTLPOLM(COBBLESTONEDIUM_MATERIAL);
 	public static final ItemTLSOC TLSOC = new ItemTLSOC(COBBLESTONEDIUM_MATERIAL);
+	public static final ItemTLSOTD TLSOTD = new ItemTLSOTD(COBBLESTONEDIUM_UBER_MATERIAL);
 	
 	//Tool parts
 	public static final ItemShovelHead shovelHead = new ItemShovelHead();
@@ -183,7 +199,42 @@ public class ModItems {
 	public static final ItemUnbreakingUpgrade Unbreaking3Upgrade = new ItemUnbreakingUpgrade(3);
 	public static final ItemBeheadingUpgrade BeheadingUpgrade = new ItemBeheadingUpgrade();
 	public static final ItemInfiArrowUpgrade InfiUpgrade = new ItemInfiArrowUpgrade();
-	
+	public static final ItemAutoBowUpgrade AutoBowUpgrade = new ItemAutoBowUpgrade();
+	public static final ItemAquaAffinityUpgrade AquaAffinityUpgrade = new ItemAquaAffinityUpgrade(1);
+	public static final ItemBlastProtectionUpgrade BlastProtection1Upgrade = new ItemBlastProtectionUpgrade(1);
+	public static final ItemBlastProtectionUpgrade BlastProtection2Upgrade = new ItemBlastProtectionUpgrade(2);
+	public static final ItemBlastProtectionUpgrade BlastProtection3Upgrade = new ItemBlastProtectionUpgrade(3);
+	public static final ItemBlastProtectionUpgrade BlastProtection4Upgrade = new ItemBlastProtectionUpgrade(4);
+	public static final ItemFeatherFallingUpgrade FeatherFalling1Upgrade = new ItemFeatherFallingUpgrade(1);
+	public static final ItemFeatherFallingUpgrade FeatherFalling2Upgrade = new ItemFeatherFallingUpgrade(2);
+	public static final ItemFeatherFallingUpgrade FeatherFalling3Upgrade = new ItemFeatherFallingUpgrade(3);
+	public static final ItemFeatherFallingUpgrade FeatherFalling4Upgrade = new ItemFeatherFallingUpgrade(4);
+	public static final ItemFireProtectionUpgrade FireProtection1Upgrade = new ItemFireProtectionUpgrade(1);
+	public static final ItemFireProtectionUpgrade FireProtection2Upgrade = new ItemFireProtectionUpgrade(2);
+	public static final ItemFireProtectionUpgrade FireProtection3Upgrade = new ItemFireProtectionUpgrade(3);
+	public static final ItemFireProtectionUpgrade FireProtection4Upgrade = new ItemFireProtectionUpgrade(4);
+	public static final ItemFlameUpgrade FlameUpgrade = new ItemFlameUpgrade(1);
+	public static final ItemPowerUpgrade Power1Upgrade = new ItemPowerUpgrade(1);
+	public static final ItemPowerUpgrade Power2Upgrade = new ItemPowerUpgrade(2);
+	public static final ItemPowerUpgrade Power3Upgrade = new ItemPowerUpgrade(3);
+	public static final ItemPowerUpgrade Power4Upgrade = new ItemPowerUpgrade(4);
+	public static final ItemPowerUpgrade Power5Upgrade = new ItemPowerUpgrade(5);
+	public static final ItemProjectileProtectionUpgrade ProjectileProtection1Upgrade = new ItemProjectileProtectionUpgrade(1);
+	public static final ItemProjectileProtectionUpgrade ProjectileProtection2Upgrade = new ItemProjectileProtectionUpgrade(2);
+	public static final ItemProjectileProtectionUpgrade ProjectileProtection3Upgrade = new ItemProjectileProtectionUpgrade(3);
+	public static final ItemProjectileProtectionUpgrade ProjectileProtection4Upgrade = new ItemProjectileProtectionUpgrade(4);
+	public static final ItemProtectionUpgrade Protection1Upgrade = new ItemProtectionUpgrade(1);
+	public static final ItemProtectionUpgrade Protection2Upgrade = new ItemProtectionUpgrade(2);
+	public static final ItemProtectionUpgrade Protection3Upgrade = new ItemProtectionUpgrade(3);
+	public static final ItemProtectionUpgrade Protection4Upgrade = new ItemProtectionUpgrade(4);
+	public static final ItemPunchUpgrade Punch1Upgrade = new ItemPunchUpgrade(1);
+	public static final ItemPunchUpgrade Punch2Upgrade = new ItemPunchUpgrade(2);
+	public static final ItemRespirationUpgrade Respiration1Upgrade = new ItemRespirationUpgrade(1);
+	public static final ItemRespirationUpgrade Respiration2Upgrade = new ItemRespirationUpgrade(2);
+	public static final ItemRespirationUpgrade Respiration3Upgrade = new ItemRespirationUpgrade(3);
+	public static final ItemThornsUpgrade Thorns1Upgrade = new ItemThornsUpgrade(1);
+	public static final ItemThornsUpgrade Thorns2Upgrade = new ItemThornsUpgrade(2);
+	public static final ItemThornsUpgrade Thorns3Upgrade = new ItemThornsUpgrade(3);
 	
 	public static void init(){
 		
@@ -193,6 +244,8 @@ public class ModItems {
 		GameRegistry.registerItem(TLHOWF, "TLHOWF");
 		GameRegistry.registerItem(TLSOHD, "TLSOHD");
 		GameRegistry.registerItem(TLPOLM, "TLPOLM");
+		GameRegistry.registerItem(TLSOTD, "TLSOTD");
+		
 		GameRegistry.registerItem(shovelCobblestoneium, "shovelCobblestoneium");
 		GameRegistry.registerItem(swordCobblestoneium, "swordCobblestoneium");
 		GameRegistry.registerItem(hatchetCobblestoneium, "hatchetCobblestoneium");
@@ -236,7 +289,6 @@ public class ModItems {
 		GameRegistry.registerItem(bootsCobblestonediumBroken, "bootsCobblestonediumBroken");
 		GameRegistry.registerItem(chestplateCobblestonediumBroken, "chestplateCobblestonediumBroken");
 		
-		
 		//UPGRADES
 		GameRegistry.registerItem(looting1Upgrade, "looting1Upgrade");
 		GameRegistry.registerItem(looting2Upgrade, "looting2Upgrade");
@@ -249,7 +301,7 @@ public class ModItems {
 		GameRegistry.registerItem(Sharpness5Upgrade, "Sharpness5Upgrade");
 		GameRegistry.registerItem(Sliktouch1Upgrade, "Sliktouch1Upgrade");
 		GameRegistry.registerItem(BeheadingUpgrade, "BeheadingUpgrade");
-		/*GameRegistry.registerItem(BoA1Upgrade, "BoA1Upgrade");
+		GameRegistry.registerItem(BoA1Upgrade, "BoA1Upgrade");
 		GameRegistry.registerItem(BoA2Upgrade, "BoA2Upgrade");
 		GameRegistry.registerItem(BoA3Upgrade, "BoA3Upgrade");
 		GameRegistry.registerItem(BoA4Upgrade, "BoA4Upgrade");
@@ -270,10 +322,44 @@ public class ModItems {
 		GameRegistry.registerItem(Knockback2Upgrade, "Knockback2Upgrade");
 		GameRegistry.registerItem(Unbreaking1Upgrade, "Unbreaking1Upgrade");
 		GameRegistry.registerItem(Unbreaking2Upgrade, "Unbreaking2Upgrade");
-		GameRegistry.registerItem(Unbreaking3Upgrade, "Unbreaking3Upgrade");*/
+		GameRegistry.registerItem(Unbreaking3Upgrade, "Unbreaking3Upgrade");
 		GameRegistry.registerItem(InfiUpgrade, "InfiUpgrade");
-
-		
+		GameRegistry.registerItem(AutoBowUpgrade, "AutoBowUpgrade");
+		GameRegistry.registerItem(AquaAffinityUpgrade, "AquaAffinityUpgrade");
+		GameRegistry.registerItem(BlastProtection1Upgrade, "BlastProtection1Upgrade");
+		GameRegistry.registerItem(BlastProtection2Upgrade, "BlastProtection2Upgrade");
+		GameRegistry.registerItem(BlastProtection3Upgrade, "BlastProtection3Upgrade");
+		GameRegistry.registerItem(BlastProtection4Upgrade, "BlastProtection4Upgrade");
+		GameRegistry.registerItem(FeatherFalling1Upgrade, "FeatherFalling1Upgrade");
+		GameRegistry.registerItem(FeatherFalling2Upgrade, "FeatherFalling2Upgrade");
+		GameRegistry.registerItem(FeatherFalling3Upgrade, "FeatherFalling3Upgrade");
+		GameRegistry.registerItem(FeatherFalling4Upgrade, "FeatherFalling4Upgrade");
+		GameRegistry.registerItem(FireProtection1Upgrade, "FireProtection1Upgrade");
+		GameRegistry.registerItem(FireProtection2Upgrade, "FireProtection2Upgrade");
+		GameRegistry.registerItem(FireProtection3Upgrade, "FireProtection3Upgrade");
+		GameRegistry.registerItem(FireProtection4Upgrade, "FireProtection4Upgrade");
+		GameRegistry.registerItem(FlameUpgrade, "FlameUpgrade");
+		GameRegistry.registerItem(Power1Upgrade, "Power1Upgrade");
+		GameRegistry.registerItem(Power2Upgrade, "Power2Upgrade");
+		GameRegistry.registerItem(Power3Upgrade, "Power3Upgrade");
+		GameRegistry.registerItem(Power4Upgrade, "Power4Upgrade");
+		GameRegistry.registerItem(Power5Upgrade, "Power5Upgrade");
+		GameRegistry.registerItem(ProjectileProtection1Upgrade, "ProjectileProtection1Upgrade");
+		GameRegistry.registerItem(ProjectileProtection2Upgrade, "ProjectileProtection2Upgrade");
+		GameRegistry.registerItem(ProjectileProtection3Upgrade, "ProjectileProtection3Upgrade");
+		GameRegistry.registerItem(ProjectileProtection4Upgrade, "ProjectileProtection4Upgrade");
+		GameRegistry.registerItem(Punch1Upgrade, "Punch1Upgrade");
+		GameRegistry.registerItem(Punch2Upgrade, "Punch2Upgrade");
+		GameRegistry.registerItem(Respiration1Upgrade, "Respiration1Upgrade");
+		GameRegistry.registerItem(Respiration2Upgrade, "Respiration2Upgrade");
+		GameRegistry.registerItem(Respiration3Upgrade, "Respiration3Upgrade");
+		GameRegistry.registerItem(Thorns1Upgrade, "Thorns1Upgrade");
+		GameRegistry.registerItem(Thorns2Upgrade, "Thorns2Upgrade");
+		GameRegistry.registerItem(Thorns3Upgrade, "Thorns3Upgrade");
+		GameRegistry.registerItem(Protection1Upgrade, "Protection1Upgrade");
+		GameRegistry.registerItem(Protection2Upgrade, "Protection2Upgrade");
+		GameRegistry.registerItem(Protection3Upgrade, "Protection3Upgrade");
+		GameRegistry.registerItem(Protection4Upgrade, "Protection4Upgrade");
 		
 		//TOOL PARTS
 		GameRegistry.registerItem(SwordBlade, "SwordBlade");

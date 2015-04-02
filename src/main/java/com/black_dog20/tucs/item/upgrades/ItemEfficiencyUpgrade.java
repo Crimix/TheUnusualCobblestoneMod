@@ -1,5 +1,7 @@
 package com.black_dog20.tucs.item.upgrades;
 
+import net.minecraft.enchantment.Enchantment;
+
 
 public class ItemEfficiencyUpgrade extends ItemTUCSUpgrades {
 
@@ -10,4 +12,8 @@ public class ItemEfficiencyUpgrade extends ItemTUCSUpgrades {
 
 	}
 
+	@Override
+	public Enchantment getEnchantment(){
+		return Enchantment.efficiency;
+	}
 }

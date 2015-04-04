@@ -115,7 +115,8 @@ public class Recipes {
 		
 		//Upgrades
 		TucsRegistry.addRecipe(new ItemStack(ModItems.upgradBase), new Object[]{"ccc", "cdc","ccc", 'd', new ItemStack(Items.diamond), 'c', yellowstoneium});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.soulboundUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.soul_sand), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.upgradBaseT2), new Object[]{"ccc", "cdc","ccc", 'd', new ItemStack(Items.nether_star), 'c', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.soulboundUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.soul_sand), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBaseT2)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.looting1Upgrade), new Object[]{"yly","lul","yly", 'y', yellowstoneium, 'l', new ItemStack(Items.dye,1,4), 'u', new ItemStack(ModItems.upgradBase)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.looting2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.looting1Upgrade), 'g', Blocks.glowstone});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.looting3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.looting2Upgrade), 'r', Blocks.redstone_block});
@@ -127,7 +128,66 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.Sliktouch1Upgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.string), 'u', new ItemStack(ModItems.upgradBase)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.BeheadingUpgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.skull,1,2), 'u', new ItemStack(ModItems.upgradBase)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.InfiUpgrade), new Object[]{"ysy","sus","ysy", 'y', yellowstoneium, 's', new ItemStack(Items.arrow), 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BoA1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.spider_eye), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BoA2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.BoA1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BoA3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.BoA2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BoA4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.BoA3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BoA5Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.BoA4Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.AquaAffinityUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.water_bucket), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.AutoBowUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.bow), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBaseT2)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BlastProtection1Upgrade), new Object[]{"cic", "sus","cic", 's', new ItemStack(Blocks.tnt), 'i', new ItemStack(Items.iron_chestplate), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BlastProtection2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.BlastProtection1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BlastProtection3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.BlastProtection2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.BlastProtection4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.BlastProtection3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Efficiency1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.iron_pickaxe), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Efficiency2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Efficiency1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Efficiency3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Efficiency2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Efficiency4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Efficiency3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Efficiency5Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Efficiency4Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FeatherFalling1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.feather), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FeatherFalling2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.FeatherFalling1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FeatherFalling3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.FeatherFalling2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FeatherFalling4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.FeatherFalling3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FireAspect1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.blaze_rod), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FireAspect2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.FireAspect1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FireProtection1Upgrade), new Object[]{"cic", "sus","cic", 's', new ItemStack(Items.blaze_rod), 'i', new ItemStack(Items.iron_chestplate), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FireProtection2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.FireProtection1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FireProtection3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.FireProtection2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FireProtection4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.FireProtection3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.FlameUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.flint_and_steel), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Knockback1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.piston), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Knockback2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Knockback1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Power1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.flint), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Power2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Power1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Power3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Power2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Power4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Power3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Power5Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Power4Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.ProjectileProtection1Upgrade), new Object[]{"cic", "sus","cic", 's', new ItemStack(Items.arrow), 'i', new ItemStack(Items.iron_chestplate), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.ProjectileProtection2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.ProjectileProtection1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.ProjectileProtection3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.ProjectileProtection2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.ProjectileProtection4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.ProjectileProtection3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Protection1Upgrade), new Object[]{"cic", "sus","cic", 's', new ItemStack(Items.iron_ingot), 'i', new ItemStack(Items.iron_chestplate), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Protection2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Protection1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Protection3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Protection2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Protection4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Protection3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Punch1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.leather), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Punch2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Punch1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Respiration1Upgrade), new Object[]{"cic", "sus","cic", 's', new ItemStack(Items.golden_apple), 'i', new ItemStack(Items.water_bucket), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Respiration2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Respiration1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Respiration3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Respiration2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Smite1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.rotten_flesh), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Smite2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Smite1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Smite3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Smite2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Smite4Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Smite3Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Smite5Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Smite4Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Thorns1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.vine), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Thorns2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Thorns1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Thorns3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Thorns2Upgrade), 'r', Blocks.redstone_block});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Unbreaking1Upgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Items.diamond), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBase)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Unbreaking2Upgrade), new Object[]{"ggg","glg", "ggg", 'l', new ItemStack(ModItems.Unbreaking1Upgrade), 'g', Blocks.glowstone});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.Unbreaking3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Unbreaking2Upgrade), 'r', Blocks.redstone_block});
 		
+		//Armor
 		TucsRegistry.addRecipe(new ItemStack(ModItems.helmetCobblestonedium), new Object[]{"cyc","chc","   ", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_helmet)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[]{"c c","ehe","dyd", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_chestplate), 'e' , Items.emerald, 'd' , Items.diamond});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"yyy","chc","c c", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_leggings)});
@@ -137,6 +197,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"h","g", 'h', ModItems.leggingsCobblestonediumBroken, 'g', new ItemStack(Items.golden_leggings)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.bootsCobblestonedium), new Object[]{"h","g", 'h' , ModItems.bootsCobblestonediumBroken, 'g', new ItemStack(Items.golden_boots)});
 	
+		//Ranged
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{" dy","eby", " dy", 'd', Items.diamond, 'e', Items.emerald, 'b', new ItemStack(Items.bow), 'y', ModItems.ingotYellowstoneium});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{"b","n", 'b', ModItems.TUCSBowBroken, 'n', new ItemStack(Items.bow)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.M1911), new Object[]{"ccc","dgc","  c", 'c', ModItems.ingotCobblestonedium, 'd', Blocks.dispenser, 'g', Items.gunpowder});

@@ -24,6 +24,7 @@ public class ItemTUCSUpgrades extends Item {
 		return null;
 	}
 	
+	
 	@Override
     public String getUnlocalizedName()
     {
@@ -40,7 +41,7 @@ public class ItemTUCSUpgrades extends Item {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister)
     {
-        itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
+        itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().replaceAll("[0-9]", "").substring(this.getUnlocalizedName().indexOf(".") + 1));
     }
 
     protected String getUnwrappedUnlocalizedName(String unlocalizedName)

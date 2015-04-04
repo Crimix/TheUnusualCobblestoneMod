@@ -90,33 +90,33 @@ public class EventHandler {
 		if(item.hasTagCompound()){
 			NBTTagCompound nbtTagCompound = item.getTagCompound();
 			if(nbtTagCompound.hasKey(NBTTags.SOULBOUND)){
-				list.add(EnumChatFormatting.LIGHT_PURPLE+"Soulbound");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+I18n.format("tucs.tips.soulbound"));
 			}
 			else if(nbtTagCompound.hasKey(NBTTags.SOULBOUND_P)){
-				list.add(EnumChatFormatting.LIGHT_PURPLE+"Soulbound");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+I18n.format("tucs.tips.soulbound"));
 			}
 			else{
-				list.remove("Soulbound");
+				list.remove(I18n.format("tucs.tips.soulbound"));
 			}
 
 			if(nbtTagCompound.hasKey(NBTTags.Beheading)){
-				list.add(EnumChatFormatting.LIGHT_PURPLE+"Beheading");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+I18n.format("tucs.tips.beheading"));
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.Beheading)){
-				list.remove("Beheading");
+				list.remove(I18n.format("tucs.tips.beheading"));
 			}
 
 			if(nbtTagCompound.hasKey(NBTTags.MachineBow)){
-				list.add(EnumChatFormatting.LIGHT_PURPLE+"AutoBow");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+I18n.format("tucs.tips.autobow"));
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.MachineBow)){
-				list.remove("AutoBow");
+				list.remove(I18n.format("tucs.tips.autobow"));
 			}
 			if(nbtTagCompound.hasKey(NBTTags.NoArrow)){
-				list.add(EnumChatFormatting.LIGHT_PURPLE+"Infinity Arrow");
+				list.add(EnumChatFormatting.LIGHT_PURPLE+I18n.format("tucs.tips.infinity"));
 			}
 			else if(!nbtTagCompound.hasKey(NBTTags.NoArrow)){
-				list.remove("Infinity Arrow");
+				list.remove(I18n.format("tucs.tips.infinity"));
 			}
 
 		}
@@ -139,69 +139,77 @@ public class EventHandler {
 		if(event.entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) event.entity;
 			NBTTagCompound nbtt = NBTHelper.getPlayerNBT(player);
-			if(!nbtt.getBoolean(NBTTags.FLY) && (player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD)))){
-				nbtt.setBoolean(NBTTags.FLY, true);
-			}
-			else if(nbtt.getBoolean(NBTTags.FLY) && player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
-				if(player.capabilities.allowFlying && !((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))))){
-					player.capabilities.allowFlying = false;
-					player.capabilities.isFlying = false;
-					player.sendPlayerAbilities();
-					nbtt.setBoolean(NBTTags.FLY, false);
-				}
-			}
+			allowFlight(player, nbtt);
 			checkForArmor(player);
-			if(nbtt.hasKey(NBTTags.nightA)){
-				player.addPotionEffect(new PotionEffect(Potion.nightVision.id,500,1,false));
-			}
-			if(nbtt.hasKey(NBTTags.nightA) && !(player.inventory.hasItem(ModItems.torchTalisman))){
-				player.removePotionEffect(Potion.nightVision.id);
-				nbtt.removeTag(NBTTags.nightA);
-			}
-			if(!(nbtt.hasKey(NBTTags.night)) && player.inventory.hasItem(ModItems.torchTalisman)){
-				nbtt.setBoolean(NBTTags.night, true);
-				hasChanged = true;
-			}
-			else if(nbtt.hasKey(NBTTags.night) && !(player.inventory.hasItem(ModItems.torchTalisman))){
-				nbtt.removeTag(NBTTags.night);
-				hasChanged = true;
-			}
-			if(!(nbtt.hasKey(NBTTags.AllowFly)) && player.inventory.hasItem(ModItems.FlightTalisman)){
-				nbtt.setBoolean(NBTTags.AllowFly, true);
-				hasChanged = true;
-			}
-			else if(nbtt.hasKey(NBTTags.AllowFly) && !(player.inventory.hasItem(ModItems.FlightTalisman))){
-				nbtt.removeTag(NBTTags.AllowFly);
-				hasChanged = true;
-			}
-			if(!(nbtt.hasKey(NBTTags.PickAxeRender)) && player.inventory.hasItem(ModItems.TLPOLM)){
-				nbtt.setBoolean(NBTTags.PickAxeRender, true);
-				hasChanged = true;
-			}
-			else if(nbtt.hasKey(NBTTags.PickAxeRender) && !(player.inventory.hasItem(ModItems.TLPOLM))){
-				nbtt.removeTag(NBTTags.PickAxeRender);
-				hasChanged = true;
-			}
-			if(!(nbtt.hasKey(NBTTags.SwordRender)) && player.inventory.hasItem(ModItems.TLSOC)){
-				nbtt.setBoolean(NBTTags.SwordRender, true);
-				hasChanged = true;
-			}
-			else if(nbtt.hasKey(NBTTags.SwordRender) && !(player.inventory.hasItem(ModItems.TLSOC))){
-				nbtt.removeTag(NBTTags.SwordRender);
-				hasChanged = true;
-			}
-			if(!(nbtt.hasKey(NBTTags.TLSOTD)) && player.inventory.hasItem(ModItems.TLSOTD)){
-				nbtt.setBoolean(NBTTags.TLSOTD, true);
-				hasChanged = true;
-			}
-			else if(nbtt.hasKey(NBTTags.TLSOTD) && !(player.inventory.hasItem(ModItems.TLSOTD))){
-				nbtt.removeTag(NBTTags.TLSOTD);
-				hasChanged = true;
-			}
+			setNBTData(player, nbtt);
 			if(hasChanged){
 				send(player);
 			}
 
+		}
+	}
+
+	private void allowFlight(EntityPlayer player, NBTTagCompound nbtt) {
+		if(!nbtt.getBoolean(NBTTags.FLY) && (player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD)))){
+			nbtt.setBoolean(NBTTags.FLY, true);
+		}
+		else if(nbtt.getBoolean(NBTTags.FLY) && player.capabilities.allowFlying && !player.capabilities.isCreativeMode){
+			if(player.capabilities.allowFlying && !((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))))){
+				player.capabilities.allowFlying = false;
+				player.capabilities.isFlying = false;
+				player.sendPlayerAbilities();
+				nbtt.setBoolean(NBTTags.FLY, false);
+			}
+		}
+	}
+
+	private void setNBTData(EntityPlayer player, NBTTagCompound nbtt) {
+		if(nbtt.hasKey(NBTTags.nightA)){
+			player.addPotionEffect(new PotionEffect(Potion.nightVision.id,500,1,false));
+		}
+		if(nbtt.hasKey(NBTTags.nightA) && !(player.inventory.hasItem(ModItems.torchTalisman))){
+			player.removePotionEffect(Potion.nightVision.id);
+			nbtt.removeTag(NBTTags.nightA);
+		}
+		if(!(nbtt.hasKey(NBTTags.night)) && player.inventory.hasItem(ModItems.torchTalisman)){
+			nbtt.setBoolean(NBTTags.night, true);
+			hasChanged = true;
+		}
+		else if(nbtt.hasKey(NBTTags.night) && !(player.inventory.hasItem(ModItems.torchTalisman))){
+			nbtt.removeTag(NBTTags.night);
+			hasChanged = true;
+		}
+		if(!(nbtt.hasKey(NBTTags.AllowFly)) && player.inventory.hasItem(ModItems.FlightTalisman)){
+			nbtt.setBoolean(NBTTags.AllowFly, true);
+			hasChanged = true;
+		}
+		else if(nbtt.hasKey(NBTTags.AllowFly) && !(player.inventory.hasItem(ModItems.FlightTalisman))){
+			nbtt.removeTag(NBTTags.AllowFly);
+			hasChanged = true;
+		}
+		if(!(nbtt.hasKey(NBTTags.PickAxeRender)) && player.inventory.hasItem(ModItems.TLPOLM)){
+			nbtt.setBoolean(NBTTags.PickAxeRender, true);
+			hasChanged = true;
+		}
+		else if(nbtt.hasKey(NBTTags.PickAxeRender) && !(player.inventory.hasItem(ModItems.TLPOLM))){
+			nbtt.removeTag(NBTTags.PickAxeRender);
+			hasChanged = true;
+		}
+		if(!(nbtt.hasKey(NBTTags.SwordRender)) && player.inventory.hasItem(ModItems.TLSOC)){
+			nbtt.setBoolean(NBTTags.SwordRender, true);
+			hasChanged = true;
+		}
+		else if(nbtt.hasKey(NBTTags.SwordRender) && !(player.inventory.hasItem(ModItems.TLSOC))){
+			nbtt.removeTag(NBTTags.SwordRender);
+			hasChanged = true;
+		}
+		if(!(nbtt.hasKey(NBTTags.TLSOTD)) && player.inventory.hasItem(ModItems.TLSOTD)){
+			nbtt.setBoolean(NBTTags.TLSOTD, true);
+			hasChanged = true;
+		}
+		else if(nbtt.hasKey(NBTTags.TLSOTD) && !(player.inventory.hasItem(ModItems.TLSOTD))){
+			nbtt.removeTag(NBTTags.TLSOTD);
+			hasChanged = true;
 		}
 	}
 	public void send(EntityPlayer player){
@@ -233,23 +241,86 @@ public class EventHandler {
 
 	@SideOnly(Side.CLIENT)
 	public void doRenderTools(NBTTagCompound nbt, EntityPlayer player, InventoryPlayer IPlayer){
-		if(nbt.hasKey(NBTTags.AllowFly) && !(nbt.hasKey(NBTTags.TLSOTD))){
-			float offset = 0.25F;
+		renderFlight(nbt, player, IPlayer);
+		renderSwordTLSOC(nbt, player, IPlayer);
+		renderPickaxe(nbt, player, IPlayer);
+		renderNightVisionTalisman(nbt, player, IPlayer);
+		renderSwordTLSOTD(nbt, player, IPlayer);
+	}
+
+	private void renderSwordTLSOTD(NBTTagCompound nbt, EntityPlayer player,
+			InventoryPlayer IPlayer) {
+		if(nbt.hasKey(NBTTags.TLSOTD)){
+			ItemStack item = player.getHeldItem();
+			if(item == null || !(item.getItem() instanceof ItemTLSOTD)){
+				float offset = -0.5F;
+				float size = 0.525F;
+				float dis = 0F;
+				if(IPlayer.armorInventory[1] != null){
+					dis = 0.6F;
+				}
+				else{
+					dis = 0.5F;
+				}		
+				GL11.glPushMatrix();
+				GL11.glScalef(size, size, size);
+				GL11.glTranslatef(dis, 0.9F, offset);
+				GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
+				GL11.glRotatef(45.0F-110, 1.0F, 0.0F, 1.0F);
+				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLSOTD), 0);
+				GL11.glPopMatrix();
+			}
+		}
+	}
+
+	private void renderNightVisionTalisman(NBTTagCompound nbt,
+			EntityPlayer player, InventoryPlayer IPlayer) {
+		if(nbt.hasKey(NBTTags.night)){
+			float offset = 0.45F;
 			float size = 0.325F;
-			float dis = 0F;
 			if(IPlayer.armorInventory[2] != null){
-				dis = 1.71F;
+				offset = -0.7F;
 			}
 			else{
-				dis = 1.6F;
-			}
+				offset = -0.45F;
+			}	
 			GL11.glPushMatrix();
 			GL11.glScalef(size, size, size);
-			GL11.glTranslatef(dis, -0.25F, offset);
-			GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
-			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
+			GL11.glTranslatef(-0.4F, 1.4F, offset);
+			GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
+			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.torchTalisman), 0);
 			GL11.glPopMatrix();
+
 		}
+	}
+
+	private void renderPickaxe(NBTTagCompound nbt, EntityPlayer player,
+			InventoryPlayer IPlayer) {
+		if(nbt.hasKey(NBTTags.PickAxeRender)){
+			ItemStack item = player.getHeldItem();
+			if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
+				float offset = 0.45F;
+				float size = 0.6F;
+				if(IPlayer.armorInventory[2] != null){
+					offset = 0.45F;
+				}
+				else{
+					offset = 0.4F;
+				}	
+				GL11.glPushMatrix();
+				GL11.glScalef(size, size, size);
+				GL11.glTranslatef(-0.5F, -0.15F, offset);
+				GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
+				GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
+				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLPOLM), 0);
+				GL11.glPopMatrix();
+			}
+		}
+	}
+
+	private void renderSwordTLSOC(NBTTagCompound nbt, EntityPlayer player,
+			InventoryPlayer IPlayer) {
 		if(nbt.hasKey(NBTTags.SwordRender) && !(nbt.hasKey(NBTTags.TLSOTD))){
 			ItemStack item = player.getHeldItem();
 			if(item == null || !(item.getItem() instanceof ItemTLSOC)){
@@ -271,64 +342,26 @@ public class EventHandler {
 				GL11.glPopMatrix();
 			}
 		}
-		if(nbt.hasKey(NBTTags.PickAxeRender)){
-			ItemStack item = player.getHeldItem();
-			if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
-				float offset = 0.45F;
-				float size = 0.6F;
-				if(IPlayer.armorInventory[2] != null){
-					offset = 0.45F;
-				}
-				else{
-					offset = 0.4F;
-				}	
-				GL11.glPushMatrix();
-				GL11.glScalef(size, size, size);
-				GL11.glTranslatef(-0.5F, -0.15F, offset);
-				GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
-				GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
-				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLPOLM), 0);
-				GL11.glPopMatrix();
-			}
-		}
-		if(nbt.hasKey(NBTTags.night)){
-			float offset = 0.45F;
+	}
+
+	private void renderFlight(NBTTagCompound nbt, EntityPlayer player,
+			InventoryPlayer IPlayer) {
+		if(nbt.hasKey(NBTTags.AllowFly) && !(nbt.hasKey(NBTTags.TLSOTD))){
+			float offset = 0.25F;
 			float size = 0.325F;
+			float dis = 0F;
 			if(IPlayer.armorInventory[2] != null){
-				offset = -0.7F;
+				dis = 1.71F;
 			}
 			else{
-				offset = -0.45F;
-			}	
+				dis = 1.6F;
+			}
 			GL11.glPushMatrix();
 			GL11.glScalef(size, size, size);
-			GL11.glTranslatef(-0.4F, 1.4F, offset);
-			GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
-			GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
-			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.torchTalisman), 0);
+			GL11.glTranslatef(dis, -0.25F, offset);
+			GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
+			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.FlightTalisman), 0);
 			GL11.glPopMatrix();
-
-		}
-		if(nbt.hasKey(NBTTags.TLSOTD)){
-			ItemStack item = player.getHeldItem();
-			if(item == null || !(item.getItem() instanceof ItemTLSOTD)){
-				float offset = -0.5F;
-				float size = 0.525F;
-				float dis = 0F;
-				if(IPlayer.armorInventory[1] != null){
-					dis = 0.6F;
-				}
-				else{
-					dis = 0.5F;
-				}		
-				GL11.glPushMatrix();
-				GL11.glScalef(size, size, size);
-				GL11.glTranslatef(dis, 0.9F, offset);
-				GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
-				GL11.glRotatef(45.0F-110, 1.0F, 0.0F, 1.0F);
-				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLSOTD), 0);
-				GL11.glPopMatrix();
-			}
 		}
 	}
 

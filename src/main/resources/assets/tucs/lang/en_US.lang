@@ -35,7 +35,8 @@ item.tucs:shovelHead.name=Shovel Head
 item.tucs:pickaxeHead.name=Pickaxe Head
 item.tucs:hoeHead.name=Hoe Head
 item.tucs:hatchetHead.name=Battleaxe Head
-item.tucs:upgradeBase.name=Upgrade Base
+item.tucs:upgradeBase.name=Tier 1 Upgrade Base
+item.tucs:upgradeBaseT2.name=Tier 2Upgrade Base 
 item.tucs:ingotYellowstoneium.name= Yellowstoneium Ingot
 item.tucs:beheadingUpgrade.name=Beheading Upgrade
 item.tucs:bowTLBOTH.name=The Legendary Bow of The Hunter
@@ -143,7 +144,14 @@ keys.tucs.category=The Unusual Cobblestone Mod
 keys.tucs.fly=Fly
 keys.tucs.flySpeed=Fly Speed
 keys.tucs.night=Night Vision
-keys.tucs.upgrade=Shift + (upgrade bow)
+
+
+//ItemToolTips
+tucs.tips.soulbound=Soulbound
+tucs.tips.beheading=Beheading
+tucs.tips.autobow=AutoBow
+tucs.tips.infinity=Infinity Arrow
+
 
 //MSG
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!

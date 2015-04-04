@@ -38,6 +38,7 @@ import com.black_dog20.tucs.item.crafting.ItemToolRod;
 import com.black_dog20.tucs.item.crafting.ItemUnfinshedflightTalisman;
 import com.black_dog20.tucs.item.crafting.ItemUngoldenflightTalisman;
 import com.black_dog20.tucs.item.crafting.ItemUpgradeBase;
+import com.black_dog20.tucs.item.crafting.ItemUpgradeBaseT2;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneLighter;
 import com.black_dog20.tucs.item.tool.ItemCobblestonediumLighter;
 import com.black_dog20.tucs.item.tool.ItemCobblestoneiumLighter;
@@ -165,6 +166,7 @@ public class ModItems {
 	
 	//Upgrades
 	public static final ItemUpgradeBase upgradBase = new ItemUpgradeBase();
+	public static final ItemUpgradeBaseT2 upgradBaseT2 = new ItemUpgradeBaseT2();
 	public static final ItemLootingUpgrade looting1Upgrade = new ItemLootingUpgrade(1);
 	public static final ItemLootingUpgrade looting2Upgrade = new ItemLootingUpgrade(2);
 	public static final ItemLootingUpgrade looting3Upgrade = new ItemLootingUpgrade(3);
@@ -374,6 +376,7 @@ public class ModItems {
 		GameRegistry.registerItem(talismanBaseT1, "talismanBaseT1");
 		GameRegistry.registerItem(TalismanBase, "TalismanBase");
 		GameRegistry.registerItem(upgradBase, "upgradBase");
+		GameRegistry.registerItem(upgradBaseT2, "upgradBaseT2");
 
 
 		

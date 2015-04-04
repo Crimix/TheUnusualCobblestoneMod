@@ -33,7 +33,7 @@ public class BlockSoulbind extends BlockTUCS{
 		super(Material.wood);
 
 		this.setHardness(3.5F);
-		this.setResistance(5.0F);
+		this.setResistance(100.0F);
 		this.setBlockName("soulbinder");
 	}
 

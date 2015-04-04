@@ -6,12 +6,15 @@ import java.util.List;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.OreDictionary;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
+import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.tool.ItemTLSOTD;
 import com.black_dog20.tucs.reference.Reference;
 public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	
@@ -85,13 +88,13 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	                if (irecipe instanceof AncientTableShapedRecipes)
 	                    recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
 
-
+	               
 	                if (recipe == null)
 	                    continue;
-
+	                
 	                recipe.computeVisuals();
-	                if(!recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
-	               		arecipes.add(recipe);
+	                if(!(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) || recipe.result.item.getItem() instanceof ItemTLSOTD)){
+	 	               	arecipes.add(recipe);
 	               	}
 	            }
 			 } else {
@@ -111,7 +114,7 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	                   	continue;
 
 	               	recipe.computeVisuals();
-	               	if(!recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
+	                if(!(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) || recipe.result.item.getItem() instanceof ItemTLSOTD)){
 	               		arecipes.add(recipe);
 	               	}
 	            }
@@ -127,8 +130,8 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	            	recipe.computeVisuals();
 	            	if (recipe.contains(recipe.ingredients, ingredient)) {
 	            		recipe.setIngredientPermutation(recipe.ingredients, ingredient);
-	            		if(!recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
-		               		arecipes.add(recipe);
+	            		if(!(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) || recipe.result.item.getItem() instanceof ItemTLSOTD)){
+	     	               	arecipes.add(recipe);
 		               	}
 	            	}
 	            }

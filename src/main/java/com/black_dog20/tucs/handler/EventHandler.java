@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,20 +28,24 @@ import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
+import com.black_dog20.tucs.item.tool.ItemM1911;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemTLSOTD;
 import com.black_dog20.tucs.network.PacketHandler;
+import com.black_dog20.tucs.network.message.MessageConfigSync;
 import com.black_dog20.tucs.network.message.MessageToolRender;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -211,6 +216,14 @@ public class EventHandler {
 			nbtt.removeTag(NBTTags.TLSOTD);
 			hasChanged = true;
 		}
+		if(!(nbtt.hasKey(NBTTags.m1119)) && player.inventory.hasItem(ModItems.M1911)){
+			nbtt.setBoolean(NBTTags.m1119, true);
+			hasChanged = true;
+		}
+		else if(nbtt.hasKey(NBTTags.m1119) && !(player.inventory.hasItem(ModItems.M1911))){
+			nbtt.removeTag(NBTTags.m1119);
+			hasChanged = true;
+		}
 	}
 	public void send(EntityPlayer player){
 		if(player.worldObj instanceof WorldServer)
@@ -221,6 +234,14 @@ public class EventHandler {
 		}
 	}
 
+	@SubscribeEvent
+	public void onPlayerLoginEvent(PlayerLoggedInEvent event){
+		if(!event.player.worldObj.isRemote){
+			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP)event.player);
+			
+		}
+	}
+	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent.Specials.Pre event){
@@ -246,6 +267,7 @@ public class EventHandler {
 		renderPickaxe(nbt, player, IPlayer);
 		renderNightVisionTalisman(nbt, player, IPlayer);
 		renderSwordTLSOTD(nbt, player, IPlayer);
+		renderM1911(nbt, player, IPlayer);
 	}
 
 	private void renderSwordTLSOTD(NBTTagCompound nbt, EntityPlayer player,
@@ -268,6 +290,31 @@ public class EventHandler {
 				GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
 				GL11.glRotatef(45.0F-110, 1.0F, 0.0F, 1.0F);
 				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.TLSOTD), 0);
+				GL11.glPopMatrix();
+			}
+		}
+	}
+	
+	private void renderM1911(NBTTagCompound nbt, EntityPlayer player,
+			InventoryPlayer IPlayer) {
+		if(nbt.hasKey(NBTTags.m1119)){
+			ItemStack item = player.getHeldItem();
+			if(item == null || !(item.getItem() instanceof ItemM1911)){
+				float offset = -0.5F;
+				float size = 0.525F;
+				float dis = 0F;
+				if(IPlayer.armorInventory[1] != null){
+					dis = -0.6F;
+				}
+				else{
+					dis = -0.5F;
+				}		
+				GL11.glPushMatrix();
+				GL11.glScalef(size, size, size);
+				GL11.glTranslatef(dis, 0.9F, offset);
+				GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
+				GL11.glRotatef(45.0F-50, 1.0F, 0.0F, 1.0F);
+				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.M1911), 0);
 				GL11.glPopMatrix();
 			}
 		}

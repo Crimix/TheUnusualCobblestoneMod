@@ -27,7 +27,7 @@ public class InventoryHelper {
 			armor = 3;
 			break;
 		case 1:
-			armor =  2;
+			armor = 2;
 			break;
 		case 2:
 			armor = 1;

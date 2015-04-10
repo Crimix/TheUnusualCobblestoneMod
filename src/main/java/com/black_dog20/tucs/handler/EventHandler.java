@@ -7,10 +7,12 @@ import java.util.ListIterator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -42,6 +44,7 @@ import com.black_dog20.tucs.network.PacketHandler;
 import com.black_dog20.tucs.network.message.MessageConfigSync;
 import com.black_dog20.tucs.network.message.MessageToolRender;
 import com.black_dog20.tucs.reference.NBTTags;
+import com.black_dog20.tucs.utility.InventoryHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -67,7 +70,6 @@ public class EventHandler {
 
 			EntityItem item = litr.next();
 			ItemStack itemstack = item.getEntityItem();
-
 
 			if(item !=null){
 				if(itemstack.hasTagCompound()){
@@ -134,7 +136,21 @@ public class EventHandler {
 		for(int i = 0; i <= nbttaglist.tagCount(); i++){
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
-			player.inventory.addItemStackToInventory(ItemStack.loadItemStackFromNBT(nbttagcompound1));
+			ItemStack item = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+			if(item != null && item.getItem() instanceof ItemArmor){
+				ItemArmor armor = (ItemArmor)item.getItem(); 
+				System.out.println(InventoryHelper.getArmorPosition(armor));
+		        if (player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] == null)
+		        {
+		            player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] = item;
+		        }
+		        else{
+		        	player.inventory.addItemStackToInventory(item);
+		        }
+
+			}else{
+				player.inventory.addItemStackToInventory(item);
+			}
 		}
 		nbt.removeTag("SoulboundItems");
 	}
@@ -525,48 +541,54 @@ public class EventHandler {
 		InventoryPlayer inv = player.inventory;
 
 		if(helmet != null && helmet.getItem() instanceof ItemHelmetCobblestonedium){
-			if(helmet.getItemDamage()-helmet.getMaxDamage() <= 1){
+			if(helmet.getMaxDamage()-helmet.getItemDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.helmetCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
+				giveItems(helmet, inv);
+				player.inventory.armorInventory[3] = null;
 			}
 
-			giveItems(helmet, inv);
-			player.inventory.armorInventory[3] = null;
+
 		}
 		else if(chest != null && chest.getItem() instanceof ItemChestplateCobblestonedium){
-			if(chest.getItemDamage()-chest.getMaxDamage() <= 1){
+			if(
+					
+					chest.getMaxDamage()-chest.getItemDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.chestplateCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
+				giveItems(chest, inv);
+				player.inventory.armorInventory[2] = null;
 			}
 
-			giveItems(chest, inv);
-			player.inventory.armorInventory[2] = null;
+
 		}
 		else if(legs != null && legs.getItem() instanceof ItemLegCobblestonedium){
-			if(legs.getItemDamage()-legs.getMaxDamage() <= 1){
+			if(legs.getMaxDamage()-legs.getItemDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.leggingsCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
+				giveItems(legs, inv);
+				player.inventory.armorInventory[1] = null;
 			}
 
-			giveItems(legs, inv);
-			player.inventory.armorInventory[1] = null;
+
 		}
 		else if(boots != null && boots.getItem() instanceof ItemBootCobblestonedium){
-			if(boots.getItemDamage()-boots.getMaxDamage() <= 1){
+			if(boots.getMaxDamage()-boots.getItemDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.bootsCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
+				giveItems(boots, inv);
+				player.inventory.armorInventory[0] = null;
 			}
 
-			giveItems(boots, inv);
-			player.inventory.armorInventory[0] = null;
+
 		}
 
 

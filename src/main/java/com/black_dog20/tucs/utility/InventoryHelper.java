@@ -2,6 +2,7 @@ package com.black_dog20.tucs.utility;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 public class InventoryHelper {
@@ -17,6 +18,25 @@ public class InventoryHelper {
 		}
 		
 		return res;
+	}
+	
+	public static int getArmorPosition(ItemArmor item){
+		int armor = 0;
+		switch (item.armorType) {
+		case 0:
+			armor = 3;
+			break;
+		case 1:
+			armor =  2;
+			break;
+		case 2:
+			armor = 1;
+			break;
+		case 3:
+			armor = 0;
+			break;
+		}
+		return armor;
 	}
 
 }

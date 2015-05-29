@@ -23,7 +23,14 @@ archivesBaseName = "tucs"
 
 minecraft {
     version = "1.7.10-10.13.2.1291"
-    assetDir = "eclipse/assets"
+    	if(file('../run').exists()){
+		runDir = "../run/assets"
+	} else if(file('assets').exists()){
+   	 	runDir = "assets"
+	}else{
+		runDir = "eclipse"
+	}
+
 }
 
 repositories {

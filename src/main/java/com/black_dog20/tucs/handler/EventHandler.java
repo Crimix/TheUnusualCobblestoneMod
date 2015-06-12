@@ -271,7 +271,6 @@ public class EventHandler {
 				doRenderTools(nbt, player, player.inventory);
 			}
 		}
-
 	}
 
 	@SideOnly(Side.CLIENT)

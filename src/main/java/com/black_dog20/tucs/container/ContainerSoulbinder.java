@@ -14,21 +14,11 @@ import com.black_dog20.tucs.reference.NBTTags;
 
 public class ContainerSoulbinder extends Container{
 
-	private World worldObj;
-	private int posX;
-	private int posY;
-	private int posZ;
-	private EntityPlayer Player;
 	public InventoryCrafting slot = new InventoryCrafting(this, 1, 1);
 	
 
 	public ContainerSoulbinder(World world, int x, int y, int z, EntityPlayer player)
 	{
-		this.worldObj = world;
-		this.posX = x;
-		this.posY = y;
-		this.posZ = z;
-		this.Player = player;
 
 		this.addSlotToContainer(new Slot(this.slot, 0, 75, 37));
 

@@ -3,23 +3,13 @@ package com.black_dog20.tucs.client.render;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.item.tool.ItemM1911;
-import com.black_dog20.tucs.item.tool.ItemTLBOTH;
 import com.black_dog20.tucs.item.upgrades.ItemTUCSUpgrades;
-import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.utility.InventoryHelper;
-import com.black_dog20.tucs.utility.M1911Helper;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,7 +33,7 @@ public class TUCSUpgradeOverlayRender implements IItemRenderer
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack itemStack, Object... data) {
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;;
+		//EntityPlayer player = Minecraft.getMinecraft().thePlayer;;
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
         IIcon icon = itemStack.getIconIndex();
         GL11.glEnable(GL11.GL_ALPHA_TEST);

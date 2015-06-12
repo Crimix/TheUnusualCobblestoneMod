@@ -68,7 +68,7 @@ public class TUCSWeaponOverlayRender implements IItemRenderer
         	}
         } 
         else if(itemStack.getItem() instanceof ItemM1911){
-        	ItemM1911 m1911 = (ItemM1911) itemStack.getItem();
+        	//ItemM1911 m1911 = (ItemM1911) itemStack.getItem();
         	text = Integer.toString(M1911Helper.getAmmo(itemStack)) + " / " + Integer.toString(InventoryHelper.findItem(ModItems.ammo, player.inventory)); 
         	fontRenderer.drawString(text, 1, 1, 0xFFFFFF); 
         }

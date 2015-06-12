@@ -10,12 +10,10 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.init.ModItems;
-import com.black_dog20.tucs.utility.NBTHelper;
 
 public class ContainerCraftingTalisman extends Container {
 	 /** The crafting matrix inventory (3x3). */
@@ -23,21 +21,10 @@ public class ContainerCraftingTalisman extends Container {
     public IInventory craftResult = new InventoryCraftResult();
     public ItemStack Result;
     private World worldObj;
-    private int posX;
-    private int posY;
-    private int posZ;
-    private EntityPlayer EPlayer;
-    private NBTTagCompound nbt;
-    private String test;
 
     public ContainerCraftingTalisman(InventoryPlayer IPlayer, World world, int x, int y, int z, EntityPlayer eplayer)
     {
         this.worldObj = world;
-        this.posX = x;
-        this.posY = y;
-        this.posZ = z;
-        this.EPlayer = eplayer;
-        this.nbt = NBTHelper.getPlayerNBT(EPlayer);
        
         
         this.addSlotToContainer(new SlotCrafting(IPlayer.player, this.craftMatrix, this.craftResult, 0, 124, 35));

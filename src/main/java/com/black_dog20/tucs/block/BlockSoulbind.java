@@ -26,8 +26,6 @@ public class BlockSoulbind extends BlockTUCS{
 	@SideOnly(Side.CLIENT)
 	private IIcon iconBot;
 
-	private static boolean keepInventory;
-
 	public BlockSoulbind(){
 
 		super(Material.wood);

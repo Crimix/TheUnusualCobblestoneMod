@@ -27,7 +27,6 @@ public class GuiTUCSBook extends GuiScreen {
 	static final ResourceLocation texture = new ResourceLocation("minecraft:textures/gui/book.png");
 	static final ResourceLocation textureC = new ResourceLocation("minecraft:textures/gui/container/crafting_table.png");
 	static final ResourceLocation textureF = new ResourceLocation("minecraft:textures/gui/container/furnace.png");
-	private int postion;
 	private List MCList = CraftingManager.getInstance().getRecipeList();
 	private List TUCSList = AncientTableManager.getInstance().getRecipeList();
 	Block craftingB;

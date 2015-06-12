@@ -18,21 +18,11 @@ import com.black_dog20.tucs.slot.SlotFlightTalisman;
 
 public class ContainerFlightTalisman extends Container{
 
-	private World worldObj;
-	private int posX;
-	private int posY;
-	private int posZ;
-	private EntityPlayer Player;
 	public IInventory slot = new InventoryTalisman();
 	private final ItemStack invItem = new ItemStack(ModItems.FlightTalisman);
 
 	public ContainerFlightTalisman(World world, int x, int y, int z, EntityPlayer player, ItemStack item)
 	{
-		this.worldObj = world;
-		this.posX = x;
-		this.posY = y;
-		this.posZ = z;
-		this.Player = player;
 
 		this.addSlotToContainer(new SlotFlightTalisman(slot, 0, 75, 37));
 		
@@ -126,7 +116,7 @@ public class ContainerFlightTalisman extends Container{
 		
 		super.onContainerClosed(player);
 		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
-		if(itemstack != null && itemstack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
+		if(itemstack != null && ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade,1))){
 			ItemStack stack = player.getHeldItem();
 			if(stack != null && !stack.hasTagCompound()){
 				stack.stackTagCompound = new NBTTagCompound();

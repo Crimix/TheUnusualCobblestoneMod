@@ -17,20 +17,12 @@ import com.black_dog20.tucs.slot.SlotUpgradeTools;
 import com.black_dog20.tucs.utility.EnchantHelper;
 
 public class ContainerUpgradeTools extends Container {
-	private World worldObj;
-	private int posX;
-	private int posY;
-	private int posZ;
 	private EntityPlayer Player;
 	public IInventory slotUpgrade = new InventoryUpgradeTools();
 
 
 	public ContainerUpgradeTools(World world, int x, int y, int z, EntityPlayer player, ItemStack item)
 	{
-		this.worldObj = world;
-		this.posX = x;
-		this.posY = y;
-		this.posZ = z;
 		this.Player = player;
 
 

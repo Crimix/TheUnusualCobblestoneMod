@@ -7,7 +7,6 @@ import java.util.ListIterator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -30,7 +29,6 @@ import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 
 import org.lwjgl.opengl.GL11;
 
-import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
@@ -316,20 +314,21 @@ public class EventHandler {
 		if(nbt.hasKey(NBTTags.m1119)){
 			ItemStack item = player.getHeldItem();
 			if(item == null || !(item.getItem() instanceof ItemM1911)){
-				float offset = -0.5F;
-				float size = 0.525F;
+				float offset = 0.2F;
+				float size = 0.4F;
 				float dis = 0F;
 				if(IPlayer.armorInventory[1] != null){
-					dis = -0.6F;
+					dis = -0.31F;
 				}
 				else{
-					dis = -0.5F;
+					dis = -0.3F;
 				}		
 				GL11.glPushMatrix();
-				GL11.glScalef(size, size, size);
-				GL11.glTranslatef(dis, 0.9F, offset);
+				GL11.glTranslatef(dis, 0.6F, offset);
 				GL11.glRotatef(45.0F-180, 0.0F, 1.0F, 0.0F);
-				GL11.glRotatef(45.0F-50, 1.0F, 0.0F, 1.0F);
+				GL11.glRotatef(45.0F+20, 1.0F, 0.0F, 1.0F);
+				GL11.glRotatef(45.0F-50 ,0.0F, 1.0F, 0.0F);
+				GL11.glScalef(size, size, size);
 				RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.M1911), 0);
 				GL11.glPopMatrix();
 			}

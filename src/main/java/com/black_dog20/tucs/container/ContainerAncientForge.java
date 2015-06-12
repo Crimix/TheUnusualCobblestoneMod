@@ -20,7 +20,6 @@ public class ContainerAncientForge extends Container
     private int lastCookTime;
     private int lastBurnTime;
     private int lastItemBurnTime;
-    private static final String __OBFID = "CL_00001748";
 
     public ContainerAncientForge(InventoryPlayer IPlayer, TileEntityAncientForge tileForge)
     {

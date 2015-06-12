@@ -26,8 +26,6 @@ public class BlockAncientTable extends BlockTUCS{
 	@SideOnly(Side.CLIENT)
 	private IIcon iconBot;
 
-	private static boolean keepInventory;
-
 	public BlockAncientTable(){
 
 		super(Material.wood);

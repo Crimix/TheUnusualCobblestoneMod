@@ -18,7 +18,6 @@ public class GuiAncientForge extends GuiContainer
 {
     private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("textures/gui/container/furnace.png");
     private TileEntityAncientForge tileForge;
-    private static final String __OBFID = "CL_00000758";
 
     public GuiAncientForge(InventoryPlayer IPlayer, TileEntityAncientForge tileEntity)
     {

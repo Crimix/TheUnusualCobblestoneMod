@@ -5,12 +5,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemSwordCobblestoneium extends ItemSword {
+public class ItemSwordCobblestoneium extends ItemSword implements ITucsItem{
 	
 	public ItemSwordCobblestoneium(ToolMaterial Material){
 		

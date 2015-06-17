@@ -29,5 +29,6 @@ public class MessageConfigSync  implements IMessage, IMessageHandler<MessageConf
 		ConfigurationHandler.ToolFire = buf.readBoolean();
 		ConfigurationHandler.Allow_To_Fly = buf.readBoolean();
 		ConfigurationHandler.Max_Luck_Upgrade = buf.readInt();
+		ConfigurationHandler.configurationServer = true;
 	}
 }

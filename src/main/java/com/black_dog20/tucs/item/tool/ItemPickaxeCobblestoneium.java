@@ -5,12 +5,13 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemPickaxeCobblestoneium extends ItemPickaxe {
+public class ItemPickaxeCobblestoneium extends ItemPickaxe implements ITucsItem{
 	
 	public ItemPickaxeCobblestoneium(ToolMaterial Material){
 		

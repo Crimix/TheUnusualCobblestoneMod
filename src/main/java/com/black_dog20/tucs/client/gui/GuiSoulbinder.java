@@ -2,13 +2,13 @@ package com.black_dog20.tucs.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.container.ContainerSoulbinder;
+import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -16,15 +16,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 	@SideOnly(Side.CLIENT)
 	public class GuiSoulbinder extends GuiContainer {
 
-		private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTalisman.png");
+		private static final ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTalisman.png");
 		
-		public GuiSoulbinder(World world, int x, int y, int z, EntityPlayer player) {
-			super(new ContainerSoulbinder(world, x, y, z, player));
-			
-			this.xSize = 175;
-			this.ySize = 165;
-			
-		}
+	    public GuiSoulbinder(InventoryPlayer IPlayer, TileEntitySoulForge tileEntity)
+	    {
+	        super(new ContainerSoulbinder(IPlayer, tileEntity));
+	    }
 		
 		protected void drawGuiContainerForegroundLayer(int i, int j) {
 

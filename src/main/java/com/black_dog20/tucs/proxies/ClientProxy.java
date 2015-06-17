@@ -7,11 +7,13 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
 import com.black_dog20.tucs.client.render.RoundRender;
+import com.black_dog20.tucs.client.render.SoulForgeRender;
 import com.black_dog20.tucs.client.render.TUCSUpgradeOverlayRender;
 import com.black_dog20.tucs.client.render.TUCSWeaponOverlayRender;
 import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -72,6 +74,8 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.M1911, new TUCSWeaponOverlayRender());
 		upgrades();
 		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
+		RenderingRegistry.registerBlockHandler(new SoulForgeRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class, new SoulForgeRender());
 	}
 
 	private void upgrades() {

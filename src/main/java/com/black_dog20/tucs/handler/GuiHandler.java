@@ -21,6 +21,7 @@ import com.black_dog20.tucs.container.ContainerSoulbinder;
 import com.black_dog20.tucs.container.ContainerUpgradeTools;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
+import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -60,7 +61,11 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerUpgradeTools(world, x, y, z, player, item);
 		}
 		else if(ID == tucs.guiSoulBinder){
-			return new ContainerSoulbinder(world, x, y, z, player);
+			if(entity != null) {
+				if (entity instanceof TileEntitySoulForge) {
+					return new ContainerSoulbinder(player.inventory, (TileEntitySoulForge) entity);
+				}
+			}
 		}
 		return null;
 	}
@@ -97,7 +102,11 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiUpgradeTools(world, x, y, z, player);
 		}
 		else if(ID == tucs.guiSoulBinder){
-			return new GuiSoulbinder(world, x, y, z, player);
+			if(entity != null) {
+				if (entity instanceof TileEntitySoulForge) {
+					return new GuiSoulbinder(player.inventory, (TileEntitySoulForge) entity);
+				}
+			}
 		}
 
 		return null;

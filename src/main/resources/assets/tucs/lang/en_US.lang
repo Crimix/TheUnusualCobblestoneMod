@@ -134,7 +134,7 @@ tile.tucs:ancientForge.name=Ancient Forge
 tile.tucs:soulbinder.name=Soul Binder
 
 //Container
-container.tucs:AncientForge=AncientForge
+container.tucs:AncientForge=Ancient Forge
 
 //Misc
 itemGroup.TUCS=The Unusual Cobblestone Mod
@@ -152,6 +152,9 @@ tucs.tips.beheading=Beheading
 tucs.tips.autobow=AutoBow
 tucs.tips.infinity=Infinity Arrow
 
+//Info
+tile.tucs:ancientTable.info=This table is used to craft the higher tier of items and tools, it has been used for many centuries to make the finest tools of stone. It is also the only table that can handle the alloy of diamonds and cobblestone. This Crafting Table can also be used to vailla recipes
+item.tucs:ingotCobblestoneium.info=This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. This Material have the combined durability of iron and stone 
 
 //MSG
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!

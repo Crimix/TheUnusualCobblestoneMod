@@ -14,17 +14,17 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.item.ItemBowTUCS;
 import com.black_dog20.tucs.reference.NBTTags;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTLBOTH extends ItemBowTUCS {
+public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem{
     public static final String[] bowPullIconNameArray = new String[] {"pulling_0", "pulling_1", "pulling_2"};
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
-    private static final String __OBFID = "CL_00001777";
 
     public ItemTLBOTH()
     {

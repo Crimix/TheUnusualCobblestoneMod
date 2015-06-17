@@ -21,13 +21,14 @@ import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.init.ModBlocks;
+import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockAncientForge extends BlockContainer{
+public class BlockAncientForge extends BlockContainer implements ITucsItem{
 	
 	private final Random random = new Random();
     private final boolean isActive;

@@ -1,18 +1,22 @@
 package com.black_dog20.tucs.block;
 
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.client.render.SoulForgeRender;
 import com.black_dog20.tucs.reference.Reference;
+import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSoulbind extends BlockTUCS{
+public class BlockSoulbind extends BlockTUCS implements ITileEntityProvider{
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
@@ -33,6 +37,25 @@ public class BlockSoulbind extends BlockTUCS{
 		this.setHardness(3.5F);
 		this.setResistance(100.0F);
 		this.setBlockName("soulbinder");
+	}
+    @Override
+    public int getRenderType() {
+            return SoulForgeRender.renderID;
+    }
+    
+    @Override
+    public boolean isOpaqueCube() {
+            return false;
+    }
+    
+    @Override
+    public boolean renderAsNormalBlock() {
+            return false;
+    }
+	
+	@Override
+	public TileEntity createNewTileEntity(World world, int par) {
+		return new TileEntitySoulForge();
 	}
 
 	@Override
@@ -60,4 +83,5 @@ public class BlockSoulbind extends BlockTUCS{
 			return false;
 		}
 	}
+
 }

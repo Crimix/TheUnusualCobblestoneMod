@@ -4,7 +4,7 @@ import net.minecraft.block.material.Material;
 
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 
-public class BlockCobblestoneium extends BlockTUCS {
+public class BlockCobblestoneium extends BlockTUCS{
 
 	public BlockCobblestoneium(){
 

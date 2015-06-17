@@ -16,7 +16,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import codechicken.nei.ItemList;
-import codechicken.nei.NEIClientUtils;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
@@ -77,7 +76,7 @@ public class AncientForgeHandler extends TemplateRecipeHandler
 
     @Override
     public String getRecipeName() {
-        return NEIClientUtils.translate("Ancient Forge");
+        return "Ancient Forge";
     }
 
     @Override

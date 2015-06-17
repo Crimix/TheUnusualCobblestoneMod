@@ -252,7 +252,6 @@ public class EventHandler {
 	public void onPlayerLoginEvent(PlayerLoggedInEvent event){
 		if(!event.player.worldObj.isRemote){
 			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP)event.player);
-			
 		}
 	}
 	

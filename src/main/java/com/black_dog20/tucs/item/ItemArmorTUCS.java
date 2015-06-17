@@ -13,7 +13,7 @@ import com.black_dog20.tucs.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemArmorTUCS extends ItemArmor {
+public class ItemArmorTUCS extends ItemArmor implements ITucsItem{
 	
 	 public final static int render = 0;
 	 public final static ArmorMaterial material = null;

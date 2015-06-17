@@ -13,7 +13,7 @@ import com.black_dog20.tucs.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTUCS extends Item {
+public class ItemTUCS extends Item implements ITucsItem{
 	
 	public ItemTUCS(){
 		

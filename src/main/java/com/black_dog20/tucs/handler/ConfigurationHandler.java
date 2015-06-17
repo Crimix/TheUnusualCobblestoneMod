@@ -15,6 +15,7 @@ public class ConfigurationHandler {
 	public static boolean ToolFire = true;
 	public static boolean Allow_To_Fly = true;
 	public static int Max_Luck_Upgrade = 3;
+	public static boolean configurationServer = false;
 
 	public static void init(File configFile){
 
@@ -23,7 +24,6 @@ public class ConfigurationHandler {
 			configuration = new Configuration(configFile); 
 			loadConfiguration();
 		}
-
 	}
 
 	@SubscribeEvent
@@ -36,10 +36,11 @@ public class ConfigurationHandler {
 
 	private static void loadConfiguration(){
 
-		ToolFire = configuration.getBoolean("ToolCanMakeFire", Configuration.CATEGORY_GENERAL, true, "Can the Tool make fire like flint & steel");
+		ToolFire = configuration.getBoolean("Lighters_Make_Fire", Configuration.CATEGORY_GENERAL, true, "Can Lighters make fire like flint & steel");
 		Allow_To_Fly = configuration.getBoolean("Allow_To_Fly", Configuration.CATEGORY_GENERAL, true, "Are players allowed to fly with the talisman");
-		Max_Luck_Upgrade = configuration.getInt("Max_Luck_Upgrade", configuration.CATEGORY_GENERAL, 3, 0, 3, "How many luck upgrades the player is able to craft");
-		if(configuration.hasChanged()){
+		Max_Luck_Upgrade = configuration.getInt("Max_Luck_Upgrade", Configuration.CATEGORY_GENERAL, 3, 0, 3, "How many luck upgrades the player is able to craft");
+		
+		if(configuration.hasChanged() && !configurationServer){
 			configuration.save();
 		}
 	}

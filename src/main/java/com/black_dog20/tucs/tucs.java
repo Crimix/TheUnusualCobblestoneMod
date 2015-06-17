@@ -15,6 +15,7 @@ import com.black_dog20.tucs.network.PacketHandler;
 import com.black_dog20.tucs.proxies.IProxy;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
+import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 import com.black_dog20.tucs.utility.LogHelper;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -72,6 +73,8 @@ public class tucs {
 		Proxy.keyinput();
 		Recipes.init();
 		GameRegistry.registerTileEntity(TileEntityAncientForge.class, "AncientForge");
+		GameRegistry.registerTileEntity(TileEntitySoulForge.class, "SoulForge");
+		
 	}
 	
 	@Mod.EventHandler

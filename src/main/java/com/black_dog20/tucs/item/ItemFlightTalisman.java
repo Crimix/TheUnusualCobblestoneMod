@@ -1,11 +1,16 @@
 package com.black_dog20.tucs.item;
 
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.reference.NBTTags;
 
 public class ItemFlightTalisman extends ItemTUCS{
@@ -28,7 +33,26 @@ public class ItemFlightTalisman extends ItemTUCS{
 			
 		return Item;
 		
-	    }
+	 }
+
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+		if(MinecraftServer.getServer().isFlightAllowed()){
+			List.add("Flying: " + EnumChatFormatting.GREEN + MinecraftServer.getServer().isFlightAllowed());
+		}
+		else{
+			List.add("Flying: " + EnumChatFormatting.RED + MinecraftServer.getServer().isFlightAllowed());
+		}
+		if(ConfigurationHandler.Allow_To_Fly){
+			List.add("Tucs flight: " + EnumChatFormatting.GREEN + ConfigurationHandler.Allow_To_Fly);
+		}
+		else{
+			List.add("Tucs flight: " + EnumChatFormatting.RED + ConfigurationHandler.Allow_To_Fly);
+		}
+	}
+
+	
 	@Override
 	public boolean hasEffect(ItemStack stack){
 		

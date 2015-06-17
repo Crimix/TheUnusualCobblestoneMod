@@ -12,7 +12,7 @@ import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.NBTHelper;
 
-public class ItemBook extends ItemTUCS  {
+public class ItemBook extends ItemTUCS{
 	NBTTagCompound nbt;
 	
 	public ItemBook(){

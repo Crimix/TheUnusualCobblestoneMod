@@ -9,13 +9,14 @@ import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTLBOTB extends ItemAxe{
+public class ItemTLBOTB extends ItemAxe implements ITucsItem{
 	
 public ItemTLBOTB(ToolMaterial Material){
 		

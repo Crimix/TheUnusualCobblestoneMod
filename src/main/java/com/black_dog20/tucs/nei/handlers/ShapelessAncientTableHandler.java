@@ -1,16 +1,20 @@
 package com.black_dog20.tucs.nei.handlers;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import codechicken.nei.NEIClientUtils;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
+import com.black_dog20.tucs.client.gui.GuiAncientTable;
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapelessRecipes;
 import com.black_dog20.tucs.reference.Reference;
@@ -82,10 +86,20 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler
 	public String getOverlayIdentifier() {
 	    return Reference.MOD_ID+"AncientTable";
 	}
+    
+    @Override
+    public Class<? extends GuiContainer> getGuiClass() {
+        return GuiAncientTable.class;
+    }
+    
+    @Override
+    public void loadTransferRects() {
+        transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18), Reference.MOD_ID+"AncientTable"));
+    }
 
     @Override
     public void loadCraftingRecipes(String outputId, Object... results) {
-        if (outputId.equals("crafting") && getClass() == ShapelessAncientTableHandler.class) {
+        if (outputId.equals(Reference.MOD_ID+"AncientTable") && getClass() == ShapelessAncientTableHandler.class) {
             List<IRecipe> allrecipes = AncientTableManager.getInstance().getRecipeList();
             for (IRecipe irecipe : allrecipes) {
             	CachedShapelessAncientTableRecipe recipe = null;

@@ -49,8 +49,8 @@ item.tucs:helmetCobblestonedium.name=The Legendary Helmet of The Warrior
 item.tucs:leggingsCobblestonedium.name=The Legendary Leggings of The Warrior
 item.tucs:bootsCobblestonedium.name=The Legendary Boots of The Warrior
 item.tucs:chestplateCobblestonedium.name=The Legendary Chestplate of The Warrior
-item.tucs:M1911.name=M1911
-item.tucs:Ammo.name=M1911 Ammo
+item.tucs:m1911.name=M1911
+item.tucs:ammo.name=M1911 Ammo
 item.tucs:TLSOTD.name=The Legendary Sword of The Destroyer of worlds
 
 
@@ -66,7 +66,7 @@ item.tucs:sharpness4Upgrade.name=Sharpness 4 Upgrade
 item.tucs:sharpness5Upgrade.name=Sharpness 5 Upgrade
 item.tucs:infiUpgrade.name=Infinity Upgrade
 item.tucs:sliktouch1Upgrade.name=Silk Touch Upgrade
-item.tucs:AutoBowUpgrade.name=Full Auto bow Upgrade
+item.tucs:autoBowUpgrade.name=Full Auto bow Upgrade
 item.tucs:aquaAffinity1Upgrade.name=Aqua Affinity Upgrade
 item.tucs:blastProtection1Upgrade.name=Blast Protection 1 Upgrade
 item.tucs:blastProtection2Upgrade.name=Blast Protection 2 Upgrade

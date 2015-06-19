@@ -20,7 +20,9 @@ import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 
+import com.black_dog20.tucs.client.gui.GuiAncientForge;
 import com.black_dog20.tucs.crafting.AncientForgeRecipes;
+import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 
 public class AncientForgeHandler extends TemplateRecipeHandler
@@ -65,13 +67,12 @@ public class AncientForgeHandler extends TemplateRecipeHandler
 
     @Override
     public void loadTransferRects() {
-        transferRects.add(new RecipeTransferRect(new Rectangle(50, 23, 18, 18), "fuel"));
-        transferRects.add(new RecipeTransferRect(new Rectangle(74, 23, 24, 18), "smelting"));
+        transferRects.add(new RecipeTransferRect(new Rectangle(74, 23, 24, 18), Reference.MOD_ID+"Ancient Forge"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-        return GuiFurnace.class;
+        return GuiAncientForge.class;
     }
 
     @Override
@@ -88,7 +89,7 @@ public class AncientForgeHandler extends TemplateRecipeHandler
 
     @Override
     public void loadCraftingRecipes(String outputId, Object... results) {
-        if (outputId.equals("smelting") && getClass() == AncientForgeHandler.class) {
+        if (outputId.equals(Reference.MOD_ID+"Ancient Forge") && getClass() == AncientForgeHandler.class) {
             Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes.smelting().getSmeltingList();
             for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
                 arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
@@ -107,7 +108,7 @@ public class AncientForgeHandler extends TemplateRecipeHandler
     @Override
     public void loadUsageRecipes(String inputId, Object... ingredients) {
         if (inputId.equals("fuel") && getClass() == AncientForgeHandler.class)
-            loadCraftingRecipes("smelting");
+            loadCraftingRecipes(Reference.MOD_ID+"Ancient Forge");
         else
             super.loadUsageRecipes(inputId, ingredients);
     }
@@ -158,6 +159,6 @@ public class AncientForgeHandler extends TemplateRecipeHandler
 
     @Override
     public String getOverlayIdentifier() {
-        return "smelting";
+        return Reference.MOD_ID+"Ancient Forge";
     }
 }

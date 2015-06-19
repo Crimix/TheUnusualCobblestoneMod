@@ -25,9 +25,6 @@ public class GuiAncientForge extends GuiContainer
         this.tileForge = tileEntity;
     }
 
-    /**
-     * Draw the foreground layer for the GuiContainer (everything in front of the items)
-     */
     protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
     {
         String s = this.tileForge.hasCustomInventoryName() ? this.tileForge.getInventoryName() : I18n.format(this.tileForge.getInventoryName(), new Object[0]);

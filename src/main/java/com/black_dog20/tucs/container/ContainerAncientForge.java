@@ -51,9 +51,6 @@ public class ContainerAncientForge extends Container
         ICraft.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
     }
 
-    /**
-     * Looks for changes made in the container, sends them to every listener.
-     */
     public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
@@ -107,9 +104,6 @@ public class ContainerAncientForge extends Container
         return this.tileFurnace.isUseableByPlayer(player);
     }
 
-    /**
-     * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
-     */
     public ItemStack transferStackInSlot(EntityPlayer player, int par1)
     {
         ItemStack itemstack = null;

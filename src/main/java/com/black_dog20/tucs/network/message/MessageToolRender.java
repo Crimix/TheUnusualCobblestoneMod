@@ -45,7 +45,6 @@ public class MessageToolRender  implements IMessage, IMessageHandler<MessageTool
 
 	@Override
 	public IMessage onMessage(MessageToolRender message, MessageContext ctx) {
-		EntityPlayer player = tucs.Proxy.getPlayerByIDFromMessageContext(message.reqPlayer,ctx);
 		EntityPlayer me  = tucs.Proxy.getPlayerFromMessageContext(ctx);
 		NBTTagCompound nbt = message.nbt;
 		NBTTagCompound nbtt = NBTHelper.getPlayerNBT(me);

@@ -5,7 +5,7 @@ public class ItemAutoBowUpgrade extends ItemTUCSUpgrades {
 	public ItemAutoBowUpgrade(){
 
 		super();
-		this.setUnlocalizedName("AutoBowUpgrade");
+		this.setUnlocalizedName("autoBowUpgrade");
 
 	}
 

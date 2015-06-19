@@ -11,6 +11,7 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
+import com.black_dog20.tucs.block.BlockSoulbind;
 import com.black_dog20.tucs.client.model.SoulForgeModel;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -20,6 +21,7 @@ public class SoulForgeRender extends TileEntitySpecialRenderer implements ISimpl
 	
 	private SoulForgeModel model;
 	private static final ResourceLocation texture = new ResourceLocation("tucs:models/blocks/soulForge_texture.png");
+	
 	public static final int renderID = 	RenderingRegistry.getNextAvailableRenderId();
 	
 	public SoulForgeRender() {
@@ -59,7 +61,7 @@ public class SoulForgeRender extends TileEntitySpecialRenderer implements ISimpl
 
 	@Override
 	public int getRenderId() {
-		return renderID;
+		return BlockSoulbind.renderID;
 	}
 
 	@Override

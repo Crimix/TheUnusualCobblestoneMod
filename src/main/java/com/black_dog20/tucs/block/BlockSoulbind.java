@@ -9,10 +9,10 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.client.render.SoulForgeRender;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -21,6 +21,7 @@ public class BlockSoulbind extends BlockTUCS implements ITileEntityProvider{
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
 
+	public static final int renderID = 	RenderingRegistry.getNextAvailableRenderId();
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
 
@@ -40,7 +41,7 @@ public class BlockSoulbind extends BlockTUCS implements ITileEntityProvider{
 	}
     @Override
     public int getRenderType() {
-            return SoulForgeRender.renderID;
+            return renderID;
     }
     
     @Override

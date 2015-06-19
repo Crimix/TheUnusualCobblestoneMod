@@ -1,17 +1,24 @@
 package com.black_dog20.tucs.nei.handlers;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.OreDictionary;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
+import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
+import com.black_dog20.tucs.client.gui.GuiAncientTable;
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
+import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.tool.ItemTLSOTD;
 import com.black_dog20.tucs.reference.Reference;
 public class ShapedAncientTableHandler extends TemplateRecipeHandler {
@@ -58,11 +65,21 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
                 p.generatePermutations();
         }
     }
-
+	
+    @Override
+    public void loadTransferRects() {
+        transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18), Reference.MOD_ID+"AncientTable"));
+    }
+	
 	@Override
 	public String getRecipeName() {
 		return "Ancient Table";
 	}
+	
+    @Override
+    public Class<? extends GuiContainer> getGuiClass() {
+        return GuiAncientTable.class;
+    }
 
 	@Override
 	public String getGuiTexture() {
@@ -80,7 +97,7 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	
 	 @Override
 	 public void loadCraftingRecipes(String outputId, Object... results) {
-			 if (outputId.equals("ancient table") && getClass() == ShapedAncientTableHandler.class) {
+			 if (outputId.equals(Reference.MOD_ID+"AncientTable") && getClass() == ShapedAncientTableHandler.class) {
 				for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
 	            	CachedShapedAncientTableRecipe recipe = null;
 	                if (irecipe instanceof AncientTableShapedRecipes)

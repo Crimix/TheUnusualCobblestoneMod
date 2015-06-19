@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 
 import com.black_dog20.tucs.client.settings.Keybindings;
@@ -27,7 +28,7 @@ public class KeyInputEventHandler {
 
 	@SubscribeEvent
 	public void handleKeyInputEvent(InputEvent.KeyInputEvent event){
-		if(Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly){
+		if(Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly && ConfigurationHandler.Server_Flying_Allowed){
 			if(FMLClientHandler.instance().getClientPlayerEntity() != null){
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);

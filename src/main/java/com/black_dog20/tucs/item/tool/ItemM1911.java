@@ -28,7 +28,7 @@ public class ItemM1911 extends ItemBowTUCS {
     	this.setFull3D();
         this.maxStackSize = 1;
         this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
-        this.setUnlocalizedName("M1911");
+        this.setUnlocalizedName("m1911");
         this.upgradeAble = upgrade;
     }
 	

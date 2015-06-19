@@ -7,7 +7,7 @@ public class ItemM1911Ammo extends ItemTUCS {
 	public ItemM1911Ammo()
     {
         this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
-        this.setUnlocalizedName("Ammo");
+        this.setUnlocalizedName("ammo");
     }
 
 }

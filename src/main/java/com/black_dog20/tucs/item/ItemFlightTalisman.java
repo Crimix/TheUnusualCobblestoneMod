@@ -38,11 +38,11 @@ public class ItemFlightTalisman extends ItemTUCS{
 	
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
-		if(MinecraftServer.getServer().isFlightAllowed()){
-			List.add("Flying: " + EnumChatFormatting.GREEN + MinecraftServer.getServer().isFlightAllowed());
+		if(ConfigurationHandler.Server_Flying_Allowed){
+			List.add("Flying: " + EnumChatFormatting.GREEN + ConfigurationHandler.Server_Flying_Allowed);
 		}
 		else{
-			List.add("Flying: " + EnumChatFormatting.RED + MinecraftServer.getServer().isFlightAllowed());
+			List.add("Flying: " + EnumChatFormatting.RED + ConfigurationHandler.Server_Flying_Allowed);
 		}
 		if(ConfigurationHandler.Allow_To_Fly){
 			List.add("Tucs flight: " + EnumChatFormatting.GREEN + ConfigurationHandler.Allow_To_Fly);

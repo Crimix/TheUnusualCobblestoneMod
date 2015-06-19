@@ -50,8 +50,8 @@ public class ItemInfoHandler implements ICraftingHandler{
 			String info = recipes.get(recipe);
 			String name = positionedStacks.get(recipe).item.getDisplayName();
 			FontRenderer render = Minecraft.getMinecraft().fontRenderer;
-			render.drawSplitString(StatCollector.translateToLocal(info), 10, 25, 150, 0 );
-			render.drawSplitString(StatCollector.translateToLocal(name), 28, 8, 150, 0 );
+			render.drawSplitString(StatCollector.translateToLocal(info), 10, 30, 140, 0 );
+			render.drawSplitString(StatCollector.translateToLocal(name), 28, 4, 140, 0 );
 		}
 	}
 

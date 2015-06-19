@@ -51,7 +51,7 @@ item.tucs:bootsCobblestonedium.name=The Legendary Boots of The Warrior
 item.tucs:chestplateCobblestonedium.name=The Legendary Chestplate of The Warrior
 item.tucs:m1911.name=M1911
 item.tucs:ammo.name=M1911 Ammo
-item.tucs:TLSOTD.name=The Legendary Sword of The Destroyer of worlds
+item.tucs:TLSOTD.name=§cThe Legendary Sword of The Destroyer of worlds
 
 
 //Upgrades
@@ -156,9 +156,55 @@ tucs.tips.infinity=Infinity Arrow
 tile.tucs:ancientTable.info=This table is used to craft the higher tier of items and tools, it has been used for many centuries to make the finest tools of stone. It is also the only table that can handle the alloy of diamonds and cobblestone. This Crafting Table can also be used to vailla recipes
 item.tucs:ingotCobblestoneium.info=This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. This Material have the combined durability of iron and stone 
 tile.tucs:soulbinder.info=A table that can be used to bind any item to the player holding it.
+item.tucs:flightTalisman.info=This talisman gives the user the ability to fly, it accepts one upgrade, a soulbound upgrade.
+item.tucs:TLSOC.info=This sword does some serious damage, it can hold 3 upgrades.
+item.tucs:ingotCobblestonedium.info=This ingot is an alloy of diamond and cobblestone. This ingot have the combined durability of diamond and stone.
+item.tucs:ingotYellowstoneium.info=This ingot is just stone and dye. You wil get 2 pr crafting. it is kind of plain an nice to craft with
+item.tucs:cobblestoneLighter.info=If enabled can be used to light fires, like the flint and steel. it is also used in crafting
+item.tucs:cobblestonediumLighter.info=If enabled can be used to light fires, like the flint and steel. it is also used in crafting
+item.tucs:cobblestoneiumLighter.info=If enabled can be used to light fires, like the flint and steel. it is also used in crafting
+item.tucs:ShovelCobblestoneium.info=A tool that is a bit better then iron
+item.tucs:SwordCobblestoneium.info=A tool that is a bit better then iron
+item.tucs:HatchetCobblestoneium.info=A tool that is a bit better then iron
+item.tucs:HoeCobblestoneium.info=A tool that is a bit better then iron
+item.tucs:PickaxeCobblestoneium.info=A tool that is a bit better then iron
+item.tucs:helmetCobblestoneium.info=A piece of armor that is a bit better then iron armor
+item.tucs:leggingsCobblestoneium.info=A piece of armor that is a bit better then iron armor
+item.tucs:bootsCobblestoneium.info=A piece of armor that is a bit better then iron armor
+item.tucs:chestplateCobblestoneium.info=A piece of armor that is a bit better then iron armor
+item.tucs:cobbleCoal.info=Used to craft torches and as fuel in the ancient forge
+item.tucs:TLBOTB.info=An axe and a weapon, good at doing both.
+item.tucs:TLHOWF.info=Just don't ask. Oh and it can be upgraded to help you in ways you can't yet understand.
+item.tucs:TLPOLM.info=This legendary pickaxe will serve you through good and bad times.
+item.tucs:TLSOHD.info=This legendary shovel has made digging holes easier than ever
+item.tucs:craftingTalisman.info=A portable version of the ancient table
+item.tucs:torchTalisman.info=Gives the wearer night vision on command
+tem.tucs:bowTLBOTH.info=A bow so powerful that it should not have been made
+item.tucs:helmetCobblestonedium.info=Part of an upgradeable powerful armor set
+item.tucs:leggingsCobblestonedium.info=Part of an upgradeable powerful armor set
+item.tucs:bootsCobblestonedium.info=Part of an upgradeable powerful armor set
+item.tucs:chestplateCobblestonedium.info=Part of an upgradeable powerful armor set
+item.tucs:m1911.info=Cobblestone gun, WHAT! Oh its OP never mind it.
+item.tucs:TLSOTD.info=The sword that has been know to even destroy compillers. It's recipe has long been lost
 
 //Lore
 tile.tucs:soulbinder.lore=No one knows how and when the table was made.
+item.tucs:flightTalisman.lore=This is the legendary Talisman of flight which was given by the Semi god of Norway
+item.tucs:TLSOC.lore=This sword has the power of the legendary fighter.This sword is crafted by the finest materials ever known
+item.tucs:cobblestoneLighter.lore=Nobody knows when it was made, it is not an ancient technology.
+item.tucs:cobblestonediumLighter.lore=Nobody knows when it was made, it is not an ancient technology.
+item.tucs:cobblestoneiumLighter.lore=Nobody knows when it was made, it is not an ancient technology.
+item.tucs:cobbleCoal.lore=It has been know to be used in the ancient forge
+item.tucs:TLBOTB.lore=The legendary BattleAxe will slay you'r enemies like anything you have ever seen
+item.tucs:TLHOWF.lore=The legendary hoe will make farming a breeze
+item.tucs:TLPOLM.lore=This legendary pickaxe was used by the lost miner.
+item.tucs:TLSOHD.lore=The legendary shovel was first seen in the late 90's, wait what?
+item.tucs:helmetCobblestonedium.lore=Used by a god. You know it is good
+item.tucs:leggingsCobblestonedium.lore=Used by a god. You know it is good
+item.tucs:bootsCobblestonedium.lore=Used by a god. You know it is good
+item.tucs:chestplateCobblestonedium.lore=Used by a god. You know it is good
+item.tucs:m1911.lore=Maybe it was the wired farmer who made it to protect his crops
+item.tucs:TLSOTD.lore=§k unknown lore, it has not been know to man the last 1000 years. No man has ever been able to wield it.
 
 //MSG
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!

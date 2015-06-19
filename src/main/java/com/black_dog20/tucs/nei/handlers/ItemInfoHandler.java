@@ -28,7 +28,7 @@ public class ItemInfoHandler implements ICraftingHandler{
 
 	@Override
 	public String getRecipeName() {
-		return "Information";
+		return "Information / Lore";
 	}
 
 	@Override
@@ -123,12 +123,16 @@ public class ItemInfoHandler implements ICraftingHandler{
 
 		ItemInfoHandler infoHandler = new ItemInfoHandler();
 		if(results.length > 0 && (results[0] instanceof ItemStack) && (((ItemStack) results[0]).getItem() instanceof ItemBlock) && (((ItemBlock)((ItemStack) results[0]).getItem()).field_150939_a instanceof ITucsItem)){
-			String unlocal = ((ItemBlock)((ItemStack) results[0]).getItem()).field_150939_a.getUnlocalizedName()+".info";
-			return add(infoHandler, unlocal, results[0]);
+			String unlocalinfo = ((ItemBlock)((ItemStack) results[0]).getItem()).field_150939_a.getUnlocalizedName()+".info";
+			String unlocallore = ((ItemBlock)((ItemStack) results[0]).getItem()).field_150939_a.getUnlocalizedName()+".lore";
+			add(infoHandler, unlocalinfo, results[0]);
+			return add(infoHandler, unlocallore, results[0]);
 		}
 		if(results.length > 0 && (results[0] instanceof ItemStack && ((ItemStack)results[0]).getItem() instanceof ITucsItem )){
-			String unlocal = ((ItemStack)results[0]).getUnlocalizedName()+".info";
-			return add(infoHandler, unlocal, results[0]);
+			String unlocalinfo = ((ItemStack)results[0]).getUnlocalizedName()+".info";
+			String unlocallore = ((ItemStack)results[0]).getUnlocalizedName()+".lore";
+			add(infoHandler, unlocalinfo, results[0]);
+			return add(infoHandler, unlocallore, results[0]);
 		}
 		return this;
 	}

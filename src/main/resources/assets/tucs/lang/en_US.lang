@@ -131,7 +131,7 @@ tile.tucs:oreCobblestoneium.name=Cobblestoneium Ore
 tile.tucs:blockCobblestoneium.name=Cobblestoneium Block
 tile.tucs:blockCobblestonedium.name=Cobblestonedium Block
 tile.tucs:ancientForge.name=Ancient Forge
-tile.tucs:soulbinder.name=Soul Binder
+tile.tucs:soulbinder.name=Soul Forge
 
 //Container
 container.tucs:AncientForge=Ancient Forge
@@ -155,6 +155,10 @@ tucs.tips.infinity=Infinity Arrow
 //Info
 tile.tucs:ancientTable.info=This table is used to craft the higher tier of items and tools, it has been used for many centuries to make the finest tools of stone. It is also the only table that can handle the alloy of diamonds and cobblestone. This Crafting Table can also be used to vailla recipes
 item.tucs:ingotCobblestoneium.info=This alloy combines the power of iron and cobblestone to make a ingot stronger than iron. This Material have the combined durability of iron and stone 
+tile.tucs:soulbinder.info=A table that can be used to bind any item to the player holding it.
+
+//Lore
+tile.tucs:soulbinder.lore=No one knows how and when the table was made.
 
 //MSG
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!

@@ -8,6 +8,7 @@ import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
 import com.black_dog20.tucs.client.render.RoundRender;
 import com.black_dog20.tucs.client.render.SoulForgeRender;
+import com.black_dog20.tucs.client.render.TUCSPickaxeRender;
 import com.black_dog20.tucs.client.render.TUCSUpgradeOverlayRender;
 import com.black_dog20.tucs.client.render.TUCSWeaponOverlayRender;
 import com.black_dog20.tucs.client.settings.Keybindings;
@@ -72,6 +73,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenders() {
 		MinecraftForgeClient.registerItemRenderer(ModItems.TUCSBow, new TUCSWeaponOverlayRender());
 		MinecraftForgeClient.registerItemRenderer(ModItems.M1911, new TUCSWeaponOverlayRender());
+		MinecraftForgeClient.registerItemRenderer(ModItems.TLPOLM, new TUCSPickaxeRender());
 		upgrades();
 		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
 		RenderingRegistry.registerBlockHandler(new SoulForgeRender());

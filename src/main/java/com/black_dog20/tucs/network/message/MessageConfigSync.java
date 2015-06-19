@@ -26,7 +26,6 @@ public class MessageConfigSync  implements IMessage, IMessageHandler<MessageConf
 		buf.writeBoolean(ConfigurationHandler.Allow_To_Fly);
 		buf.writeInt(ConfigurationHandler.Max_Luck_Upgrade);
 		buf.writeBoolean(MinecraftServer.getServer().isFlightAllowed());
-		System.out.println(MinecraftServer.getServer().isFlightAllowed());
 	}
 
 	@Override

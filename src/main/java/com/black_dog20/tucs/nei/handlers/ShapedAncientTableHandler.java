@@ -111,7 +111,7 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 					continue;
 
 				recipe.computeVisuals();
-				if(!(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && checkRecipe(recipe))){
+				if(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && this.checkRecipe(recipe)){
 					arecipes.add(recipe);
 				}
 			}
@@ -121,36 +121,32 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	}
 
 	private boolean checkRecipe(CachedShapedAncientTableRecipe recipe){
-
-		if(recipe.result.item.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
-			if(checkRecipeForItem(ModItems.cobblestonediumLighter, recipe.ingredients)){
-				if(checkNameOfUser(Minecraft.getMinecraft().thePlayer)){
-					return false;
-				}
-				return true;
-			}
-			return true;
+		boolean result = true;
+		if(ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) && checkRecipeForItem(ModItems.cobblestonediumLighter, recipe.ingredients) && checkNameOfUser(Minecraft.getMinecraft().thePlayer)){
+			result = true;
 		}
-		else if (recipe.result.item.getItem() instanceof ItemTLSOTD) {
-			if(checkNameOfUser(Minecraft.getMinecraft().thePlayer)){
-				return false;
-			}
-			return true;
+		else if(ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
+			result = false;
 		}
-
-		return true;
+		if (recipe.result.item.getItem() instanceof ItemTLSOTD && checkNameOfUser(Minecraft.getMinecraft().thePlayer)) {
+			result = true;
+		}
+		else if(recipe.result.item.getItem() instanceof ItemTLSOTD){
+			result = false;
+		}
+		return result;
 	}
 
 	private boolean checkNameOfUser(EntityPlayer player){
+		boolean result = false;
 		if(player.getDisplayName().toLowerCase().equals("black_dog20")){
-			return true;
+
+			result = true;
 		}
 		else if (player.getDisplayName().toLowerCase().equals("simmebabz")) {
-			return true;
+			result = true;
 		}
-		else{
-			return false; 
-		}
+		return result; 
 	}
 
 	private boolean checkRecipeForItem(Item compareItem, ArrayList<PositionedStack> recipe){
@@ -174,7 +170,7 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 					continue;
 
 				recipe.computeVisuals();
-				if(!(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && checkRecipe(recipe))){
+				if(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && checkRecipe(recipe)){
 					arecipes.add(recipe);
 				}
 			}
@@ -190,7 +186,7 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 				recipe.computeVisuals();
 				if (recipe.contains(recipe.ingredients, ingredient)) {
 					recipe.setIngredientPermutation(recipe.ingredients, ingredient);
-					if(!(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && checkRecipe(recipe))){
+					if(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && checkRecipe(recipe)){
 						arecipes.add(recipe);
 					}
 				}

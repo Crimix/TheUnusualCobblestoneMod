@@ -1,7 +1,6 @@
 package com.black_dog20.tucs.handler;
 
 import java.io.File;
-import java.io.Serializable;
 
 import net.minecraftforge.common.config.Configuration;
 

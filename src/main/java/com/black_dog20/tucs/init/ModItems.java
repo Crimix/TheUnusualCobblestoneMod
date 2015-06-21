@@ -14,6 +14,7 @@ import com.black_dog20.tucs.item.ItemIngotYellowstoneium;
 import com.black_dog20.tucs.item.ItemM1911Ammo;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
 import com.black_dog20.tucs.item.ItemTorchTalisman;
+import com.black_dog20.tucs.item.armor.ItemAirTank;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
@@ -26,6 +27,7 @@ import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestoneium;
+import com.black_dog20.tucs.item.armor.ItemScubaMask;
 import com.black_dog20.tucs.item.crafting.ItemHatchetHead;
 import com.black_dog20.tucs.item.crafting.ItemHoeHead;
 import com.black_dog20.tucs.item.crafting.ItemPickaxeHead;
@@ -127,11 +129,12 @@ public class ModItems {
 	public static final ItemM1911 M1911 = new ItemM1911(false);
 	public static final ItemM1911Ammo ammo = new ItemM1911Ammo();
 	
-	
 	//Mics items
 	public static final ItemBook TUCSbook = new ItemBook();
 	public static final ItemTUCSDebug TUCSdebug = new ItemTUCSDebug();
 	public static final ItemCobbleCoal CobbleCoal = new ItemCobbleCoal();
+	public static final ItemScubaMask ScubaMask = new ItemScubaMask(ArmorMaterial.IRON, 0, "scubaMask");
+	public static final ItemAirTank AirTank = new ItemAirTank(ArmorMaterial.IRON, 1, "airtank");
 	
 	//Lighters
 	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
@@ -240,6 +243,7 @@ public class ModItems {
 	
 	public static void init(){
 		
+		
 		//TOOLS
 		GameRegistry.registerItem(TLSOC, "TLSOC");
 		GameRegistry.registerItem(TLBOTB, "TLBOTB");
@@ -263,6 +267,8 @@ public class ModItems {
 		GameRegistry.registerItem(leggingsCobblestonedium, "leggingsCobblestonedium");
 		GameRegistry.registerItem(bootsCobblestonedium, "bootsCobblestonedium");
 		GameRegistry.registerItem(chestplateCobblestonedium, "chestplateCobblestonedium");
+		GameRegistry.registerItem(ScubaMask, "scubaMask");
+		GameRegistry.registerItem(AirTank, "AirTank");
 		
 		
 		//INGOTS
@@ -377,11 +383,6 @@ public class ModItems {
 		GameRegistry.registerItem(TalismanBase, "TalismanBase");
 		GameRegistry.registerItem(upgradBase, "upgradBase");
 		GameRegistry.registerItem(upgradBaseT2, "upgradBaseT2");
-
-
-		
-		
-
 	}
 
 }

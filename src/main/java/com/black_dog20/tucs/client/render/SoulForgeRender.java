@@ -11,7 +11,7 @@ import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
 
-import com.black_dog20.tucs.block.BlockSoulbind;
+import com.black_dog20.tucs.block.BlockSoulForge;
 import com.black_dog20.tucs.client.model.SoulForgeModel;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -61,7 +61,7 @@ public class SoulForgeRender extends TileEntitySpecialRenderer implements ISimpl
 
 	@Override
 	public int getRenderId() {
-		return BlockSoulbind.renderID;
+		return BlockSoulForge.renderID;
 	}
 
 	@Override

@@ -6,20 +6,23 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.client.gui.GuiAirMaker;
 import com.black_dog20.tucs.client.gui.GuiAncientForge;
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
 import com.black_dog20.tucs.client.gui.GuiFlightTalisman;
-import com.black_dog20.tucs.client.gui.GuiSoulbinder;
+import com.black_dog20.tucs.client.gui.GuiSoulForge;
 import com.black_dog20.tucs.client.gui.GuiTUCSBook;
 import com.black_dog20.tucs.client.gui.GuiUpgradeTools;
+import com.black_dog20.tucs.container.ContainerAirMaker;
 import com.black_dog20.tucs.container.ContainerAncientForge;
 import com.black_dog20.tucs.container.ContainerAncientTable;
 import com.black_dog20.tucs.container.ContainerCraftingTalisman;
 import com.black_dog20.tucs.container.ContainerDummy;
 import com.black_dog20.tucs.container.ContainerFlightTalisman;
-import com.black_dog20.tucs.container.ContainerSoulbinder;
+import com.black_dog20.tucs.container.ContainerSoulForge;
 import com.black_dog20.tucs.container.ContainerUpgradeTools;
 import com.black_dog20.tucs.init.ModBlocks;
+import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
@@ -63,7 +66,14 @@ public class GuiHandler implements IGuiHandler {
 		else if(ID == tucs.guiSoulBinder){
 			if(entity != null) {
 				if (entity instanceof TileEntitySoulForge) {
-					return new ContainerSoulbinder(player.inventory, (TileEntitySoulForge) entity);
+					return new ContainerSoulForge(player.inventory, (TileEntitySoulForge) entity);
+				}
+			}
+		}
+		else if(ID == tucs.guiAirMaker){
+			if(entity != null) {
+				if (entity instanceof TileEntityAirMaker) {
+					return new ContainerAirMaker(player.inventory, (TileEntityAirMaker) entity);
 				}
 			}
 		}
@@ -104,7 +114,14 @@ public class GuiHandler implements IGuiHandler {
 		else if(ID == tucs.guiSoulBinder){
 			if(entity != null) {
 				if (entity instanceof TileEntitySoulForge) {
-					return new GuiSoulbinder(player.inventory, (TileEntitySoulForge) entity);
+					return new GuiSoulForge(player.inventory, (TileEntitySoulForge) entity);
+				}
+			}
+		}
+		else if(ID == tucs.guiAirMaker){
+			if(entity != null) {
+				if (entity instanceof TileEntityAirMaker) {
+					return new GuiAirMaker(player.inventory, (TileEntityAirMaker) entity);
 				}
 			}
 		}

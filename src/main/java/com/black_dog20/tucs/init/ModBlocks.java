@@ -1,12 +1,13 @@
 package com.black_dog20.tucs.init;
 
 
+import com.black_dog20.tucs.block.BlockAirMaker;
 import com.black_dog20.tucs.block.BlockAncientForge;
 import com.black_dog20.tucs.block.BlockAncientTable;
 import com.black_dog20.tucs.block.BlockCobblestonedium;
 import com.black_dog20.tucs.block.BlockCobblestoneium;
 import com.black_dog20.tucs.block.BlockOreCobblestoneium;
-import com.black_dog20.tucs.block.BlockSoulbind;
+import com.black_dog20.tucs.block.BlockSoulForge;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.reference.Reference;
 
@@ -21,7 +22,8 @@ public class ModBlocks {
 	public static final BlockCobblestonedium blockCobblestonedium = new BlockCobblestonedium();
 	public static final BlockAncientForge blockAncientForge = (BlockAncientForge) new BlockAncientForge(false).setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	public static final BlockAncientForge blockAncientForge_lit = new BlockAncientForge(true);
-	public static final BlockSoulbind blockSoulbind = new BlockSoulbind();
+	public static final BlockSoulForge blockSoulbind = new BlockSoulForge();
+	public static final BlockAirMaker blockAirMaker = new BlockAirMaker();
 
 	public static void init()
 	{
@@ -32,6 +34,6 @@ public class ModBlocks {
 		GameRegistry.registerBlock(blockAncientForge, "blockAncientForge");
 		GameRegistry.registerBlock(blockAncientForge_lit, "blockAncientForge_lit");
 		GameRegistry.registerBlock(blockSoulbind, "blockSoulbind");
-
+		GameRegistry.registerBlock(blockAirMaker, "blockAirMaker");
 	}
 }

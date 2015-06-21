@@ -1,9 +1,11 @@
 package com.black_dog20.tucs.handler;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
@@ -19,6 +21,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -30,6 +34,8 @@ import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.armor.IScubaAirTank;
+import com.black_dog20.tucs.item.armor.IScubaMask;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
@@ -51,10 +57,13 @@ import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+
+
 public class EventHandler {
 	NBTTagCompound nbt;
 	boolean hasChanged = false;
 
+	static final DecimalFormat df = new DecimalFormat("#0.00");
 
 	@SubscribeEvent
 	public void onEntityDeath(PlayerDropsEvent event) {
@@ -123,9 +132,29 @@ public class EventHandler {
 			else if(!nbtTagCompound.hasKey(NBTTags.NoArrow)){
 				list.remove(I18n.format("tucs.tips.infinity"));
 			}
+			if(nbtTagCompound.hasKey("StoredAir")){
+				double procent = (nbtTagCompound.getInteger("StoredAir")/nbtTagCompound.getDouble("MaxAir"))*100;
+				list.add("Air: " + df.format(procent)+"%");
+			}
 
 		}
 	}
+	
+	@SubscribeEvent
+	public void onGuiRender(RenderGameOverlayEvent event){
+	    if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
+	    {      
+	      return;
+	    }
+		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+		if(checkScubaGear(player) && player.isInWater()){
+			ItemStack scubatank = (player.inventory.armorItemInSlot(2));
+			IScubaAirTank tank = (IScubaAirTank) scubatank.getItem();
+			double procent = (tank.getAir(scubatank)/tank.getMaxAir())*100;
+			Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(df.format(procent)+"%", 2, 2, 0xffffff);
+		}
+	}
+	
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		EntityPlayer player = event.player;
@@ -160,12 +189,33 @@ public class EventHandler {
 			NBTTagCompound nbtt = NBTHelper.getPlayerNBT(player);
 			allowFlight(player, nbtt);
 			checkForArmor(player);
+			if(checkScubaGear(player) && player.isInsideOfMaterial(Material.water)){
+				
+				ItemStack scubatank = (player.inventory.armorItemInSlot(2));
+				IScubaAirTank tank = (IScubaAirTank) scubatank.getItem();
+				
+				if(tank.getAir(scubatank)>0){
+					player.setAir(300);
+					tank.decAir(scubatank);
+				}
+			}
 			setNBTData(player, nbtt);
 			if(hasChanged){
 				send(player);
 			}
 
 		}
+	}
+	
+	private boolean checkScubaGear(EntityPlayer player){
+		boolean result = false;
+		if((player.inventory.armorItemInSlot(3) != null) && ((player.inventory.armorItemInSlot(3).getItem() instanceof IScubaMask))){
+			if((player.inventory.armorItemInSlot(2) != null) && ((player.inventory.armorItemInSlot(2).getItem() instanceof IScubaAirTank))){
+				result = true;
+			}
+		}
+		return result;
+			
 	}
 
 	private void allowFlight(EntityPlayer player, NBTTagCompound nbtt) {

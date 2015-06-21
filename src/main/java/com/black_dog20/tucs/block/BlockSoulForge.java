@@ -16,7 +16,7 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSoulbind extends BlockTUCS implements ITileEntityProvider{
+public class BlockSoulForge extends BlockTUCS implements ITileEntityProvider{
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
@@ -31,7 +31,7 @@ public class BlockSoulbind extends BlockTUCS implements ITileEntityProvider{
 	@SideOnly(Side.CLIENT)
 	private IIcon iconBot;
 
-	public BlockSoulbind(){
+	public BlockSoulForge(){
 
 		super(Material.wood);
 
@@ -71,7 +71,6 @@ public class BlockSoulbind extends BlockTUCS implements ITileEntityProvider{
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata) {
 		return metadata == 0 && side == 3 ? this.iconFront : side == 1 ? this.iconTop : (side == 0 ? this.iconBot : (side == metadata ? this.iconFront : this.blockIcon));
-		//return side == 1 ? this.iconTop : (side == 0 ? this.iconBot : (side != metadata ? this.blockIcon : this.iconFront));
 	}
 
 

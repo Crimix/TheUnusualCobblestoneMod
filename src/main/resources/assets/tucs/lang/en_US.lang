@@ -52,7 +52,8 @@ item.tucs:chestplateCobblestonedium.name=The Legendary Chestplate of The Warrior
 item.tucs:m1911.name=M1911
 item.tucs:ammo.name=M1911 Ammo
 item.tucs:TLSOTD.name=§cThe Legendary Sword of The Destroyer of worlds
-
+item.tucs:scubaMask.name=Scuba Mask
+item.tucs:airtank.name=Air Tank
 
 //Upgrades
 item.tucs:looting1Upgrade.name=Luck 1 Upgrade
@@ -132,6 +133,7 @@ tile.tucs:blockCobblestoneium.name=Cobblestoneium Block
 tile.tucs:blockCobblestonedium.name=Cobblestonedium Block
 tile.tucs:ancientForge.name=Ancient Forge
 tile.tucs:soulbinder.name=Soul Forge
+tile.tucs:airMaker.name=Air Compressor
 
 //Container
 container.tucs:AncientForge=Ancient Forge

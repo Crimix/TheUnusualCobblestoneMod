@@ -9,13 +9,13 @@ import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
-public class ContainerSoulbinder extends Container{
+public class ContainerSoulForge extends Container{
 
 	private int x, y, z;
 	private World world;
 	private TileEntitySoulForge tileSoulForge;
 	
-	 public ContainerSoulbinder(InventoryPlayer IPlayer, TileEntitySoulForge tileSoulForge){
+	 public ContainerSoulForge(InventoryPlayer IPlayer, TileEntitySoulForge tileSoulForge){
 			this.addSlotToContainer(new Slot(tileSoulForge, 0, 75, 37));
 			bindPlayerInventory(IPlayer);
 			this.x = tileSoulForge.xCoord;

@@ -14,6 +14,7 @@ import com.black_dog20.tucs.init.Recipes;
 import com.black_dog20.tucs.network.PacketHandler;
 import com.black_dog20.tucs.proxies.IProxy;
 import com.black_dog20.tucs.reference.Reference;
+import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 import com.black_dog20.tucs.utility.LogHelper;
@@ -45,6 +46,7 @@ public class tucs {
 	public static final int guiIDCraftingTalisman = 5;
 	public static final int guiIDUpgradeTools = 6;
 	public static final int guiSoulBinder = 7;
+	public static final int guiAirMaker = 8;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
@@ -73,6 +75,7 @@ public class tucs {
 		Proxy.keyinput();
 		Recipes.init();
 		GameRegistry.registerTileEntity(TileEntityAncientForge.class, "AncientForge");
+		GameRegistry.registerTileEntity(TileEntityAirMaker.class, "AirMaker");
 		GameRegistry.registerTileEntity(TileEntitySoulForge.class, "SoulForge");
 		
 	}

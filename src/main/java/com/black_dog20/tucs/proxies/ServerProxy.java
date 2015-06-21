@@ -1,7 +1,6 @@
 package com.black_dog20.tucs.proxies;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.server.MinecraftServer;
 
 import com.black_dog20.tucs.tucs;
 

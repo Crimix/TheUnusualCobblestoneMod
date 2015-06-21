@@ -1,12 +1,10 @@
 package com.black_dog20.tucs.network.message;
 
 
-import net.minecraft.server.MinecraftServer;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.server.MinecraftServer;
 
-import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
-import com.black_dog20.tucs.proxies.ServerProxy;
 
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;

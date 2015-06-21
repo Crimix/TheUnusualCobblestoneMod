@@ -12,7 +12,6 @@ import net.minecraft.item.crafting.IRecipe;
 import codechicken.nei.NEIClientUtils;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
 import com.black_dog20.tucs.crafting.AncientTableManager;

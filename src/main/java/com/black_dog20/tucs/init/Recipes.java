@@ -50,12 +50,14 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.chestplateCobblestoneium, new Object[] {"c c" , "ccc" , "ccc" , 'c', "ingotCobblestoneium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.leggingsCobblestoneium, new Object[] {"ccc" , "c c" , "c c" , 'c', "ingotCobblestoneium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.bootsCobblestoneium, new Object[] {"c c" , "c c" , 'c', "ingotCobblestoneium"}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.ScubaMask, new Object[] {"yyy" , "ygy","yyy" , 'y', ModItems.ingotYellowstoneium,'g', Blocks.glass_pane}));
+		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.AirTank, new Object[] {"cyc" , "c c","ccc" , 'y', ModItems.ingotYellowstoneium,'c', ModItems.ingotCobblestoneium}));
 		
 		//Blocks
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockCobblestoneium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , ModItems.ingotCobblestoneium});
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestoneium , 9) , new ItemStack(ModBlocks.blockCobblestoneium));
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.ancientTable), new Object[] {"gcg" , "cbc" , "gcg" , 'g' , yellowstoneium, 'c', ModItems.ingotCobblestoneium , 'b' , new ItemStack(Blocks.crafting_table)});
-		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockSoulbind),new Object[]{"ggg","gcg","ggg",'g', new ItemStack(ModItems.soulboundUpgrade),'c',new ItemStack(Items.nether_star)});
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockAirMaker), new Object[] {"ggg" , "gfg" , "ggg" , 'g' , yellowstoneium, 'f' , Blocks.furnace});
 		
 		//Items
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.ingotCobblestoneium), new ItemStack(ModBlocks.oreCobblestoneium), new ItemStack(ModItems.cobblestoneLighter, 1, OreDictionary.WILDCARD_VALUE));
@@ -79,6 +81,7 @@ public class Recipes {
 		//Blocks
 		TucsRegistry.addRecipe(new ItemStack(ModBlocks.blockCobblestonedium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , ModItems.ingotCobblestonedium });
 		TucsRegistry.addRecipe(new ItemStack(ModBlocks.blockAncientForge) , new Object[] {"ggg", "gcg" , "glg" , 'c' , ModBlocks.blockCobblestoneium, 'g', yellowstoneium, 'l' ,ModItems.cobblestoneiumLighter });
+		TucsRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockSoulbind),new Object[]{"ggg","gcg","ggg",'g', new ItemStack(ModItems.soulboundUpgrade),'c',new ItemStack(Items.nether_star)});
 		
 		//Items
 		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSbook), new Object[]{"ccc", "cbc", "ccc", 'c', Blocks.cobblestone, 'b', Items.book});

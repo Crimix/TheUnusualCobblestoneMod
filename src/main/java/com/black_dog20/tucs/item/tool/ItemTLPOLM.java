@@ -125,7 +125,7 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem{
 		}
 		if (player.canPlayerEdit(x, y, z, side, item) && player.inventory.hasItemStack(new ItemStack(Blocks.torch))){
 			if (world.isAirBlock(x, y, z) && canPlaceBlockAt(world, x, y, z) && world.setBlock(x, y, z, Blocks.torch)){
-				player.inventory.decrStackSize(1,InventoryHelper.findTorch(player.inventory));
+				player.inventory.decrStackSize(InventoryHelper.findTorch(player.inventory),1);
 				return true;
 			}
 		}

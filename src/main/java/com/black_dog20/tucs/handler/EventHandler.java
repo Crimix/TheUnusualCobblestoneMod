@@ -140,6 +140,7 @@ public class EventHandler {
 		}
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onGuiRender(RenderGameOverlayEvent event){
 	    if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
@@ -301,7 +302,7 @@ public class EventHandler {
 	@SubscribeEvent
 	public void onPlayerLoginEvent(PlayerLoggedInEvent event){
 		if(!event.player.worldObj.isRemote){
-			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP)event.player);
+			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP) event.player);
 		}
 	}
 	

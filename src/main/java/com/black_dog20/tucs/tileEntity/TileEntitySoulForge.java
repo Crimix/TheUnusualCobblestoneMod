@@ -94,12 +94,14 @@ public class TileEntitySoulForge extends TileEntity implements IInventory {
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		NBTTagList nbttaglist = new NBTTagList();
-		NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-		nbttagcompound1.setByte("Slot", (byte)1);
-		this.slot.writeToNBT(nbttagcompound1);
-		nbttaglist.appendTag(nbttagcompound1);
-		nbt.setTag("Items", nbttaglist);
+		if(slot != null){
+			NBTTagList nbttaglist = new NBTTagList();
+			NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+			nbttagcompound1.setByte("Slot", (byte)1);
+			this.slot.writeToNBT(nbttagcompound1);
+			nbttaglist.appendTag(nbttagcompound1);
+			nbt.setTag("Items", nbttaglist);
+		}
 	}
 
 	public int getInventoryStackLimit()

@@ -1,11 +1,18 @@
 package com.black_dog20.tucs.item.armor;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
+import com.black_dog20.tucs.client.model.ScubaMask;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.Reference;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemScubaMask extends ItemArmorTUCS implements IScubaMask{
 	
@@ -31,4 +38,25 @@ public class ItemScubaMask extends ItemArmorTUCS implements IScubaMask{
 			return null;
 		}
 	}
+	
+	@Override
+    @SideOnly(Side.CLIENT)
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
+	{ 
+		ModelBiped armorModel = null; 
+		if(itemStack != null)
+		{ 
+			armorModel = new ScubaMask();
+			if(armorModel != null){ 
+				armorModel.bipedHead.showModel = armorSlot == 0; 
+				armorModel.isSneak = entityLiving.isSneaking(); 
+				armorModel.isRiding = entityLiving.isRiding(); 
+				armorModel.isChild = entityLiving.isChild(); 
+				return armorModel; 
+			} 
+		} 
+		return null; 
+	}
+	
+	
 }

@@ -30,6 +30,7 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import org.lwjgl.opengl.GL11;
 
@@ -182,6 +183,16 @@ public class EventHandler {
 		}
 		nbt.removeTag("SoulboundItems");
 	}
+	
+	@SubscribeEvent
+	public void playerBreakSpeed(PlayerEvent.BreakSpeed event){
+		if(event.entity instanceof EntityPlayer){
+			EntityPlayer player = (EntityPlayer) event.entity;
+			if(player.isInWater() && checkScubaGear(player)){
+				event.newSpeed = event.originalSpeed+1F;
+			}
+		}
+	}
 
 	@SubscribeEvent
 	public void onLivingUpdatePlayer(LivingUpdateEvent event){
@@ -191,7 +202,6 @@ public class EventHandler {
 			allowFlight(player, nbtt);
 			checkForArmor(player);
 			if(checkScubaGear(player) && player.isInsideOfMaterial(Material.water)){
-				
 				ItemStack scubatank = (player.inventory.armorItemInSlot(2));
 				IScubaAirTank tank = (IScubaAirTank) scubatank.getItem();
 				
@@ -200,6 +210,11 @@ public class EventHandler {
 					tank.decAir(scubatank);
 				}
 			}
+			if(player.isInWater() && checkScubaGear(player) && !player.capabilities.isFlying){
+				player.motionX *=1.2F;
+				player.motionZ *=1.2F;
+			}
+	
 			setNBTData(player, nbtt);
 			if(hasChanged){
 				send(player);

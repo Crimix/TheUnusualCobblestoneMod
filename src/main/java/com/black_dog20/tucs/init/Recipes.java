@@ -7,6 +7,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import com.black_dog20.tucs.handler.ConfigurationHandler;
+import com.black_dog20.tucs.item.armor.IScubaAirTank;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.TucsRegistry;
 
@@ -51,7 +52,10 @@ public class Recipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.leggingsCobblestoneium, new Object[] {"ccc" , "c c" , "c c" , 'c', "ingotCobblestoneium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.bootsCobblestoneium, new Object[] {"c c" , "c c" , 'c', "ingotCobblestoneium"}));
 		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.ScubaMask, new Object[] {"yyy" , "ygy","yyy" , 'y', ModItems.ingotYellowstoneium,'g', Blocks.glass_pane}));
-		GameRegistry.addRecipe(new ShapedOreRecipe(ModItems.AirTank, new Object[] {"cyc" , "c c","ccc" , 'y', ModItems.ingotYellowstoneium,'c', ModItems.ingotCobblestoneium}));
+		ItemStack AirTank = new ItemStack(ModItems.AirTank,1);
+		IScubaAirTank item = (IScubaAirTank)AirTank.getItem();
+		item.setNBT(AirTank);
+		GameRegistry.addRecipe(new ShapedOreRecipe(AirTank, new Object[] {"cyc" , "c c","ccc" , 'y', ModItems.ingotYellowstoneium,'c', ModItems.ingotCobblestoneium}));
 		
 		//Blocks
 		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockCobblestoneium) , new Object[] {"ccc", "ccc" , "ccc" , 'c' , ModItems.ingotCobblestoneium});

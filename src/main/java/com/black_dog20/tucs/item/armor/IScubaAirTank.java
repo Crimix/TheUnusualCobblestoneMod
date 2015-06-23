@@ -13,5 +13,5 @@ public interface IScubaAirTank {
 	public void removeAir(ItemStack Item, int amount);
 	public void setAir(ItemStack Item, int amount);
 	public void setMaxAir(ItemStack Item, int amount);
-
+	public void setNBT(ItemStack item);
 }

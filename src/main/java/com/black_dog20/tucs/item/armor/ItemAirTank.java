@@ -24,7 +24,7 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 		this.setNoRepair();
 		this.setMaxDamage(-1);
 	}
-	
+
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
@@ -42,87 +42,69 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 	public double getMaxAir() {
 		return MAX_AIR;
 	}
-	
+
 	@Override
 	public int getAir(ItemStack Item){
-		
-		if(Item.hasTagCompound()){
-			NBTTagCompound nbt= Item.getTagCompound();
-			
-			return nbt.getInteger("StoredAir");
-		}
-		return 0;
+
+		NBTTagCompound nbt = nbtTag(Item);
+		return nbt.getInteger("StoredAir");
 
 	}
-	
+
 	@Override
 	public void decAir(ItemStack Item){
-		
-		if(Item.hasTagCompound()){
-			NBTTagCompound nbt= Item.getTagCompound();
-			
-			nbt.setInteger("StoredAir",nbt.getInteger("StoredAir")-1);
-		}
+
+		NBTTagCompound nbt = nbtTag(Item);
+		nbt.setInteger("StoredAir",nbt.getInteger("StoredAir")-1);
 	}
 
 	@Override
 	public void addAir(ItemStack Item, int amount) {
-		if(Item.hasTagCompound()){
-			NBTTagCompound nbt= Item.getTagCompound();
-			
-			if(nbt.getInteger("StoredAir")+amount > MAX_AIR){
-				nbt.setInteger("StoredAir",MAX_AIR);
-			}else{
-				nbt.setInteger("StoredAir",nbt.getInteger("StoredAir")+amount);
-			}
+		NBTTagCompound nbt = nbtTag(Item);
+		if(nbt.getInteger("StoredAir")+amount > MAX_AIR){
+			nbt.setInteger("StoredAir",MAX_AIR);
+		}else{
+			nbt.setInteger("StoredAir",nbt.getInteger("StoredAir")+amount);
 		}
 	}
 
 	@Override
 	public void removeAir(ItemStack Item, int amount) {
-		if(Item.hasTagCompound()){
-			NBTTagCompound nbt= Item.getTagCompound();
-			
-			nbt.setInteger("StoredAir",nbt.getInteger("StoredAir")-amount);
-			if(nbt.getInteger("StoredAir")<0){
-				nbt.setInteger("StoredAir",0);
-			}
+		NBTTagCompound nbt = nbtTag(Item);
+		nbt.setInteger("StoredAir",nbt.getInteger("StoredAir")-amount);
+		if(nbt.getInteger("StoredAir")<0){
+			nbt.setInteger("StoredAir",0);
 		}
 	}
 
 	@Override
 	public void setAir(ItemStack Item, int amount) {
-		if(Item.hasTagCompound()){
-			NBTTagCompound nbt= Item.getTagCompound();
-			
-			nbt.setInteger("StoredAir",amount);
-		}
+		NBTTagCompound nbt = nbtTag(Item);
+		nbt.setInteger("StoredAir",amount);
 	}
 
 	@Override
 	public void setMaxAir(ItemStack Item, int amount) {
-		if(Item.hasTagCompound()){
-			NBTTagCompound nbt= Item.getTagCompound();
-			if(amount == 0){
-				nbt.setInteger("MaxAir",MAX_AIR);
-			}
-			else{
-				nbt.setInteger("MaxAir",amount);
-			}
+		NBTTagCompound nbt = nbtTag(Item);
+		if(amount == 0){
+			nbt.setInteger("MaxAir",MAX_AIR);
 		}
-	}
-	
-	@Override
-	public void onCreated(ItemStack Item, World world, EntityPlayer player) {
-		if(!Item.hasTagCompound()){
-			Item.stackTagCompound = new NBTTagCompound();
-			setMaxAir(Item, 0);
-			setAir(Item, 0);
+		else{
+			nbt.setInteger("MaxAir",amount);
 		}
 	}
 
-	
-	
+	private NBTTagCompound nbtTag(ItemStack item){
+		if(!item.hasTagCompound()){
+			item.stackTagCompound = new NBTTagCompound();
+			setMaxAir(item, 0);
+			setAir(item, 0);
+		}
+		return item.stackTagCompound;
+	}
+
+
+
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List subItems){
 		ItemStack Airtank = new ItemStack(ModItems.AirTank);
@@ -131,5 +113,14 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 		setAir(Airtank, MAX_AIR);
 		subItems.add(Airtank);
 	}
-	
+
+	@Override
+	public void setNBT(ItemStack item) {
+		if(!item.hasTagCompound()){
+			item.stackTagCompound = new NBTTagCompound();
+			setMaxAir(item, 0);
+			setAir(item, 0);
+		}
+	}
+
 }

@@ -40,6 +40,7 @@ import com.black_dog20.tucs.item.armor.IScubaMask;
 import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
+import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium_Scuba;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
 import com.black_dog20.tucs.item.tool.ItemM1911;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
@@ -96,7 +97,7 @@ public class EventHandler {
 		nbt.setTag("SoulboundItems", nbttaglist);
 
 	}
-	
+
 	@SubscribeEvent
 	public void Tool(ItemTooltipEvent event){
 		ItemStack item = event.itemStack;
@@ -140,14 +141,14 @@ public class EventHandler {
 
 		}
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onGuiRender(RenderGameOverlayEvent event){
-	    if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
-	    {      
-	      return;
-	    }
+		if(event.isCancelable() || event.type != ElementType.EXPERIENCE)
+		{      
+			return;
+		}
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		if(checkScubaGear(player) && player.isInWater()){
 			ItemStack scubatank = (player.inventory.armorItemInSlot(2));
@@ -156,7 +157,7 @@ public class EventHandler {
 			Minecraft.getMinecraft().fontRenderer.drawStringWithShadow(df.format(procent)+"%", 2, 2, 0xffffff);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onPlayerRespawn(PlayerRespawnEvent event){
 		EntityPlayer player = event.player;
@@ -169,13 +170,13 @@ public class EventHandler {
 			if(item != null && item.getItem() instanceof ItemArmor){
 				ItemArmor armor = (ItemArmor)item.getItem(); 
 				System.out.println(InventoryHelper.getArmorPosition(armor));
-		        if (player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] == null)
-		        {
-		            player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] = item;
-		        }
-		        else{
-		        	player.inventory.addItemStackToInventory(item);
-		        }
+				if (player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] == null)
+				{
+					player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] = item;
+				}
+				else{
+					player.inventory.addItemStackToInventory(item);
+				}
 
 			}else{
 				player.inventory.addItemStackToInventory(item);
@@ -183,7 +184,7 @@ public class EventHandler {
 		}
 		nbt.removeTag("SoulboundItems");
 	}
-	
+
 	@SubscribeEvent
 	public void playerBreakSpeed(PlayerEvent.BreakSpeed event){
 		if(event.entity instanceof EntityPlayer){
@@ -204,7 +205,7 @@ public class EventHandler {
 			if(checkScubaGear(player) && player.isInsideOfMaterial(Material.water)){
 				ItemStack scubatank = (player.inventory.armorItemInSlot(2));
 				IScubaAirTank tank = (IScubaAirTank) scubatank.getItem();
-				
+
 				if(tank.getAir(scubatank)>0){
 					player.setAir(300);
 					tank.decAir(scubatank);
@@ -214,7 +215,7 @@ public class EventHandler {
 				player.motionX *=1.2F;
 				player.motionZ *=1.2F;
 			}
-	
+
 			setNBTData(player, nbtt);
 			if(hasChanged){
 				send(player);
@@ -222,7 +223,7 @@ public class EventHandler {
 
 		}
 	}
-	
+
 	private boolean checkScubaGear(EntityPlayer player){
 		boolean result = false;
 		if((player.inventory.armorItemInSlot(3) != null) && ((player.inventory.armorItemInSlot(3).getItem() instanceof IScubaMask))){
@@ -231,7 +232,7 @@ public class EventHandler {
 			}
 		}
 		return result;
-			
+
 	}
 
 	private void allowFlight(EntityPlayer player, NBTTagCompound nbtt) {
@@ -320,7 +321,7 @@ public class EventHandler {
 			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP) event.player);
 		}
 	}
-	
+
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void onRenderPlayer(RenderPlayerEvent.Specials.Pre event){
@@ -372,7 +373,7 @@ public class EventHandler {
 			}
 		}
 	}
-	
+
 	private void renderM1911(NBTTagCompound nbt, EntityPlayer player,
 			InventoryPlayer IPlayer) {
 		if(nbt.hasKey(NBTTags.m1119)){
@@ -517,7 +518,7 @@ public class EventHandler {
 				player.dropPlayerItemWithRandomChoice(hilt, false);
 			}
 
-			giveItems(item, inv);
+			giveUpgrades(item, inv);
 
 		}
 		else if(item.isItemEqual( new ItemStack(ModItems.TLBOTB))){
@@ -530,7 +531,7 @@ public class EventHandler {
 				player.dropPlayerItemWithRandomChoice(toolHead, false);
 			}
 
-			giveItems(item, inv);
+			giveUpgrades(item, inv);
 		}
 		else if(item.isItemEqual(new ItemStack(ModItems.TLHOWF))){
 			ItemStack rod = new ItemStack(ModItems.toolRod);
@@ -542,7 +543,7 @@ public class EventHandler {
 				player.dropPlayerItemWithRandomChoice(toolHead, false);
 			}
 
-			giveItems(item, inv);
+			giveUpgrades(item, inv);
 		}
 		else if(item.isItemEqual(new ItemStack(ModItems.TLPOLM))){
 			ItemStack rod = new ItemStack(ModItems.toolRod);
@@ -554,7 +555,7 @@ public class EventHandler {
 				player.dropPlayerItemWithRandomChoice(toolHead, false);
 			}
 
-			giveItems(item, inv);
+			giveUpgrades(item, inv);
 		}
 		else if(item.isItemEqual(new ItemStack(ModItems.TLSOHD))){
 			ItemStack rod = new ItemStack(ModItems.toolRod);
@@ -566,7 +567,7 @@ public class EventHandler {
 				player.dropPlayerItemWithRandomChoice(toolHead, false);
 			}
 
-			giveItems(item, inv);
+			giveUpgrades(item, inv);
 		}
 		else if(item.isItemEqual( new ItemStack(ModItems.TUCSBow))){
 			ItemStack arrmor = new ItemStack(ModItems.TUCSBowBroken);
@@ -574,13 +575,13 @@ public class EventHandler {
 				player.dropPlayerItemWithRandomChoice(arrmor, false);
 			}
 
-			giveItems(item, inv);
+			giveUpgrades(item, inv);
 		}
 
 	}
 
 
-	private void giveItems(ItemStack item, InventoryPlayer inv){
+	private void giveUpgrades(ItemStack item, InventoryPlayer inv){
 		NBTTagCompound nbt = item.getTagCompound();
 		NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);
 		for(int i = 0; i <= nbttaglist.tagCount(); i++){
@@ -609,7 +610,23 @@ public class EventHandler {
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
-				giveItems(helmet, inv);
+				giveUpgrades(helmet, inv);
+				player.inventory.armorInventory[3] = null;
+			}
+
+
+		}
+		else if(helmet != null && helmet.getItem() instanceof ItemHelmetCobblestonedium_Scuba){
+			if(helmet.getMaxDamage()-helmet.getItemDamage() <= 1){
+				ItemStack arrmor = new ItemStack(ModItems.helmetCobblestonediumBroken);
+				ItemStack mask = new ItemStack(ModItems.ScubaMask);
+				if(!inv.addItemStackToInventory(arrmor)){
+					player.dropPlayerItemWithRandomChoice(arrmor, false);
+				}
+				if(!inv.addItemStackToInventory(mask)){
+					player.dropPlayerItemWithRandomChoice(mask, false);
+				}
+				giveUpgrades(helmet, inv);
 				player.inventory.armorInventory[3] = null;
 			}
 
@@ -617,13 +634,13 @@ public class EventHandler {
 		}
 		else if(chest != null && chest.getItem() instanceof ItemChestplateCobblestonedium){
 			if(
-					
+
 					chest.getMaxDamage()-chest.getItemDamage() <= 1){
 				ItemStack arrmor = new ItemStack(ModItems.chestplateCobblestonediumBroken);
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
-				giveItems(chest, inv);
+				giveUpgrades(chest, inv);
 				player.inventory.armorInventory[2] = null;
 			}
 
@@ -635,7 +652,7 @@ public class EventHandler {
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
-				giveItems(legs, inv);
+				giveUpgrades(legs, inv);
 				player.inventory.armorInventory[1] = null;
 			}
 
@@ -647,7 +664,7 @@ public class EventHandler {
 				if(!inv.addItemStackToInventory(arrmor)){
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
 				}
-				giveItems(boots, inv);
+				giveUpgrades(boots, inv);
 				player.inventory.armorInventory[0] = null;
 			}
 

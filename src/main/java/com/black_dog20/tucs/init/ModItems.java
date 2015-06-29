@@ -23,6 +23,7 @@ import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonediumBroken;
+import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium_Scuba;
 import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
 import com.black_dog20.tucs.item.armor.ItemLegCobblestonediumBroken;
@@ -111,13 +112,14 @@ public class ModItems {
 	public static final ItemLegCobblestoneium leggingsCobblestoneium = new ItemLegCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 2, "leggingsCobblestoneium");
 	public static final ItemBootCobblestoneium bootsCobblestoneium = new ItemBootCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 3, "bootsCobblestoneium");
 	public static final ItemChestplateCobblestoneium chestplateCobblestoneium = new ItemChestplateCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 1, "chestplateCobblestoneium");
-	
-	
+
 	//Cobblestondium armor
 	public static final ItemHelmetCobblestonedium helmetCobblestonedium = new ItemHelmetCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 0, "helmetCobblestonedium");
 	public static final ItemLegCobblestonedium leggingsCobblestonedium = new ItemLegCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 2, "leggingsCobblestonedium");
 	public static final ItemBootCobblestonedium bootsCobblestonedium = new ItemBootCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 3, "bootsCobblestonedium");
 	public static final ItemChestplateCobblestonedium chestplateCobblestonedium = new ItemChestplateCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium");
+	public static final ItemHelmetCobblestonedium_Scuba helmetCobblestonedium_scuba = new ItemHelmetCobblestonedium_Scuba(COBBLESTONEdIUM_ARMORMATERIAL, 0, "helmetCobblestonedium_scuba");
+	
 	
 	public static final ItemHelmetCobblestonediumBroken helmetCobblestonediumBroken = new ItemHelmetCobblestonediumBroken();
 	public static final ItemLegCobblestonediumBroken leggingsCobblestonediumBroken = new ItemLegCobblestonediumBroken();
@@ -269,6 +271,8 @@ public class ModItems {
 		GameRegistry.registerItem(chestplateCobblestonedium, "chestplateCobblestonedium");
 		GameRegistry.registerItem(ScubaMask, "scubaMask");
 		GameRegistry.registerItem(AirTank, "AirTank");
+		GameRegistry.registerItem(helmetCobblestonedium_scuba, "helmetCobblestonedium_scuba");
+
 		
 		
 		//INGOTS

@@ -3,7 +3,6 @@ package com.black_dog20.tucs.item.armor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 import com.black_dog20.tucs.client.model.ScubaMask;
@@ -56,6 +55,17 @@ public class ItemScubaMask extends ItemArmorTUCS implements IScubaMask{
 			} 
 		} 
 		return null; 
+	}
+
+	@Override
+	public String GetEnviromentType() {
+		return "Effects";
+	}
+
+	@Override
+	public boolean cancelEffect() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

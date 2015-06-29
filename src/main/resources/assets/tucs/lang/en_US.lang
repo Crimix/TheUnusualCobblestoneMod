@@ -54,6 +54,7 @@ item.tucs:ammo.name=M1911 Ammo
 item.tucs:TLSOTD.name=§cThe Legendary Sword of The Destroyer of worlds
 item.tucs:scubaMask.name=Scuba Mask
 item.tucs:airtank.name=Air Tank
+item.tucs:helmetCobblestonedium_scuba.name=The Legendary Helmet of The Warrior
 
 //Upgrades
 item.tucs:looting1Upgrade.name=Luck 1 Upgrade
@@ -188,6 +189,7 @@ item.tucs:bootsCobblestonedium.info=Part of an upgradeable powerful armor set
 item.tucs:chestplateCobblestonedium.info=Part of an upgradeable powerful armor set
 item.tucs:m1911.info=Cobblestone gun, WHAT! Oh its OP never mind it.
 item.tucs:TLSOTD.info=The sword that has been know to even destroy compillers. It's recipe has long been lost
+item.tucs:helmetCobblestonedium_scuba.info=The Legendary Helmet of The Warrior combinded with a scuba mask. When it breaks it gives a broken helmet and a scuba mask
 
 //Lore
 tile.tucs:soulbinder.lore=No one knows how and when the table was made.

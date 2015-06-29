@@ -9,6 +9,7 @@ import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
 import com.black_dog20.tucs.client.render.RoundRender;
 import com.black_dog20.tucs.client.render.SoulForgeRender;
 import com.black_dog20.tucs.client.render.TUCSPickaxeRender;
+import com.black_dog20.tucs.client.render.TUCSScubaGear;
 import com.black_dog20.tucs.client.render.TUCSUpgradeOverlayRender;
 import com.black_dog20.tucs.client.render.TUCSWeaponOverlayRender;
 import com.black_dog20.tucs.client.settings.Keybindings;
@@ -50,12 +51,12 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public EntityPlayer getPlayerFromMessageContext( MessageContext ctx){
 		switch (ctx.side) {
-			case CLIENT: 
-				EntityPlayer entityClientPlayerMP = Minecraft.getMinecraft().thePlayer;
-				return entityClientPlayerMP;
-			case SERVER:
-				EntityPlayer entityPlayerMP = ctx.getServerHandler().playerEntity;
-				return entityPlayerMP;
+		case CLIENT: 
+			EntityPlayer entityClientPlayerMP = Minecraft.getMinecraft().thePlayer;
+			return entityClientPlayerMP;
+		case SERVER:
+			EntityPlayer entityPlayerMP = ctx.getServerHandler().playerEntity;
+			return entityPlayerMP;
 		}
 		return null;
 	}
@@ -75,6 +76,9 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.M1911, new TUCSWeaponOverlayRender());
 		MinecraftForgeClient.registerItemRenderer(ModItems.TLPOLM, new TUCSPickaxeRender());
 		upgrades();
+		MinecraftForgeClient.registerItemRenderer(ModItems.ScubaMask, new TUCSScubaGear());
+		MinecraftForgeClient.registerItemRenderer(ModItems.AirTank, new TUCSScubaGear());
+		MinecraftForgeClient.registerItemRenderer(ModItems.helmetCobblestonedium_scuba, new TUCSScubaGear());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
 		RenderingRegistry.registerBlockHandler(new SoulForgeRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class, new SoulForgeRender());
@@ -152,5 +156,6 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.Unbreaking2Upgrade, new TUCSUpgradeOverlayRender());
 		MinecraftForgeClient.registerItemRenderer(ModItems.Unbreaking3Upgrade, new TUCSUpgradeOverlayRender());
 	}
+
 
 }

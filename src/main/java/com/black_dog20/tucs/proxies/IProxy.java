@@ -6,17 +6,18 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 public interface IProxy {
 
 	void openBook(EntityPlayer player);
-	
-	 public abstract void registerKeyBindings();
-	 
-	 public abstract void keyinput();
+
+	public abstract void registerKeyBindings();
+
+	public abstract void keyinput();
 
 	void openToolUpgrade(EntityPlayer player);
-	
+
 	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx);
 
 	EntityPlayer getPlayerByIDFromMessageContext(int id, MessageContext ctx);
-	
+
 	public void registerRenders();
+
 
 }

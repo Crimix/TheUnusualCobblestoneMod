@@ -35,21 +35,17 @@ public class KeyInputEventHandler {
 					if(!entityPlayer.capabilities.allowFlying){
 						entityPlayer.capabilities.allowFlying = true;
 						entityPlayer.capabilities.isFlying = true;
-						entityPlayer.sendPlayerAbilities();
 						if(nbt.getBoolean(FIRSTFLY) == false){
 							entityPlayer.capabilities.setFlySpeed(0.1F);
 							nbt.setBoolean(FIRSTFLY, true);
 						}
-						entityPlayer.sendPlayerAbilities();
 					}
 					else if(entityPlayer.capabilities.allowFlying && !entityPlayer.capabilities.isCreativeMode){
 						entityPlayer.capabilities.allowFlying = false;
 						entityPlayer.capabilities.isFlying = false;
-						entityPlayer.sendPlayerAbilities();
 					}
-
-
-			}
+				}
+				entityPlayer.sendPlayerAbilities();
 			}
 		}
 		else if(Keybindings.flyspeed.isPressed()){
@@ -59,14 +55,13 @@ public class KeyInputEventHandler {
 					if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F)==0){
 						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.2F);
-						entityPlayer.sendPlayerAbilities();
 					}
 					else if(Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.2F)==0){
 						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_normalfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.1F);
-						entityPlayer.sendPlayerAbilities();
 					}
-				}	
+				}
+				entityPlayer.sendPlayerAbilities();
 			}
 		}
 		else if(Keybindings.night.isPressed()){

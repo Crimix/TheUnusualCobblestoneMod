@@ -2,18 +2,24 @@ package com.black_dog20.tucs.item.armor;
 
 import java.util.List;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import com.black_dog20.tucs.client.model.ScubaTank;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.Reference;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 
@@ -28,14 +34,35 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
+
 		if(stack.getItem() instanceof ItemAirTank)
 		{
-			return Reference.MOD_ID + ":models/armor/airtank_1.png";
+			return Reference.MOD_ID + ":models/armor/scuba_1.png";
+
 		}
 		else
 		{
 			return null;
 		}
+	}
+	
+	@Override
+    @SideOnly(Side.CLIENT)
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
+	{ 
+		ModelBiped armorModel = null; 
+		if(itemStack != null)
+		{ 
+			armorModel = new ScubaTank();
+			if(armorModel != null){ 
+				armorModel.bipedBody.showModel = armorSlot == 1; 
+				armorModel.isSneak = entityLiving.isSneaking(); 
+				armorModel.isRiding = entityLiving.isRiding(); 
+				armorModel.isChild = entityLiving.isChild(); 
+				return armorModel; 
+			} 
+		} 
+		return null; 
 	}
 
 	@Override
@@ -45,7 +72,6 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 
 	@Override
 	public int getAir(ItemStack Item){
-
 		NBTTagCompound nbt = nbtTag(Item);
 		return nbt.getInteger("StoredAir");
 
@@ -53,9 +79,9 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 
 	@Override
 	public void decAir(ItemStack Item){
-
 		NBTTagCompound nbt = nbtTag(Item);
 		nbt.setInteger("StoredAir",nbt.getInteger("StoredAir")-1);
+
 	}
 
 	@Override
@@ -115,12 +141,7 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 	}
 
 	@Override
-	public void setNBT(ItemStack item) {
-		if(!item.hasTagCompound()){
-			item.stackTagCompound = new NBTTagCompound();
-			setMaxAir(item, 0);
-			setAir(item, 0);
-		}
+	public String GetEnviromentType() {
+		return "Water";
 	}
-
 }

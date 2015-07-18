@@ -14,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.client.render.IOverlayItem;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.NBTTags;
@@ -23,7 +24,7 @@ import com.black_dog20.tucs.utility.InventoryHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTLPOLM extends ItemPickaxe implements ITucsItem{
+public class ItemTLPOLM extends ItemPickaxe implements ITucsItem, IOverlayItem{
 
 	public ItemTLPOLM(ToolMaterial Material){
 
@@ -33,6 +34,7 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem{
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 		this.setNoRepair();
 		this.canRepair = false;
+		this.registerItemForOverlay();
 
 	}
 
@@ -157,6 +159,11 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem{
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void registerItemForOverlay() {
+		tucs.overlayList.add(this);
 	}
 
 }

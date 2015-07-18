@@ -1,4 +1,4 @@
-package com.black_dog20.tucs.item.armor;
+package com.black_dog20.tucs.item.armor.cobblestonedium;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,9 +12,9 @@ import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;
 
-public class ItemHelmetCobblestonedium extends ItemArmorTUCS{
+public class ItemLegCobblestonedium extends ItemArmorTUCS {
 
-	public ItemHelmetCobblestonedium(ArmorMaterial Material, int armortype, String Name) {
+	public ItemLegCobblestonedium(ArmorMaterial Material, int armortype, String Name) {
 		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
@@ -23,16 +23,15 @@ public class ItemHelmetCobblestonedium extends ItemArmorTUCS{
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem() instanceof ItemHelmetCobblestonedium)
+		if(stack.getItem() instanceof ItemLegCobblestonedium)
 		{
-			return Reference.MOD_ID + ":models/armor/Cobblestonedium_1.png";
+			return Reference.MOD_ID + ":models/armor/Cobblestonedium_2.png";
 		}
 		else
 		{
 			return null;
 		}
 	}
-	
 	@Override
 	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
 		
@@ -40,7 +39,7 @@ public class ItemHelmetCobblestonedium extends ItemArmorTUCS{
 				tucs.Proxy.openToolUpgrade(player);
 			}
 			else{
-				this.euip(Item, world, player);
+				this.Euip(Item, world, player);
 			}
 		
 		return Item;

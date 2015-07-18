@@ -1,4 +1,4 @@
-package com.black_dog20.tucs.item.armor;
+package com.black_dog20.tucs.item.armor.cobblestoneium;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
@@ -8,9 +8,9 @@ import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.Reference;
 
-public class ItemChestplateCobblestoneium extends ItemArmorTUCS{
+public class ItemHelmetCobblestoneium extends ItemArmorTUCS{
 
-	public ItemChestplateCobblestoneium(ArmorMaterial Material, int armortype, String Name) {
+	public ItemHelmetCobblestoneium(ArmorMaterial Material, int armortype, String Name) {
 		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
@@ -19,7 +19,7 @@ public class ItemChestplateCobblestoneium extends ItemArmorTUCS{
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem() == ModItems.chestplateCobblestoneium)
+		if(stack.getItem() == ModItems.helmetCobblestoneium)
 		{
 			return Reference.MOD_ID + ":models/armor/Cobblestoneium_1.png";
 		}

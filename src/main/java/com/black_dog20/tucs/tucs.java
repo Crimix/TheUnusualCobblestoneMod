@@ -1,13 +1,19 @@
 	package com.black_dog20.tucs;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.black_dog20.tucs.entity.EntityRound;
+import com.black_dog20.tucs.entity.EntityHoverBike;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.handler.EventHandler;
 import com.black_dog20.tucs.handler.GuiHandler;
 import com.black_dog20.tucs.handler.ModLivingDropsEvent;
+import com.black_dog20.tucs.handler.PlayerEventHandler;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.init.Recipes;
@@ -48,6 +54,8 @@ public class tucs {
 	public static final int guiSoulBinder = 7;
 	public static final int guiAirMaker = 8;
 	
+	public static List<Item> overlayList = new ArrayList<Item>();
+	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 
@@ -56,6 +64,8 @@ public class tucs {
 		MinecraftForge.EVENT_BUS.register(new ModLivingDropsEvent());
 		MinecraftForge.EVENT_BUS.register(new EventHandler());
 		FMLCommonHandler.instance().bus().register(new EventHandler());
+		MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
+		FMLCommonHandler.instance().bus().register(new PlayerEventHandler());
 		Proxy.registerKeyBindings();
 		ModItems.init();
 		ModBlocks.init();
@@ -77,7 +87,8 @@ public class tucs {
 		GameRegistry.registerTileEntity(TileEntityAncientForge.class, "AncientForge");
 		GameRegistry.registerTileEntity(TileEntityAirMaker.class, "AirMaker");
 		GameRegistry.registerTileEntity(TileEntitySoulForge.class, "SoulForge");
-		
+		EntityRegistry.registerModEntity(EntityHoverBike.class, "Speeder", 0, instance, 80, 1, true);
+		EntityRegistry.registerGlobalEntityID(EntityHoverBike.class, "speeder", EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
 	}
 	
 	@Mod.EventHandler

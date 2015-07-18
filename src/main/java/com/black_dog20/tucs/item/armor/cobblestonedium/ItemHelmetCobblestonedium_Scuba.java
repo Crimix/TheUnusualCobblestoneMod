@@ -1,4 +1,4 @@
-package com.black_dog20.tucs.item.armor;
+package com.black_dog20.tucs.item.armor.cobblestonedium;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
@@ -12,6 +12,7 @@ import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.model.ScubaMask_armor;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
+import com.black_dog20.tucs.item.armor.IScubaMask;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;
 
@@ -65,7 +66,7 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 				tucs.Proxy.openToolUpgrade(player);
 			}
 			else{
-				this.euip(Item, world, player);
+				this.Euip(Item, world, player);
 			}
 		
 		return Item;
@@ -103,9 +104,8 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 	}
 
 	@Override
-	public boolean cancelEffect() {
-		// TODO Auto-generated method stub
-		return false;
+	public void doSpeciel(EntityPlayer player) {
+		player.clearActivePotions();
 	}
 
 }

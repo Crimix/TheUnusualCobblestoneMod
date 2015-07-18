@@ -7,13 +7,15 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.client.render.IOverlayItem;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemArmorTUCS extends ItemArmor implements ITucsItem{
+public class ItemArmorTUCS extends ItemArmor implements ITucsItem,IOverlayItem{
 	
 	 public final static int render = 0;
 	 public final static ArmorMaterial material = null;
@@ -23,21 +25,22 @@ public class ItemArmorTUCS extends ItemArmor implements ITucsItem{
 		super(material, render, armorType);
 		
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
+		this.registerItemForOverlay();
 		
 	}
 	
-	 public ItemStack euip(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_)
+	 public ItemStack Euip(ItemStack itemStack, World world, EntityPlayer player)
 	    {
-	        int i = EntityLiving.getArmorPosition(p_77659_1_) - 1;
-	        ItemStack itemstack1 = p_77659_3_.getCurrentArmor(i);
+	        int i = EntityLiving.getArmorPosition(itemStack) - 1;
+	        ItemStack itemstack1 = player.getCurrentArmor(i);
 
 	        if (itemstack1 == null)
 	        {
-	            p_77659_3_.setCurrentItemOrArmor(i + 1, p_77659_1_.copy());
-	            p_77659_1_.stackSize = 0;
+	            player.setCurrentItemOrArmor(i + 1, itemStack.copy());
+	            itemStack.stackSize = 0;
 	        }
 
-	        return p_77659_1_;
+	        return itemStack;
 	    }
 	
 	@Override
@@ -63,4 +66,10 @@ public class ItemArmorTUCS extends ItemArmor implements ITucsItem{
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
+
+	@Override
+	public void registerItemForOverlay() {
+		tucs.overlayList.add(this);
+	}
+
 }

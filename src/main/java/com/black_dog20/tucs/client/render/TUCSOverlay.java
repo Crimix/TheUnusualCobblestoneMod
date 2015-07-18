@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,8 +15,12 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.armor.IScubaAirTank;
+import com.black_dog20.tucs.item.armor.IScubaMask;
 import com.black_dog20.tucs.item.tool.ItemM1911;
 import com.black_dog20.tucs.item.tool.ItemTLBOTH;
+import com.black_dog20.tucs.item.tool.ItemTLPOLM;
+import com.black_dog20.tucs.item.upgrades.ItemTUCSUpgrades;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.utility.InventoryHelper;
 import com.black_dog20.tucs.utility.M1911Helper;
@@ -24,11 +29,15 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class TUCSWeaponOverlayRender implements IItemRenderer
+public class TUCSOverlay implements IItemRenderer
 {
 	private static RenderItem renderItem = new RenderItem();
+	private String text = null;
+	private int color = 0xFFFFFF;
+	private int x = 1;
+	private int y = 1;
 
-	public TUCSWeaponOverlayRender() {}
+	public TUCSOverlay() {}
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -42,7 +51,7 @@ public class TUCSWeaponOverlayRender implements IItemRenderer
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack itemStack, Object... data) {
-		EntityPlayer player = Minecraft.getMinecraft().thePlayer;;
+		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
         IIcon icon = itemStack.getIconIndex();
         GL11.glEnable(GL11.GL_ALPHA_TEST);
@@ -50,8 +59,10 @@ public class TUCSWeaponOverlayRender implements IItemRenderer
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         GL11.glScalef(0.5F, 0.5F, 0.5F);
-        String text = null;
-        if(itemStack.getItem() instanceof ItemTLBOTH){
+        if(itemStack.getItem() instanceof ItemTLPOLM){
+        	text = Integer.toString(InventoryHelper.findBlock(Blocks.torch, player.inventory));
+        } 
+        else if(itemStack.getItem() instanceof ItemTLBOTH){
         	
         	if(itemStack.hasTagCompound()){
         		NBTTagCompound nbt = itemStack.getTagCompound();
@@ -68,12 +79,20 @@ public class TUCSWeaponOverlayRender implements IItemRenderer
         	}
         } 
         else if(itemStack.getItem() instanceof ItemM1911){
-        	//ItemM1911 m1911 = (ItemM1911) itemStack.getItem();
         	text = Integer.toString(M1911Helper.getAmmo(itemStack)) + " / " + Integer.toString(InventoryHelper.findItem(ModItems.ammo, player.inventory)); 
-        	fontRenderer.drawString(text, 1, 1, 0xFFFFFF); 
         }
-        if(text != null && !(itemStack.getItem() instanceof ItemM1911)){
-        	fontRenderer.drawString(text, 1, 1, 0xFFFFFF);     
+        else if(itemStack.getItem() instanceof ItemTUCSUpgrades){
+        	if(!itemStack.getDisplayName().replaceAll("[\\D]", "").isEmpty()){
+        		text = "LvL " + itemStack.getDisplayName().replaceAll("[\\D]", "");
+        	}
+        }
+        else if(itemStack.getItem() instanceof IScubaMask || itemStack.getItem() instanceof IScubaAirTank){
+        	text = "O2";
+        	color = 0x00FFF4;
+        }
+        
+        if(text != null){
+        	fontRenderer.drawString(text, x, y, color);     
         }
         
 }

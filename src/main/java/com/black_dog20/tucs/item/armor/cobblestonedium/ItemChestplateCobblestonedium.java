@@ -1,4 +1,4 @@
-package com.black_dog20.tucs.item.armor;
+package com.black_dog20.tucs.item.armor.cobblestonedium;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -40,7 +40,7 @@ public class ItemChestplateCobblestonedium extends ItemArmorTUCS{
 				tucs.Proxy.openToolUpgrade(player);
 			}
 			else{
-				this.euip(Item, world, player);
+				this.Euip(Item, world, player);
 			}
 		
 		return Item;

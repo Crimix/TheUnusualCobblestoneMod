@@ -8,27 +8,30 @@ import com.black_dog20.tucs.item.ItemBook;
 import com.black_dog20.tucs.item.ItemCobbleCoal;
 import com.black_dog20.tucs.item.ItemCraftingTalisman;
 import com.black_dog20.tucs.item.ItemFlightTalisman;
+import com.black_dog20.tucs.item.ItemHealthUpgrade;
 import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
 import com.black_dog20.tucs.item.ItemIngotYellowstoneium;
 import com.black_dog20.tucs.item.ItemM1911Ammo;
+import com.black_dog20.tucs.item.ItemHoverBike;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
 import com.black_dog20.tucs.item.ItemTorchTalisman;
 import com.black_dog20.tucs.item.armor.ItemAirTank;
-import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
-import com.black_dog20.tucs.item.armor.ItemBootCobblestonediumBroken;
-import com.black_dog20.tucs.item.armor.ItemBootCobblestoneium;
-import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
-import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonediumBroken;
-import com.black_dog20.tucs.item.armor.ItemChestplateCobblestoneium;
-import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
-import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonediumBroken;
-import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium_Scuba;
-import com.black_dog20.tucs.item.armor.ItemHelmetCobblestoneium;
-import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
-import com.black_dog20.tucs.item.armor.ItemLegCobblestonediumBroken;
-import com.black_dog20.tucs.item.armor.ItemLegCobblestoneium;
 import com.black_dog20.tucs.item.armor.ItemScubaMask;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemBootCobblestonedium;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemBootCobblestonediumBroken;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemChestplateCobblestonedium;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemChestplateCobblestonediumBroken;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemChestplateCobblestonedium_scuba;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonediumBroken;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium_Scuba;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemLegCobblestonedium;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemLegCobblestonediumBroken;
+import com.black_dog20.tucs.item.armor.cobblestoneium.ItemBootCobblestoneium;
+import com.black_dog20.tucs.item.armor.cobblestoneium.ItemChestplateCobblestoneium;
+import com.black_dog20.tucs.item.armor.cobblestoneium.ItemHelmetCobblestoneium;
+import com.black_dog20.tucs.item.armor.cobblestoneium.ItemLegCobblestoneium;
 import com.black_dog20.tucs.item.crafting.ItemHatchetHead;
 import com.black_dog20.tucs.item.crafting.ItemHoeHead;
 import com.black_dog20.tucs.item.crafting.ItemPickaxeHead;
@@ -119,6 +122,7 @@ public class ModItems {
 	public static final ItemBootCobblestonedium bootsCobblestonedium = new ItemBootCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 3, "bootsCobblestonedium");
 	public static final ItemChestplateCobblestonedium chestplateCobblestonedium = new ItemChestplateCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium");
 	public static final ItemHelmetCobblestonedium_Scuba helmetCobblestonedium_scuba = new ItemHelmetCobblestonedium_Scuba(COBBLESTONEdIUM_ARMORMATERIAL, 0, "helmetCobblestonedium_scuba");
+	public static final ItemChestplateCobblestonedium_scuba chestplateCobblestonedium_scuba = new ItemChestplateCobblestonedium_scuba(COBBLESTONEdIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium_scuba");
 	
 	
 	public static final ItemHelmetCobblestonediumBroken helmetCobblestonediumBroken = new ItemHelmetCobblestonediumBroken();
@@ -137,6 +141,8 @@ public class ModItems {
 	public static final ItemCobbleCoal CobbleCoal = new ItemCobbleCoal();
 	public static final ItemScubaMask ScubaMask = new ItemScubaMask(ArmorMaterial.IRON, 0, "scubaMask");
 	public static final ItemAirTank AirTank = new ItemAirTank(ArmorMaterial.IRON, 1, "airtank");
+	public static final ItemHealthUpgrade HealthUpgrade = new ItemHealthUpgrade();
+	public static final ItemHoverBike HoverBike = new ItemHoverBike();
 	
 	//Lighters
 	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
@@ -272,8 +278,7 @@ public class ModItems {
 		GameRegistry.registerItem(ScubaMask, "scubaMask");
 		GameRegistry.registerItem(AirTank, "AirTank");
 		GameRegistry.registerItem(helmetCobblestonedium_scuba, "helmetCobblestonedium_scuba");
-
-		
+		GameRegistry.registerItem(chestplateCobblestonedium_scuba, "chestplateCobblestonedium_scuba");
 		
 		//INGOTS
 		GameRegistry.registerItem(ingotCobblestoneium, "ingotCobblestoneium");
@@ -295,6 +300,9 @@ public class ModItems {
 		GameRegistry.registerItem(TUCSBowBroken, "TUCSBowBroken");
 		GameRegistry.registerItem(M1911, "M1911");
 		GameRegistry.registerItem(ammo, "ammo");
+		GameRegistry.registerItem(HealthUpgrade, "HealthUpgrade");
+		GameRegistry.registerItem(HoverBike, "HoverBike");
+		
 		
 		GameRegistry.registerItem(helmetCobblestonediumBroken, "helmetCobblestonediumBroken");
 		GameRegistry.registerItem(leggingsCobblestonediumBroken, "leggingsCobblestonediumBroken");

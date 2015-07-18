@@ -214,3 +214,4 @@ item.tucs:TLSOTD.lore=§kunknown lore, it has not been know to man the last 1000
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!
 msg.message_normalfly.txt=Normal flight speed activated
 msg.message_highfly.txt=High speed flight activated
+msg.message_landspeederOwner.txt=You can't break this, you are not the owner. The Owner is:

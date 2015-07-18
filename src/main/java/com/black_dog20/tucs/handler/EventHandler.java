@@ -1,19 +1,14 @@
 package com.black_dog20.tucs.handler;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -29,33 +24,30 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
-import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import org.lwjgl.opengl.GL11;
 
+import com.black_dog20.tucs.entity.EntityHoverBike;
+import com.black_dog20.tucs.entity.IEntityHoverVehicle;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.armor.IScubaAirTank;
 import com.black_dog20.tucs.item.armor.IScubaMask;
-import com.black_dog20.tucs.item.armor.ItemBootCobblestonedium;
-import com.black_dog20.tucs.item.armor.ItemChestplateCobblestonedium;
-import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium;
-import com.black_dog20.tucs.item.armor.ItemHelmetCobblestonedium_Scuba;
-import com.black_dog20.tucs.item.armor.ItemLegCobblestonedium;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemBootCobblestonedium;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemChestplateCobblestonedium_scuba;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium_Scuba;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemLegCobblestonedium;
 import com.black_dog20.tucs.item.tool.ItemM1911;
 import com.black_dog20.tucs.item.tool.ItemTLPOLM;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
 import com.black_dog20.tucs.item.tool.ItemTLSOTD;
 import com.black_dog20.tucs.network.PacketHandler;
-import com.black_dog20.tucs.network.message.MessageConfigSync;
 import com.black_dog20.tucs.network.message.MessageToolRender;
 import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.utility.InventoryHelper;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -63,40 +55,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EventHandler {
 	NBTTagCompound nbt;
-	boolean hasChanged = false;
-
+	boolean hasChanged;
+	
 	static final DecimalFormat df = new DecimalFormat("#0.00");
-
-	@SubscribeEvent
-	public void onEntityDeath(PlayerDropsEvent event) {
-		EntityPlayer player = event.entityPlayer;
-		ArrayList<EntityItem> list = event.drops;
-		NBTTagList nbttaglist = new NBTTagList();
-		ListIterator<EntityItem> litr = list.listIterator();
-		nbt = NBTHelper.getPlayerNBT(player);
-		int i = 0;
-		while(litr.hasNext()){
-
-			EntityItem item = litr.next();
-			ItemStack itemstack = item.getEntityItem();
-
-			if(item !=null){
-				if(itemstack.hasTagCompound()){
-					NBTTagCompound itemT = itemstack.getTagCompound();
-					if(itemT.hasKey(NBTTags.SOULBOUND) || itemT.hasKey(NBTTags.SOULBOUND_P)){
-						NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-						nbttagcompound1.setByte("Slot", (byte)i);
-						itemstack.writeToNBT(nbttagcompound1);
-						nbttaglist.appendTag(nbttagcompound1);
-						litr.remove();
-						i++;
-					}
-				}
-			}
-		}
-		nbt.setTag("SoulboundItems", nbttaglist);
-
-	}
 
 	@SubscribeEvent
 	public void Tool(ItemTooltipEvent event){
@@ -158,32 +119,7 @@ public class EventHandler {
 		}
 	}
 
-	@SubscribeEvent
-	public void onPlayerRespawn(PlayerRespawnEvent event){
-		EntityPlayer player = event.player;
-		nbt = NBTHelper.getPlayerNBT(player);
-		NBTTagList nbttaglist = nbt.getTagList("SoulboundItems", Constants.NBT.TAG_COMPOUND);
-		for(int i = 0; i <= nbttaglist.tagCount(); i++){
-			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
-			ItemStack item = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			if(item != null && item.getItem() instanceof ItemArmor){
-				ItemArmor armor = (ItemArmor)item.getItem(); 
-				System.out.println(InventoryHelper.getArmorPosition(armor));
-				if (player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] == null)
-				{
-					player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] = item;
-				}
-				else{
-					player.inventory.addItemStackToInventory(item);
-				}
-
-			}else{
-				player.inventory.addItemStackToInventory(item);
-			}
-		}
-		nbt.removeTag("SoulboundItems");
-	}
+	
 
 	@SubscribeEvent
 	public void playerBreakSpeed(PlayerEvent.BreakSpeed event){
@@ -215,6 +151,10 @@ public class EventHandler {
 				player.motionX *=1.2F;
 				player.motionZ *=1.2F;
 			}
+			
+			if(player.getActivePotionEffects()!= null && mask(player) && getMask(player).GetEnviromentType().equals("Effects")){
+				getMask(player).doSpeciel(player);
+			}
 
 			setNBTData(player, nbtt);
 			if(hasChanged){
@@ -226,14 +166,28 @@ public class EventHandler {
 
 	private boolean checkScubaGear(EntityPlayer player){
 		boolean result = false;
-		if((player.inventory.armorItemInSlot(3) != null) && ((player.inventory.armorItemInSlot(3).getItem() instanceof IScubaMask))){
-			if((player.inventory.armorItemInSlot(2) != null) && ((player.inventory.armorItemInSlot(2).getItem() instanceof IScubaAirTank))){
+		if(mask(player)){
+			if(tank(player)){
 				result = true;
 			}
 		}
 		return result;
 
 	}
+	
+	private boolean mask(EntityPlayer player){
+		return ((player.inventory.armorItemInSlot(3) != null) && ((player.inventory.armorItemInSlot(3).getItem() instanceof IScubaMask)));
+	}
+	
+	private IScubaMask getMask(EntityPlayer player){
+		return (IScubaMask) player.inventory.armorItemInSlot(3).getItem();
+		
+	}
+	
+	private boolean tank(EntityPlayer player){
+		return ((player.inventory.armorItemInSlot(2) != null) && ((player.inventory.armorItemInSlot(2).getItem() instanceof IScubaAirTank)));
+	}
+
 
 	private void allowFlight(EntityPlayer player, NBTTagCompound nbtt) {
 		if(!nbtt.getBoolean(NBTTags.FLY) && (player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD)))){
@@ -315,12 +269,7 @@ public class EventHandler {
 		}
 	}
 
-	@SubscribeEvent
-	public void onPlayerLoginEvent(PlayerLoggedInEvent event){
-		if(!event.player.worldObj.isRemote){
-			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP) event.player);
-		}
-	}
+
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
@@ -500,6 +449,9 @@ public class EventHandler {
 			if((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman))||player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD)))){
 				event.setCanceled(true);
 			}
+			if(player.ridingEntity instanceof IEntityHoverVehicle){
+				event.setCanceled(true);
+			}
 		}
 	}
 
@@ -632,7 +584,7 @@ public class EventHandler {
 
 
 		}
-		else if(chest != null && chest.getItem() instanceof ItemChestplateCobblestonedium){
+		else if(chest != null && chest.getItem() instanceof ItemChestplateCobblestonedium_scuba){
 			if(
 
 					chest.getMaxDamage()-chest.getItemDamage() <= 1){

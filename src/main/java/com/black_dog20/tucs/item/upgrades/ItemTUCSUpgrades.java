@@ -5,18 +5,22 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.black_dog20.tucs.tucs;
+import com.black_dog20.tucs.client.render.IOverlayItem;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTUCSUpgrades extends Item {
+public class ItemTUCSUpgrades extends Item implements ITucsItem, IOverlayItem{
 	
 	public ItemTUCSUpgrades(){
 		
 		super();
 		this.setCreativeTab(CreativeTabTUCS.TUCS_UPGRADETAB);
+		registerItemForOverlay();
 		
 	}
 	
@@ -48,6 +52,11 @@ public class ItemTUCSUpgrades extends Item {
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
+
+	@Override
+	public void registerItemForOverlay() {
+		tucs.overlayList.add(this);
+	}
     
     
 }

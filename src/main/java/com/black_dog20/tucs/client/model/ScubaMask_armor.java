@@ -16,9 +16,6 @@ public class ScubaMask_armor extends ModelBiped {
     public ModelRenderer air_1;
     public ModelRenderer small_1;
     public ModelRenderer small_2;
-    //public ModelRenderer headSurport_1;
-    //public ModelRenderer headSurport_2;
-    //public ModelRenderer headSurport_3;
 
     public ScubaMask_armor() {
     	super(1.0F,0.0F,256,128);
@@ -30,21 +27,12 @@ public class ScubaMask_armor extends ModelBiped {
         this.air_1 = new ModelRenderer(this, 20, 108);
         this.air_1.setRotationPoint(-2.0F, -3.0F, -6.0F);
         this.air_1.addBox(0.0F, 0.0F, 0.0F, 4, 2, 1, 0.0F);
-        //this.headSurport_1 = new ModelRenderer(this, 30, 64);
-        //this.headSurport_1.setRotationPoint(4.01F, -5.0F, -5.0F);
-        //this.headSurport_1.addBox(0.0F, 0.0F, 0.0F, 1, 1, 9, 0.0F);
-        //this.headSurport_2 = new ModelRenderer(this, 30, 60);
-        //this.headSurport_2.setRotationPoint(-5.0F, -5.0F, 4.0F);
-        //this.headSurport_2.addBox(0.0F, 0.0F, 0.0F, 10, 1, 1, 0.0F);
         this.glass = new ModelRenderer(this, 37, 105);
         this.glass.setRotationPoint(-4.0F, -8.0F, -5.0F);
         this.glass.addBox(0.0F, 3.0F, 0.0F, 8, 5, 1, 0.0F);
         this.small_1 = new ModelRenderer(this, 21, 112);
         this.small_1.setRotationPoint(-3.0F, -2.0F, -6.0F);
         this.small_1.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1, 0.0F);
-        //this.headSurport_3 = new ModelRenderer(this, 30, 60);
-        //this.headSurport_3.setRotationPoint(-5.01F, -5.0F, -5.0F);
-        //this.headSurport_3.addBox(0.0F, 0.0F, 0.0F, 1, 1, 9, 0.0F);
         this.small_2 = new ModelRenderer(this, 21, 112);
         this.small_2.setRotationPoint(2.0F, -2.0F, -6.0F);
         this.small_2.addBox(0.0F, 0.0F, 0.0F, 1, 1, 1, 0.0F);
@@ -53,9 +41,6 @@ public class ScubaMask_armor extends ModelBiped {
         this.bipedHead.addChild(air_1);
         this.bipedHead.addChild(small_1);
         this.bipedHead.addChild(small_2);
-        //this.bipedHead.addChild(headSurport_1);
-        //this.bipedHead.addChild(headSurport_2);
-        //this.bipedHead.addChild(headSurport_3);
     }
 
     @Override

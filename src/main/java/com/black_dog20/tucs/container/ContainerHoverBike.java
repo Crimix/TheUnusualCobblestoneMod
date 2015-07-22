@@ -2,31 +2,28 @@ package com.black_dog20.tucs.container;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryBasic;
-import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
-import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.entity.IEntityHoverVehicle;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.inventory.InventoryHoverBike;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 public class ContainerHoverBike extends Container {
-   public IInventory craftMatrix = new InventoryCrafting(this, 3, 3);
    public final InventoryHoverBike iventory;
    private World worldObj;
    private int posX;
    private int posY;
    private int posZ;
    private IEntityHoverVehicle hoverBike;
+   private Entity entity;
+   private int rows;
+   private int columns;
 
    public ContainerHoverBike(EntityPlayer player, World world, int x, int y, int z, Entity entity)
    {
@@ -34,12 +31,13 @@ public class ContainerHoverBike extends Container {
        this.posX = x;
        this.posY = y;
        this.posZ = z;
+       this.entity = entity;
        this.iventory = new InventoryHoverBike(entity.getEntityId());
        if(entity instanceof IEntityHoverVehicle){
     	   this.hoverBike = (IEntityHoverVehicle)entity;
        }
-       int rows = hoverBike.getRows();
-       int columns = hoverBike.getColumns();
+       this.rows = hoverBike.getRows();
+       this.columns = hoverBike.getColumns();
        
        for (int rowIndex = 0; rowIndex < rows; ++rowIndex)
        {
@@ -61,8 +59,9 @@ public class ContainerHoverBike extends Container {
        {
            this.addSlotToContainer(new Slot(player.inventory, row, 8 + row * 18, 142));
        }
+       
+       iventory.read(NBTHelper.getEntityNBT(entity));
 
-       this.onCraftMatrixChanged(this.craftMatrix);
    }
 
 
@@ -71,34 +70,36 @@ public class ContainerHoverBike extends Container {
     */
    public void onContainerClosed(EntityPlayer EPlayer)
    {
+	   iventory.write(NBTHelper.getEntityNBT(entity));
    	
-       super.onContainerClosed(EPlayer);
+       /*super.onContainerClosed(EPlayer);
 
        if (!this.worldObj.isRemote)
        {
            for (int i = 0; i < 9; ++i)
            {
-               ItemStack itemstack = this.craftMatrix.getStackInSlotOnClosing(i);
+               ItemStack itemstack = this.iventory.getStackInSlotOnClosing(i);
 
                if (itemstack != null)
                {
                    EPlayer.dropPlayerItemWithRandomChoice(itemstack, false);
                }
            }
-       }
+       }*/
    }
 
    public boolean canInteractWith(EntityPlayer EPlayer)
    {
-       return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != ModBlocks.ancientTable ? false : EPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
+	   return true;
    }
 
    /**
     * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
     */
+   @Override
    public ItemStack transferStackInSlot(EntityPlayer EPlayer, int par2)
    {
-       ItemStack itemstack = null;
+	   ItemStack itemstack = null;
        Slot slot = (Slot)this.inventorySlots.get(par2);
 
        if (slot != null && slot.getHasStack())
@@ -106,30 +107,14 @@ public class ContainerHoverBike extends Container {
            ItemStack itemstack1 = slot.getStack();
            itemstack = itemstack1.copy();
 
-           if (par2 == 0)
+           if (par2 < this.rows * 9)
            {
-               if (!this.mergeItemStack(itemstack1, 10, 46, true))
-               {
-                   return null;
-               }
-
-               slot.onSlotChange(itemstack1, itemstack);
-           }
-           else if (par2 >= 10 && par2 < 37)
-           {
-               if (!this.mergeItemStack(itemstack1, 37, 46, false))
+               if (!this.mergeItemStack(itemstack1, this.rows * 9, this.inventorySlots.size(), true))
                {
                    return null;
                }
            }
-           else if (par2 >= 37 && par2 < 46)
-           {
-               if (!this.mergeItemStack(itemstack1, 10, 37, false))
-               {
-                   return null;
-               }
-           }
-           else if (!this.mergeItemStack(itemstack1, 10, 46, false))
+           else if (!this.mergeItemStack(itemstack1, 0, this.rows * 9, false))
            {
                return null;
            }
@@ -142,13 +127,6 @@ public class ContainerHoverBike extends Container {
            {
                slot.onSlotChanged();
            }
-
-           if (itemstack1.stackSize == itemstack.stackSize)
-           {
-               return null;
-           }
-
-           slot.onPickupFromSlot(EPlayer, itemstack1);
        }
 
        return itemstack;

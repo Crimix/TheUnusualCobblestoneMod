@@ -3,25 +3,17 @@ package com.black_dog20.tucs.handler;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 
-import com.black_dog20.tucs.client.model.HoverBike;
-import com.black_dog20.tucs.entity.EntityHoverBike;
 import com.black_dog20.tucs.entity.IEntityHoverVehicle;
 import com.black_dog20.tucs.network.PacketHandler;
 import com.black_dog20.tucs.network.message.MessageConfigSync;

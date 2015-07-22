@@ -1,23 +1,19 @@
 package com.black_dog20.tucs.proxies;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelHorse;
-import net.minecraft.client.renderer.entity.RenderBiped;
-import net.minecraft.client.renderer.entity.RenderHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
-import com.black_dog20.tucs.client.model.HoverBike;
 import com.black_dog20.tucs.client.render.RenderSpeeder;
 import com.black_dog20.tucs.client.render.RoundRender;
 import com.black_dog20.tucs.client.render.SoulForgeRender;
 import com.black_dog20.tucs.client.render.TUCSOverlay;
 import com.black_dog20.tucs.client.settings.Keybindings;
-import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.entity.EntityHoverBike;
+import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
@@ -25,7 +21,6 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 

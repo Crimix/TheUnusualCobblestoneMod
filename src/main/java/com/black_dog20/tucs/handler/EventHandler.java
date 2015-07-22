@@ -28,7 +28,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import org.lwjgl.opengl.GL11;
 
-import com.black_dog20.tucs.entity.EntityHoverBike;
 import com.black_dog20.tucs.entity.IEntityHoverVehicle;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.armor.IScubaAirTank;

@@ -1,8 +1,5 @@
 package com.black_dog20.tucs.inventory;
 
-import com.black_dog20.tucs.entity.IEntityHoverVehicle;
-import com.black_dog20.tucs.utility.NBTHelper;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,6 +7,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+
+import com.black_dog20.tucs.entity.IEntityHoverVehicle;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 public class InventoryHoverBike implements IInventory
 {

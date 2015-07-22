@@ -13,7 +13,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
+import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -346,11 +348,18 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle
         return 0.5F;
     }
 
+    private void openInventory(EntityPlayer player){
+		NBTHelper.getPlayerNBT(player).setInteger("TucsHoverBikeId", this.getEntityId());
+		player.openGui(tucs.instance, tucs.guiHoverBike, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+    }
+    
+    
     /**
      * First layer of player interaction
      */
     public boolean interactFirst(EntityPlayer entityPlayer)
     {
+    	if(!entityPlayer.isSneaking()){
     	if(this.Owner.equals("none")){
     		this.Owner = entityPlayer.getDisplayName();
     	}
@@ -367,6 +376,11 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle
 
             return true;
         }
+    	}
+    	else{
+    		openInventory(entityPlayer);
+    	}
+		return true;
     }
 
     public void setForwardDirection(int direction)
@@ -397,7 +411,7 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle
 
 	@Override
 	public int getNumberOfSlots() {
-		return 5;
+		return getRows()*getColumns();
 	}
 
 	@Override
@@ -407,11 +421,11 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle
 
 	@Override
 	public int getRows() {
-		return 0;
+		return 3;
 	}
 
 	@Override
 	public int getColumns() {
-		return 0;
+		return 9;
 	}
 }

@@ -7,8 +7,8 @@ import java.util.List;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.entity.EntityHoverBike;
+import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.handler.EventHandler;
 import com.black_dog20.tucs.handler.GuiHandler;
@@ -53,6 +53,7 @@ public class tucs {
 	public static final int guiIDUpgradeTools = 6;
 	public static final int guiSoulBinder = 7;
 	public static final int guiAirMaker = 8;
+	public static final int guiHoverBike = 9;
 	
 	public static List<Item> overlayList = new ArrayList<Item>();
 	

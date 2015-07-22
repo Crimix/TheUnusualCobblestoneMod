@@ -1,19 +1,11 @@
 package com.black_dog20.tucs.item;
 
-import java.util.List;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
 import com.black_dog20.tucs.entity.EntityHoverBike;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
-import net.minecraft.world.World;
 
 public class ItemHoverBike extends ItemTUCS {
 

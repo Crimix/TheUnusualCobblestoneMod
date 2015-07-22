@@ -1,5 +1,6 @@
 package com.black_dog20.tucs.handler;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -10,6 +11,7 @@ import com.black_dog20.tucs.client.gui.GuiAirMaker;
 import com.black_dog20.tucs.client.gui.GuiAncientForge;
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
 import com.black_dog20.tucs.client.gui.GuiFlightTalisman;
+import com.black_dog20.tucs.client.gui.GuiHoverBike;
 import com.black_dog20.tucs.client.gui.GuiSoulForge;
 import com.black_dog20.tucs.client.gui.GuiTUCSBook;
 import com.black_dog20.tucs.client.gui.GuiUpgradeTools;
@@ -19,12 +21,14 @@ import com.black_dog20.tucs.container.ContainerAncientTable;
 import com.black_dog20.tucs.container.ContainerCraftingTalisman;
 import com.black_dog20.tucs.container.ContainerDummy;
 import com.black_dog20.tucs.container.ContainerFlightTalisman;
+import com.black_dog20.tucs.container.ContainerHoverBike;
 import com.black_dog20.tucs.container.ContainerSoulForge;
 import com.black_dog20.tucs.container.ContainerUpgradeTools;
 import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
+import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -77,6 +81,9 @@ public class GuiHandler implements IGuiHandler {
 				}
 			}
 		}
+		else if(ID == tucs.guiHoverBike){
+			return new ContainerHoverBike(player, world, x, y, z, world.getEntityByID(NBTHelper.getPlayerNBT(player).getInteger("TucsHoverBikeId")));
+		}
 		return null;
 	}
 
@@ -124,6 +131,9 @@ public class GuiHandler implements IGuiHandler {
 					return new GuiAirMaker(player.inventory, (TileEntityAirMaker) entity);
 				}
 			}
+		}
+		else if(ID == tucs.guiHoverBike){
+			return new GuiHoverBike(player, world, x, y, z, world.getEntityByID(NBTHelper.getPlayerNBT(player).getInteger("TucsHoverBikeId")));
 		}
 
 		return null;

@@ -2,7 +2,10 @@ package com.black_dog20.tucs.proxies;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.black_dog20.tucs.tucs;
@@ -14,8 +17,11 @@ import com.black_dog20.tucs.client.render.TUCSOverlay;
 import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.entity.EntityHoverBike;
 import com.black_dog20.tucs.entity.EntityRound;
+import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
+import com.black_dog20.tucs.utility.LogHelper;
+import com.black_dog20.tucs.utility.TucsRegistry;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -77,90 +83,213 @@ public class ClientProxy extends CommonProxy {
 		for (Item iterable_element : tucs.overlayList) {
 			MinecraftForgeClient.registerItemRenderer(iterable_element, new TUCSOverlay());
 		}
-		/*MinecraftForgeClient.registerItemRenderer(ModItems.TUCSBow, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.M1911, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.TLPOLM, new TUCSOverlay());*/
-		//upgrades();
-		/*MinecraftForgeClient.registerItemRenderer(ModItems.ScubaMask, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.AirTank, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.helmetCobblestonedium_scuba, new TUCSOverlay());*/
 		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
 		RenderingRegistry.registerBlockHandler(new SoulForgeRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class, new SoulForgeRender());
 		RenderingRegistry.registerEntityRenderingHandler(EntityHoverBike.class, new RenderSpeeder());
 		}
-
-	private void upgrades() {
-		MinecraftForgeClient.registerItemRenderer(ModItems.AquaAffinityUpgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.AutoBowUpgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BeheadingUpgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BlastProtection1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BlastProtection2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BlastProtection3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BlastProtection4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BoA1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BoA2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BoA3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BoA4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.BoA5Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Efficiency1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Efficiency2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Efficiency3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Efficiency4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Efficiency5Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FeatherFalling1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FeatherFalling2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FeatherFalling3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FeatherFalling4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FireAspect1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FireAspect2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FireProtection1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FireProtection2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FireProtection3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FireProtection4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.FlameUpgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.InfiUpgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Knockback1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Knockback2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.looting1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.looting2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.looting3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Power1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Power2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Power3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Power4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Power5Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.ProjectileProtection1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.ProjectileProtection2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.ProjectileProtection3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.ProjectileProtection4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Protection1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Protection2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Protection3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Protection4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Punch1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Punch2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Respiration1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Respiration2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Respiration3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Sharpness1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Sharpness2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Sharpness3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Sharpness4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Sharpness5Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Sliktouch1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Smite1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Smite2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Smite3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Smite4Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Smite5Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.soulboundUpgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Thorns1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Thorns2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Thorns3Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Unbreaking1Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Unbreaking2Upgrade, new TUCSOverlay());
-		MinecraftForgeClient.registerItemRenderer(ModItems.Unbreaking3Upgrade, new TUCSOverlay());
+	
+	@Override
+	public void ServerRecipes(){
+		switch (3-ConfigurationHandler.Max_Luck_Upgrade) {
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.looting1Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.looting2Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.looting3Upgrade);
+			break;
+		}
+		
+		switch (5-ConfigurationHandler.Max_Sharpness_Upgrade) {
+		case 5:
+			TucsRegistry.RemoveRecipe(ModItems.Sharpness1Upgrade);
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.Sharpness2Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Sharpness3Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Sharpness4Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Sharpness5Upgrade);
+			break;
+		}
+		if(!ConfigurationHandler.Max_Silktouch_Upgrade){
+			TucsRegistry.RemoveRecipe(ModItems.Sliktouch1Upgrade);
+		}
+		if(!ConfigurationHandler.Max_Beheading_Upgrade){
+			TucsRegistry.RemoveRecipe(ModItems.BeheadingUpgrade);
+		}
+		if(!ConfigurationHandler.Max_Infi_Upgrade){
+			TucsRegistry.RemoveRecipe(ModItems.InfiUpgrade);
+		}
+		switch (5-ConfigurationHandler.Max_Bane_of_Arthropods) {
+		case 5:
+			TucsRegistry.RemoveRecipe(ModItems.BoA1Upgrade);
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.BoA2Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.BoA3Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.BoA4Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.BoA5Upgrade);
+			break;
+		}
+		if(!ConfigurationHandler.Max_Aqua_Affinity){
+			TucsRegistry.RemoveRecipe(ModItems.AquaAffinityUpgrade);
+		}
+		if(!ConfigurationHandler.Max_Auto_Bow){
+			TucsRegistry.RemoveRecipe(ModItems.AutoBowUpgrade);
+		}
+		switch (4-ConfigurationHandler.Max_Blast_Protection) {
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.BlastProtection1Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.BlastProtection2Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.BlastProtection3Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.BlastProtection4Upgrade);
+			break;
+		}
+		switch (5-ConfigurationHandler.Efficiency) {
+		case 5:
+			TucsRegistry.RemoveRecipe(ModItems.Efficiency1Upgrade);
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.Efficiency2Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Efficiency3Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Efficiency4Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Efficiency5Upgrade);
+			break;
+		}
+		switch (4-ConfigurationHandler.Feather_Falling) {
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling1Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling2Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling3Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling4Upgrade);
+			break;
+		}
+		switch (2-ConfigurationHandler.Fire_Aspect) {
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.FireAspect1Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.FireAspect2Upgrade);
+			break;
+		}
+		switch (4-ConfigurationHandler.Fire_Protection) {
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.FireProtection1Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.FireProtection2Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.FireProtection3Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.FireProtection4Upgrade);
+			break;
+		}
+		if(!ConfigurationHandler.Max_Flame){
+			TucsRegistry.RemoveRecipe(ModItems.FlameUpgrade);
+		}
+		switch (2-ConfigurationHandler.Knockback) {
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Knockback1Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Knockback2Upgrade);
+			break;
+		}
+		switch (5-ConfigurationHandler.Power) {
+		case 5:
+			TucsRegistry.RemoveRecipe(ModItems.Power1Upgrade);
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.Power2Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Power3Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Power4Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Power5Upgrade);
+			break;
+		}
+		switch (4-ConfigurationHandler.Projectile_Protection) {
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection1Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection2Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection3Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection4Upgrade);
+			break;
+		}
+		switch (4-ConfigurationHandler.Protection) {
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.Protection1Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Protection2Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Protection3Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Protection4Upgrade);
+			break;
+		}
+		switch (2-ConfigurationHandler.Punch) {
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Punch1Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Punch2Upgrade);
+			break;
+		}
+		switch (3-ConfigurationHandler.Respiration) {
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Respiration1Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Respiration2Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Respiration3Upgrade);
+			break;
+		}
+		switch (5-ConfigurationHandler.Smite) {
+		case 5:
+			TucsRegistry.RemoveRecipe(ModItems.Smite1Upgrade);
+		case 4:
+			TucsRegistry.RemoveRecipe(ModItems.Smite2Upgrade);
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Smite3Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Smite4Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Smite5Upgrade);
+			break;
+		}
+		switch (3-ConfigurationHandler.Thorns) {
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Thorns1Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Thorns2Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Thorns3Upgrade);
+			break;
+		}
+		switch (3-ConfigurationHandler.Unbreaking) {
+		case 3:
+			TucsRegistry.RemoveRecipe(ModItems.Unbreaking1Upgrade);
+		case 2:
+			TucsRegistry.RemoveRecipe(ModItems.Unbreaking2Upgrade);
+		case 1:
+			TucsRegistry.RemoveRecipe(ModItems.Unbreaking3Upgrade);
+			break;
+		}
+		LogHelper.info("removed "+ TucsRegistry.number +" recipes");
+		TucsRegistry.oldNumber = TucsRegistry.number;
+		TucsRegistry.number=0;
 	}
 
 

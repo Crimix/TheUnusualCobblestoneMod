@@ -97,4 +97,8 @@ public class tucs {
 		
 		LogHelper.info("Post Initialization Complete!");
 	}
+	
+	public void reloadRecipes(){
+		Recipes.init();
+	}
 }

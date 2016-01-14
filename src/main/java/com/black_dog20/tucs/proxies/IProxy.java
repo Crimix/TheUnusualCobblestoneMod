@@ -19,5 +19,6 @@ public interface IProxy {
 
 	public void registerRenders();
 
+	public void ServerRecipes();
 
 }

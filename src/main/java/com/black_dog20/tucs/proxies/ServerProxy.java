@@ -53,4 +53,10 @@ public class ServerProxy extends CommonProxy {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public void ServerRecipes() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -3,6 +3,7 @@ package com.black_dog20.tucs.crafting;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -108,6 +109,18 @@ public class AncientTableManager
 		AncientTableShapedRecipes shapedrecipes = new AncientTableShapedRecipes(j, k, aitemstack, item);
 		this.recipes.add(shapedrecipes);
 		return shapedrecipes;
+	}
+	
+	public void RemoveRecipe(Item item){
+		Iterator ite = recipes.iterator();
+		while (ite.hasNext()){
+			Object object = ite.next();
+			if(object instanceof AncientTableShapedRecipes){
+				if(item == ((AncientTableShapedRecipes)object).getRecipeOutput().getItem()){
+					ite.remove();
+				}
+			}
+		}
 	}
 
 	public void addShapelessRecipe(ItemStack item, Object ... params)

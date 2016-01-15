@@ -17,44 +17,39 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 {
-	private static final int[] slotsTop = new int[] {0};
-	private static final int[] slotsBottom = new int[] {2, 1};
-	private static final int[] slotsSides = new int[] {1};
-	private ItemStack[] furnaceItemStacks = new ItemStack[3];
-	public int furnaceBurnTime;
-	public int currentItemBurnTime;
-	public int furnaceCookTime;
+	private ItemStack[] airMakerItemStacks = new ItemStack[2];
 	private String display;
+	public ItemStack AirTankForModel = null;
 
 	public int getSizeInventory()
 	{
-		return this.furnaceItemStacks.length;
+		return 2;
 	}
 
 	public ItemStack getStackInSlot(int par1)
 	{
-		return this.furnaceItemStacks[par1];
+		return this.airMakerItemStacks[par1];
 	}
 
 	public ItemStack decrStackSize(int slot, int number)
 	{
-		if (this.furnaceItemStacks[slot] != null)
+		if (this.airMakerItemStacks[slot] != null)
 		{
 			ItemStack itemstack;
 
-			if (this.furnaceItemStacks[slot].stackSize <= number)
+			if (this.airMakerItemStacks[slot].stackSize <= number)
 			{
-				itemstack = this.furnaceItemStacks[slot];
-				this.furnaceItemStacks[slot] = null;
+				itemstack = this.airMakerItemStacks[slot];
+				this.airMakerItemStacks[slot] = null;
 				return itemstack;
 			}
 			else
 			{
-				itemstack = this.furnaceItemStacks[slot].splitStack(number);
+				itemstack = this.airMakerItemStacks[slot].splitStack(number);
 
-				if (this.furnaceItemStacks[slot].stackSize == 0)
+				if (this.airMakerItemStacks[slot].stackSize == 0)
 				{
-					this.furnaceItemStacks[slot] = null;
+					this.airMakerItemStacks[slot] = null;
 				}
 
 				return itemstack;
@@ -68,10 +63,10 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 
 	public ItemStack getStackInSlotOnClosing(int par1)
 	{
-		if (this.furnaceItemStacks[par1] != null)
+		if (this.airMakerItemStacks[par1] != null)
 		{
-			ItemStack itemstack = this.furnaceItemStacks[par1];
-			this.furnaceItemStacks[par1] = null;
+			ItemStack itemstack = this.airMakerItemStacks[par1];
+			this.airMakerItemStacks[par1] = null;
 			return itemstack;
 		}
 		else
@@ -82,7 +77,7 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 
 	public void setInventorySlotContents(int slot, ItemStack item)
 	{
-		this.furnaceItemStacks[slot] = item;
+		this.airMakerItemStacks[slot] = item;
 
 		if (item != null && item.stackSize > this.getInventoryStackLimit())
 		{
@@ -109,22 +104,18 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 	{
 		super.readFromNBT(nbt);
 		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
-		this.furnaceItemStacks = new ItemStack[this.getSizeInventory()];
+		this.airMakerItemStacks = new ItemStack[this.getSizeInventory()];
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
 
-			if (b0 >= 0 && b0 < this.furnaceItemStacks.length)
+			if (b0 >= 0 && b0 < this.airMakerItemStacks.length)
 			{
-				this.furnaceItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+				this.airMakerItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
-
-		this.furnaceBurnTime = nbt.getShort("BurnTime");
-		this.furnaceCookTime = nbt.getShort("CookTime");
-		this.currentItemBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
 
 		if (nbt.hasKey("CustomName", 8))
 		{
@@ -135,17 +126,15 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		nbt.setShort("BurnTime", (short)this.furnaceBurnTime);
-		nbt.setShort("CookTime", (short)this.furnaceCookTime);
 		NBTTagList nbttaglist = new NBTTagList();
 
-		for (int i = 0; i < this.furnaceItemStacks.length; ++i)
+		for (int i = 0; i < this.airMakerItemStacks.length; ++i)
 		{
-			if (this.furnaceItemStacks[i] != null)
+			if (this.airMakerItemStacks[i] != null)
 			{
 				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 				nbttagcompound1.setByte("Slot", (byte)i);
-				this.furnaceItemStacks[i].writeToNBT(nbttagcompound1);
+				this.airMakerItemStacks[i].writeToNBT(nbttagcompound1);
 				nbttaglist.appendTag(nbttagcompound1);
 			}
 		}
@@ -162,35 +151,20 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 	{
 		return 64;
 	}
-
-	@SideOnly(Side.CLIENT)
-	public int getCookProgressScaled(int par1)
-	{
-		return this.furnaceCookTime * par1 / 200;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int getBurnTimeRemainingScaled(int par1)
-	{
-		if (this.currentItemBurnTime == 0)
-		{
-			this.currentItemBurnTime = 200;
-		}
-
-		return this.furnaceBurnTime * par1 / this.currentItemBurnTime;
-	}
-
-	public boolean isBurning()
-	{
-		return this.furnaceBurnTime > 0;
-	}
-
+	
 	public void updateEntity()
 	{
 		boolean flag1 = false;
-		if(canSmelt()){
-			this.smeltItem();
+		if(canAddAir()){
+			this.addAir();
 			flag1 = true;
+		}
+		
+		if(airMakerItemStacks[0]!=null &&airMakerItemStacks[0].getItem() instanceof IScubaAirTank){
+			AirTankForModel = airMakerItemStacks[0];
+		}
+		else{
+			AirTankForModel = null;
 		}
 		
 		if (flag1)
@@ -199,17 +173,17 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 		}
 	}
 
-	 private boolean canSmelt()
+	 private boolean canAddAir()
 	{
-		 if (this.furnaceItemStacks[0] == null)
+		 if (this.airMakerItemStacks[0] == null)
 		 {
 			 return false;
 		 }
 		 else
 		 {
-			 if((this.furnaceItemStacks[0].getItem() instanceof IScubaAirTank) && this.furnaceItemStacks[2] == null && isItemFuel(this.furnaceItemStacks[1])){
-				 IScubaAirTank item = (IScubaAirTank) this.furnaceItemStacks[0].getItem();
-				 if(item.getAir(this.furnaceItemStacks[0]) < item.getMaxAir()){
+			 if((this.airMakerItemStacks[0].getItem() instanceof IScubaAirTank) && isItemAir(this.airMakerItemStacks[1])){
+				 IScubaAirTank item = (IScubaAirTank) this.airMakerItemStacks[0].getItem();
+				 if(item.getAir(this.airMakerItemStacks[0]) < item.getMaxAir()){
 					 return true;
 				 }
 			 }
@@ -217,29 +191,22 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 		 return false;
 	}
 
-	 public void smeltItem()
+	 public void addAir()
 	 {
-		 if (this.canSmelt())
+		 if (this.canAddAir())
 		 {
 
-			 if (this.furnaceItemStacks[2] == null)
-			 {
-				 ItemStack airtank = this.furnaceItemStacks[0];
+				 ItemStack airtank = this.airMakerItemStacks[0];
 				 if(airtank.getItem() instanceof IScubaAirTank){
 					 IScubaAirTank tank = (IScubaAirTank) airtank.getItem();
 					 
 					 tank.addAir(airtank, 3000);
 					 decrStackSize(1, 1);
-					 if(tank.getAir(airtank) >= tank.getMaxAir()){
-						 this.furnaceItemStacks[2] = airtank;
-						 this.furnaceItemStacks[0] = null;
-					 }
 				 }
-			 }
 		 }
 	 }
 
-	 public static int getItemBurnTime(ItemStack itemstack)
+	 public static int getItemConvertTime(ItemStack itemstack)
 	 {
 		 if (itemstack == null)
 		 {
@@ -254,9 +221,9 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 		return 0;
 	 }
 
-	 public static boolean isItemFuel(ItemStack itemstack)
+	 public static boolean isItemAir(ItemStack itemstack)
 	 {
-		 return getItemBurnTime(itemstack) > 0;
+		 return getItemConvertTime(itemstack) > 0;
 	 }
 
 	 public boolean isUseableByPlayer(EntityPlayer player)
@@ -270,12 +237,20 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 
 	 public boolean isItemValidForSlot(int slot, ItemStack itemstack)
 	 {
-		 return slot == 2 ? false : (slot == 1 ? isItemFuel(itemstack) : true);
+		 if(slot == 0 && itemstack!= null && itemstack.getItem() instanceof IScubaAirTank){
+			 return true;
+		 }
+		 else if(slot == 1  && isItemAir(itemstack)){
+			 return true;
+		 }
+		 else{
+			 return false;
+		 }
 	 }
 
 	 public int[] getAccessibleSlotsFromSide(int side)
 	 {
-		 return side == 0 ? slotsBottom : (side == 1 ? slotsTop : slotsSides);
+		 return new int[0];
 	 }
 
 	 public boolean canInsertItem(int slot, ItemStack itemstack, int side)
@@ -285,6 +260,6 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory
 	 
 	 public boolean canExtractItem(int slot, ItemStack itemstack, int side)
 	 {
-		 return side != 0 || slot != 1 || itemstack.getItem() == Items.bucket;
+		 return false;
 	 }
 }

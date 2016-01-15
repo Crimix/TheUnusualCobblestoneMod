@@ -10,6 +10,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.handler.KeyInputEventHandler;
+import com.black_dog20.tucs.client.render.AirMakerRender;
 import com.black_dog20.tucs.client.render.RenderSpeeder;
 import com.black_dog20.tucs.client.render.RoundRender;
 import com.black_dog20.tucs.client.render.SoulForgeRender;
@@ -19,6 +20,8 @@ import com.black_dog20.tucs.entity.EntityHoverBike;
 import com.black_dog20.tucs.entity.EntityRound;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.init.Recipes;
+import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.TucsRegistry;
@@ -86,11 +89,14 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
 		RenderingRegistry.registerBlockHandler(new SoulForgeRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class, new SoulForgeRender());
+		RenderingRegistry.registerBlockHandler(new AirMakerRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirMaker.class, new AirMakerRender());
 		RenderingRegistry.registerEntityRenderingHandler(EntityHoverBike.class, new RenderSpeeder());
 		}
 	
 	@Override
 	public void ServerRecipes(){
+		Recipes.Upgrades();
 		switch (3-ConfigurationHandler.Max_Luck_Upgrade) {
 		case 3:
 			TucsRegistry.RemoveRecipe(ModItems.looting1Upgrade);
@@ -100,7 +106,6 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.looting3Upgrade);
 			break;
 		}
-		
 		switch (5-ConfigurationHandler.Max_Sharpness_Upgrade) {
 		case 5:
 			TucsRegistry.RemoveRecipe(ModItems.Sharpness1Upgrade);
@@ -288,7 +293,6 @@ public class ClientProxy extends CommonProxy {
 			break;
 		}
 		LogHelper.info("removed "+ TucsRegistry.number +" recipes");
-		TucsRegistry.oldNumber = TucsRegistry.number;
 		TucsRegistry.number=0;
 	}
 

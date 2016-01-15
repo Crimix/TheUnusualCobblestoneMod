@@ -15,11 +15,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(Reference.MOD_ID)
 public class Recipes {
+	static ItemStack yellowstoneium = new ItemStack(ModItems.ingotYellowstoneium);
 	
 	public static void init(){
 		
 		//ItemStack used in crafting
-		ItemStack yellowstoneium = new ItemStack(ModItems.ingotYellowstoneium);
+		
 		
 		//OreDictionary
 		OreDictionary.registerOre("ingotCobblestoneium", new ItemStack(ModItems.ingotCobblestoneium));
@@ -127,6 +128,27 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ItemStack(ModItems.upgradBaseT2), new Object[]{"ccc", "cdc","ccc", 'd', new ItemStack(Items.nether_star), 'c', new ItemStack(ModItems.upgradBase)});
 		TucsRegistry.addRecipe(new ItemStack(ModItems.soulboundUpgrade), new Object[]{"csc", "sus","csc", 's', new ItemStack(Blocks.soul_sand), 'c', yellowstoneium, 'u', new ItemStack(ModItems.upgradBaseT2)});
 		
+		Upgrades();
+		
+		
+		//Armor
+		TucsRegistry.addRecipe(new ItemStack(ModItems.helmetCobblestonedium), new Object[]{"cyc","chc","   ", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_helmet)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[]{"c c","ehe","dyd", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_chestplate), 'e' , Items.emerald, 'd' , Items.diamond});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"yyy","chc","c c", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_leggings)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.bootsCobblestonedium), new Object[]{"c c","yhy","   ", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_boots)});
+		//TucsRegistry.addRecipe(new ItemStack(ModItems.helmetCobblestonedium), new Object[]{"h","g", 'h', ModItems.helmetCobblestonediumBroken, 'g', new ItemStack(Items.golden_helmet)});
+		//TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[]{"h","g", 'h', ModItems.chestplateCobblestonediumBroken, 'g', new ItemStack(Items.golden_chestplate)});
+		//TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"h","g", 'h', ModItems.leggingsCobblestonediumBroken, 'g', new ItemStack(Items.golden_leggings)});
+		//TucsRegistry.addRecipe(new ItemStack(ModItems.bootsCobblestonedium), new Object[]{"h","g", 'h' , ModItems.bootsCobblestonediumBroken, 'g', new ItemStack(Items.golden_boots)});
+	
+		//Ranged
+		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{" dy","eby", " dy", 'd', Items.diamond, 'e', Items.emerald, 'b', new ItemStack(Items.bow), 'y', ModItems.ingotYellowstoneium});
+		//TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{"b","n", 'b', ModItems.TUCSBowBroken, 'n', new ItemStack(Items.bow)});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.M1911), new Object[]{"ccc","dgc","  c", 'c', ModItems.ingotCobblestonedium, 'd', Blocks.dispenser, 'g', Items.gunpowder});
+		TucsRegistry.addRecipe(new ItemStack(ModItems.ammo,4), new Object[]{"ccc","cgc","cic", 'c', Blocks.cobblestone, 'i', Items.iron_ingot, 'g', Items.gunpowder});
+	}
+	
+	public static void Upgrades(){
 		switch (ConfigurationHandler.Max_Luck_Upgrade) {
 		case 3:
 			TucsRegistry.addRecipe(new ItemStack(ModItems.looting1Upgrade), new Object[]{"yly","lul","yly", 'y', yellowstoneium, 'l', new ItemStack(Items.dye,1,4), 'u', new ItemStack(ModItems.upgradBase)});
@@ -323,21 +345,5 @@ public class Recipes {
 			TucsRegistry.addRecipe(new ItemStack(ModItems.Unbreaking3Upgrade), new Object[]{"rrr","rlr", "rrr", 'l', new ItemStack(ModItems.Unbreaking2Upgrade), 'r', Blocks.redstone_block});
 			break;
 		}
-		
-		//Armor
-		TucsRegistry.addRecipe(new ItemStack(ModItems.helmetCobblestonedium), new Object[]{"cyc","chc","   ", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_helmet)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[]{"c c","ehe","dyd", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_chestplate), 'e' , Items.emerald, 'd' , Items.diamond});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"yyy","chc","c c", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_leggings)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.bootsCobblestonedium), new Object[]{"c c","yhy","   ", 'y', yellowstoneium, 'c', cobblestondium, 'h', new ItemStack(Items.golden_boots)});
-		//TucsRegistry.addRecipe(new ItemStack(ModItems.helmetCobblestonedium), new Object[]{"h","g", 'h', ModItems.helmetCobblestonediumBroken, 'g', new ItemStack(Items.golden_helmet)});
-		//TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[]{"h","g", 'h', ModItems.chestplateCobblestonediumBroken, 'g', new ItemStack(Items.golden_chestplate)});
-		//TucsRegistry.addRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[]{"h","g", 'h', ModItems.leggingsCobblestonediumBroken, 'g', new ItemStack(Items.golden_leggings)});
-		//TucsRegistry.addRecipe(new ItemStack(ModItems.bootsCobblestonedium), new Object[]{"h","g", 'h' , ModItems.bootsCobblestonediumBroken, 'g', new ItemStack(Items.golden_boots)});
-	
-		//Ranged
-		TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{" dy","eby", " dy", 'd', Items.diamond, 'e', Items.emerald, 'b', new ItemStack(Items.bow), 'y', ModItems.ingotYellowstoneium});
-		//TucsRegistry.addRecipe(new ItemStack(ModItems.TUCSBow), new Object[]{"b","n", 'b', ModItems.TUCSBowBroken, 'n', new ItemStack(Items.bow)});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.M1911), new Object[]{"ccc","dgc","  c", 'c', ModItems.ingotCobblestonedium, 'd', Blocks.dispenser, 'g', Items.gunpowder});
-		TucsRegistry.addRecipe(new ItemStack(ModItems.ammo,4), new Object[]{"ccc","cgc","cic", 'c', Blocks.cobblestone, 'i', Items.iron_ingot, 'g', Items.gunpowder});
 	}
 }

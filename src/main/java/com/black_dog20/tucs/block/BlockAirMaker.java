@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,13 +26,16 @@ import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
+import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockAirMaker extends BlockContainer implements ITucsItem{
+public class BlockAirMaker extends BlockContainer implements ITucsItem, ITileEntityProvider{
 
 	private final Random random = new Random();
+	public static final int renderID = 	RenderingRegistry.getNextAvailableRenderId();
 	private static boolean field_149934_M;
 	@SideOnly(Side.CLIENT)
 	private IIcon top;
@@ -44,6 +48,26 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem{
 		this.setStepSound(soundTypePiston);
 		this.setBlockName("airMaker");
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
+	}
+	
+    @Override
+    public int getRenderType() {
+            return renderID;
+    }
+    
+    @Override
+    public boolean isOpaqueCube() {
+            return false;
+    }
+    
+    @Override
+    public boolean renderAsNormalBlock() {
+            return false;
+    }
+	
+	@Override
+	public TileEntity createNewTileEntity(World world, int par) {
+		return new TileEntityAirMaker();
 	}
 
 	@Override
@@ -60,46 +84,6 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem{
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 	{
 		return Item.getItemFromBlock(ModBlocks.blockAirMaker);
-	}
-
-	public void onBlockAdded(World world, int x, int y, int z)
-	{
-		super.onBlockAdded(world, x, y, z);
-		this.func_149930_e(world, x, y, z);
-	}
-
-	private void func_149930_e(World world, int x, int y, int z)
-	{
-		if (!world.isRemote)
-		{
-			Block block = world.getBlock(x, y, z - 1);
-			Block block1 = world.getBlock(x, y, z + 1);
-			Block block2 = world.getBlock(x - 1, y, z);
-			Block block3 = world.getBlock(x + 1, y, z);
-			byte b0 = 3;
-
-			if (block.func_149730_j() && !block1.func_149730_j())
-			{
-				b0 = 3;
-			}
-
-			if (block1.func_149730_j() && !block.func_149730_j())
-			{
-				b0 = 2;
-			}
-
-			if (block2.func_149730_j() && !block3.func_149730_j())
-			{
-				b0 = 5;
-			}
-
-			if (block3.func_149730_j() && !block2.func_149730_j())
-			{
-				b0 = 4;
-			}
-
-			world.setBlockMetadataWithNotify(x, y, z, b0, 2);
-		}
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -122,11 +106,6 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem{
 			player.openGui(tucs.instance, tucs.guiAirMaker, world, x, y, z);
 		}
 		return true;
-	}
-
-	public TileEntity createNewTileEntity(World world, int par1)
-	{
-		return new TileEntityAirMaker();
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack item)

@@ -2,13 +2,23 @@ package com.black_dog20.tucs.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.IIcon;
 
 import com.black_dog20.tucs.crafting.AncientForgeRecipes;
+import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.item.armor.IScubaAirTank;
+import com.black_dog20.tucs.slot.SlotAirMakerFuel;
+import com.black_dog20.tucs.slot.SlotAirMakerTank;
 import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 
@@ -17,17 +27,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerAirMaker extends Container
 {
-    private TileEntityAirMaker tileFurnace;
-    private int lastCookTime;
-    private int lastBurnTime;
-    private int lastItemBurnTime;
+    private TileEntityAirMaker tileAirMaker;
+   
 
-    public ContainerAirMaker(InventoryPlayer IPlayer, TileEntityAirMaker tileForge)
+    public ContainerAirMaker(InventoryPlayer IPlayer, TileEntityAirMaker tileAirMaker)
     {
-        this.tileFurnace = tileForge;
-        this.addSlotToContainer(new Slot(tileForge, 0, 56, 17));
-        this.addSlotToContainer(new Slot(tileForge, 1, 56, 53));
-        this.addSlotToContainer(new SlotFurnace(IPlayer.player, tileForge, 2, 116, 35));
+    	final EntityPlayer thePlayer = IPlayer.player;
+        this.tileAirMaker = tileAirMaker;
+        this.addSlotToContainer(new SlotAirMakerFuel(tileAirMaker, 1, 57, 37));
+        this.addSlotToContainer(new SlotAirMakerTank(tileAirMaker, 0, 94, 37));
         int i;
 
         for (i = 0; i < 3; ++i)
@@ -42,72 +50,71 @@ public class ContainerAirMaker extends Container
         {
             this.addSlotToContainer(new Slot(IPlayer, i, 8 + i * 18, 142));
         }
-    }
-
-    public void addCraftingToCrafters(ICrafting ICraft)
-    {
-        super.addCraftingToCrafters(ICraft);
-        ICraft.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
-        ICraft.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
-        ICraft.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
-    }
-
-    public void detectAndSendChanges()
-    {
-        super.detectAndSendChanges();
-
-        for (int i = 0; i < this.crafters.size(); ++i)
+        
+        this.addSlotToContainer(new Slot(IPlayer, IPlayer.getSizeInventory() - 1 - 1, 20, 37)
         {
-            ICrafting icrafting = (ICrafting)this.crafters.get(i);
-
-            if (this.lastCookTime != this.tileFurnace.furnaceCookTime)
+        	
+            private static final String __OBFID = "CL_00001755";
+            /**
+             * Returns the maximum stack size for a given slot (usually the same as getInventoryStackLimit(), but 1
+             * in the case of armor slots)
+             */
+            public int getSlotStackLimit()
             {
-                icrafting.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
+                return 1;
             }
-
-            if (this.lastBurnTime != this.tileFurnace.furnaceBurnTime)
+            /**
+             * Check if the stack is a valid item for this slot. Always true beside for the armor slots.
+             */
+            public boolean isItemValid(ItemStack p_75214_1_)
             {
-                icrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
+                if (p_75214_1_ == null) return false;
+                return p_75214_1_.getItem().isValidArmor(p_75214_1_, 1, thePlayer);
             }
-
-            if (this.lastItemBurnTime != this.tileFurnace.currentItemBurnTime)
+            /**
+             * Returns the icon index on items.png that is used as background image of the slot.
+             */
+            @SideOnly(Side.CLIENT)
+            public IIcon getBackgroundIconIndex()
             {
-                icrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
+                return ItemArmor.func_94602_b(1);
             }
-        }
-
-        this.lastCookTime = this.tileFurnace.furnaceCookTime;
-        this.lastBurnTime = this.tileFurnace.furnaceBurnTime;
-        this.lastItemBurnTime = this.tileFurnace.currentItemBurnTime;
+        });
+        
     }
 
-    @SideOnly(Side.CLIENT)
-    public void updateProgressBar(int par1, int par2)
-    {
-        if (par1 == 0)
-        {
-            this.tileFurnace.furnaceCookTime = par2;
-        }
-
-        if (par1 == 1)
-        {
-            this.tileFurnace.furnaceBurnTime = par2;
-        }
-
-        if (par1 == 2)
-        {
-            this.tileFurnace.currentItemBurnTime = par2;
-        }
-    }
 
     public boolean canInteractWith(EntityPlayer player)
     {
-        return this.tileFurnace.isUseableByPlayer(player);
+        return this.tileAirMaker.isUseableByPlayer(player);
     }
 
     public ItemStack transferStackInSlot(EntityPlayer player, int par1)
     {
-        ItemStack itemstack = null;
+    	 Slot slotObject = (Slot) inventorySlots.get(par1);
+	      if(slotObject != null && slotObject.getHasStack()) {
+	         ItemStack stackInSlot = slotObject.getStack();
+	         ItemStack stack = stackInSlot.copy();
+	         if(par1 <= 1) {
+	            if(!mergeItemStack(stackInSlot, 1, inventorySlots.size(), true))
+	               return null;
+	         } else if(par1 != 1 && stack.getItem() instanceof IScubaAirTank && !getSlot(1).getHasStack()) {
+	            ItemStack copy = slotObject.decrStackSize(1);
+	            getSlot(1).putStack(copy);
+	            return null;
+	         } else {
+	            return null;
+	         }
+
+	         if(stackInSlot.stackSize == 0)
+	            slotObject.putStack(null);
+	         else
+	            slotObject.onSlotChanged();
+
+	         return stack;
+	      }
+	      return null;
+        /*ItemStack itemstack = null;
         Slot slot = (Slot)this.inventorySlots.get(par1);
 
         if (slot != null && slot.getHasStack())
@@ -126,21 +133,7 @@ public class ContainerAirMaker extends Container
             }
             else if (par1 != 1 && par1 != 0)
             {
-                if (AncientForgeRecipes.smelting().getSmeltingResult(itemstack1) != null)
-                {
-                    if (!this.mergeItemStack(itemstack1, 0, 1, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (TileEntityAncientForge.isItemFuel(itemstack1))
-                {
-                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
-                    {
-                        return null;
-                    }
-                }
-                else if (par1 >= 3 && par1 < 30)
+                if (par1 >= 3 && par1 < 30)
                 {
                     if (!this.mergeItemStack(itemstack1, 30, 39, false))
                     {
@@ -174,6 +167,6 @@ public class ContainerAirMaker extends Container
             slot.onPickupFromSlot(player, itemstack1);
         }
 
-        return itemstack;
+        return itemstack;*/
     }
 }

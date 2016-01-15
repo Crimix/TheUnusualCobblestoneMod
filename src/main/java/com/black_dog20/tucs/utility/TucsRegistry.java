@@ -9,7 +9,6 @@ import com.black_dog20.tucs.crafting.AncientTableManager;
 public class TucsRegistry {
 	
 	public static int number=0;
-	public static int oldNumber=0;
 
 	 public static void addRecipe(ItemStack output,  Object... params)
 	    {
@@ -26,11 +25,11 @@ public class TucsRegistry {
 	    	AncientTableManager.getInstance().addShapelessRecipe(output, params);
 	    }
 
-	    @SuppressWarnings("unchecked")
+	    /*@SuppressWarnings("unchecked")
 	    public static void addRecipe(IRecipe recipe)
 	    {
 	    	AncientTableManager.getInstance().getRecipeList().add(recipe);
-	    }
+	    }*/
 	    
 	    public static void RemoveRecipe(Item item){
 	    	AncientTableManager.getInstance().RemoveRecipe(item);

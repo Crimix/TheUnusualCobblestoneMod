@@ -107,9 +107,22 @@ public class AncientTableManager
 		}
 
 		AncientTableShapedRecipes shapedrecipes = new AncientTableShapedRecipes(j, k, aitemstack, item);
-		this.recipes.add(shapedrecipes);
+		boolean add = true;
+		Iterator ite = recipes.iterator();
+		while (ite.hasNext()){
+			Object object = ite.next();
+			if(object instanceof AncientTableShapedRecipes){
+				if(item.getItem() == ((AncientTableShapedRecipes)object).getRecipeOutput().getItem()){
+					add = false;
+				}
+			}
+		}
+		if(add){
+			this.recipes.add(shapedrecipes);
+		}
 		return shapedrecipes;
 	}
+
 	
 	public void RemoveRecipe(Item item){
 		Iterator ite = recipes.iterator();
@@ -152,7 +165,8 @@ public class AncientTableManager
 			}
 		}
 
-		this.recipes.add(new AncientTableShapelessRecipes(item, arraylist));
+		AncientTableShapelessRecipes recipe = new AncientTableShapelessRecipes(item, arraylist);
+		this.recipes.add(recipe);
 	}
 
 	public ItemStack findMatchingRecipe(InventoryCrafting invC, World world)

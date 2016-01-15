@@ -58,7 +58,7 @@ public class ConfigurationHandler{
 		}
 	}
 
-	private static void loadConfiguration(){
+	public static void loadConfiguration(){
 
 		ToolFire = configuration.getBoolean("Lighters_Make_Fire", Configuration.CATEGORY_GENERAL, true, "Can Lighters make fire like flint & steel");
 		Allow_To_Fly = configuration.getBoolean("Allow_To_Fly", Configuration.CATEGORY_GENERAL, true, "Are players allowed to fly with the talisman");

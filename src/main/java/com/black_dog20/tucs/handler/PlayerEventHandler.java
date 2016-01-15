@@ -10,6 +10,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -97,8 +98,13 @@ public class PlayerEventHandler {
 	@SubscribeEvent
 	public void onPlayerLoginEvent(PlayerLoggedInEvent event){
 		if(!event.player.worldObj.isRemote){
+			if(!MinecraftServer.getServer().isDedicatedServer()){
+				ConfigurationHandler.loadConfiguration();
+			}
 			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP) event.player);
+			
 		}
+		
 	}
 	
 	

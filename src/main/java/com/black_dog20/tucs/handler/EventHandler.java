@@ -32,6 +32,7 @@ import com.black_dog20.tucs.entity.IEntityHoverVehicle;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.armor.IScubaAirTank;
 import com.black_dog20.tucs.item.armor.IScubaMask;
+import com.black_dog20.tucs.item.armor.ItemAirTank;
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemBootCobblestonedium;
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemChestplateCobblestonedium_scuba;
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium;
@@ -353,7 +354,7 @@ public class EventHandler {
 		if(nbt.hasKey(NBTTags.night)){
 			float offset = 0.45F;
 			float size = 0.325F;
-			if(IPlayer.armorInventory[2] != null){
+			if(IPlayer.armorInventory[2] != null && !(IPlayer.armorInventory[2].getItem() instanceof ItemAirTank)){
 				offset = -0.7F;
 			}
 			else{
@@ -362,8 +363,9 @@ public class EventHandler {
 			GL11.glPushMatrix();
 			GL11.glScalef(size, size, size);
 			GL11.glTranslatef(-0.4F, 1.4F, offset);
-			GL11.glRotatef(45.0F-90, 0.0F, 1.0F, 0.0F);
-			GL11.glRotatef(45.0F-115, 1.0F, 0.0F, 1.0F);
+			GL11.glRotatef(45.0F-92, 0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(45.0F-110, 1.0F, 0.0F, 1.0F);
+			//GL11.glRotatef(45.0F-0, 0.0F, 0.0F, 1.0F);
 			RenderManager.instance.itemRenderer.renderItem(player, new ItemStack(ModItems.torchTalisman), 0);
 			GL11.glPopMatrix();
 
@@ -377,7 +379,11 @@ public class EventHandler {
 			if(item == null || !(item.getItem() instanceof ItemTLPOLM)){
 				float offset = 0.45F;
 				float size = 0.6F;
-				if(IPlayer.armorInventory[2] != null){
+				
+				if(IPlayer.armorInventory[2] != null && IPlayer.armorInventory[2].getItem() instanceof IScubaAirTank){
+					offset = 0.7F;
+				}
+				else if(IPlayer.armorInventory[2] != null){
 					offset = 0.45F;
 				}
 				else{

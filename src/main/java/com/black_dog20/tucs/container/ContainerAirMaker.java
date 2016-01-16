@@ -34,8 +34,8 @@ public class ContainerAirMaker extends Container
     {
     	final EntityPlayer thePlayer = IPlayer.player;
         this.tileAirMaker = tileAirMaker;
-        this.addSlotToContainer(new SlotAirMakerFuel(tileAirMaker, 1, 57, 37));
-        this.addSlotToContainer(new SlotAirMakerTank(tileAirMaker, 0, 94, 37));
+        this.addSlotToContainer(new SlotAirMakerFuel(tileAirMaker, 1, 58, 38));
+        this.addSlotToContainer(new SlotAirMakerTank(tileAirMaker, 0, 94, 38));
         int i;
 
         for (i = 0; i < 3; ++i)
@@ -51,7 +51,7 @@ public class ContainerAirMaker extends Container
             this.addSlotToContainer(new Slot(IPlayer, i, 8 + i * 18, 142));
         }
         
-        this.addSlotToContainer(new Slot(IPlayer, IPlayer.getSizeInventory() - 1 - 1, 20, 37)
+        this.addSlotToContainer(new Slot(IPlayer, IPlayer.getSizeInventory() - 1 - 1, 20, 38)
         {
         	
             private static final String __OBFID = "CL_00001755";

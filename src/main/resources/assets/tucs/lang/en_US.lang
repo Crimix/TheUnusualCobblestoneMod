@@ -182,7 +182,7 @@ item.tucs:TLPOLM.info=This legendary pickaxe will serve you through good and bad
 item.tucs:TLSOHD.info=This legendary shovel has made digging holes easier than ever
 item.tucs:craftingTalisman.info=A portable version of the ancient table
 item.tucs:torchTalisman.info=Gives the wearer night vision on command
-tem.tucs:bowTLBOTH.info=A bow so powerful that it should not have been made
+item.tucs:bowTLBOTH.info=A bow so powerful that it should not have been made
 item.tucs:helmetCobblestonedium.info=Part of an upgradeable powerful armor set
 item.tucs:leggingsCobblestonedium.info=Part of an upgradeable powerful armor set
 item.tucs:bootsCobblestonedium.info=Part of an upgradeable powerful armor set
@@ -209,6 +209,7 @@ item.tucs:bootsCobblestonedium.lore=Used by a god. You know it is good
 item.tucs:chestplateCobblestonedium.lore=Used by a god. You know it is good
 item.tucs:m1911.lore=Maybe it was the wired farmer who made it to protect his crops
 item.tucs:TLSOTD.lore=§kunknown lore, it has not been know to man the last 1000 years. No man has ever been able to wield it.
+tile.stonebrick.lore=Once used by an ancient society to create powerful weapons, research has found many recipes of relics of great power.
 
 //MSG
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!

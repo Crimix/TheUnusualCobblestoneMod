@@ -55,6 +55,7 @@ item.tucs:TLSOTD.name=§cThe Legendary Sword of The Destroyer of worlds
 item.tucs:scubaMask.name=Scuba Mask
 item.tucs:airtank.name=Air Tank
 item.tucs:helmetCobblestonedium_scuba.name=The Legendary Helmet of The Warrior
+item.tucs:chestplateCobblestonedium_scuba.name=The Legendary Chestplate of The Warrior
 
 //Upgrades
 item.tucs:looting1Upgrade.name=Luck 1 Upgrade

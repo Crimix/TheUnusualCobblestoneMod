@@ -17,6 +17,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTUCS extends Item implements ITucsItem, IOverlayItem{
 	
+	public ItemTUCS(String unLocalName){
+		
+		this();
+		this.setUnlocalizedName(unLocalName);
+		
+	}
+	
 	public ItemTUCS(){
 		
 		super();

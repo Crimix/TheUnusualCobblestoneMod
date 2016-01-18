@@ -36,7 +36,7 @@ item.tucs:pickaxeHead.name=Pickaxe Head
 item.tucs:hoeHead.name=Hoe Head
 item.tucs:hatchetHead.name=Battleaxe Head
 item.tucs:upgradeBase.name=Tier 1 Upgrade Base
-item.tucs:upgradeBaseT2.name=Tier 2Upgrade Base 
+item.tucs:upgradeBaseT2.name=Tier 2 Upgrade Base 
 item.tucs:ingotYellowstoneium.name= Yellowstoneium Ingot
 item.tucs:beheadingUpgrade.name=Beheading Upgrade
 item.tucs:bowTLBOTH.name=The Legendary Bow of The Hunter
@@ -56,6 +56,9 @@ item.tucs:scubaMask.name=Scuba Mask
 item.tucs:airtank.name=Air Tank
 item.tucs:helmetCobblestonedium_scuba.name=The Legendary Helmet of The Warrior
 item.tucs:chestplateCobblestonedium_scuba.name=The Legendary Chestplate of The Warrior
+item.tucs:tier1CraftingMat.name=Tier 1 Crafting Material
+item.tucs:tier2CraftingMat.name=Tier 2 Crafting Material
+item.tucs:tier3CraftingMat.name=Tier 3 Crafting Material
 
 //Upgrades
 item.tucs:looting1Upgrade.name=Luck 1 Upgrade
@@ -128,6 +131,7 @@ item.tucs:unbreaking1Upgrade.name=Unbreaking 1 Upgrade
 item.tucs:unbreaking2Upgrade.name=Unbreaking 2 Upgrade
 item.tucs:unbreaking3Upgrade.name=Unbreaking 3 Upgrade
 
+
 //Blocks
 tile.tucs:ancientTable.name=Ancient Table
 tile.tucs:oreCobblestoneium.name=Cobblestoneium Ore
@@ -191,6 +195,9 @@ item.tucs:chestplateCobblestonedium.info=Part of an upgradeable powerful armor s
 item.tucs:m1911.info=Cobblestone gun, WHAT! Oh its OP never mind it.
 item.tucs:TLSOTD.info=The sword that has been know to even destroy compillers. It's recipe has long been lost
 item.tucs:helmetCobblestonedium_scuba.info=The Legendary Helmet of The Warrior combinded with a scuba mask. When it breaks it gives a broken helmet and a scuba mask
+item.tucs:tier1CraftingMat.info=The hunting season for creepers has begun. A low drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
+item.tucs:tier2CraftingMat.info=The hunting season for creepers has begun. A very low drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
+item.tucs:tier3CraftingMat.info=The hunting season for creepers has begun. A very rare drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
 
 //Lore
 tile.tucs:soulbinder.lore=No one knows how and when the table was made.

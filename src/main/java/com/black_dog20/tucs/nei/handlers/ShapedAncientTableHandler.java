@@ -122,7 +122,7 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 		if(ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) && checkRecipeForItem(ModItems.cobblestonediumLighter, recipe.ingredients) && checkNameOfUser(Minecraft.getMinecraft().thePlayer)){
 			result = true;
 		}
-		else if(ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2))){
+		else if(ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) && checkRecipeForItem(ModItems.cobblestonediumLighter, recipe.ingredients)){
 			result = false;
 		}
 		if (recipe.result.item.getItem() instanceof ItemTLSOTD && checkNameOfUser(Minecraft.getMinecraft().thePlayer)) {

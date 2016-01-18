@@ -14,6 +14,7 @@ import com.black_dog20.tucs.item.ItemIngotCobblestonedium;
 import com.black_dog20.tucs.item.ItemIngotCobblestoneium;
 import com.black_dog20.tucs.item.ItemIngotYellowstoneium;
 import com.black_dog20.tucs.item.ItemM1911Ammo;
+import com.black_dog20.tucs.item.ItemTUCS;
 import com.black_dog20.tucs.item.ItemTUCSDebug;
 import com.black_dog20.tucs.item.ItemTorchTalisman;
 import com.black_dog20.tucs.item.armor.ItemAirTank;
@@ -143,6 +144,9 @@ public class ModItems {
 	public static final ItemAirTank AirTank = new ItemAirTank(ArmorMaterial.IRON, 1, "airtank");
 	public static final ItemHealthUpgrade HealthUpgrade = new ItemHealthUpgrade();
 	public static final ItemHoverBike HoverBike = new ItemHoverBike();
+	public static final ItemTUCS Tier1CraftingMat = new ItemTUCS("tier1CraftingMat");
+	public static final ItemTUCS Tier2CraftingMat = new ItemTUCS("tier2CraftingMat");
+	public static final ItemTUCS Tier3CraftingMat = new ItemTUCS("tier3CraftingMat");
 	
 	//Lighters
 	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
@@ -287,8 +291,8 @@ public class ModItems {
 		
 		//ITEMS
 		GameRegistry.registerItem(cobblestoneLighter, "cobblestoneLighter");
-		GameRegistry.registerItem(TUCSbook, "TUCSbook");
-		GameRegistry.registerItem(TUCSdebug, "TUCSdebug");
+		//GameRegistry.registerItem(TUCSbook, "TUCSbook");
+		//GameRegistry.registerItem(TUCSdebug, "TUCSdebug");
 		GameRegistry.registerItem(CobbleCoal, "CobbleCoal");
 		GameRegistry.registerItem(cobblestonediumLighter, "cobblestonediumLighter");
 		GameRegistry.registerItem(cobblestoneiumLighter, "cobblestoneiumLighter");
@@ -300,8 +304,11 @@ public class ModItems {
 		GameRegistry.registerItem(TUCSBowBroken, "TUCSBowBroken");
 		GameRegistry.registerItem(M1911, "M1911");
 		GameRegistry.registerItem(ammo, "ammo");
-		GameRegistry.registerItem(HealthUpgrade, "HealthUpgrade");
-		GameRegistry.registerItem(HoverBike, "HoverBike");
+		GameRegistry.registerItem(Tier1CraftingMat, "Tier1CraftingMat");
+		GameRegistry.registerItem(Tier2CraftingMat, "Tier2CraftingMat");
+		GameRegistry.registerItem(Tier3CraftingMat, "Tier3CraftingMat");
+		//GameRegistry.registerItem(HealthUpgrade, "HealthUpgrade");
+		//GameRegistry.registerItem(HoverBike, "HoverBike");
 		
 		
 		GameRegistry.registerItem(helmetCobblestonediumBroken, "helmetCobblestonediumBroken");

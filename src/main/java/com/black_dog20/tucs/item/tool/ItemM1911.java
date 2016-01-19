@@ -64,7 +64,7 @@ public class ItemM1911 extends ItemBowTUCS {
             return;
         }
 
-        EntityRound round = spawnRound(world, Eplayer, 6.0F);
+        EntityRound round = spawnRound(world, Eplayer, 1.0F);
 
             
             	if (!world.isRemote)
@@ -101,7 +101,7 @@ public class ItemM1911 extends ItemBowTUCS {
     	EntityRound round = new EntityRound(world, Eplayer, f*2.0F);
 
         round.setIsCritical(true);
-        round.setDamage(round.getDamage() +3D);
+        round.setDamage(round.getDamage() +2D);
         round.canBePickedUp = 0;
         return round;
     }

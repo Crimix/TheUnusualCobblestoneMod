@@ -35,7 +35,7 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 
 		if(stack.getItem() instanceof ItemAirTank)
 		{
-			return Reference.MOD_ID + ":models/armor/scuba_1.png";
+			return Reference.MOD_ID + ":models/armor/scuba_2.png";
 
 		}
 		else

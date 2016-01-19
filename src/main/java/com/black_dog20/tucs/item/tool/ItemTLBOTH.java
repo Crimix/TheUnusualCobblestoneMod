@@ -127,7 +127,7 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem{
         }
 
         if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.MachineBow)){
-            EntityArrow entityarrow = spawnArrow(world, Eplayer, 1.0F);
+            EntityArrow entityarrow = spawnArrow(world, Eplayer, 2.0F);
             
             stack.damageItem(1, Eplayer);
             if (!world.isRemote)
@@ -149,7 +149,7 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem{
     	EntityArrow entityarrow = new EntityArrow(world, Eplayer, f*2.0F);
 
         entityarrow.setIsCritical(true);
-        entityarrow.setDamage(entityarrow.getDamage() +2D);
+        entityarrow.setDamage(entityarrow.getDamage() +2.5D);
         //entityarrow.setKnockbackStrength(1);
         entityarrow.canBePickedUp = 0;
         return entityarrow;

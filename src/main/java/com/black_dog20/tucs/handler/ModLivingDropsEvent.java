@@ -25,7 +25,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class ModLivingDropsEvent {
 	NBTTagCompound nbt;
 	  Random r = new Random();
-	  int i = 0;
 
 
           //Event for dropping items when a entity dies
@@ -85,9 +84,6 @@ public class ModLivingDropsEvent {
             	  if(event.entityLiving instanceof EntityCreeper) {
             		  int random = r.nextInt(300);
             		  double rand = Math.random();
-            		  //System.out.println(rand + " < "+0.10D);
-            		  i++;
-            		  System.out.println(random + " creeper nr "+i);
             		  EntityCreeper creeper = (EntityCreeper) event.entityLiving;
             		  EntityPlayer player = (EntityPlayer) event.source.getEntity();
             		  if(player.getHeldItem().getItem() == Items.stone_sword ||player.getHeldItem().getItem() instanceof ItemTLSOC || player.getHeldItem().getItem() instanceof ItemSwordCobblestoneium ){

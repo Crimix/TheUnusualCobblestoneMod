@@ -55,6 +55,7 @@ public class TUCSOverlay implements IItemRenderer
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
         IIcon icon = itemStack.getIconIndex();
         GL11.glEnable(GL11.GL_ALPHA_TEST);
+        if(icon != null){
         renderItem.renderIcon(0, 0, icon, 16, 16);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glEnable(GL11.GL_TEXTURE_2D);
@@ -93,6 +94,7 @@ public class TUCSOverlay implements IItemRenderer
         
         if(text != null){
         	fontRenderer.drawString(text, x, y, color);     
+        }
         }
         
 }

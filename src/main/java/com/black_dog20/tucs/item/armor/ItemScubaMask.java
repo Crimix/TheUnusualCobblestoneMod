@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
 import com.black_dog20.tucs.client.model.ScubaMask;
+import com.black_dog20.tucs.client.model.ScubaMask;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.Reference;

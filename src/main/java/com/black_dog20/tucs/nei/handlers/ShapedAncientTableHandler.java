@@ -21,22 +21,23 @@ import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.tool.ItemTLSOTD;
 import com.black_dog20.tucs.reference.Reference;
+
 public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 
-
-	public class CachedShapedAncientTableRecipe extends CachedRecipe
-	{
+	public class CachedShapedAncientTableRecipe extends CachedRecipe {
 		public ArrayList<PositionedStack> ingredients;
 		public PositionedStack result;
 
-		public CachedShapedAncientTableRecipe(int width, int height, Object[] items, ItemStack out) {
+		public CachedShapedAncientTableRecipe(int width, int height,
+				Object[] items, ItemStack out) {
 			result = new PositionedStack(out, 119, 24);
 			ingredients = new ArrayList<PositionedStack>();
 			setIngredients(width, height, items);
 		}
 
 		public CachedShapedAncientTableRecipe(AncientTableShapedRecipes recipe) {
-			this(recipe.recipeWidth, recipe.recipeHeight, recipe.recipeItems, recipe.getRecipeOutput());
+			this(recipe.recipeWidth, recipe.recipeHeight, recipe.recipeItems,
+					recipe.getRecipeOutput());
 		}
 
 		public void setIngredients(int width, int height, Object[] items) {
@@ -45,12 +46,14 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 					if (items[y * width + x] == null)
 						continue;
 
-					PositionedStack stack = new PositionedStack(items[y * width + x], 25 + x * 18, 6 + y * 18, false);
+					PositionedStack stack = new PositionedStack(items[y * width
+							+ x], 25 + x * 18, 6 + y * 18, false);
 					stack.setMaxSize(1);
 					ingredients.add(stack);
 				}
 			}
 		}
+
 		@Override
 		public List<PositionedStack> getIngredients() {
 			return getCycledIngredients(cycleticks / 20, ingredients);
@@ -68,7 +71,8 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 
 	@Override
 	public void loadTransferRects() {
-		transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18), Reference.MOD_ID+"AncientTable"));
+		transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18),
+				Reference.MOD_ID + "AncientTable"));
 	}
 
 	@Override
@@ -90,25 +94,30 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 	public int recipiesPerPage() {
 		return 2;
 	}
+
 	@Override
 	public String getOverlayIdentifier() {
-		return Reference.MOD_ID+"AncientTable";
+		return Reference.MOD_ID + "AncientTable";
 	}
 
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results) {
-		if (outputId.equals(Reference.MOD_ID+"AncientTable") && getClass() == ShapedAncientTableHandler.class) {
-			for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
+		if (outputId.equals(Reference.MOD_ID + "AncientTable")
+				&& getClass() == ShapedAncientTableHandler.class) {
+			for (IRecipe irecipe : (List<IRecipe>) AncientTableManager
+					.getInstance().getRecipeList()) {
 				CachedShapedAncientTableRecipe recipe = null;
 				if (irecipe instanceof AncientTableShapedRecipes)
-					recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
-
+					recipe = new CachedShapedAncientTableRecipe(
+							(AncientTableShapedRecipes) irecipe);
 
 				if (recipe == null)
 					continue;
 
 				recipe.computeVisuals();
-				if(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && this.checkRecipe(recipe)){
+				if (AncientTableManager.getInstance().getRecipeList()
+						.contains(irecipe)
+						&& this.checkRecipe(recipe)) {
 					arecipes.add(recipe);
 				}
 			}
@@ -117,38 +126,44 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 		}
 	}
 
-	private boolean checkRecipe(CachedShapedAncientTableRecipe recipe){
+	private boolean checkRecipe(CachedShapedAncientTableRecipe recipe) {
 		boolean result = true;
-		if(ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) && checkRecipeForItem(ModItems.cobblestonediumLighter, recipe.ingredients) && checkNameOfUser(Minecraft.getMinecraft().thePlayer)){
+		if (ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(
+				Items.emerald, 2))
+				&& checkRecipeForItem(ModItems.cobblestonediumLighter,
+						recipe.ingredients)
+				&& checkNameOfUser(Minecraft.getMinecraft().thePlayer)) {
 			result = true;
-		}
-		else if(ItemStack.areItemStacksEqual(recipe.result.item, new ItemStack(Items.emerald,2)) && checkRecipeForItem(ModItems.cobblestonediumLighter, recipe.ingredients)){
+		} else if (ItemStack.areItemStacksEqual(recipe.result.item,
+				new ItemStack(Items.emerald, 2))
+				&& checkRecipeForItem(ModItems.cobblestonediumLighter,
+						recipe.ingredients)) {
 			result = false;
 		}
-		if (recipe.result.item.getItem() instanceof ItemTLSOTD && checkNameOfUser(Minecraft.getMinecraft().thePlayer)) {
+		if (recipe.result.item.getItem() instanceof ItemTLSOTD
+				&& checkNameOfUser(Minecraft.getMinecraft().thePlayer)) {
 			result = true;
-		}
-		else if(recipe.result.item.getItem() instanceof ItemTLSOTD){
+		} else if (recipe.result.item.getItem() instanceof ItemTLSOTD) {
 			result = false;
 		}
 		return result;
 	}
 
-	private boolean checkNameOfUser(EntityPlayer player){
+	private boolean checkNameOfUser(EntityPlayer player) {
 		boolean result = false;
-		if(player.getDisplayName().toLowerCase().equals("black_dog20")){
+		if (player.getDisplayName().toLowerCase().equals("black_dog20")) {
 
 			result = true;
-		}
-		else if (player.getDisplayName().toLowerCase().equals("simmebabz")) {
+		} else if (player.getDisplayName().toLowerCase().equals("simmebabz")) {
 			result = true;
 		}
-		return result; 
+		return result;
 	}
 
-	private boolean checkRecipeForItem(Item compareItem, ArrayList<PositionedStack> recipe){
+	private boolean checkRecipeForItem(Item compareItem,
+			ArrayList<PositionedStack> recipe) {
 		for (PositionedStack object : recipe) {
-			if(object.item.getItem() == compareItem){
+			if (object.item.getItem() == compareItem) {
 				return true;
 			}
 		}
@@ -157,33 +172,44 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 
 	@Override
 	public void loadCraftingRecipes(ItemStack result) {
-		for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
-			if (NEIServerUtils.areStacksSameTypeCrafting(irecipe.getRecipeOutput(), result)) {
+		for (IRecipe irecipe : (List<IRecipe>) AncientTableManager
+				.getInstance().getRecipeList()) {
+			if (NEIServerUtils.areStacksSameTypeCrafting(
+					irecipe.getRecipeOutput(), result)) {
 				CachedShapedAncientTableRecipe recipe = null;
 				if (irecipe instanceof AncientTableShapedRecipes)
-					recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
+					recipe = new CachedShapedAncientTableRecipe(
+							(AncientTableShapedRecipes) irecipe);
 
 				if (recipe == null)
 					continue;
 
 				recipe.computeVisuals();
-				if(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && checkRecipe(recipe)){
+				if (AncientTableManager.getInstance().getRecipeList()
+						.contains(irecipe)
+						&& checkRecipe(recipe)) {
 					arecipes.add(recipe);
 				}
 			}
 		}
 	}
+
 	@Override
 	public void loadUsageRecipes(ItemStack ingredient) {
-		for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
+		for (IRecipe irecipe : (List<IRecipe>) AncientTableManager
+				.getInstance().getRecipeList()) {
 			CachedShapedAncientTableRecipe recipe = null;
 			if (irecipe instanceof AncientTableShapedRecipes)
-				recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
-			if(recipe != null){
+				recipe = new CachedShapedAncientTableRecipe(
+						(AncientTableShapedRecipes) irecipe);
+			if (recipe != null) {
 				recipe.computeVisuals();
 				if (recipe.contains(recipe.ingredients, ingredient)) {
-					recipe.setIngredientPermutation(recipe.ingredients, ingredient);
-					if(AncientTableManager.getInstance().getRecipeList().contains(irecipe) && checkRecipe(recipe)){
+					recipe.setIngredientPermutation(recipe.ingredients,
+							ingredient);
+					if (AncientTableManager.getInstance().getRecipeList()
+							.contains(irecipe)
+							&& checkRecipe(recipe)) {
 						arecipes.add(recipe);
 					}
 				}

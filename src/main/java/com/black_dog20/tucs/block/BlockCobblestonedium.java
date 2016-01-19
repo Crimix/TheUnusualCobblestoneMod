@@ -4,9 +4,9 @@ import net.minecraft.block.material.Material;
 
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 
-public class BlockCobblestonedium extends BlockTUCS{
+public class BlockCobblestonedium extends BlockTUCS {
 
-	public BlockCobblestonedium(){
+	public BlockCobblestonedium() {
 
 		super(Material.rock);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);

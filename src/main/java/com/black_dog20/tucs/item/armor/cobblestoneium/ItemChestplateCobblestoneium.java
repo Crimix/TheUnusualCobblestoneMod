@@ -8,23 +8,21 @@ import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.Reference;
 
-public class ItemChestplateCobblestoneium extends ItemArmorTUCS{
+public class ItemChestplateCobblestoneium extends ItemArmorTUCS {
 
-	public ItemChestplateCobblestoneium(ArmorMaterial Material, int armortype, String Name) {
+	public ItemChestplateCobblestoneium(ArmorMaterial Material, int armortype,
+			String Name) {
 		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
-	
+
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if(stack.getItem() == ModItems.chestplateCobblestoneium)
-		{
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
+			String type) {
+		if (stack.getItem() == ModItems.chestplateCobblestoneium) {
 			return Reference.MOD_ID + ":models/armor/Cobblestoneium_1.png";
-		}
-		else
-		{
+		} else {
 			return null;
 		}
 	}

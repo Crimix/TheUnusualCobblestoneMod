@@ -30,7 +30,7 @@ public class PlayerEventHandler {
 
 	NBTTagCompound nbt;
 	boolean hasChanged;
-	
+
 	@SubscribeEvent
 	public void onEntityDeath(PlayerDropsEvent event) {
 		EntityPlayer player = event.entityPlayer;
@@ -39,17 +39,18 @@ public class PlayerEventHandler {
 		ListIterator<EntityItem> litr = list.listIterator();
 		nbt = NBTHelper.getPlayerNBT(player);
 		int i = 0;
-		while(litr.hasNext()){
+		while (litr.hasNext()) {
 
 			EntityItem item = litr.next();
 			ItemStack itemstack = item.getEntityItem();
 
-			if(item !=null){
-				if(itemstack.hasTagCompound()){
+			if (item != null) {
+				if (itemstack.hasTagCompound()) {
 					NBTTagCompound itemT = itemstack.getTagCompound();
-					if(itemT.hasKey(NBTTags.SOULBOUND) || itemT.hasKey(NBTTags.SOULBOUND_P)){
+					if (itemT.hasKey(NBTTags.SOULBOUND)
+							|| itemT.hasKey(NBTTags.SOULBOUND_P)) {
 						NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-						nbttagcompound1.setByte("Slot", (byte)i);
+						nbttagcompound1.setByte("Slot", (byte) i);
 						itemstack.writeToNBT(nbttagcompound1);
 						nbttaglist.appendTag(nbttagcompound1);
 						litr.remove();
@@ -61,51 +62,53 @@ public class PlayerEventHandler {
 		nbt.setTag("SoulboundItems", nbttaglist);
 
 	}
+
 	@SubscribeEvent
-	public void Interact( PlayerInteractEvent event){
-		if(event.entityPlayer.ridingEntity instanceof IEntityHoverVehicle){
+	public void Interact(PlayerInteractEvent event) {
+		if (event.entityPlayer.ridingEntity instanceof IEntityHoverVehicle) {
 			event.setCanceled(true);
 		}
 	}
-	
+
 	@SubscribeEvent
-	public void onPlayerRespawn(PlayerRespawnEvent event){
+	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		EntityPlayer player = event.player;
 		nbt = NBTHelper.getPlayerNBT(player);
-		NBTTagList nbttaglist = nbt.getTagList("SoulboundItems", Constants.NBT.TAG_COMPOUND);
-		for(int i = 0; i <= nbttaglist.tagCount(); i++){
+		NBTTagList nbttaglist = nbt.getTagList("SoulboundItems",
+				Constants.NBT.TAG_COMPOUND);
+		for (int i = 0; i <= nbttaglist.tagCount(); i++) {
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
 			ItemStack item = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			if(item != null && item.getItem() instanceof ItemArmor){
-				ItemArmor armor = (ItemArmor)item.getItem(); 
+			if (item != null && item.getItem() instanceof ItemArmor) {
+				ItemArmor armor = (ItemArmor) item.getItem();
 				System.out.println(InventoryHelper.getArmorPosition(armor));
-				if (player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] == null)
-				{
-					player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] = item;
-				}
-				else{
+				if (player.inventory.armorInventory[InventoryHelper
+						.getArmorPosition(armor)] == null) {
+					player.inventory.armorInventory[InventoryHelper
+							.getArmorPosition(armor)] = item;
+				} else {
 					player.inventory.addItemStackToInventory(item);
 				}
 
-			}else{
+			} else {
 				player.inventory.addItemStackToInventory(item);
 			}
 		}
 		nbt.removeTag("SoulboundItems");
 	}
-	
+
 	@SubscribeEvent
-	public void onPlayerLoginEvent(PlayerLoggedInEvent event){
-		if(!event.player.worldObj.isRemote){
-			if(!MinecraftServer.getServer().isDedicatedServer()){
+	public void onPlayerLoginEvent(PlayerLoggedInEvent event) {
+		if (!event.player.worldObj.isRemote) {
+			if (!MinecraftServer.getServer().isDedicatedServer()) {
 				ConfigurationHandler.loadConfiguration();
 			}
-			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP) event.player);
-			
+			PacketHandler.network.sendTo(new MessageConfigSync(),
+					(EntityPlayerMP) event.player);
+
 		}
-		
+
 	}
-	
-	
+
 }

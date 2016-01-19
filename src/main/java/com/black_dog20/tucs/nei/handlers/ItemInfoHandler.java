@@ -19,7 +19,7 @@ import codechicken.nei.api.IRecipeOverlayRenderer;
 import codechicken.nei.recipe.GuiRecipe;
 import codechicken.nei.recipe.ICraftingHandler;
 
-public class ItemInfoHandler implements ICraftingHandler{
+public class ItemInfoHandler implements ICraftingHandler {
 
 	private List<String> recipes = new ArrayList<String>();
 	private List<PositionedStack> positionedStacks = new ArrayList<PositionedStack>();
@@ -35,21 +35,20 @@ public class ItemInfoHandler implements ICraftingHandler{
 	}
 
 	@Override
-	public void drawBackground(int recipe )
-	{
-		GL11.glColor4f( 1, 1, 1, 1 );
+	public void drawBackground(int recipe) {
+		GL11.glColor4f(1, 1, 1, 1);
 	}
 
 	@Override
-	public void drawForeground( int recipe )
-	{
-		if(this.recipes.size() > recipe)
-		{
+	public void drawForeground(int recipe) {
+		if (this.recipes.size() > recipe) {
 			String info = recipes.get(recipe);
 			String name = positionedStacks.get(recipe).item.getDisplayName();
 			FontRenderer render = Minecraft.getMinecraft().fontRenderer;
-			render.drawSplitString(StatCollector.translateToLocal(info), 10, 30, 140, 0 );
-			render.drawSplitString(StatCollector.translateToLocal(name), 28, 4, 140, 0 );
+			render.drawSplitString(StatCollector.translateToLocal(info), 10,
+					30, 140, 0);
+			render.drawSplitString(StatCollector.translateToLocal(name), 28, 4,
+					140, 0);
 		}
 	}
 
@@ -120,25 +119,68 @@ public class ItemInfoHandler implements ICraftingHandler{
 	public ICraftingHandler getRecipeHandler(String outputId, Object... results) {
 
 		ItemInfoHandler infoHandler = new ItemInfoHandler();
-		if(results.length > 0 && (results[0] instanceof ItemStack) && (((ItemStack) results[0]).getItem() instanceof ItemBlock) /*&& (((ItemBlock)((ItemStack) results[0]).getItem()).field_150939_a instanceof ITucsItem)*/){
-			String unlocalinfo = ((ItemBlock)((ItemStack) results[0]).getItem()).field_150939_a.getUnlocalizedName()+".info";
-			String unlocallore = ((ItemBlock)((ItemStack) results[0]).getItem()).field_150939_a.getUnlocalizedName()+".lore";
+		if (results.length > 0 && (results[0] instanceof ItemStack)
+				&& (((ItemStack) results[0]).getItem() instanceof ItemBlock) /*
+																			 * &&
+																			 * (
+																			 * (
+																			 * (
+																			 * ItemBlock
+																			 * )
+																			 * (
+																			 * (
+																			 * ItemStack
+																			 * )
+																			 * results
+																			 * [
+																			 * 0
+																			 * ]
+																			 * )
+																			 * .
+																			 * getItem
+																			 * (
+																			 * )
+																			 * )
+																			 * .
+																			 * field_150939_a
+																			 * instanceof
+																			 * ITucsItem
+																			 * )
+																			 */) {
+			String unlocalinfo = ((ItemBlock) ((ItemStack) results[0])
+					.getItem()).field_150939_a.getUnlocalizedName() + ".info";
+			String unlocallore = ((ItemBlock) ((ItemStack) results[0])
+					.getItem()).field_150939_a.getUnlocalizedName() + ".lore";
 			add(infoHandler, unlocalinfo, results[0]);
 			return add(infoHandler, unlocallore, results[0]);
 		}
-		if(results.length > 0 && (results[0] instanceof ItemStack /*&& ((ItemStack)results[0]).getItem() instanceof ITucsItem */)){
-			String unlocalinfo = ((ItemStack)results[0]).getUnlocalizedName()+".info";
-			String unlocallore = ((ItemStack)results[0]).getUnlocalizedName()+".lore";
+		if (results.length > 0 && (results[0] instanceof ItemStack /*
+																	 * &&
+																	 * ((ItemStack
+																	 * )
+																	 * results[0
+																	 * ]
+																	 * ).getItem
+																	 * ()
+																	 * instanceof
+																	 * ITucsItem
+																	 */)) {
+			String unlocalinfo = ((ItemStack) results[0]).getUnlocalizedName()
+					+ ".info";
+			String unlocallore = ((ItemStack) results[0]).getUnlocalizedName()
+					+ ".lore";
 			add(infoHandler, unlocalinfo, results[0]);
 			return add(infoHandler, unlocallore, results[0]);
 		}
 		return this;
 	}
 
-	private ItemInfoHandler add(ItemInfoHandler infoHandler, String unlocal, Object result) {
-		if(!StatCollector.translateToLocal(unlocal).equals(unlocal)){
+	private ItemInfoHandler add(ItemInfoHandler infoHandler, String unlocal,
+			Object result) {
+		if (!StatCollector.translateToLocal(unlocal).equals(unlocal)) {
 			infoHandler.recipes.add(unlocal);
-			infoHandler.positionedStacks.add(new PositionedStack(result, 10, 4 ));
+			infoHandler.positionedStacks
+					.add(new PositionedStack(result, 10, 4));
 			return infoHandler;
 		}
 		return infoHandler;

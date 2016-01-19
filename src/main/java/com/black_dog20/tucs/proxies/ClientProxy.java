@@ -29,18 +29,18 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 
-
 public class ClientProxy extends CommonProxy {
-	
 
 	@Override
-	public void openBook(EntityPlayer player){
-		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+	public void openBook(EntityPlayer player) {
+		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj,
+				(int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 
 	@Override
-	public void openToolUpgrade(EntityPlayer player){
-		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+	public void openToolUpgrade(EntityPlayer player) {
+		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj,
+				(int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 
 	@Override
@@ -56,9 +56,9 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public EntityPlayer getPlayerFromMessageContext( MessageContext ctx){
+	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
 		switch (ctx.side) {
-		case CLIENT: 
+		case CLIENT:
 			EntityPlayer entityClientPlayerMP = Minecraft.getMinecraft().thePlayer;
 			return entityClientPlayerMP;
 		case SERVER:
@@ -69,9 +69,11 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public EntityPlayer getPlayerByIDFromMessageContext(int id, MessageContext ctx){
-		if(ctx.side == Side.CLIENT) {
-			EntityPlayer entityClientPlayerMP = (EntityPlayer) Minecraft.getMinecraft().theWorld.getEntityByID(id);
+	public EntityPlayer getPlayerByIDFromMessageContext(int id,
+			MessageContext ctx) {
+		if (ctx.side == Side.CLIENT) {
+			EntityPlayer entityClientPlayerMP = (EntityPlayer) Minecraft
+					.getMinecraft().theWorld.getEntityByID(id);
 			return entityClientPlayerMP;
 		}
 		return null;
@@ -79,22 +81,27 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenders() {
-		
+
 		for (Item iterable_element : tucs.overlayList) {
-			MinecraftForgeClient.registerItemRenderer(iterable_element, new TUCSOverlay());
+			MinecraftForgeClient.registerItemRenderer(iterable_element,
+					new TUCSOverlay());
 		}
-		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
+		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class,
+				new RoundRender());
 		RenderingRegistry.registerBlockHandler(new SoulForgeRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class, new SoulForgeRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class,
+				new SoulForgeRender());
 		RenderingRegistry.registerBlockHandler(new AirMakerRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirMaker.class, new AirMakerRender());
-		RenderingRegistry.registerEntityRenderingHandler(EntityHoverBike.class, new RenderSpeeder());
-		}
-	
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirMaker.class,
+				new AirMakerRender());
+		RenderingRegistry.registerEntityRenderingHandler(EntityHoverBike.class,
+				new RenderSpeeder());
+	}
+
 	@Override
-	public void ServerRecipes(){
+	public void ServerRecipes() {
 		Recipes.Upgrades();
-		switch (3-ConfigurationHandler.Max_Luck_Upgrade) {
+		switch (3 - ConfigurationHandler.Max_Luck_Upgrade) {
 		case 3:
 			TucsRegistry.RemoveRecipe(ModItems.looting1Upgrade);
 		case 2:
@@ -103,7 +110,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.looting3Upgrade);
 			break;
 		}
-		switch (5-ConfigurationHandler.Max_Sharpness_Upgrade) {
+		switch (5 - ConfigurationHandler.Max_Sharpness_Upgrade) {
 		case 5:
 			TucsRegistry.RemoveRecipe(ModItems.Sharpness1Upgrade);
 		case 4:
@@ -116,16 +123,16 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Sharpness5Upgrade);
 			break;
 		}
-		if(!ConfigurationHandler.Max_Silktouch_Upgrade){
+		if (!ConfigurationHandler.Max_Silktouch_Upgrade) {
 			TucsRegistry.RemoveRecipe(ModItems.Sliktouch1Upgrade);
 		}
-		if(!ConfigurationHandler.Max_Beheading_Upgrade){
+		if (!ConfigurationHandler.Max_Beheading_Upgrade) {
 			TucsRegistry.RemoveRecipe(ModItems.BeheadingUpgrade);
 		}
-		if(!ConfigurationHandler.Max_Infi_Upgrade){
+		if (!ConfigurationHandler.Max_Infi_Upgrade) {
 			TucsRegistry.RemoveRecipe(ModItems.InfiUpgrade);
 		}
-		switch (5-ConfigurationHandler.Max_Bane_of_Arthropods) {
+		switch (5 - ConfigurationHandler.Max_Bane_of_Arthropods) {
 		case 5:
 			TucsRegistry.RemoveRecipe(ModItems.BoA1Upgrade);
 		case 4:
@@ -138,13 +145,13 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.BoA5Upgrade);
 			break;
 		}
-		if(!ConfigurationHandler.Max_Aqua_Affinity){
+		if (!ConfigurationHandler.Max_Aqua_Affinity) {
 			TucsRegistry.RemoveRecipe(ModItems.AquaAffinityUpgrade);
 		}
-		if(!ConfigurationHandler.Max_Auto_Bow){
+		if (!ConfigurationHandler.Max_Auto_Bow) {
 			TucsRegistry.RemoveRecipe(ModItems.AutoBowUpgrade);
 		}
-		switch (4-ConfigurationHandler.Max_Blast_Protection) {
+		switch (4 - ConfigurationHandler.Max_Blast_Protection) {
 		case 4:
 			TucsRegistry.RemoveRecipe(ModItems.BlastProtection1Upgrade);
 		case 3:
@@ -155,7 +162,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.BlastProtection4Upgrade);
 			break;
 		}
-		switch (5-ConfigurationHandler.Efficiency) {
+		switch (5 - ConfigurationHandler.Efficiency) {
 		case 5:
 			TucsRegistry.RemoveRecipe(ModItems.Efficiency1Upgrade);
 		case 4:
@@ -168,7 +175,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Efficiency5Upgrade);
 			break;
 		}
-		switch (4-ConfigurationHandler.Feather_Falling) {
+		switch (4 - ConfigurationHandler.Feather_Falling) {
 		case 4:
 			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling1Upgrade);
 		case 3:
@@ -179,14 +186,14 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling4Upgrade);
 			break;
 		}
-		switch (2-ConfigurationHandler.Fire_Aspect) {
+		switch (2 - ConfigurationHandler.Fire_Aspect) {
 		case 2:
 			TucsRegistry.RemoveRecipe(ModItems.FireAspect1Upgrade);
 		case 1:
 			TucsRegistry.RemoveRecipe(ModItems.FireAspect2Upgrade);
 			break;
 		}
-		switch (4-ConfigurationHandler.Fire_Protection) {
+		switch (4 - ConfigurationHandler.Fire_Protection) {
 		case 4:
 			TucsRegistry.RemoveRecipe(ModItems.FireProtection1Upgrade);
 		case 3:
@@ -197,17 +204,17 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.FireProtection4Upgrade);
 			break;
 		}
-		if(!ConfigurationHandler.Max_Flame){
+		if (!ConfigurationHandler.Max_Flame) {
 			TucsRegistry.RemoveRecipe(ModItems.FlameUpgrade);
 		}
-		switch (2-ConfigurationHandler.Knockback) {
+		switch (2 - ConfigurationHandler.Knockback) {
 		case 2:
 			TucsRegistry.RemoveRecipe(ModItems.Knockback1Upgrade);
 		case 1:
 			TucsRegistry.RemoveRecipe(ModItems.Knockback2Upgrade);
 			break;
 		}
-		switch (5-ConfigurationHandler.Power) {
+		switch (5 - ConfigurationHandler.Power) {
 		case 5:
 			TucsRegistry.RemoveRecipe(ModItems.Power1Upgrade);
 		case 4:
@@ -220,7 +227,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Power5Upgrade);
 			break;
 		}
-		switch (4-ConfigurationHandler.Projectile_Protection) {
+		switch (4 - ConfigurationHandler.Projectile_Protection) {
 		case 4:
 			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection1Upgrade);
 		case 3:
@@ -231,7 +238,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection4Upgrade);
 			break;
 		}
-		switch (4-ConfigurationHandler.Protection) {
+		switch (4 - ConfigurationHandler.Protection) {
 		case 4:
 			TucsRegistry.RemoveRecipe(ModItems.Protection1Upgrade);
 		case 3:
@@ -242,14 +249,14 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Protection4Upgrade);
 			break;
 		}
-		switch (2-ConfigurationHandler.Punch) {
+		switch (2 - ConfigurationHandler.Punch) {
 		case 2:
 			TucsRegistry.RemoveRecipe(ModItems.Punch1Upgrade);
 		case 1:
 			TucsRegistry.RemoveRecipe(ModItems.Punch2Upgrade);
 			break;
 		}
-		switch (3-ConfigurationHandler.Respiration) {
+		switch (3 - ConfigurationHandler.Respiration) {
 		case 3:
 			TucsRegistry.RemoveRecipe(ModItems.Respiration1Upgrade);
 		case 2:
@@ -258,7 +265,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Respiration3Upgrade);
 			break;
 		}
-		switch (5-ConfigurationHandler.Smite) {
+		switch (5 - ConfigurationHandler.Smite) {
 		case 5:
 			TucsRegistry.RemoveRecipe(ModItems.Smite1Upgrade);
 		case 4:
@@ -271,7 +278,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Smite5Upgrade);
 			break;
 		}
-		switch (3-ConfigurationHandler.Thorns) {
+		switch (3 - ConfigurationHandler.Thorns) {
 		case 3:
 			TucsRegistry.RemoveRecipe(ModItems.Thorns1Upgrade);
 		case 2:
@@ -280,7 +287,7 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Thorns3Upgrade);
 			break;
 		}
-		switch (3-ConfigurationHandler.Unbreaking) {
+		switch (3 - ConfigurationHandler.Unbreaking) {
 		case 3:
 			TucsRegistry.RemoveRecipe(ModItems.Unbreaking1Upgrade);
 		case 2:
@@ -289,9 +296,8 @@ public class ClientProxy extends CommonProxy {
 			TucsRegistry.RemoveRecipe(ModItems.Unbreaking3Upgrade);
 			break;
 		}
-		LogHelper.info("removed "+ TucsRegistry.number +" recipes");
-		TucsRegistry.number=0;
+		LogHelper.info("removed " + TucsRegistry.number + " recipes");
+		TucsRegistry.number = 0;
 	}
-
 
 }

@@ -13,23 +13,21 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageToolRender  implements IMessage, IMessageHandler<MessageToolRender, IMessage>{
+public class MessageToolRender implements IMessage,
+		IMessageHandler<MessageToolRender, IMessage> {
 
 	int reqPlayer;
 	NBTTagCompound nbt;
-	
-	 public MessageToolRender(){
-		 
-	 }
-	public MessageToolRender(int id, NBTTagCompound nbt)
-    {
-        this.reqPlayer = id;
-        this.nbt = nbt;
-        		
-        		
-    }
 
-	
+	public MessageToolRender() {
+
+	}
+
+	public MessageToolRender(int id, NBTTagCompound nbt) {
+		this.reqPlayer = id;
+		this.nbt = nbt;
+
+	}
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
@@ -45,7 +43,7 @@ public class MessageToolRender  implements IMessage, IMessageHandler<MessageTool
 
 	@Override
 	public IMessage onMessage(MessageToolRender message, MessageContext ctx) {
-		EntityPlayer me  = tucs.Proxy.getPlayerFromMessageContext(ctx);
+		EntityPlayer me = tucs.Proxy.getPlayerFromMessageContext(ctx);
 		NBTTagCompound nbt = message.nbt;
 		NBTTagCompound nbtt = NBTHelper.getPlayerNBT(me);
 		boolean flight = nbt.hasKey(NBTTags.AllowFly);
@@ -53,31 +51,27 @@ public class MessageToolRender  implements IMessage, IMessageHandler<MessageTool
 		boolean pick = nbt.hasKey(NBTTags.PickAxeRender);
 		boolean night = nbt.hasKey(NBTTags.night);
 		NBTTagCompound list = new NBTTagCompound();
-		if(flight){
+		if (flight) {
 			list.setBoolean(NBTTags.AllowFly, true);
-		}
-		else{
+		} else {
 			list.removeTag(NBTTags.AllowFly);
 		}
-		if(sword){
+		if (sword) {
 			list.setBoolean(NBTTags.SwordRender, true);
-		}
-		else{
+		} else {
 			list.removeTag(NBTTags.SwordRender);
 		}
-		if(pick){
+		if (pick) {
 			list.setBoolean(NBTTags.PickAxeRender, true);
-		}
-		else{
+		} else {
 			list.removeTag(NBTTags.PickAxeRender);
 		}
-		if(night){
+		if (night) {
 			list.setBoolean(NBTTags.night, true);
-		}
-		else{
+		} else {
 			list.removeTag(NBTTags.night);
 		}
-		
+
 		nbtt.setTag(Integer.toString(message.reqPlayer), list);
 		return null;
 	}

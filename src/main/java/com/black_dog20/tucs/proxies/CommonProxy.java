@@ -10,23 +10,25 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 public abstract class CommonProxy implements IProxy {
 
-
-	public void registerNetworkStuff(){
-		NetworkRegistry.INSTANCE.registerGuiHandler(tucs.instance, new GuiHandler());
+	public void registerNetworkStuff() {
+		NetworkRegistry.INSTANCE.registerGuiHandler(tucs.instance,
+				new GuiHandler());
 	}
-	public void openBook(){}
 
-	public void openToolUpgrade(){}
+	public void openBook() {
+	}
 
-	public EntityPlayer getPlayerFromMessageContext( MessageContext ctx)
-	{
+	public void openToolUpgrade() {
+	}
+
+	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
 		switch (ctx.side) {
 		case CLIENT: {
 			assert false : "Message for CLIENT received on dedicated server";
 		}
 		case SERVER: {
 			EntityPlayer entityPlayerMP = ctx.getServerHandler().playerEntity;
-			return  entityPlayerMP;
+			return entityPlayerMP;
 		}
 		default:
 			assert false : "Invalid side in TestMsgHandler: " + ctx.side;
@@ -34,6 +36,7 @@ public abstract class CommonProxy implements IProxy {
 		return null;
 
 	}
+
 	public void render() {
 
 	}

@@ -11,34 +11,31 @@ import com.black_dog20.tucs.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTUCS extends Block implements ITucsItem{
+public class BlockTUCS extends Block implements ITucsItem {
 
-	 public BlockTUCS(Material material)
-	    {
-	        super(material);
-	        this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
-	    }
+	public BlockTUCS(Material material) {
+		super(material);
+		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
+	}
 
-	    public BlockTUCS()
-	    {
-	        this(Material.rock);
-	    }
+	public BlockTUCS() {
+		this(Material.rock);
+	}
 
-	    @Override
-	    public String getUnlocalizedName()
-	    {
-	        return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-	    }
+	@Override
+	public String getUnlocalizedName() {
+		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":",
+				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	}
 
-	    @Override
-	    @SideOnly(Side.CLIENT)
-	    public void registerBlockIcons(IIconRegister iconRegister)
-	    {
-	        blockIcon = iconRegister.registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName())));
-	    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		blockIcon = iconRegister.registerIcon(String.format("%s",
+				getUnwrappedUnlocalizedName(this.getUnlocalizedName())));
+	}
 
-	    protected String getUnwrappedUnlocalizedName(String unlocalizedName)
-	    {
-	        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
-	    }
+	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
+		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+	}
 }

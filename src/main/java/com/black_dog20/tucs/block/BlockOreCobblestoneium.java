@@ -6,7 +6,7 @@ import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 
 public class BlockOreCobblestoneium extends BlockTUCS {
 
-	public BlockOreCobblestoneium(){
+	public BlockOreCobblestoneium() {
 
 		super(Material.rock);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);

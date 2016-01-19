@@ -9,42 +9,45 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class InventoryHelper {
-	
-	
-	public static int findItem(Item item, InventoryPlayer iplayer){
+
+	public static int findItem(Item item, InventoryPlayer iplayer) {
 		int res = 0;
-		for(int i = 0; i < 36; i++){
+		for (int i = 0; i < 36; i++) {
 			ItemStack testItem = iplayer.getStackInSlot(i);
-			if(testItem !=null && testItem.getItem() == item){
+			if (testItem != null && testItem.getItem() == item) {
 				res += iplayer.getStackInSlot(i).stackSize;
 			}
 		}
-		
+
 		return res;
 	}
-	
-	public static int findBlock(Block block, InventoryPlayer iplayer){
+
+	public static int findBlock(Block block, InventoryPlayer iplayer) {
 		int res = 0;
-		for(int i = 0; i < 36; i++){
+		for (int i = 0; i < 36; i++) {
 			ItemStack testItem = iplayer.getStackInSlot(i);
-			if(testItem !=null && testItem.getItem() instanceof ItemBlock && ((ItemBlock)(testItem.getItem())).field_150939_a == block){
+			if (testItem != null
+					&& testItem.getItem() instanceof ItemBlock
+					&& ((ItemBlock) (testItem.getItem())).field_150939_a == block) {
 				res += iplayer.getStackInSlot(i).stackSize;
 			}
 		}
 		return res;
 	}
-	
-	public static int findTorch(InventoryPlayer player){
-		for(int i = 0; i < 36; i++){
+
+	public static int findTorch(InventoryPlayer player) {
+		for (int i = 0; i < 36; i++) {
 			ItemStack testItem = player.getStackInSlot(i);
-			if(testItem !=null && testItem.getItem() instanceof ItemBlock && ((ItemBlock)(testItem.getItem())).field_150939_a == Blocks.torch){
+			if (testItem != null
+					&& testItem.getItem() instanceof ItemBlock
+					&& ((ItemBlock) (testItem.getItem())).field_150939_a == Blocks.torch) {
 				return i;
 			}
 		}
 		return -1;
 	}
-	
-	public static int getArmorPosition(ItemArmor item){
+
+	public static int getArmorPosition(ItemArmor item) {
 		int armor = 0;
 		switch (item.armorType) {
 		case 0:

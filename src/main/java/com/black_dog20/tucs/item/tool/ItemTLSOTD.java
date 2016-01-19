@@ -19,9 +19,9 @@ import com.black_dog20.tucs.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTLSOTD extends ItemSword implements ITucsItem{
+public class ItemTLSOTD extends ItemSword implements ITucsItem {
 
-	public ItemTLSOTD(ToolMaterial Material){
+	public ItemTLSOTD(ToolMaterial Material) {
 
 		super(Material);
 		this.setUnlocalizedName("TLSOTD");
@@ -33,70 +33,68 @@ public class ItemTLSOTD extends ItemSword implements ITucsItem{
 	}
 
 	@Override
-	public String getUnlocalizedName()
-	{
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	public String getUnlocalizedName() {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
+				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack itemStack)
-	{
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	public String getUnlocalizedName(ItemStack itemStack) {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
+				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "swordTLSOTD");
+	public void registerIcons(IIconRegister iconRegister) {
+		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":"
+				+ "swordTLSOTD");
 	}
 
-	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
-	{
+	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 	}
 
-
 	@Override
-	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player){
-			if(player.isSneaking()){
-				tucs.Proxy.openToolUpgrade(player);
-			}
-			player.setItemInUse(Item, this.getMaxItemUseDuration(Item));
+	public ItemStack onItemRightClick(ItemStack Item, World world,
+			EntityPlayer player) {
+		if (player.isSneaking()) {
+			tucs.Proxy.openToolUpgrade(player);
+		}
+		player.setItemInUse(Item, this.getMaxItemUseDuration(Item));
 		return Item;
 
 	}
-	
+
 	@Override
-	public boolean hasEffect(ItemStack stack){
-		
-		if(!stack.hasTagCompound()){
+	public boolean hasEffect(ItemStack stack) {
+
+		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
 		}
-		if(stack.hasTagCompound()){
-			NBTTagCompound nbt= stack.getTagCompound();
-			
-			if(nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")){
+		if (stack.hasTagCompound()) {
+			NBTTagCompound nbt = stack.getTagCompound();
+
+			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)
+					|| nbt.hasKey("ench")) {
 				return true;
 			}
-			if(nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")){
+			if (nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")) {
 				return true;
 			}
-			if(nbt.hasKey(NBTTags.Beheading) || nbt.hasKey("ench")){
+			if (nbt.hasKey(NBTTags.Beheading) || nbt.hasKey("ench")) {
 				return true;
-			}
-			else{
+			} else {
 				return false;
 			}
 		}
 		return false;
 	}
-	
+
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+	public void addInformation(ItemStack stack, EntityPlayer player, List List,
+			boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
-	
 
-	
 }

@@ -16,12 +16,13 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockSoulForge extends BlockTUCS implements ITileEntityProvider{
+public class BlockSoulForge extends BlockTUCS implements ITileEntityProvider {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
 
-	public static final int renderID = 	RenderingRegistry.getNextAvailableRenderId();
+	public static final int renderID = RenderingRegistry
+			.getNextAvailableRenderId();
 	@SideOnly(Side.CLIENT)
 	private IIcon iconTop;
 
@@ -31,7 +32,7 @@ public class BlockSoulForge extends BlockTUCS implements ITileEntityProvider{
 	@SideOnly(Side.CLIENT)
 	private IIcon iconBot;
 
-	public BlockSoulForge(){
+	public BlockSoulForge() {
 
 		super(Material.wood);
 
@@ -39,21 +40,22 @@ public class BlockSoulForge extends BlockTUCS implements ITileEntityProvider{
 		this.setResistance(100.0F);
 		this.setBlockName("soulbinder");
 	}
-    @Override
-    public int getRenderType() {
-            return renderID;
-    }
-    
-    @Override
-    public boolean isOpaqueCube() {
-            return false;
-    }
-    
-    @Override
-    public boolean renderAsNormalBlock() {
-            return false;
-    }
-	
+
+	@Override
+	public int getRenderType() {
+		return renderID;
+	}
+
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
 	@Override
 	public TileEntity createNewTileEntity(World world, int par) {
 		return new TileEntitySoulForge();
@@ -62,24 +64,29 @@ public class BlockSoulForge extends BlockTUCS implements ITileEntityProvider{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		this.blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "soulBinder_side");
-		this.iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":" + "soulBinder_side");
-		this.iconTop = iconRegister.registerIcon(Reference.MOD_ID + ":" + "soulBinder_top");
+		this.blockIcon = iconRegister.registerIcon(Reference.MOD_ID + ":"
+				+ "soulBinder_side");
+		this.iconFront = iconRegister.registerIcon(Reference.MOD_ID + ":"
+				+ "soulBinder_side");
+		this.iconTop = iconRegister.registerIcon(Reference.MOD_ID + ":"
+				+ "soulBinder_top");
 		this.iconBot = iconRegister.registerIcon("minecraft:soul_sand");
 	}
 
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata) {
-		return metadata == 0 && side == 3 ? this.iconFront : side == 1 ? this.iconTop : (side == 0 ? this.iconBot : (side == metadata ? this.iconFront : this.blockIcon));
+		return metadata == 0 && side == 3 ? this.iconFront
+				: side == 1 ? this.iconTop : (side == 0 ? this.iconBot
+						: (side == metadata ? this.iconFront : this.blockIcon));
 	}
 
-
-	public boolean onBlockActivated (World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, int x, int y, int z,
+			EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 
 		if (!player.isSneaking()) {
 			player.openGui(tucs.instance, tucs.guiSoulBinder, world, x, y, z);
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}

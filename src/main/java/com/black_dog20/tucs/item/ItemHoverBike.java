@@ -9,7 +9,7 @@ import com.black_dog20.tucs.entity.EntityHoverBike;
 
 public class ItemHoverBike extends ItemTUCS {
 
-	public ItemHoverBike(){
+	public ItemHoverBike() {
 
 		super();
 		this.setUnlocalizedName("hoverBike");
@@ -17,16 +17,22 @@ public class ItemHoverBike extends ItemTUCS {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float xOffset, float yOffset, float zOffSet)
-	{
-	
-		if(!world.isRemote){
-		EntityHoverBike ent = new EntityHoverBike(world); //change to whatever entity you're trying to spawn
-		ent.setLocationAndAngles(x, y + 1, z, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
-		world.spawnEntityInWorld(ent);
+	public boolean onItemUse(ItemStack item, EntityPlayer player, World world,
+			int x, int y, int z, int side, float xOffset, float yOffset,
+			float zOffSet) {
+
+		if (!world.isRemote) {
+			EntityHoverBike ent = new EntityHoverBike(world); // change to
+																// whatever
+																// entity you're
+																// trying to
+																// spawn
+			ent.setLocationAndAngles(x, y + 1, z, MathHelper
+					.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F),
+					0.0F);
+			world.spawnEntityInWorld(ent);
 		}
 		return true;
 	}
-
 
 }

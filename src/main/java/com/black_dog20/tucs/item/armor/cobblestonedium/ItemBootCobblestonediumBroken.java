@@ -8,6 +8,5 @@ public class ItemBootCobblestonediumBroken extends ItemTUCS {
 		super();
 		this.setUnlocalizedName("bootsCobblestonedium_broken");
 	}
-	
 
 }

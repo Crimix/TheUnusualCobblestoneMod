@@ -1,5 +1,4 @@
-	package com.black_dog20.tucs;
-
+package com.black_dog20.tucs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,16 +34,15 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-
-@Mod(modid=Reference.MOD_ID, name=Reference.MOD_NAME, version=Reference.VERSION, guiFactory=Reference.GUI_FACTORY_CLASS)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class tucs {
 
 	@Mod.Instance(Reference.MOD_ID)
 	public static tucs instance = new tucs();
-	
+
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static IProxy Proxy;
-	
+
 	public static final int guiIDAncientTable = 1;
 	public static final int guiIDAncientForge = 2;
 	public static final int guiIDBook = 3;
@@ -54,11 +52,11 @@ public class tucs {
 	public static final int guiSoulBinder = 7;
 	public static final int guiAirMaker = 8;
 	public static final int guiHoverBike = 9;
-	
+
 	public static List<Item> overlayList = new ArrayList<Item>();
-	
+
 	@Mod.EventHandler
-	public void preInit(FMLPreInitializationEvent event){
+	public void preInit(FMLPreInitializationEvent event) {
 
 		ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
@@ -72,33 +70,36 @@ public class tucs {
 		ModBlocks.init();
 		PacketHandler.init();
 		Proxy.registerRenders();
-		EntityRegistry.registerModEntity(EntityRound.class, "round", 1, this, 1000, 1, true);
-		
+		EntityRegistry.registerModEntity(EntityRound.class, "round", 1, this,
+				1000, 1, true);
+
 		LogHelper.info("Pre Initialization Complete!");
 	}
 
-	
 	@Mod.EventHandler
-	public void init(FMLInitializationEvent event){
-		
+	public void init(FMLInitializationEvent event) {
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		LogHelper.info("Initialization Complete!");
 		Proxy.keyinput();
 		Recipes.init();
-		GameRegistry.registerTileEntity(TileEntityAncientForge.class, "AncientForge");
+		GameRegistry.registerTileEntity(TileEntityAncientForge.class,
+				"AncientForge");
 		GameRegistry.registerTileEntity(TileEntityAirMaker.class, "AirMaker");
 		GameRegistry.registerTileEntity(TileEntitySoulForge.class, "SoulForge");
-		EntityRegistry.registerModEntity(EntityHoverBike.class, "Speeder", 0, instance, 80, 1, true);
-		EntityRegistry.registerGlobalEntityID(EntityHoverBike.class, "speeder", EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
+		EntityRegistry.registerModEntity(EntityHoverBike.class, "Speeder", 0,
+				instance, 80, 1, true);
+		EntityRegistry.registerGlobalEntityID(EntityHoverBike.class, "speeder",
+				EntityRegistry.findGlobalUniqueEntityId(), 3515848, 12102);
 	}
-	
+
 	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event){
-		
+	public void postInit(FMLPostInitializationEvent event) {
+
 		LogHelper.info("Post Initialization Complete!");
 	}
-	
-	public void reloadRecipes(){
+
+	public void reloadRecipes() {
 		Recipes.init();
 	}
 }

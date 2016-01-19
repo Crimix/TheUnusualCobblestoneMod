@@ -17,11 +17,13 @@ import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
-public class AirMakerRender extends TileEntitySpecialRenderer implements ISimpleBlockRenderingHandler{
-	
+public class AirMakerRender extends TileEntitySpecialRenderer implements
+		ISimpleBlockRenderingHandler {
+
 	private AirCompressor model;
-	private static final ResourceLocation texture = new ResourceLocation("tucs:models/blocks/airCompressor_texture.png");
-	
+	private static final ResourceLocation texture = new ResourceLocation(
+			"tucs:models/blocks/airCompressor_texture.png");
+
 	public AirMakerRender() {
 		model = new AirCompressor(false);
 	}
@@ -29,31 +31,31 @@ public class AirMakerRender extends TileEntitySpecialRenderer implements ISimple
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId,
 			RenderBlocks renderer) {
-			GL11.glPushMatrix();
-	        GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-	        GL11.glTranslatef(0F, -1F, 0F);
-	        Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-	        this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-			GL11.glPopMatrix();		
+		GL11.glPushMatrix();
+		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+		GL11.glTranslatef(0F, -1F, 0F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+		this.model
+				.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		GL11.glPopMatrix();
 	}
 
-
 	@Override
-	public void renderTileEntityAt(TileEntity te, double x, double y, double z, float f) {
-		if(((TileEntityAirMaker)te).AirTankForModel!=null){
+	public void renderTileEntityAt(TileEntity te, double x, double y, double z,
+			float f) {
+		if (((TileEntityAirMaker) te).AirTankForModel != null) {
 			model = new AirCompressor(true);
-		}
-		else{
+		} else {
 			model = new AirCompressor(false);
 		}
 		bindTexture(texture);
-        GL11.glPushMatrix();
-        GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-        Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-        GL11.glPushMatrix();
-        GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-        int angle = 0;
-        switch (te.getBlockMetadata()){
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+		GL11.glPushMatrix();
+		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+		int angle = 0;
+		switch (te.getBlockMetadata()) {
 		case 2:
 			angle = 0;
 			break;
@@ -71,13 +73,14 @@ public class AirMakerRender extends TileEntitySpecialRenderer implements ISimple
 			angle = 0;
 			break;
 		}
-        //Rotates model on the spot, depending on direction, making the front always to player) which is not the front but the side
-        GL11.glRotatef(angle-90, 0.0F, 1.0F, 0.0F);
-        this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        GL11.glPopMatrix();
-        GL11.glPopMatrix();
+		// Rotates model on the spot, depending on direction, making the front
+		// always to player) which is not the front but the side
+		GL11.glRotatef(angle - 90, 0.0F, 1.0F, 0.0F);
+		this.model
+				.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+		GL11.glPopMatrix();
+		GL11.glPopMatrix();
 	}
-
 
 	@Override
 	public boolean shouldRender3DInInventory(int modelId) {

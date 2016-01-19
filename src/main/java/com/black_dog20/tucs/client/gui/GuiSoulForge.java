@@ -13,29 +13,29 @@ import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-	@SideOnly(Side.CLIENT)
-	public class GuiSoulForge extends GuiContainer {
+@SideOnly(Side.CLIENT)
+public class GuiSoulForge extends GuiContainer {
 
-		private static final ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTalisman.png");
-		
-	    public GuiSoulForge(InventoryPlayer IPlayer, TileEntitySoulForge tileEntity)
-	    {
-	        super(new ContainerSoulForge(IPlayer, tileEntity));
-	    }
-		
-		protected void drawGuiContainerForegroundLayer(int i, int j) {
+	private static final ResourceLocation texture = new ResourceLocation(
+			"tucs:textures/gui/upgradeGuiTalisman.png");
 
-			
-		}
-		
-		@Override
-		protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-
-			GL11.glColor4f(1F, 1F, 1F, 1F);
-			
-			Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
-			
-			drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-			
-		}
+	public GuiSoulForge(InventoryPlayer IPlayer, TileEntitySoulForge tileEntity) {
+		super(new ContainerSoulForge(IPlayer, tileEntity));
 	}
+
+	protected void drawGuiContainerForegroundLayer(int i, int j) {
+
+	}
+
+	@Override
+	protected void drawGuiContainerBackgroundLayer(float var1, int var2,
+			int var3) {
+
+		GL11.glColor4f(1F, 1F, 1F, 1F);
+
+		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
+
+		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+
+	}
+}

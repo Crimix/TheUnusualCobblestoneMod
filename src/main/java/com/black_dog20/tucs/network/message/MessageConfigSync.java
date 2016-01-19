@@ -1,6 +1,5 @@
 package com.black_dog20.tucs.network.message;
 
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.server.MinecraftServer;
 
@@ -11,17 +10,20 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageConfigSync  implements IMessage, IMessageHandler<MessageConfigSync, IMessage>{
+public class MessageConfigSync implements IMessage,
+		IMessageHandler<MessageConfigSync, IMessage> {
 
 	@Override
-	public IMessage onMessage(MessageConfigSync message, MessageContext context){
+	public IMessage onMessage(MessageConfigSync message, MessageContext context) {
 		tucs.instance.Proxy.ServerRecipes();
 		return null;
 	}
-	public MessageConfigSync() {}
+
+	public MessageConfigSync() {
+	}
 
 	@Override
-	public void toBytes(ByteBuf buf){
+	public void toBytes(ByteBuf buf) {
 		buf.writeBoolean(ConfigurationHandler.ToolFire);
 		buf.writeBoolean(ConfigurationHandler.Allow_To_Fly);
 		buf.writeInt(ConfigurationHandler.Max_Luck_Upgrade);
@@ -46,12 +48,12 @@ public class MessageConfigSync  implements IMessage, IMessageHandler<MessageConf
 		buf.writeInt(ConfigurationHandler.Respiration);
 		buf.writeInt(ConfigurationHandler.Punch);
 		buf.writeInt(ConfigurationHandler.Protection);
-	
+
 		buf.writeBoolean(MinecraftServer.getServer().isFlightAllowed());
 	}
 
 	@Override
-	public void fromBytes(ByteBuf buf){
+	public void fromBytes(ByteBuf buf) {
 		ConfigurationHandler.configurationServer = true;
 		ConfigurationHandler.ToolFire = buf.readBoolean();
 		ConfigurationHandler.Allow_To_Fly = buf.readBoolean();
@@ -77,8 +79,8 @@ public class MessageConfigSync  implements IMessage, IMessageHandler<MessageConf
 		ConfigurationHandler.Respiration = buf.readInt();
 		ConfigurationHandler.Punch = buf.readInt();
 		ConfigurationHandler.Protection = buf.readInt();
-		
+
 		ConfigurationHandler.Server_Flying_Allowed = buf.readBoolean();
-		
+
 	}
 }

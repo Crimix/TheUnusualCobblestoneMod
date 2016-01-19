@@ -2,7 +2,7 @@ package com.black_dog20.tucs.item.upgrades;
 
 public class ItemAutoBowUpgrade extends ItemTUCSUpgrades {
 
-	public ItemAutoBowUpgrade(){
+	public ItemAutoBowUpgrade() {
 
 		super();
 		this.setUnlocalizedName("autoBowUpgrade");

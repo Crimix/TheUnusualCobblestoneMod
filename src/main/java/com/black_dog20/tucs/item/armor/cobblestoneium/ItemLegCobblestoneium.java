@@ -10,21 +10,19 @@ import com.black_dog20.tucs.reference.Reference;
 
 public class ItemLegCobblestoneium extends ItemArmorTUCS {
 
-	public ItemLegCobblestoneium(ArmorMaterial Material, int armortype, String Name) {
+	public ItemLegCobblestoneium(ArmorMaterial Material, int armortype,
+			String Name) {
 		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
-	
+
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
-	{
-		if(stack.getItem() == ModItems.leggingsCobblestoneium)
-		{
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
+			String type) {
+		if (stack.getItem() == ModItems.leggingsCobblestoneium) {
 			return Reference.MOD_ID + ":models/armor/Cobblestoneium_2.png";
-		}
-		else
-		{
+		} else {
 			return null;
 		}
 	}

@@ -9,18 +9,20 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 public class ServerProxy extends CommonProxy {
 
 	String FIRSTFLY = "firstFlight";
-	String night ="TUCSNight";
-	String nightA ="TUCSNightA";
+	String night = "TUCSNight";
+	String nightA = "TUCSNightA";
 
 	@Override
 	public void openBook(EntityPlayer player) {
-		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj,
+				(int) player.posX, (int) player.posY, (int) player.posZ);
 
 	}
 
 	@Override
-	public void openToolUpgrade(EntityPlayer player){
-		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+	public void openToolUpgrade(EntityPlayer player) {
+		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj,
+				(int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 
 	@Override
@@ -57,6 +59,6 @@ public class ServerProxy extends CommonProxy {
 	@Override
 	public void ServerRecipes() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

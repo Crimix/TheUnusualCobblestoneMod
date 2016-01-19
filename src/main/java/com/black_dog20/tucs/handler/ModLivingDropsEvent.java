@@ -15,9 +15,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.tool.ItemSwordCobblestoneium;
 import com.black_dog20.tucs.item.tool.ItemTLSOC;
-import com.black_dog20.tucs.item.tool.ItemTLSOTD;
 import com.black_dog20.tucs.reference.NBTTags;
-import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

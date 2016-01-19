@@ -4,6 +4,9 @@ import static net.minecraftforge.common.util.ForgeDirection.EAST;
 import static net.minecraftforge.common.util.ForgeDirection.NORTH;
 import static net.minecraftforge.common.util.ForgeDirection.SOUTH;
 import static net.minecraftforge.common.util.ForgeDirection.WEST;
+
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,10 +14,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.client.render.IOverlayItem;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.NBTTags;
@@ -24,7 +27,7 @@ import com.black_dog20.tucs.utility.InventoryHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTLPOLM extends ItemPickaxe implements ITucsItem, IOverlayItem{
+public class ItemTLPOLM extends ItemPickaxe implements ITucsItem{
 
 	public ItemTLPOLM(ToolMaterial Material){
 
@@ -34,7 +37,6 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem, IOverlayItem{
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 		this.setNoRepair();
 		this.canRepair = false;
-		this.registerItemForOverlay();
 
 	}
 
@@ -160,10 +162,11 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem, IOverlayItem{
 		}
 		return false;
 	}
-
+	
 	@Override
-	public void registerItemForOverlay() {
-		tucs.overlayList.add(this);
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
+	
 
 }

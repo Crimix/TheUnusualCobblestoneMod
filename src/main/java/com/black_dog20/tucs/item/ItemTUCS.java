@@ -7,15 +7,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.client.render.IOverlayItem;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemTUCS extends Item implements ITucsItem, IOverlayItem{
+public class ItemTUCS extends Item implements ITucsItem{
 	
 	public ItemTUCS(String unLocalName){
 		
@@ -28,7 +26,6 @@ public class ItemTUCS extends Item implements ITucsItem, IOverlayItem{
 		
 		super();
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
-		this.registerItemForOverlay();
 		
 	}
 	
@@ -62,11 +59,6 @@ public class ItemTUCS extends Item implements ITucsItem, IOverlayItem{
         super.addInformation(item, player, list, bool);
         list.add(text);
     }
-
-	@Override
-	public void registerItemForOverlay() {
-		tucs.overlayList.add(this);
-	}
     
     
 

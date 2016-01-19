@@ -8,20 +8,18 @@ import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 
 import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.client.render.IOverlayItem;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBowTUCS extends ItemBow implements ITucsItem, IOverlayItem{
+public class ItemBowTUCS extends ItemBow implements ITucsItem{
 	
 public ItemBowTUCS(){
 		
 		super();
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
-		this.registerItemForOverlay();
 		
 	}
 	
@@ -55,10 +53,5 @@ public ItemBowTUCS(){
         super.addInformation(item, player, list, bool);
         list.add(text);
     }
-
-	@Override
-	public void registerItemForOverlay() {
-		tucs.overlayList.add(this);
-	}
 
 }

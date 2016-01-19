@@ -3,14 +3,11 @@ package com.black_dog20.tucs.container;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.entity.IEntityHoverVehicle;
-import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.inventory.InventoryHoverBike;
 import com.black_dog20.tucs.utility.NBTHelper;
 

@@ -17,12 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.0.3-Beta"
+version = "1.7.10-1.0"
 group= "com.black_dog20.tucs" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "tucs"
 
 minecraft {
-    version = "1.7.10-10.13.3.1399-1.7.10"
+    version = "1.7.10-10.13.4.1558-1.7.10"
     	if(file('../run').exists()){
 		runDir = "../run/assets"
 	} else if(file('assets').exists()){

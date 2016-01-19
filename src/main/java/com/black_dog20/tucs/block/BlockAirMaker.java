@@ -26,7 +26,6 @@ import com.black_dog20.tucs.init.ModBlocks;
 import com.black_dog20.tucs.item.ITucsItem;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
-import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;

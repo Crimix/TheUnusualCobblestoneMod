@@ -4,7 +4,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 
+import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.crafting.AncientTableManager;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class TucsRegistry {
 	
@@ -34,5 +37,10 @@ public class TucsRegistry {
 	    public static void RemoveRecipe(Item item){
 	    	AncientTableManager.getInstance().RemoveRecipe(item);
 	    	number++;
+	    }
+	    
+	    public static void registerItem(Item item, String name){
+	    	tucs.overlayList.add(item);
+	    	GameRegistry.registerItem(item, name);
 	    }
 }

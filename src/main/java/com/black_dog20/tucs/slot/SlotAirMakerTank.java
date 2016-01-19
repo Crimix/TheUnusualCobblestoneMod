@@ -5,7 +5,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 import com.black_dog20.tucs.item.armor.IScubaAirTank;
-import com.black_dog20.tucs.utility.EnchantHelper;
 
 public class SlotAirMakerTank extends Slot {
 	

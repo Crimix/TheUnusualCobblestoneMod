@@ -1,10 +1,13 @@
 package com.black_dog20.tucs.item.tool;
 
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
@@ -87,6 +90,11 @@ public class ItemTLSOC extends ItemSword implements ITucsItem{
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 	
 }

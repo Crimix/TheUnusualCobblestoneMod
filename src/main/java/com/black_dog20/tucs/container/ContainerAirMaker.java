@@ -2,25 +2,16 @@ package com.black_dog20.tucs.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
 
-import com.black_dog20.tucs.crafting.AncientForgeRecipes;
-import com.black_dog20.tucs.init.ModItems;
 import com.black_dog20.tucs.item.armor.IScubaAirTank;
 import com.black_dog20.tucs.slot.SlotAirMakerFuel;
 import com.black_dog20.tucs.slot.SlotAirMakerTank;
 import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
-import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -7,7 +7,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import com.black_dog20.tucs.handler.ConfigurationHandler;
-import com.black_dog20.tucs.item.armor.IScubaAirTank;
 import com.black_dog20.tucs.reference.Reference;
 import com.black_dog20.tucs.utility.TucsRegistry;
 

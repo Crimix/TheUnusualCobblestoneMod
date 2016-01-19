@@ -12,13 +12,10 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import com.black_dog20.tucs.block.BlockAirMaker;
-import com.black_dog20.tucs.block.BlockSoulForge;
 import com.black_dog20.tucs.client.model.AirCompressor;
-import com.black_dog20.tucs.client.model.SoulForgeModel;
 import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class AirMakerRender extends TileEntitySpecialRenderer implements ISimpleBlockRenderingHandler{
 	

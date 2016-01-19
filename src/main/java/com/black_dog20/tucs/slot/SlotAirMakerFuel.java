@@ -6,8 +6,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-import com.black_dog20.tucs.utility.EnchantHelper;
-
 public class SlotAirMakerFuel extends Slot {
 	
 	public SlotAirMakerFuel(IInventory inventory, int slotIndex,

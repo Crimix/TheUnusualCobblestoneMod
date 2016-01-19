@@ -1,11 +1,14 @@
 package com.black_dog20.tucs.item.armor.cobblestonedium;
 
+import java.util.List;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
@@ -106,6 +109,11 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 	@Override
 	public void doSpeciel(EntityPlayer player) {
 		player.clearActivePotions();
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 
 }

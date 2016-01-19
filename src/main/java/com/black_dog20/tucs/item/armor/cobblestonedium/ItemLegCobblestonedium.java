@@ -1,13 +1,17 @@
 package com.black_dog20.tucs.item.armor.cobblestonedium;
 
+import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;
@@ -69,6 +73,11 @@ public class ItemLegCobblestonedium extends ItemArmorTUCS {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 
 }

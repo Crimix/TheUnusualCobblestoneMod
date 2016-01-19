@@ -49,6 +49,7 @@ public class ItemFlightTalisman extends ItemTUCS{
 		else{
 			List.add("Tucs flight: " + EnumChatFormatting.RED + ConfigurationHandler.Allow_To_Fly);
 		}
+		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 
 	

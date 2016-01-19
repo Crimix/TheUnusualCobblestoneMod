@@ -7,15 +7,13 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.black_dog20.tucs.tucs;
-import com.black_dog20.tucs.client.render.IOverlayItem;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemArmorTUCS extends ItemArmor implements ITucsItem,IOverlayItem{
+public class ItemArmorTUCS extends ItemArmor implements ITucsItem{
 	
 	 public final static int render = 0;
 	 public final static ArmorMaterial material = null;
@@ -25,7 +23,6 @@ public class ItemArmorTUCS extends ItemArmor implements ITucsItem,IOverlayItem{
 		super(material, render, armorType);
 		
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
-		this.registerItemForOverlay();
 		
 	}
 	
@@ -66,10 +63,5 @@ public class ItemArmorTUCS extends ItemArmor implements ITucsItem,IOverlayItem{
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
-
-	@Override
-	public void registerItemForOverlay() {
-		tucs.overlayList.add(this);
-	}
 
 }

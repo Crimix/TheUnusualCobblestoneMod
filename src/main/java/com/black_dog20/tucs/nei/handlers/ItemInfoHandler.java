@@ -19,8 +19,6 @@ import codechicken.nei.api.IRecipeOverlayRenderer;
 import codechicken.nei.recipe.GuiRecipe;
 import codechicken.nei.recipe.ICraftingHandler;
 
-import com.black_dog20.tucs.item.ITucsItem;
-
 public class ItemInfoHandler implements ICraftingHandler{
 
 	private List<String> recipes = new ArrayList<String>();

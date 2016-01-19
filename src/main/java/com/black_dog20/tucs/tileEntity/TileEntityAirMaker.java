@@ -86,8 +86,7 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory {
 			byte b0 = nbttagcompound1.getByte("Slot");
 
 			if (b0 >= 0 && b0 < this.airMakerItemStacks.length) {
-				this.airMakerItemStacks[b0] = ItemStack
-						.loadItemStackFromNBT(nbttagcompound1);
+				this.airMakerItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
 
@@ -127,8 +126,7 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory {
 			flag1 = true;
 		}
 
-		if (airMakerItemStacks[0] != null
-				&& airMakerItemStacks[0].getItem() instanceof IScubaAirTank) {
+		if (airMakerItemStacks[0] != null && airMakerItemStacks[0].getItem() instanceof IScubaAirTank) {
 			AirTankForModel = airMakerItemStacks[0];
 		} else {
 			AirTankForModel = null;
@@ -143,10 +141,8 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory {
 		if (this.airMakerItemStacks[0] == null) {
 			return false;
 		} else {
-			if ((this.airMakerItemStacks[0].getItem() instanceof IScubaAirTank)
-					&& isItemAir(this.airMakerItemStacks[1])) {
-				IScubaAirTank item = (IScubaAirTank) this.airMakerItemStacks[0]
-						.getItem();
+			if ((this.airMakerItemStacks[0].getItem() instanceof IScubaAirTank) && isItemAir(this.airMakerItemStacks[1])) {
+				IScubaAirTank item = (IScubaAirTank) this.airMakerItemStacks[0].getItem();
 				if (item.getAir(this.airMakerItemStacks[0]) < item.getMaxAir()) {
 					return true;
 				}
@@ -172,8 +168,7 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory {
 		if (itemstack == null) {
 			return 0;
 		} else {
-			if (itemstack.getItem() instanceof ItemBlock
-					&& ((ItemBlock) itemstack.getItem()).field_150939_a == Blocks.sapling) {
+			if (itemstack.getItem() instanceof ItemBlock && ((ItemBlock) itemstack.getItem()).field_150939_a == Blocks.sapling) {
 				return 1;
 			}
 		}
@@ -185,21 +180,15 @@ public class TileEntityAirMaker extends TileEntity implements ISidedInventory {
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return this.worldObj.getTileEntity(this.xCoord, this.yCoord,
-				this.zCoord) != this ? false : player.getDistanceSq(
-				(double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-				(double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
-	public void openInventory() {
-	}
+	public void openInventory() {}
 
-	public void closeInventory() {
-	}
+	public void closeInventory() {}
 
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack) {
-		if (slot == 0 && itemstack != null
-				&& itemstack.getItem() instanceof IScubaAirTank) {
+		if (slot == 0 && itemstack != null && itemstack.getItem() instanceof IScubaAirTank) {
 			return true;
 		} else if (slot == 1 && isItemAir(itemstack)) {
 			return true;

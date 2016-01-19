@@ -85,8 +85,7 @@ public class InventoryTalisman implements IInventory {
 	 * For tile entities, ensures the chunk containing the tile entity is saved
 	 * to disk later - the game won't think it hasn't changed and skip it.
 	 */
-	public void markDirty() {
-	}
+	public void markDirty() {}
 
 	/**
 	 * Do not make give this method the name canInteractWith because it clashes
@@ -96,11 +95,9 @@ public class InventoryTalisman implements IInventory {
 		return true;
 	}
 
-	public void openInventory() {
-	}
+	public void openInventory() {}
 
-	public void closeInventory() {
-	}
+	public void closeInventory() {}
 
 	/**
 	 * Returns true if automation is allowed to insert the given stack (ignoring

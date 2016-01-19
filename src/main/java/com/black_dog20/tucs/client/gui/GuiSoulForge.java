@@ -13,11 +13,9 @@ import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class GuiSoulForge extends GuiContainer {
+@SideOnly(Side.CLIENT) public class GuiSoulForge extends GuiContainer {
 
-	private static final ResourceLocation texture = new ResourceLocation(
-			"tucs:textures/gui/upgradeGuiTalisman.png");
+	private static final ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTalisman.png");
 
 	public GuiSoulForge(InventoryPlayer IPlayer, TileEntitySoulForge tileEntity) {
 		super(new ContainerSoulForge(IPlayer, tileEntity));
@@ -27,9 +25,7 @@ public class GuiSoulForge extends GuiContainer {
 
 	}
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float var1, int var2,
-			int var3) {
+	@Override protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 

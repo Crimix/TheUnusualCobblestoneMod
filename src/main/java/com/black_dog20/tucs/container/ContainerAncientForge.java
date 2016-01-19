@@ -20,19 +20,16 @@ public class ContainerAncientForge extends Container {
 	private int lastBurnTime;
 	private int lastItemBurnTime;
 
-	public ContainerAncientForge(InventoryPlayer IPlayer,
-			TileEntityAncientForge tileForge) {
+	public ContainerAncientForge(InventoryPlayer IPlayer, TileEntityAncientForge tileForge) {
 		this.tileFurnace = tileForge;
 		this.addSlotToContainer(new Slot(tileForge, 0, 56, 17));
 		this.addSlotToContainer(new Slot(tileForge, 1, 56, 53));
-		this.addSlotToContainer(new SlotFurnace(IPlayer.player, tileForge, 2,
-				116, 35));
+		this.addSlotToContainer(new SlotFurnace(IPlayer.player, tileForge, 2, 116, 35));
 		int i;
 
 		for (i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
-				this.addSlotToContainer(new Slot(IPlayer, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(IPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
@@ -45,8 +42,7 @@ public class ContainerAncientForge extends Container {
 		super.addCraftingToCrafters(ICraft);
 		ICraft.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
 		ICraft.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
-		ICraft.sendProgressBarUpdate(this, 2,
-				this.tileFurnace.currentItemBurnTime);
+		ICraft.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
 	}
 
 	public void detectAndSendChanges() {
@@ -56,18 +52,15 @@ public class ContainerAncientForge extends Container {
 			ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
 			if (this.lastCookTime != this.tileFurnace.furnaceCookTime) {
-				icrafting.sendProgressBarUpdate(this, 0,
-						this.tileFurnace.furnaceCookTime);
+				icrafting.sendProgressBarUpdate(this, 0, this.tileFurnace.furnaceCookTime);
 			}
 
 			if (this.lastBurnTime != this.tileFurnace.furnaceBurnTime) {
-				icrafting.sendProgressBarUpdate(this, 1,
-						this.tileFurnace.furnaceBurnTime);
+				icrafting.sendProgressBarUpdate(this, 1, this.tileFurnace.furnaceBurnTime);
 			}
 
 			if (this.lastItemBurnTime != this.tileFurnace.currentItemBurnTime) {
-				icrafting.sendProgressBarUpdate(this, 2,
-						this.tileFurnace.currentItemBurnTime);
+				icrafting.sendProgressBarUpdate(this, 2, this.tileFurnace.currentItemBurnTime);
 			}
 		}
 
@@ -76,8 +69,7 @@ public class ContainerAncientForge extends Container {
 		this.lastItemBurnTime = this.tileFurnace.currentItemBurnTime;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void updateProgressBar(int par1, int par2) {
+	@SideOnly(Side.CLIENT) public void updateProgressBar(int par1, int par2) {
 		if (par1 == 0) {
 			this.tileFurnace.furnaceCookTime = par2;
 		}
@@ -110,8 +102,7 @@ public class ContainerAncientForge extends Container {
 
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (par1 != 1 && par1 != 0) {
-				if (AncientForgeRecipes.smelting()
-						.getSmeltingResult(itemstack1) != null) {
+				if (AncientForgeRecipes.smelting().getSmeltingResult(itemstack1) != null) {
 					if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
 						return null;
 					}
@@ -123,8 +114,7 @@ public class ContainerAncientForge extends Container {
 					if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
 						return null;
 					}
-				} else if (par1 >= 30 && par1 < 39
-						&& !this.mergeItemStack(itemstack1, 3, 30, false)) {
+				} else if (par1 >= 30 && par1 < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
 					return null;
 				}
 			} else if (!this.mergeItemStack(itemstack1, 3, 39, false)) {

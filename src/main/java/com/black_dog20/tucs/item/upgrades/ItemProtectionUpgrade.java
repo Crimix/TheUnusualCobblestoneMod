@@ -11,8 +11,7 @@ public class ItemProtectionUpgrade extends ItemTUCSUpgrades {
 
 	}
 
-	@Override
-	public Enchantment getEnchantment() {
+	@Override public Enchantment getEnchantment() {
 		return Enchantment.protection;
 	}
 

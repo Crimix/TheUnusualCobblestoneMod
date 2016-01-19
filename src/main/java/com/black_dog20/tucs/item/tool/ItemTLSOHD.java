@@ -33,32 +33,23 @@ public class ItemTLSOHD extends ItemSpade implements ITucsItem {
 
 	}
 
-	@Override
-	public String getUnlocalizedName() {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName() {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack) {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName(ItemStack itemStack) {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister) {
-		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":"
-				+ "shovelTLSOHD");
+	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister iconRegister) {
+		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "shovelTLSOHD");
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack Item, World world,
-			EntityPlayer player) {
+	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		if (player.isSneaking()) {
 			tucs.Proxy.openToolUpgrade(player);
@@ -67,8 +58,7 @@ public class ItemTLSOHD extends ItemSpade implements ITucsItem {
 
 	}
 
-	@Override
-	public boolean hasEffect(ItemStack stack) {
+	@Override public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -76,8 +66,7 @@ public class ItemTLSOHD extends ItemSpade implements ITucsItem {
 		if (stack.hasTagCompound()) {
 			NBTTagCompound nbt = stack.getTagCompound();
 
-			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)
-					|| nbt.hasKey("ench")) {
+			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")) {
 				return true;
 			}
 			if (nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")) {
@@ -92,9 +81,7 @@ public class ItemTLSOHD extends ItemSpade implements ITucsItem {
 		return false;
 	}
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List List,
-			boolean par) {
+	@Override public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 

@@ -14,8 +14,7 @@ public class M1911Helper {
 			item.stackTagCompound = new NBTTagCompound();
 		} else {
 			for (int i = 0; i < 7; i++) {
-				if (item.getTagCompound().hasKey(
-						"TUCSAmmo" + Integer.toString(i))) {
+				if (item.getTagCompound().hasKey("TUCSAmmo" + Integer.toString(i))) {
 					ammo++;
 				}
 			}
@@ -28,10 +27,8 @@ public class M1911Helper {
 			item.stackTagCompound = new NBTTagCompound();
 		} else {
 			for (int i = 0; i < 7; i++) {
-				if (item.getTagCompound().hasKey(
-						"TUCSAmmo" + Integer.toString(i))) {
-					item.getTagCompound().removeTag(
-							"TUCSAmmo" + Integer.toString(i));
+				if (item.getTagCompound().hasKey("TUCSAmmo" + Integer.toString(i))) {
+					item.getTagCompound().removeTag("TUCSAmmo" + Integer.toString(i));
 					break;
 				}
 			}
@@ -47,8 +44,7 @@ public class M1911Helper {
 		if (player.inventory.hasItem(ModItems.ammo)) {
 			player.inventory.consumeInventoryItem(ModItems.ammo);
 			for (int i = 0; i < 7; i++) {
-				item.getTagCompound().setBoolean(
-						"TUCSAmmo" + Integer.toString(i), true);
+				item.getTagCompound().setBoolean("TUCSAmmo" + Integer.toString(i), true);
 			}
 		}
 	}

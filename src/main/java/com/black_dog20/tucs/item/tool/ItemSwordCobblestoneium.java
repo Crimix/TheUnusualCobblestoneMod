@@ -22,23 +22,16 @@ public class ItemSwordCobblestoneium extends ItemSword implements ITucsItem {
 
 	}
 
-	@Override
-	public String getUnlocalizedName() {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName() {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack) {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName(ItemStack itemStack) {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister) {
-		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":"
-				+ "swordCobblestoneium");
+	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister iconRegister) {
+		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "swordCobblestoneium");
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {

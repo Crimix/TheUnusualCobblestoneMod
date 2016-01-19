@@ -61,82 +61,62 @@ public class AncientForgeHandler extends TemplateRecipeHandler {
 	public static ArrayList<FuelPair> afuels;
 	public static HashSet<Block> efuels;
 
-	@Override
-	public void loadTransferRects() {
-		transferRects.add(new RecipeTransferRect(new Rectangle(74, 23, 24, 18),
-				Reference.MOD_ID + "Ancient Forge"));
+	@Override public void loadTransferRects() {
+		transferRects.add(new RecipeTransferRect(new Rectangle(74, 23, 24, 18), Reference.MOD_ID + "Ancient Forge"));
 	}
 
-	@Override
-	public Class<? extends GuiContainer> getGuiClass() {
+	@Override public Class<? extends GuiContainer> getGuiClass() {
 		return GuiAncientForge.class;
 	}
 
-	@Override
-	public String getRecipeName() {
+	@Override public String getRecipeName() {
 		return "Ancient Forge";
 	}
 
-	@Override
-	public TemplateRecipeHandler newInstance() {
+	@Override public TemplateRecipeHandler newInstance() {
 		if (afuels == null)
 			findFuels();
 		return super.newInstance();
 	}
 
-	@Override
-	public void loadCraftingRecipes(String outputId, Object... results) {
-		if (outputId.equals(Reference.MOD_ID + "Ancient Forge")
-				&& getClass() == AncientForgeHandler.class) {
-			Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes
-					.smelting().getSmeltingList();
+	@Override public void loadCraftingRecipes(String outputId, Object... results) {
+		if (outputId.equals(Reference.MOD_ID + "Ancient Forge") && getClass() == AncientForgeHandler.class) {
+			Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes.smelting().getSmeltingList();
 			for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
-				arecipes.add(new SmeltingPair(recipe.getKey(), recipe
-						.getValue()));
+				arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
 		} else
 			super.loadCraftingRecipes(outputId, results);
 	}
 
-	@Override
-	public void loadCraftingRecipes(ItemStack result) {
-		Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes
-				.smelting().getSmeltingList();
+	@Override public void loadCraftingRecipes(ItemStack result) {
+		Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes.smelting().getSmeltingList();
 		for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
 			if (NEIServerUtils.areStacksSameType(recipe.getValue(), result))
-				arecipes.add(new SmeltingPair(recipe.getKey(), recipe
-						.getValue()));
+				arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
 	}
 
-	@Override
-	public void loadUsageRecipes(String inputId, Object... ingredients) {
+	@Override public void loadUsageRecipes(String inputId, Object... ingredients) {
 		if (inputId.equals("fuel") && getClass() == AncientForgeHandler.class)
 			loadCraftingRecipes(Reference.MOD_ID + "Ancient Forge");
 		else
 			super.loadUsageRecipes(inputId, ingredients);
 	}
 
-	@Override
-	public void loadUsageRecipes(ItemStack ingredient) {
-		Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes
-				.smelting().getSmeltingList();
+	@Override public void loadUsageRecipes(ItemStack ingredient) {
+		Map<ItemStack, ItemStack> recipes = (Map<ItemStack, ItemStack>) AncientForgeRecipes.smelting().getSmeltingList();
 		for (Entry<ItemStack, ItemStack> recipe : recipes.entrySet())
-			if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getKey(),
-					ingredient)) {
-				SmeltingPair arecipe = new SmeltingPair(recipe.getKey(),
-						recipe.getValue());
-				arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred),
-						ingredient);
+			if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getKey(), ingredient)) {
+				SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
+				arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
 				arecipes.add(arecipe);
 			}
 	}
 
-	@Override
-	public String getGuiTexture() {
+	@Override public String getGuiTexture() {
 		return "textures/gui/container/furnace.png";
 	}
 
-	@Override
-	public void drawExtras(int recipe) {
+	@Override public void drawExtras(int recipe) {
 		drawProgressBar(51, 25, 176, 0, 14, 14, 48, 7);
 		drawProgressBar(74, 23, 176, 14, 24, 16, 48, 0);
 	}
@@ -163,8 +143,7 @@ public class AncientForgeHandler extends TemplateRecipeHandler {
 			}
 	}
 
-	@Override
-	public String getOverlayIdentifier() {
+	@Override public String getOverlayIdentifier() {
 		return Reference.MOD_ID + "Ancient Forge";
 	}
 }

@@ -20,13 +20,11 @@ public class ContainerUpgradeTools extends Container {
 	private EntityPlayer Player;
 	public IInventory slotUpgrade = new InventoryUpgradeTools();
 
-	public ContainerUpgradeTools(World world, int x, int y, int z,
-			EntityPlayer player, ItemStack item) {
+	public ContainerUpgradeTools(World world, int x, int y, int z, EntityPlayer player, ItemStack item) {
 		this.Player = player;
 
 		for (int i = 0; i < 3; i++) {
-			this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, i,
-					58 + (i * 18), 38));
+			this.addSlotToContainer(new SlotUpgradeTools(this.slotUpgrade, i, 58 + (i * 18), 38));
 		}
 
 		if (!item.hasTagCompound()) {
@@ -40,13 +38,11 @@ public class ContainerUpgradeTools extends Container {
 			item.stackTagCompound.removeTag(NBTTags.MachineBow);
 			NBTTagCompound nbt = item.getTagCompound();
 
-			NBTTagList nbttaglist = nbt.getTagList("upgradeItems",
-					Constants.NBT.TAG_COMPOUND);
+			NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);
 			for (int i = 0; i <= nbttaglist.tagCount(); i++) {
 				NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 				int b0 = nbttagcompound1.getInteger("Slot");
-				ItemStack slotItem = ItemStack
-						.loadItemStackFromNBT(nbttagcompound1);
+				ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 				if (slotItem != null) {
 					slotUpgrade.setInventorySlotContents(b0, slotItem);
 
@@ -62,19 +58,16 @@ public class ContainerUpgradeTools extends Container {
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		for (int i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
-				this.addSlotToContainer(new Slot(inventoryPlayer,
-						j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
 		for (int i = 0; i < 9; ++i) {
-			this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18,
-					142));
+			this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
 		}
 	}
 
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
+	@Override public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 		if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
@@ -82,18 +75,15 @@ public class ContainerUpgradeTools extends Container {
 			if (slot <= 1) {
 				if (!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
 					return null;
-			} else if (slot != 1 && EnchantHelper.checkItem(stack)
-					&& !getSlot(0).getHasStack()) {
+			} else if (slot != 1 && EnchantHelper.checkItem(stack) && !getSlot(0).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(0).putStack(copy);
 				return null;
-			} else if (slot != 2 && EnchantHelper.checkItem(stack)
-					&& !getSlot(1).getHasStack()) {
+			} else if (slot != 2 && EnchantHelper.checkItem(stack) && !getSlot(1).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(1).putStack(copy);
 				return null;
-			} else if (slot != 3 && EnchantHelper.checkItem(stack)
-					&& !getSlot(2).getHasStack()) {
+			} else if (slot != 3 && EnchantHelper.checkItem(stack) && !getSlot(2).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(2).putStack(copy);
 				return null;
@@ -111,28 +101,23 @@ public class ContainerUpgradeTools extends Container {
 		return null;
 	}
 
-	@Override
-	public ItemStack slotClick(int slot, int button, int flag,
-			EntityPlayer player) {
+	@Override public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
 		// this will prevent the player from interacting with the item that
 		// opened the inventory:
-		if (slot >= 0 && getSlot(slot) != null
-				&& getSlot(slot).getStack() == player.getHeldItem()) {
+		if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
 			return null;
 		}
 		return super.slotClick(slot, button, flag, player);
 	}
 
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
+	@Override public boolean canInteractWith(EntityPlayer player) {
 		if (player.getHeldItem() != null) {
 			return true;
 		}
 		return false;
 	}
 
-	@Override
-	public void onContainerClosed(EntityPlayer player) {
+	@Override public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
 		ItemStack tool = player.getHeldItem();
 		if (tool != null && !tool.hasTagCompound()) {

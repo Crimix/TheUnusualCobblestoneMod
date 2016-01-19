@@ -42,9 +42,7 @@ public class ScubaMask_armor extends ModelBiped {
 		this.bipedHead.addChild(small_2);
 	}
 
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3,
-			float f4, float f5) {
+	@Override public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 
 		this.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 
@@ -78,8 +76,7 @@ public class ScubaMask_armor extends ModelBiped {
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
-	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y,
-			float z) {
+	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;

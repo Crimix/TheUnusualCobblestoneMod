@@ -29,12 +29,9 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 	private double Z;
 	private double Yaw;
 	private double Pitch;
-	@SideOnly(Side.CLIENT)
-	private double velocityX;
-	@SideOnly(Side.CLIENT)
-	private double velocityY;
-	@SideOnly(Side.CLIENT)
-	private double velocityZ;
+	@SideOnly(Side.CLIENT) private double velocityX;
+	@SideOnly(Side.CLIENT) private double velocityY;
+	@SideOnly(Side.CLIENT) private double velocityZ;
 	private String Owner;
 
 	public EntityHoverBike(World world) {
@@ -110,17 +107,14 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 			return false;
 		} else if (!this.worldObj.isRemote && !this.isDead) {
 
-			boolean flag = source.getEntity() instanceof EntityPlayer
-					&& (((EntityPlayer) source.getEntity()).getDisplayName()
-							.equals(this.Owner) || this.Owner.equals("none"));
+			boolean flag = source.getEntity() instanceof EntityPlayer && (((EntityPlayer) source.getEntity()).getDisplayName().equals(this.Owner) || this.Owner.equals("none"));
 			if (flag) {
 				this.func_145778_a(ModItems.HoverBike, 1, 0.0F);
 				this.setDead();
 			} else if (((EntityPlayer) source.getEntity()).capabilities.isCreativeMode) {
 				this.setDead();
 			} else {
-				ChatComponentTranslation msg = new ChatComponentTranslation(
-						"msg.message_landspeederOwner.txt");
+				ChatComponentTranslation msg = new ChatComponentTranslation("msg.message_landspeederOwner.txt");
 				msg.appendText(": " + this.Owner);
 				((EntityPlayer) source.getEntity()).addChatMessage(msg);
 			}
@@ -142,9 +136,7 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 	 * Sets the position and rotation. Only difference from the other one is no
 	 * bounding on the rotation. Args: posX, posY, posZ, yaw, pitch
 	 */
-	@SideOnly(Side.CLIENT)
-	public void setPositionAndRotation2(double posX, double posY, double posZ,
-			float yaw, float pitch, int posRotation) {
+	@SideOnly(Side.CLIENT) public void setPositionAndRotation2(double posX, double posY, double posZ, float yaw, float pitch, int posRotation) {
 		if (this.isEmpty) {
 			this.PosRotationIncrements = posRotation + 5;
 		} else {
@@ -170,8 +162,7 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		this.motionZ = this.velocityZ;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void setVelocity(double x, double y, double z) {
+	@SideOnly(Side.CLIENT) public void setVelocity(double x, double y, double z) {
 		this.velocityX = this.motionX = x;
 		this.velocityY = this.motionY = y;
 		this.velocityZ = this.motionZ = z;
@@ -186,8 +177,7 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		this.prevPosY = this.posY;
 		this.prevPosZ = this.posZ;
 
-		double d10 = Math.sqrt(this.motionX * this.motionX + this.motionZ
-				* this.motionZ);
+		double d10 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 		double d2;
 		double d4;
 
@@ -202,18 +192,12 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 
 		if (this.worldObj.isRemote && this.isEmpty) {
 			if (this.PosRotationIncrements > 0) {
-				d2 = this.posX + (this.X - this.posX)
-						/ (double) this.PosRotationIncrements;
-				d4 = this.posY + (this.Y - this.posY)
-						/ (double) this.PosRotationIncrements;
-				d11 = this.posZ + (this.Z - this.posZ)
-						/ (double) this.PosRotationIncrements;
-				d12 = MathHelper.wrapAngleTo180_double(this.Yaw
-						- (double) this.rotationYaw);
-				this.rotationYaw = (float) ((double) this.rotationYaw + d12
-						/ (double) this.PosRotationIncrements);
-				this.rotationPitch = (float) ((double) this.rotationPitch + (this.Pitch - (double) this.rotationPitch)
-						/ (double) this.PosRotationIncrements);
+				d2 = this.posX + (this.X - this.posX) / (double) this.PosRotationIncrements;
+				d4 = this.posY + (this.Y - this.posY) / (double) this.PosRotationIncrements;
+				d11 = this.posZ + (this.Z - this.posZ) / (double) this.PosRotationIncrements;
+				d12 = MathHelper.wrapAngleTo180_double(this.Yaw - (double) this.rotationYaw);
+				this.rotationYaw = (float) ((double) this.rotationYaw + d12 / (double) this.PosRotationIncrements);
+				this.rotationPitch = (float) ((double) this.rotationPitch + (this.Pitch - (double) this.rotationPitch) / (double) this.PosRotationIncrements);
 				--this.PosRotationIncrements;
 				this.setPosition(d2, d4, d11);
 				this.setRotation(this.rotationYaw, this.rotationPitch);
@@ -224,42 +208,24 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 				this.setPosition(d2, d4, d11);
 			}
 		} else {
-			if (this.riddenByEntity != null
-					&& this.worldObj.getBlock((int) posX, (int) posY - 2,
-							(int) posZ) != Blocks.air) {
+			if (this.riddenByEntity != null && this.worldObj.getBlock((int) posX, (int) posY - 2, (int) posZ) != Blocks.air) {
 				this.motionY += 0.507000000216066837D;
-			} else if (this.riddenByEntity != null
-					&& this.worldObj.getBlock((int) posX, (int) posY - 3,
-							(int) posZ) == Blocks.air) {
+			} else if (this.riddenByEntity != null && this.worldObj.getBlock((int) posX, (int) posY - 3, (int) posZ) == Blocks.air) {
 				this.motionY -= 0.107000000216066837D;
-			} else if (this.riddenByEntity == null
-					&& this.worldObj.getBlock((int) posX, (int) posY,
-							(int) posZ) != Blocks.air) {
+			} else if (this.riddenByEntity == null && this.worldObj.getBlock((int) posX, (int) posY, (int) posZ) != Blocks.air) {
 				this.motionY += 0.507000000216066837D;
-			} else if (this.riddenByEntity == null
-					&& this.worldObj.getBlock((int) posX, (int) posY - 1,
-							(int) posZ) == Blocks.air) {
+			} else if (this.riddenByEntity == null && this.worldObj.getBlock((int) posX, (int) posY - 1, (int) posZ) == Blocks.air) {
 				this.motionY -= 0.107000000216066837D;
 			} else {
 				this.motionY = 0;
 			}
 
-			if (this.riddenByEntity != null
-					&& this.riddenByEntity instanceof EntityLivingBase) {
+			if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityLivingBase) {
 				EntityLivingBase entitylivingbase = (EntityLivingBase) this.riddenByEntity;
-				float f = this.riddenByEntity.rotationYaw
-						+ -entitylivingbase.moveStrafing * 90.0F;
+				float f = this.riddenByEntity.rotationYaw + -entitylivingbase.moveStrafing * 90.0F;
 				double speed = getSpeed();
-				this.motionX = -Math
-						.sin((double) (f * (float) Math.PI / 180.0F))
-						* speed
-						* (double) entitylivingbase.moveForward
-						* 0.05000000074505806D;
-				this.motionZ = Math
-						.cos((double) (f * (float) Math.PI / 180.0F))
-						* speed
-						* (double) entitylivingbase.moveForward
-						* 0.05000000074505806D;
+				this.motionX = -Math.sin((double) (f * (float) Math.PI / 180.0F)) * speed * (double) entitylivingbase.moveForward * 0.05000000074505806D;
+				this.motionZ = Math.cos((double) (f * (float) Math.PI / 180.0F)) * speed * (double) entitylivingbase.moveForward * 0.05000000074505806D;
 			} else {
 				this.motionX = 0;
 				this.motionZ = 0;
@@ -276,8 +242,7 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 				d4 = (double) ((float) (Math.atan2(d12, d11) * 180.0D / Math.PI));
 			}
 
-			double d7 = MathHelper.wrapAngleTo180_double(d4
-					- (double) this.rotationYaw);
+			double d7 = MathHelper.wrapAngleTo180_double(d4 - (double) this.rotationYaw);
 
 			if (d7 > 20.0D) {
 				d7 = 20.0D;
@@ -291,17 +256,13 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 			this.setRotation(this.rotationYaw, this.rotationPitch);
 
 			if (!this.worldObj.isRemote) {
-				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
-						this, this.boundingBox.expand(0.20000000298023224D,
-								0.0D, 0.20000000298023224D));
+				List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 
 				if (list != null && !list.isEmpty()) {
 					for (int k1 = 0; k1 < list.size(); ++k1) {
 						Entity entity = (Entity) list.get(k1);
 
-						if (entity != this.riddenByEntity
-								&& entity.canBePushed()
-								&& entity instanceof EntityHoverBike) {
+						if (entity != this.riddenByEntity && entity.canBePushed() && entity instanceof EntityHoverBike) {
 							entity.applyEntityCollision(this);
 						}
 					}
@@ -318,10 +279,7 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		if (this.riddenByEntity != null) {
 			double d0 = Math.cos((double) this.rotationYaw * Math.PI / 180.0D) * 0.4D;
 			double d1 = Math.sin((double) this.rotationYaw * Math.PI / 180.0D) * 0.4D;
-			this.riddenByEntity.setPosition(
-					this.posX + d0,
-					this.posY + this.getMountedYOffset()
-							+ this.riddenByEntity.getYOffset(), this.posZ + d1);
+			this.riddenByEntity.setPosition(this.posX + d0, this.posY + this.getMountedYOffset() + this.riddenByEntity.getYOffset(), this.posZ + d1);
 		}
 	}
 
@@ -333,16 +291,13 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		this.Owner = nbt.getString("Owner");
 	}
 
-	@SideOnly(Side.CLIENT)
-	public float getShadowSize() {
+	@SideOnly(Side.CLIENT) public float getShadowSize() {
 		return 0.5F;
 	}
 
 	private void openInventory(EntityPlayer player) {
-		NBTHelper.getPlayerNBT(player).setInteger("TucsHoverBikeId",
-				this.getEntityId());
-		player.openGui(tucs.instance, tucs.guiHoverBike, player.worldObj,
-				(int) player.posX, (int) player.posY, (int) player.posZ);
+		NBTHelper.getPlayerNBT(player).setInteger("TucsHoverBikeId", this.getEntityId());
+		player.openGui(tucs.instance, tucs.guiHoverBike, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 
 	/**
@@ -353,9 +308,7 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 			if (this.Owner.equals("none")) {
 				this.Owner = entityPlayer.getDisplayName();
 			}
-			if (this.riddenByEntity != null
-					&& this.riddenByEntity instanceof EntityPlayer
-					&& this.riddenByEntity != entityPlayer) {
+			if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityPlayer && this.riddenByEntity != entityPlayer) {
 				return true;
 			} else {
 				if (!this.worldObj.isRemote) {
@@ -378,38 +331,31 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		return this.dataWatcher.getWatchableObjectInt(18);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void setIsEmpty(boolean isEmpty) {
+	@SideOnly(Side.CLIENT) public void setIsEmpty(boolean isEmpty) {
 		this.isEmpty = isEmpty;
 	}
 
-	@Override
-	public double getSpeed() {
+	@Override public double getSpeed() {
 		return 20D;
 	}
 
-	@Override
-	public int getNumberOfSeats() {
+	@Override public int getNumberOfSeats() {
 		return 1;
 	}
 
-	@Override
-	public int getNumberOfSlots() {
+	@Override public int getNumberOfSlots() {
 		return getRows() * getColumns();
 	}
 
-	@Override
-	public String getNameOfVehicle() {
+	@Override public String getNameOfVehicle() {
 		return "Speeder";
 	}
 
-	@Override
-	public int getRows() {
+	@Override public int getRows() {
 		return 3;
 	}
 
-	@Override
-	public int getColumns() {
+	@Override public int getColumns() {
 		return 9;
 	}
 }

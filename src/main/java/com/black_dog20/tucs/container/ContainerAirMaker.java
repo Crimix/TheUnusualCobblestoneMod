@@ -19,8 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ContainerAirMaker extends Container {
 	private TileEntityAirMaker tileAirMaker;
 
-	public ContainerAirMaker(InventoryPlayer IPlayer,
-			TileEntityAirMaker tileAirMaker) {
+	public ContainerAirMaker(InventoryPlayer IPlayer, TileEntityAirMaker tileAirMaker) {
 		final EntityPlayer thePlayer = IPlayer.player;
 		this.tileAirMaker = tileAirMaker;
 		this.addSlotToContainer(new SlotAirMakerFuel(tileAirMaker, 1, 58, 38));
@@ -29,8 +28,7 @@ public class ContainerAirMaker extends Container {
 
 		for (i = 0; i < 3; ++i) {
 			for (int j = 0; j < 9; ++j) {
-				this.addSlotToContainer(new Slot(IPlayer, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(IPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
@@ -38,8 +36,7 @@ public class ContainerAirMaker extends Container {
 			this.addSlotToContainer(new Slot(IPlayer, i, 8 + i * 18, 142));
 		}
 
-		this.addSlotToContainer(new Slot(IPlayer,
-				IPlayer.getSizeInventory() - 1 - 1, 20, 38) {
+		this.addSlotToContainer(new Slot(IPlayer, IPlayer.getSizeInventory() - 1 - 1, 20, 38) {
 
 			private static final String __OBFID = "CL_00001755";
 
@@ -58,16 +55,14 @@ public class ContainerAirMaker extends Container {
 			public boolean isItemValid(ItemStack p_75214_1_) {
 				if (p_75214_1_ == null)
 					return false;
-				return p_75214_1_.getItem().isValidArmor(p_75214_1_, 1,
-						thePlayer);
+				return p_75214_1_.getItem().isValidArmor(p_75214_1_, 1, thePlayer);
 			}
 
 			/**
 			 * Returns the icon index on items.png that is used as background
 			 * image of the slot.
 			 */
-			@SideOnly(Side.CLIENT)
-			public IIcon getBackgroundIconIndex() {
+			@SideOnly(Side.CLIENT) public IIcon getBackgroundIconIndex() {
 				return ItemArmor.func_94602_b(1);
 			}
 		});
@@ -86,8 +81,7 @@ public class ContainerAirMaker extends Container {
 			if (par1 <= 1) {
 				if (!mergeItemStack(stackInSlot, 1, inventorySlots.size(), true))
 					return null;
-			} else if (par1 != 1 && stack.getItem() instanceof IScubaAirTank
-					&& !getSlot(1).getHasStack()) {
+			} else if (par1 != 1 && stack.getItem() instanceof IScubaAirTank && !getSlot(1).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(1).putStack(copy);
 				return null;

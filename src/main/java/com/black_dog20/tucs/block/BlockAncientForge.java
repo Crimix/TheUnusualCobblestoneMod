@@ -33,10 +33,8 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 	private final Random random = new Random();
 	private final boolean isActive;
 	private static boolean field_149934_M;
-	@SideOnly(Side.CLIENT)
-	private IIcon top;
-	@SideOnly(Side.CLIENT)
-	private IIcon front;
+	@SideOnly(Side.CLIENT) private IIcon top;
+	@SideOnly(Side.CLIENT) private IIcon front;
 
 	public BlockAncientForge(boolean active) {
 		super(Material.rock);
@@ -46,18 +44,15 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		this.setBlockName("ancientForge");
 	}
 
-	@Override
-	public String getUnlocalizedName() {
-		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName() {
+		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 	}
 
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_,
-			int p_149650_3_) {
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
 		return Item.getItemFromBlock(ModBlocks.blockAncientForge);
 	}
 
@@ -94,37 +89,26 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		}
 	}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta) {
-		return meta == 0 && side == 3 ? this.front : side == 1 ? this.top
-				: (side == 0 ? this.top : (side == meta ? this.front
-						: this.blockIcon));
+	@SideOnly(Side.CLIENT) public IIcon getIcon(int side, int meta) {
+		return meta == 0 && side == 3 ? this.front : side == 1 ? this.top : (side == 0 ? this.top : (side == meta ? this.front : this.blockIcon));
 		// return side == 1 ? this.top : (side == 0 ? this.top : (side != meta ?
 		// this.blockIcon : this.front));
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister IIcon) {
-		this.blockIcon = IIcon.registerIcon(Reference.MOD_ID + ":"
-				+ "ancientForge_side");
-		this.front = IIcon.registerIcon(this.isActive ? Reference.MOD_ID + ":"
-				+ "ancientForge_front_lit" : Reference.MOD_ID + ":"
-				+ "ancientForge_front");
-		this.top = IIcon.registerIcon(Reference.MOD_ID + ":"
-				+ "ancientForge_top");
+	@SideOnly(Side.CLIENT) public void registerBlockIcons(IIconRegister IIcon) {
+		this.blockIcon = IIcon.registerIcon(Reference.MOD_ID + ":" + "ancientForge_side");
+		this.front = IIcon.registerIcon(this.isActive ? Reference.MOD_ID + ":" + "ancientForge_front_lit" : Reference.MOD_ID + ":" + "ancientForge_front");
+		this.top = IIcon.registerIcon(Reference.MOD_ID + ":" + "ancientForge_top");
 	}
 
-	public boolean onBlockActivated(World world, int x, int y, int z,
-			EntityPlayer player, int par1, float par2, float par3, float par4) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par1, float par2, float par3, float par4) {
 		if (!world.isRemote) {
-			player.openGui(tucs.instance, tucs.guiIDAncientForge, world, x, y,
-					z);
+			player.openGui(tucs.instance, tucs.guiIDAncientForge, world, x, y, z);
 		}
 		return true;
 	}
 
-	public static void updateFurnaceBlockState(boolean active, World world,
-			int x, int y, int z) {
+	public static void updateFurnaceBlockState(boolean active, World world, int x, int y, int z) {
 		int l = world.getBlockMetadata(x, y, z);
 		TileEntity tileentity = world.getTileEntity(x, y, z);
 		field_149934_M = true;
@@ -148,10 +132,8 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		return new TileEntityAncientForge();
 	}
 
-	public void onBlockPlacedBy(World world, int x, int y, int z,
-			EntityLivingBase entity, ItemStack item) {
-		int l = MathHelper
-				.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack item) {
+		int l = MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
 		if (l == 0) {
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
@@ -170,16 +152,13 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		}
 
 		if (item.hasDisplayName()) {
-			((TileEntityAncientForge) world.getTileEntity(x, y, z))
-					.setDisplayName(item.getDisplayName());
+			((TileEntityAncientForge) world.getTileEntity(x, y, z)).setDisplayName(item.getDisplayName());
 		}
 	}
 
-	public void breakBlock(World world, int x, int y, int z, Block block,
-			int par1) {
+	public void breakBlock(World world, int x, int y, int z, Block block, int par1) {
 		if (!field_149934_M) {
-			TileEntityAncientForge tileentityforge = (TileEntityAncientForge) world
-					.getTileEntity(x, y, z);
+			TileEntityAncientForge tileentityforge = (TileEntityAncientForge) world.getTileEntity(x, y, z);
 
 			if (tileentityforge != null) {
 				for (int i1 = 0; i1 < tileentityforge.getSizeInventory(); ++i1) {
@@ -198,26 +177,16 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 							}
 
 							itemstack.stackSize -= j1;
-							EntityItem entityitem = new EntityItem(world,
-									(double) ((float) x + f),
-									(double) ((float) y + f1),
-									(double) ((float) z + f2), new ItemStack(
-											itemstack.getItem(), j1,
-											itemstack.getItemDamage()));
+							EntityItem entityitem = new EntityItem(world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), new ItemStack(itemstack.getItem(), j1, itemstack.getItemDamage()));
 
 							if (itemstack.hasTagCompound()) {
-								entityitem.getEntityItem().setTagCompound(
-										(NBTTagCompound) itemstack
-												.getTagCompound().copy());
+								entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
 							}
 
 							float f3 = 0.05F;
-							entityitem.motionX = (double) ((float) this.random
-									.nextGaussian() * f3);
-							entityitem.motionY = (double) ((float) this.random
-									.nextGaussian() * f3 + 0.2F);
-							entityitem.motionZ = (double) ((float) this.random
-									.nextGaussian() * f3);
+							entityitem.motionX = (double) ((float) this.random.nextGaussian() * f3);
+							entityitem.motionY = (double) ((float) this.random.nextGaussian() * f3 + 0.2F);
+							entityitem.motionZ = (double) ((float) this.random.nextGaussian() * f3);
 							world.spawnEntityInWorld(entityitem);
 						}
 					}
@@ -230,8 +199,7 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		super.breakBlock(world, x, y, z, block, par1);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random par1) {
+	@SideOnly(Side.CLIENT) public void randomDisplayTick(World world, int x, int y, int z, Random par1) {
 		if (this.isActive) {
 			int l = world.getBlockMetadata(x, y, z);
 			float f = (float) x + 0.5F;
@@ -241,25 +209,17 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 			float f4 = par1.nextFloat() * 0.6F - 0.3F;
 
 			if (l == 4) {
-				world.spawnParticle("smoke", (double) (f - f3), (double) f1,
-						(double) (f2 + f4), 0.0D, 0.0D, 0.0D);
-				world.spawnParticle("flame", (double) (f - f3), (double) f1,
-						(double) (f2 + f4), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("smoke", (double) (f - f3), (double) f1, (double) (f2 + f4), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double) (f - f3), (double) f1, (double) (f2 + f4), 0.0D, 0.0D, 0.0D);
 			} else if (l == 5) {
-				world.spawnParticle("smoke", (double) (f + f3), (double) f1,
-						(double) (f2 + f4), 0.0D, 0.0D, 0.0D);
-				world.spawnParticle("flame", (double) (f + f3), (double) f1,
-						(double) (f2 + f4), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("smoke", (double) (f + f3), (double) f1, (double) (f2 + f4), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double) (f + f3), (double) f1, (double) (f2 + f4), 0.0D, 0.0D, 0.0D);
 			} else if (l == 2) {
-				world.spawnParticle("smoke", (double) (f + f4), (double) f1,
-						(double) (f2 - f3), 0.0D, 0.0D, 0.0D);
-				world.spawnParticle("flame", (double) (f + f4), (double) f1,
-						(double) (f2 - f3), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("smoke", (double) (f + f4), (double) f1, (double) (f2 - f3), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double) (f + f4), (double) f1, (double) (f2 - f3), 0.0D, 0.0D, 0.0D);
 			} else if (l == 3) {
-				world.spawnParticle("smoke", (double) (f + f4), (double) f1,
-						(double) (f2 + f3), 0.0D, 0.0D, 0.0D);
-				world.spawnParticle("flame", (double) (f + f4), (double) f1,
-						(double) (f2 + f3), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("smoke", (double) (f + f4), (double) f1, (double) (f2 + f3), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double) (f + f4), (double) f1, (double) (f2 + f3), 0.0D, 0.0D, 0.0D);
 			}
 		}
 	}
@@ -268,14 +228,11 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		return true;
 	}
 
-	public int getComparatorInputOverride(World world, int x, int y, int z,
-			int par1) {
-		return Container.calcRedstoneFromInventory((IInventory) world
-				.getTileEntity(x, y, z));
+	public int getComparatorInputOverride(World world, int x, int y, int z, int par1) {
+		return Container.calcRedstoneFromInventory((IInventory) world.getTileEntity(x, y, z));
 	}
 
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z) {
+	@SideOnly(Side.CLIENT) public Item getItem(World world, int x, int y, int z) {
 		return Item.getItemFromBlock(ModBlocks.blockAncientForge);
 	}
 }

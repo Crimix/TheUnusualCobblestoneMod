@@ -18,8 +18,7 @@ import com.black_dog20.tucs.utility.OreHelp;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class TileEntityAncientForge extends TileEntity implements
-		ISidedInventory {
+public class TileEntityAncientForge extends TileEntity implements ISidedInventory {
 	private static final int[] slotsTop = new int[] { 0 };
 	private static final int[] slotsBottom = new int[] { 2, 1 };
 	private static final int[] slotsSides = new int[] { 1 };
@@ -102,8 +101,7 @@ public class TileEntityAncientForge extends TileEntity implements
 			byte b0 = nbttagcompound1.getByte("Slot");
 
 			if (b0 >= 0 && b0 < this.furnaceItemStacks.length) {
-				this.furnaceItemStacks[b0] = ItemStack
-						.loadItemStackFromNBT(nbttagcompound1);
+				this.furnaceItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
 
@@ -142,13 +140,11 @@ public class TileEntityAncientForge extends TileEntity implements
 		return 64;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public int getCookProgressScaled(int par1) {
+	@SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) {
 		return this.furnaceCookTime * par1 / 200;
 	}
 
-	@SideOnly(Side.CLIENT)
-	public int getBurnTimeRemainingScaled(int par1) {
+	@SideOnly(Side.CLIENT) public int getBurnTimeRemainingScaled(int par1) {
 		if (this.currentItemBurnTime == 0) {
 			this.currentItemBurnTime = 200;
 		}
@@ -169,8 +165,7 @@ public class TileEntityAncientForge extends TileEntity implements
 		}
 
 		if (!this.worldObj.isRemote) {
-			if (this.furnaceBurnTime != 0 || this.furnaceItemStacks[1] != null
-					&& this.furnaceItemStacks[0] != null) {
+			if (this.furnaceBurnTime != 0 || this.furnaceItemStacks[1] != null && this.furnaceItemStacks[0] != null) {
 				if (this.furnaceBurnTime == 0 && this.canSmelt()) {
 					this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
 
@@ -181,9 +176,7 @@ public class TileEntityAncientForge extends TileEntity implements
 							--this.furnaceItemStacks[1].stackSize;
 
 							if (this.furnaceItemStacks[1].stackSize == 0) {
-								this.furnaceItemStacks[1] = furnaceItemStacks[1]
-										.getItem().getContainerItem(
-												furnaceItemStacks[1]);
+								this.furnaceItemStacks[1] = furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
 							}
 						}
 					}
@@ -204,9 +197,7 @@ public class TileEntityAncientForge extends TileEntity implements
 
 			if (flag != this.furnaceBurnTime > 0) {
 				flag1 = true;
-				BlockAncientForge.updateFurnaceBlockState(
-						this.furnaceBurnTime > 0, this.worldObj, this.xCoord,
-						this.yCoord, this.zCoord);
+				BlockAncientForge.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 
@@ -220,11 +211,9 @@ public class TileEntityAncientForge extends TileEntity implements
 			return false;
 		} else {
 
-			itemstackResult = AncientForgeRecipes.smelting().getSmeltingResult(
-					this.furnaceItemStacks[0]);
+			itemstackResult = AncientForgeRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
 			if (itemstackResult == null) {
-				itemstackResult = FurnaceRecipes.smelting().getSmeltingResult(
-						this.furnaceItemStacks[0]);
+				itemstackResult = FurnaceRecipes.smelting().getSmeltingResult(this.furnaceItemStacks[0]);
 			}
 			if (itemstackResult == null) {
 				return false;
@@ -235,10 +224,8 @@ public class TileEntityAncientForge extends TileEntity implements
 			if (!this.furnaceItemStacks[2].isItemEqual(itemstackResult)) {
 				return false;
 			}
-			int result = furnaceItemStacks[2].stackSize
-					+ itemstackResult.stackSize;
-			return result <= getInventoryStackLimit()
-					&& result <= this.furnaceItemStacks[2].getMaxStackSize();
+			int result = furnaceItemStacks[2].stackSize + itemstackResult.stackSize;
+			return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[2].getMaxStackSize();
 
 		}
 	}
@@ -248,8 +235,7 @@ public class TileEntityAncientForge extends TileEntity implements
 
 			if (this.furnaceItemStacks[2] == null) {
 
-				oredic = OreHelp
-						.ore(this.furnaceItemStacks[0], itemstackResult);
+				oredic = OreHelp.ore(this.furnaceItemStacks[0], itemstackResult);
 
 				if (isOre2x == true && oredic == true) {
 
@@ -260,8 +246,7 @@ public class TileEntityAncientForge extends TileEntity implements
 				}
 			}
 
-			else if (this.furnaceItemStacks[2].getItem() == itemstackResult
-					.getItem()) {
+			else if (this.furnaceItemStacks[2].getItem() == itemstackResult.getItem()) {
 				if (isOre2x == true && oredic == true) {
 
 					this.furnaceItemStacks[2].stackSize += itemstackResult.stackSize;
@@ -296,17 +281,12 @@ public class TileEntityAncientForge extends TileEntity implements
 	}
 
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return this.worldObj.getTileEntity(this.xCoord, this.yCoord,
-				this.zCoord) != this ? false : player.getDistanceSq(
-				(double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-				(double) this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
-	public void openInventory() {
-	}
+	public void openInventory() {}
 
-	public void closeInventory() {
-	}
+	public void closeInventory() {}
 
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack) {
 		return slot == 2 ? false : (slot == 1 ? isItemFuel(itemstack) : true);

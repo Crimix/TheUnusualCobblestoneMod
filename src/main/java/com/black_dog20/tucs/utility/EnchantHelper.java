@@ -15,8 +15,7 @@ import com.black_dog20.tucs.reference.NBTTags;
 
 public class EnchantHelper {
 
-	public static void setEnchant(ItemStack ContainerItem,
-			ItemStack UpgradeItem, NBTTagCompound NBT) {
+	public static void setEnchant(ItemStack ContainerItem, ItemStack UpgradeItem, NBTTagCompound NBT) {
 		ItemTUCSUpgrades item = (ItemTUCSUpgrades) UpgradeItem.getItem();
 		if (UpgradeItem.getItem() instanceof ItemSoulboundUpgrade) {
 			NBT.setString(NBTTags.SOULBOUND, NBTTags.OK);

@@ -19,8 +19,7 @@ public class InventoryHoverBike implements IInventory {
 
 	public InventoryHoverBike(int gobalEntityId) {
 		int size = 0;
-		parentItemStack = Minecraft.getMinecraft().theWorld
-				.getEntityByID(gobalEntityId);
+		parentItemStack = Minecraft.getMinecraft().theWorld.getEntityByID(gobalEntityId);
 
 		if (parentItemStack instanceof IEntityHoverVehicle) {
 			hoverVehicle = (IEntityHoverVehicle) parentItemStack;
@@ -41,22 +40,18 @@ public class InventoryHoverBike implements IInventory {
 		}
 
 		write(nbtTagCompound);
-		parentItemStack.getEntityData().setTag(EntityPlayer.PERSISTED_NBT_TAG,
-				nbtTagCompound);
+		parentItemStack.getEntityData().setTag(EntityPlayer.PERSISTED_NBT_TAG, nbtTagCompound);
 	}
 
-	@Override
-	public int getSizeInventory() {
+	@Override public int getSizeInventory() {
 		return inventory.length;
 	}
 
-	@Override
-	public ItemStack getStackInSlot(int slotIndex) {
+	@Override public ItemStack getStackInSlot(int slotIndex) {
 		return inventory[slotIndex];
 	}
 
-	@Override
-	public ItemStack decrStackSize(int slotIndex, int decrementAmount) {
+	@Override public ItemStack decrStackSize(int slotIndex, int decrementAmount) {
 		ItemStack itemStack = getStackInSlot(slotIndex);
 		if (itemStack != null) {
 			if (itemStack.stackSize <= decrementAmount) {
@@ -72,8 +67,7 @@ public class InventoryHoverBike implements IInventory {
 		return itemStack;
 	}
 
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slotIndex) {
+	@Override public ItemStack getStackInSlotOnClosing(int slotIndex) {
 		if (inventory[slotIndex] != null) {
 			ItemStack itemStack = inventory[slotIndex];
 			inventory[slotIndex] = null;
@@ -83,45 +77,33 @@ public class InventoryHoverBike implements IInventory {
 		}
 	}
 
-	@Override
-	public void setInventorySlotContents(int slotIndex, ItemStack itemStack) {
+	@Override public void setInventorySlotContents(int slotIndex, ItemStack itemStack) {
 		inventory[slotIndex] = itemStack;
 	}
 
-	@Override
-	public String getInventoryName() {
+	@Override public String getInventoryName() {
 		return hoverVehicle.getNameOfVehicle();
 	}
 
-	@Override
-	public boolean hasCustomInventoryName() {
+	@Override public boolean hasCustomInventoryName() {
 		return false;
 	}
 
-	@Override
-	public int getInventoryStackLimit() {
+	@Override public int getInventoryStackLimit() {
 		return 64;
 	}
 
-	@Override
-	public void markDirty() {
-	}
+	@Override public void markDirty() {}
 
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer entityPlayer) {
+	@Override public boolean isUseableByPlayer(EntityPlayer entityPlayer) {
 		return true;
 	}
 
-	@Override
-	public void openInventory() {
-	}
+	@Override public void openInventory() {}
 
-	@Override
-	public void closeInventory() {
-	}
+	@Override public void closeInventory() {}
 
-	@Override
-	public boolean isItemValidForSlot(int slotIndex, ItemStack itemStack) {
+	@Override public boolean isItemValidForSlot(int slotIndex, ItemStack itemStack) {
 		return true;
 	}
 
@@ -135,8 +117,7 @@ public class InventoryHoverBike implements IInventory {
 					NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
 					byte slotIndex = tagCompound.getByte("Slot");
 					if (slotIndex >= 0 && slotIndex < inventory.length) {
-						inventory[slotIndex] = ItemStack
-								.loadItemStackFromNBT(tagCompound);
+						inventory[slotIndex] = ItemStack.loadItemStackFromNBT(tagCompound);
 					}
 				}
 			}

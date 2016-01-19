@@ -31,17 +31,13 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockAirMaker extends BlockContainer implements ITucsItem,
-		ITileEntityProvider {
+public class BlockAirMaker extends BlockContainer implements ITucsItem, ITileEntityProvider {
 
 	private final Random random = new Random();
-	public static final int renderID = RenderingRegistry
-			.getNextAvailableRenderId();
+	public static final int renderID = RenderingRegistry.getNextAvailableRenderId();
 	private static boolean field_149934_M;
-	@SideOnly(Side.CLIENT)
-	private IIcon top;
-	@SideOnly(Side.CLIENT)
-	private IIcon front;
+	@SideOnly(Side.CLIENT) private IIcon top;
+	@SideOnly(Side.CLIENT) private IIcon front;
 
 	public BlockAirMaker() {
 		super(Material.rock);
@@ -51,69 +47,53 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem,
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override
-	public int getRenderType() {
+	@Override public int getRenderType() {
 		return renderID;
 	}
 
-	@Override
-	public boolean isOpaqueCube() {
+	@Override public boolean isOpaqueCube() {
 		return false;
 	}
 
-	@Override
-	public boolean renderAsNormalBlock() {
+	@Override public boolean renderAsNormalBlock() {
 		return false;
 	}
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int par) {
+	@Override public TileEntity createNewTileEntity(World world, int par) {
 		return new TileEntityAirMaker();
 	}
 
-	@Override
-	public String getUnlocalizedName() {
-		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName() {
+		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 	}
 
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_,
-			int p_149650_3_) {
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
 		return Item.getItemFromBlock(ModBlocks.blockAirMaker);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta) {
-		return meta == 0 && side == 3 ? this.front : side == 1 ? this.top
-				: (side == 0 ? this.top : (side == meta ? this.front
-						: this.blockIcon));
+	@SideOnly(Side.CLIENT) public IIcon getIcon(int side, int meta) {
+		return meta == 0 && side == 3 ? this.front : side == 1 ? this.top : (side == 0 ? this.top : (side == meta ? this.front : this.blockIcon));
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister IIcon) {
-		this.blockIcon = IIcon.registerIcon(Reference.MOD_ID + ":"
-				+ "airMaker_side");
-		this.front = IIcon.registerIcon(Reference.MOD_ID + ":"
-				+ "airMaker_front");
+	@SideOnly(Side.CLIENT) public void registerBlockIcons(IIconRegister IIcon) {
+		this.blockIcon = IIcon.registerIcon(Reference.MOD_ID + ":" + "airMaker_side");
+		this.front = IIcon.registerIcon(Reference.MOD_ID + ":" + "airMaker_front");
 		this.top = IIcon.registerIcon(Reference.MOD_ID + ":" + "airMaker_top");
 	}
 
-	public boolean onBlockActivated(World world, int x, int y, int z,
-			EntityPlayer player, int par1, float par2, float par3, float par4) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par1, float par2, float par3, float par4) {
 		if (!world.isRemote) {
 			player.openGui(tucs.instance, tucs.guiAirMaker, world, x, y, z);
 		}
 		return true;
 	}
 
-	public void onBlockPlacedBy(World world, int x, int y, int z,
-			EntityLivingBase entity, ItemStack item) {
-		int l = MathHelper
-				.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack item) {
+		int l = MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
 		if (l == 0) {
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
@@ -132,16 +112,13 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem,
 		}
 
 		if (item.hasDisplayName()) {
-			((TileEntityAirMaker) world.getTileEntity(x, y, z))
-					.setDisplayName(item.getDisplayName());
+			((TileEntityAirMaker) world.getTileEntity(x, y, z)).setDisplayName(item.getDisplayName());
 		}
 	}
 
-	public void breakBlock(World world, int x, int y, int z, Block block,
-			int par1) {
+	public void breakBlock(World world, int x, int y, int z, Block block, int par1) {
 		if (!field_149934_M) {
-			TileEntityAirMaker tileentityforge = (TileEntityAirMaker) world
-					.getTileEntity(x, y, z);
+			TileEntityAirMaker tileentityforge = (TileEntityAirMaker) world.getTileEntity(x, y, z);
 
 			if (tileentityforge != null) {
 				for (int i1 = 0; i1 < tileentityforge.getSizeInventory(); ++i1) {
@@ -160,26 +137,16 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem,
 							}
 
 							itemstack.stackSize -= j1;
-							EntityItem entityitem = new EntityItem(world,
-									(double) ((float) x + f),
-									(double) ((float) y + f1),
-									(double) ((float) z + f2), new ItemStack(
-											itemstack.getItem(), j1,
-											itemstack.getItemDamage()));
+							EntityItem entityitem = new EntityItem(world, (double) ((float) x + f), (double) ((float) y + f1), (double) ((float) z + f2), new ItemStack(itemstack.getItem(), j1, itemstack.getItemDamage()));
 
 							if (itemstack.hasTagCompound()) {
-								entityitem.getEntityItem().setTagCompound(
-										(NBTTagCompound) itemstack
-												.getTagCompound().copy());
+								entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
 							}
 
 							float f3 = 0.05F;
-							entityitem.motionX = (double) ((float) this.random
-									.nextGaussian() * f3);
-							entityitem.motionY = (double) ((float) this.random
-									.nextGaussian() * f3 + 0.2F);
-							entityitem.motionZ = (double) ((float) this.random
-									.nextGaussian() * f3);
+							entityitem.motionX = (double) ((float) this.random.nextGaussian() * f3);
+							entityitem.motionY = (double) ((float) this.random.nextGaussian() * f3 + 0.2F);
+							entityitem.motionZ = (double) ((float) this.random.nextGaussian() * f3);
 							world.spawnEntityInWorld(entityitem);
 						}
 					}
@@ -196,14 +163,11 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem,
 		return true;
 	}
 
-	public int getComparatorInputOverride(World world, int x, int y, int z,
-			int par1) {
-		return Container.calcRedstoneFromInventory((IInventory) world
-				.getTileEntity(x, y, z));
+	public int getComparatorInputOverride(World world, int x, int y, int z, int par1) {
+		return Container.calcRedstoneFromInventory((IInventory) world.getTileEntity(x, y, z));
 	}
 
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World world, int x, int y, int z) {
+	@SideOnly(Side.CLIENT) public Item getItem(World world, int x, int y, int z) {
 		return Item.getItemFromBlock(ModBlocks.blockAirMaker);
 	}
 }

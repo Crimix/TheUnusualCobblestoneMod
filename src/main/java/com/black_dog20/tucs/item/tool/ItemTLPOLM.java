@@ -40,32 +40,23 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem {
 
 	}
 
-	@Override
-	public String getUnlocalizedName() {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName() {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
-	@Override
-	public String getUnlocalizedName(ItemStack itemStack) {
-		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":",
-				getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+	@Override public String getUnlocalizedName(ItemStack itemStack) {
+		return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister) {
-		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":"
-				+ "pickaxeTLPOLM");
+	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister iconRegister) {
+		itemIcon = iconRegister.registerIcon(Reference.MOD_ID + ":" + "pickaxeTLPOLM");
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack Item, World world,
-			EntityPlayer player) {
+	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		if (player.isSneaking()) {
 			tucs.Proxy.openToolUpgrade(player);
@@ -75,9 +66,7 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem {
 
 	}
 
-	@Override
-	public boolean onItemUse(ItemStack item, EntityPlayer player, World world,
-			int x, int y, int z, int side, float par2, float par3, float par4) {
+	@Override public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float par2, float par3, float par4) {
 		if (!player.isSneaking()) {
 			return torchLogic(item, world, player, side, x, y, z);
 		}
@@ -85,28 +74,19 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem {
 	}
 
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
-		return world.isSideSolid(x - 1, y, z, EAST, true)
-				|| world.isSideSolid(x + 1, y, z, WEST, true)
-				|| world.isSideSolid(x, y, z - 1, SOUTH, true)
-				|| world.isSideSolid(x, y, z + 1, NORTH, true)
-				|| func_150107_m(world, x, y - 1, x);
+		return world.isSideSolid(x - 1, y, z, EAST, true) || world.isSideSolid(x + 1, y, z, WEST, true) || world.isSideSolid(x, y, z - 1, SOUTH, true) || world.isSideSolid(x, y, z + 1, NORTH, true) || func_150107_m(world, x, y - 1, x);
 	}
 
-	private boolean func_150107_m(World p_150107_1_, int p_150107_2_,
-			int p_150107_3_, int p_150107_4_) {
-		if (World.doesBlockHaveSolidTopSurface(p_150107_1_, p_150107_2_,
-				p_150107_3_, p_150107_4_)) {
+	private boolean func_150107_m(World p_150107_1_, int p_150107_2_, int p_150107_3_, int p_150107_4_) {
+		if (World.doesBlockHaveSolidTopSurface(p_150107_1_, p_150107_2_, p_150107_3_, p_150107_4_)) {
 			return true;
 		} else {
-			Block block = p_150107_1_.getBlock(p_150107_2_, p_150107_3_,
-					p_150107_4_);
-			return block.canPlaceTorchOnTop(p_150107_1_, p_150107_2_,
-					p_150107_3_, p_150107_4_);
+			Block block = p_150107_1_.getBlock(p_150107_2_, p_150107_3_, p_150107_4_);
+			return block.canPlaceTorchOnTop(p_150107_1_, p_150107_2_, p_150107_3_, p_150107_4_);
 		}
 	}
 
-	public boolean torchLogic(ItemStack item, World world, EntityPlayer player,
-			int side, int x, int y, int z) {
+	public boolean torchLogic(ItemStack item, World world, EntityPlayer player, int side, int x, int y, int z) {
 		switch (side) {
 		case 0:
 			y--;
@@ -127,20 +107,16 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem {
 			x++;
 			break;
 		}
-		if (player.canPlayerEdit(x, y, z, side, item)
-				&& player.inventory.hasItemStack(new ItemStack(Blocks.torch))) {
-			if (world.isAirBlock(x, y, z) && canPlaceBlockAt(world, x, y, z)
-					&& world.setBlock(x, y, z, Blocks.torch)) {
-				player.inventory.decrStackSize(
-						InventoryHelper.findTorch(player.inventory), 1);
+		if (player.canPlayerEdit(x, y, z, side, item) && player.inventory.hasItemStack(new ItemStack(Blocks.torch))) {
+			if (world.isAirBlock(x, y, z) && canPlaceBlockAt(world, x, y, z) && world.setBlock(x, y, z, Blocks.torch)) {
+				player.inventory.decrStackSize(InventoryHelper.findTorch(player.inventory), 1);
 				return true;
 			}
 		}
 		return false;
 	}
 
-	@Override
-	public boolean hasEffect(ItemStack stack) {
+	@Override public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -148,8 +124,7 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem {
 		if (stack.hasTagCompound()) {
 			NBTTagCompound nbt = stack.getTagCompound();
 
-			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)
-					|| nbt.hasKey("ench")) {
+			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")) {
 				return true;
 			}
 			if (nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")) {
@@ -164,9 +139,7 @@ public class ItemTLPOLM extends ItemPickaxe implements ITucsItem {
 		return false;
 	}
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List List,
-			boolean par) {
+	@Override public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 

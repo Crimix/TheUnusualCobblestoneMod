@@ -14,8 +14,7 @@ public class EntityRound extends EntityArrow {
 		super(world, x, y, z);
 	}
 
-	public EntityRound(World world, EntityLivingBase entityShooter,
-			EntityLivingBase entity, float par1, float par2) {
+	public EntityRound(World world, EntityLivingBase entityShooter, EntityLivingBase entity, float par1, float par2) {
 		super(world, entityShooter, entity, par1, par2);
 	}
 

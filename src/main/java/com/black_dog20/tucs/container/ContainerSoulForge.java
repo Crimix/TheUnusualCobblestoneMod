@@ -15,8 +15,7 @@ public class ContainerSoulForge extends Container {
 	private World world;
 	private TileEntitySoulForge tileSoulForge;
 
-	public ContainerSoulForge(InventoryPlayer IPlayer,
-			TileEntitySoulForge tileSoulForge) {
+	public ContainerSoulForge(InventoryPlayer IPlayer, TileEntitySoulForge tileSoulForge) {
 		this.addSlotToContainer(new Slot(tileSoulForge, 0, 75, 37));
 		bindPlayerInventory(IPlayer);
 		this.x = tileSoulForge.xCoord;
@@ -29,8 +28,7 @@ public class ContainerSoulForge extends Container {
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
@@ -39,15 +37,13 @@ public class ContainerSoulForge extends Container {
 		}
 	}
 
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
+	@Override public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 		if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
 			ItemStack stack = stackInSlot.copy();
 			if (slot <= 1) {
-				if (!mergeItemStack(stackInSlot, 2,
-						tileSoulForge.getSizeInventory(), true))
+				if (!mergeItemStack(stackInSlot, 2, tileSoulForge.getSizeInventory(), true))
 					return null;
 			} else if (slot != 1 && !getSlot(0).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
@@ -69,8 +65,7 @@ public class ContainerSoulForge extends Container {
 		return null;
 	}
 
-	@Override
-	public boolean canInteractWith(EntityPlayer p_75145_1_) {
+	@Override public boolean canInteractWith(EntityPlayer p_75145_1_) {
 		return true;
 	}
 

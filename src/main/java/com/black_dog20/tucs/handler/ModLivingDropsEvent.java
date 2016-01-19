@@ -23,8 +23,7 @@ public class ModLivingDropsEvent {
 	Random r = new Random();
 
 	// Event for dropping items when a entity dies
-	@SubscribeEvent
-	public void onEntityDrop(LivingDropsEvent event) {
+	@SubscribeEvent public void onEntityDrop(LivingDropsEvent event) {
 		boolean isPlayerCaused = event.source.getEntity() instanceof EntityPlayer; // Checks
 																					// if
 																					// the
@@ -54,26 +53,20 @@ public class ModLivingDropsEvent {
 				double rand = Math.random();
 				EntitySkeleton skeleton = (EntitySkeleton) event.entityLiving;
 				if (skeleton.getSkeletonType() == 1) {
-					EntityPlayer player = (EntityPlayer) event.source
-							.getEntity();
+					EntityPlayer player = (EntityPlayer) event.source.getEntity();
 					if (player.getHeldItem().hasTagCompound()) {
-						NBTTagCompound nbtt = player.getHeldItem()
-								.getTagCompound();
+						NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
 						if (nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D) {
-							skeleton.entityDropItem(new ItemStack(Items.skull,
-									1, 1), 1);
+							skeleton.entityDropItem(new ItemStack(Items.skull, 1, 1), 1);
 						}
 					}
 
 				} else if (skeleton.getSkeletonType() == 0) {
-					EntityPlayer player = (EntityPlayer) event.source
-							.getEntity();
+					EntityPlayer player = (EntityPlayer) event.source.getEntity();
 					if (player.getHeldItem().hasTagCompound()) {
-						NBTTagCompound nbtt = player.getHeldItem()
-								.getTagCompound();
+						NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
 						if (nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D) {
-							skeleton.entityDropItem(new ItemStack(Items.skull,
-									1, 0), 1);
+							skeleton.entityDropItem(new ItemStack(Items.skull, 1, 0), 1);
 						}
 					}
 
@@ -87,8 +80,7 @@ public class ModLivingDropsEvent {
 				if (player.getHeldItem().hasTagCompound()) {
 					NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
 					if (nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D) {
-						zombie.entityDropItem(new ItemStack(Items.skull, 1, 2),
-								1);
+						zombie.entityDropItem(new ItemStack(Items.skull, 1, 2), 1);
 					}
 
 				}
@@ -99,28 +91,22 @@ public class ModLivingDropsEvent {
 				double rand = Math.random();
 				EntityCreeper creeper = (EntityCreeper) event.entityLiving;
 				EntityPlayer player = (EntityPlayer) event.source.getEntity();
-				if (player.getHeldItem().getItem() == Items.stone_sword
-						|| player.getHeldItem().getItem() instanceof ItemTLSOC
-						|| player.getHeldItem().getItem() instanceof ItemSwordCobblestoneium) {
+				if (player.getHeldItem().getItem() == Items.stone_sword || player.getHeldItem().getItem() instanceof ItemTLSOC || player.getHeldItem().getItem() instanceof ItemSwordCobblestoneium) {
 					int T3 = 5, T2 = 35, T1 = 50;
 					if (random < 90 && random >= T1) {
-						creeper.entityDropItem(new ItemStack(
-								ModItems.Tier1CraftingMat, 1), 1);
+						creeper.entityDropItem(new ItemStack(ModItems.Tier1CraftingMat, 1), 1);
 					}
 
 					else if (random < T1 && random >= T2) {
-						creeper.entityDropItem(new ItemStack(
-								ModItems.Tier2CraftingMat, 1), 1);
+						creeper.entityDropItem(new ItemStack(ModItems.Tier2CraftingMat, 1), 1);
 					} else if (random < T3) {
-						creeper.entityDropItem(new ItemStack(
-								ModItems.Tier3CraftingMat, 1), 1);
+						creeper.entityDropItem(new ItemStack(ModItems.Tier3CraftingMat, 1), 1);
 					}
 				}
 				if (player.getHeldItem().hasTagCompound()) {
 					NBTTagCompound nbtt = player.getHeldItem().getTagCompound();
 					if (nbtt.hasKey(NBTTags.Beheading) && rand < 0.10D) {
-						creeper.entityDropItem(
-								new ItemStack(Items.skull, 1, 4), 1);
+						creeper.entityDropItem(new ItemStack(Items.skull, 1, 4), 1);
 					}
 
 				}

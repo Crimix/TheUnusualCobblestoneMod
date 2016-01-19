@@ -23,18 +23,12 @@ public class AncientForgeRecipes {
 	}
 
 	private AncientForgeRecipes() {
-		this.smeltBlock(ModBlocks.oreCobblestoneium, new ItemStack(
-				ModItems.ingotCobblestoneium, 2), 1.0F);
-		this.smeltItem(ModItems.chestplateCobblestonediumBroken, new ItemStack(
-				ModItems.chestplateCobblestonedium, 1), 1.0F);
-		this.smeltItem(ModItems.helmetCobblestonediumBroken, new ItemStack(
-				ModItems.helmetCobblestonedium, 1), 1.0F);
-		this.smeltItem(ModItems.leggingsCobblestonediumBroken, new ItemStack(
-				ModItems.leggingsCobblestonedium, 1), 1.0F);
-		this.smeltItem(ModItems.bootsCobblestonediumBroken, new ItemStack(
-				ModItems.bootsCobblestonedium, 1), 1.0F);
-		this.smeltItem(ModItems.TUCSBowBroken, new ItemStack(ModItems.TUCSBow,
-				1), 1.0F);
+		this.smeltBlock(ModBlocks.oreCobblestoneium, new ItemStack(ModItems.ingotCobblestoneium, 2), 1.0F);
+		this.smeltItem(ModItems.chestplateCobblestonediumBroken, new ItemStack(ModItems.chestplateCobblestonedium, 1), 1.0F);
+		this.smeltItem(ModItems.helmetCobblestonediumBroken, new ItemStack(ModItems.helmetCobblestonedium, 1), 1.0F);
+		this.smeltItem(ModItems.leggingsCobblestonediumBroken, new ItemStack(ModItems.leggingsCobblestonedium, 1), 1.0F);
+		this.smeltItem(ModItems.bootsCobblestonediumBroken, new ItemStack(ModItems.bootsCobblestonedium, 1), 1.0F);
+		this.smeltItem(ModItems.TUCSBowBroken, new ItemStack(ModItems.TUCSBow, 1), 1.0F);
 	}
 
 	public void smeltBlock(Block block, ItemStack itemStack, float xp) {
@@ -69,9 +63,7 @@ public class AncientForgeRecipes {
 	}
 
 	private boolean check(ItemStack itemStack1, ItemStack itemStack2) {
-		return itemStack2.getItem() == itemStack1.getItem()
-				&& (itemStack2.getItemDamage() == 32767 || itemStack2
-						.getItemDamage() == itemStack1.getItemDamage());
+		return itemStack2.getItem() == itemStack1.getItem() && (itemStack2.getItemDamage() == 32767 || itemStack2.getItemDamage() == itemStack1.getItemDamage());
 	}
 
 	public Map getSmeltingList() {

@@ -12,14 +12,11 @@ public class SlotFlightTalisman extends Slot {
 		super(inventory, par1, par2, par3);
 	}
 
-	@Override
-	public boolean isItemValid(ItemStack itemstack) {
-		return ItemStack.areItemStacksEqual(itemstack, new ItemStack(
-				ModItems.soulboundUpgrade));
+	@Override public boolean isItemValid(ItemStack itemstack) {
+		return ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade));
 	}
 
-	@Override
-	public int getSlotStackLimit() {
+	@Override public int getSlotStackLimit() {
 		return 1;
 	}
 

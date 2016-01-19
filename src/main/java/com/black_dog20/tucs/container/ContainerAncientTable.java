@@ -25,29 +25,25 @@ public class ContainerAncientTable extends Container {
 	private int posY;
 	private int posZ;
 
-	public ContainerAncientTable(InventoryPlayer IPlayer, World world, int x,
-			int y, int z, EntityPlayer eplayer) {
+	public ContainerAncientTable(InventoryPlayer IPlayer, World world, int x, int y, int z, EntityPlayer eplayer) {
 		this.worldObj = world;
 		this.posX = x;
 		this.posY = y;
 		this.posZ = z;
 
-		this.addSlotToContainer(new SlotCrafting(IPlayer.player,
-				this.craftMatrix, this.craftResult, 0, 124, 35));
+		this.addSlotToContainer(new SlotCrafting(IPlayer.player, this.craftMatrix, this.craftResult, 0, 124, 35));
 		int l;
 		int i1;
 
 		for (l = 0; l < 3; ++l) {
 			for (i1 = 0; i1 < 3; ++i1) {
-				this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3,
-						30 + i1 * 18, 17 + l * 18));
+				this.addSlotToContainer(new Slot(this.craftMatrix, i1 + l * 3, 30 + i1 * 18, 17 + l * 18));
 			}
 		}
 
 		for (l = 0; l < 3; ++l) {
 			for (i1 = 0; i1 < 9; ++i1) {
-				this.addSlotToContainer(new Slot(IPlayer, i1 + l * 9 + 9,
-						8 + i1 * 18, 84 + l * 18));
+				this.addSlotToContainer(new Slot(IPlayer, i1 + l * 9 + 9, 8 + i1 * 18, 84 + l * 18));
 			}
 		}
 
@@ -62,13 +58,9 @@ public class ContainerAncientTable extends Container {
 	 * Callback for when the crafting matrix is changed.
 	 */
 	public void onCraftMatrixChanged(IInventory inventory) {
-		Result = AncientTableManager.getInstance().findMatchingRecipe(
-				this.craftMatrix, this.worldObj);
+		Result = AncientTableManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj);
 		if (Result == null) {
-			this.craftResult.setInventorySlotContents(
-					0,
-					CraftingManager.getInstance().findMatchingRecipe(
-							this.craftMatrix, this.worldObj));
+			this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
 		} else {
 			this.craftResult.setInventorySlotContents(0, Result);
 
@@ -85,8 +77,7 @@ public class ContainerAncientTable extends Container {
 
 		if (!this.worldObj.isRemote) {
 			for (int i = 0; i < 9; ++i) {
-				ItemStack itemstack = this.craftMatrix
-						.getStackInSlotOnClosing(i);
+				ItemStack itemstack = this.craftMatrix.getStackInSlotOnClosing(i);
 
 				if (itemstack != null) {
 					EPlayer.dropPlayerItemWithRandomChoice(itemstack, false);
@@ -96,9 +87,7 @@ public class ContainerAncientTable extends Container {
 	}
 
 	public boolean canInteractWith(EntityPlayer EPlayer) {
-		return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != ModBlocks.ancientTable ? false
-				: EPlayer.getDistanceSq((double) this.posX + 0.5D,
-						(double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
+		return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != ModBlocks.ancientTable ? false : EPlayer.getDistanceSq((double) this.posX + 0.5D, (double) this.posY + 0.5D, (double) this.posZ + 0.5D) <= 64.0D;
 	}
 
 	/**
@@ -148,8 +137,7 @@ public class ContainerAncientTable extends Container {
 	}
 
 	public boolean func_94530_a(ItemStack p_94530_1_, Slot p_94530_2_) {
-		return p_94530_2_.inventory != this.craftResult
-				&& super.func_94530_a(p_94530_1_, p_94530_2_);
+		return p_94530_2_.inventory != this.craftResult && super.func_94530_a(p_94530_1_, p_94530_2_);
 	}
 
 }

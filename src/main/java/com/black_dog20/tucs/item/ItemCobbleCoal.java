@@ -13,9 +13,7 @@ public class ItemCobbleCoal extends ItemTUCS {
 
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack Item, World world,
-			EntityPlayer player) {
+	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		/*
 		 * if(!Item.isItemEnchanted()){

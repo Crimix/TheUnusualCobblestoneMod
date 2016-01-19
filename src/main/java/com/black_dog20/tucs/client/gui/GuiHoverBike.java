@@ -16,15 +16,12 @@ import com.black_dog20.tucs.entity.EntityHoverBike;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class GuiHoverBike extends GuiContainer {
+@SideOnly(Side.CLIENT) public class GuiHoverBike extends GuiContainer {
 
-	private ResourceLocation texture = new ResourceLocation(
-			"minecraft:textures/gui/container/generic_54.png");
+	private ResourceLocation texture = new ResourceLocation("minecraft:textures/gui/container/generic_54.png");
 	private int inventoryRows;
 
-	public GuiHoverBike(EntityPlayer player, World world, int x, int y, int z,
-			Entity entity) {
+	public GuiHoverBike(EntityPlayer player, World world, int x, int y, int z, Entity entity) {
 		super(new ContainerHoverBike(player, world, x, y, z, entity));
 
 		EntityHoverBike entityHoverBike = (EntityHoverBike) entity;
@@ -38,17 +35,12 @@ public class GuiHoverBike extends GuiContainer {
 
 	protected void drawGuiContainerForegroundLayer(int i, int j) {
 
-		this.fontRendererObj.drawString(
-				StatCollector.translateToLocal("HoverBike"), 8, 6, 4210752);
-		this.fontRendererObj.drawString(
-				StatCollector.translateToLocal("Inventory"), 8,
-				this.ySize - 96 + 2, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("HoverBike"), 8, 6, 4210752);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("Inventory"), 8, this.ySize - 96 + 2, 4210752);
 
 	}
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float var1, int var2,
-			int var3) {
+	@Override protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 
@@ -56,10 +48,8 @@ public class GuiHoverBike extends GuiContainer {
 
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
-		this.drawTexturedModalRect(k, l, 0, 0, this.xSize,
-				this.inventoryRows * 18 + 17);
-		this.drawTexturedModalRect(k, l + this.inventoryRows * 18 + 17, 0, 126,
-				this.xSize, 96);
+		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.inventoryRows * 18 + 17);
+		this.drawTexturedModalRect(k, l + this.inventoryRows * 18 + 17, 0, 126, this.xSize, 96);
 
 	}
 

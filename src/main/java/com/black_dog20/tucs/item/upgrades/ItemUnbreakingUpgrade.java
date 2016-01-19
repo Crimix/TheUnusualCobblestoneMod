@@ -11,8 +11,7 @@ public class ItemUnbreakingUpgrade extends ItemTUCSUpgrades {
 
 	}
 
-	@Override
-	public Enchantment getEnchantment() {
+	@Override public Enchantment getEnchantment() {
 		return Enchantment.unbreaking;
 	}
 

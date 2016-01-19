@@ -13,15 +13,12 @@ import com.black_dog20.tucs.container.ContainerUpgradeTools;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class GuiUpgradeTools extends GuiContainer {
+@SideOnly(Side.CLIENT) public class GuiUpgradeTools extends GuiContainer {
 
-	private ResourceLocation texture = new ResourceLocation(
-			"tucs:textures/gui/upgradeGuiTools.png");
+	private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTools.png");
 
 	public GuiUpgradeTools(World world, int x, int y, int z, EntityPlayer player) {
-		super(new ContainerUpgradeTools(world, x, y, z, player,
-				player.getHeldItem()));
+		super(new ContainerUpgradeTools(world, x, y, z, player, player.getHeldItem()));
 
 		this.xSize = 175;
 		this.ySize = 165;
@@ -32,9 +29,7 @@ public class GuiUpgradeTools extends GuiContainer {
 
 	}
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float var1, int var2,
-			int var3) {
+	@Override protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 

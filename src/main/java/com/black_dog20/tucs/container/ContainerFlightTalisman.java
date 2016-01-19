@@ -21,8 +21,7 @@ public class ContainerFlightTalisman extends Container {
 	public IInventory slot = new InventoryTalisman();
 	private final ItemStack invItem = new ItemStack(ModItems.FlightTalisman);
 
-	public ContainerFlightTalisman(World world, int x, int y, int z,
-			EntityPlayer player, ItemStack item) {
+	public ContainerFlightTalisman(World world, int x, int y, int z, EntityPlayer player, ItemStack item) {
 
 		this.addSlotToContainer(new SlotFlightTalisman(slot, 0, 75, 37));
 
@@ -31,16 +30,13 @@ public class ContainerFlightTalisman extends Container {
 		}
 		if (item.hasTagCompound()) {
 			NBTTagCompound nbt = item.getTagCompound();
-			NBTTagList nbttaglist = nbt.getTagList("TalismanItems",
-					Constants.NBT.TAG_COMPOUND);
+			NBTTagList nbttaglist = nbt.getTagList("TalismanItems", Constants.NBT.TAG_COMPOUND);
 			for (int i = 0; i <= nbttaglist.tagCount(); i++) {
 				NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 				byte b0 = nbttagcompound1.getByte("Slot");
-				ItemStack slotItem = ItemStack
-						.loadItemStackFromNBT(nbttagcompound1);
+				ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 				if (slotItem != null) {
-					this.slot.setInventorySlotContents(0,
-							ItemStack.loadItemStackFromNBT(nbttagcompound1));
+					this.slot.setInventorySlotContents(0, ItemStack.loadItemStackFromNBT(nbttagcompound1));
 					nbttaglist.removeTag(i);
 				}
 			}
@@ -53,8 +49,7 @@ public class ContainerFlightTalisman extends Container {
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
+				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 
@@ -63,8 +58,7 @@ public class ContainerFlightTalisman extends Container {
 		}
 	}
 
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
+	@Override public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 		if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
@@ -72,10 +66,7 @@ public class ContainerFlightTalisman extends Container {
 			if (slot <= 1) {
 				if (!mergeItemStack(stackInSlot, 2, inventorySlots.size(), true))
 					return null;
-			} else if (slot != 1
-					&& stack.isItemEqual(new ItemStack(
-							ModItems.soulboundUpgrade))
-					&& !getSlot(0).getHasStack()) {
+			} else if (slot != 1 && stack.isItemEqual(new ItemStack(ModItems.soulboundUpgrade)) && !getSlot(0).getHasStack()) {
 				ItemStack copy = slotObject.decrStackSize(1);
 				getSlot(0).putStack(copy);
 				return null;
@@ -94,8 +85,7 @@ public class ContainerFlightTalisman extends Container {
 		return null;
 	}
 
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
+	@Override public boolean canInteractWith(EntityPlayer player) {
 		if (player.getHeldItem() != null) {
 			boolean test = player.getHeldItem().isItemEqual(invItem);
 
@@ -105,26 +95,20 @@ public class ContainerFlightTalisman extends Container {
 		}
 	}
 
-	@Override
-	public ItemStack slotClick(int slot, int button, int flag,
-			EntityPlayer player) {
+	@Override public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
 		// this will prevent the player from interacting with the item that
 		// opened the inventory:
-		if (slot >= 0 && getSlot(slot) != null
-				&& getSlot(slot).getStack() == player.getHeldItem()) {
+		if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
 			return null;
 		}
 		return super.slotClick(slot, button, flag, player);
 	}
 
-	@Override
-	public void onContainerClosed(EntityPlayer player) {
+	@Override public void onContainerClosed(EntityPlayer player) {
 
 		super.onContainerClosed(player);
 		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
-		if (itemstack != null
-				&& ItemStack.areItemStacksEqual(itemstack, new ItemStack(
-						ModItems.soulboundUpgrade, 1))) {
+		if (itemstack != null && ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade, 1))) {
 			ItemStack stack = player.getHeldItem();
 			if (stack != null && !stack.hasTagCompound()) {
 				stack.stackTagCompound = new NBTTagCompound();
@@ -157,8 +141,7 @@ public class ContainerFlightTalisman extends Container {
 	}
 
 	public boolean isItemValid(ItemStack itemstack) {
-		return ItemStack.areItemStacksEqual(itemstack, new ItemStack(
-				ModItems.soulboundUpgrade));
+		return ItemStack.areItemStacksEqual(itemstack, new ItemStack(ModItems.soulboundUpgrade));
 	}
 
 }

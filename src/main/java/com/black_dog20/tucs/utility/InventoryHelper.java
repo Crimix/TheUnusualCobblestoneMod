@@ -26,9 +26,7 @@ public class InventoryHelper {
 		int res = 0;
 		for (int i = 0; i < 36; i++) {
 			ItemStack testItem = iplayer.getStackInSlot(i);
-			if (testItem != null
-					&& testItem.getItem() instanceof ItemBlock
-					&& ((ItemBlock) (testItem.getItem())).field_150939_a == block) {
+			if (testItem != null && testItem.getItem() instanceof ItemBlock && ((ItemBlock) (testItem.getItem())).field_150939_a == block) {
 				res += iplayer.getStackInSlot(i).stackSize;
 			}
 		}
@@ -38,9 +36,7 @@ public class InventoryHelper {
 	public static int findTorch(InventoryPlayer player) {
 		for (int i = 0; i < 36; i++) {
 			ItemStack testItem = player.getStackInSlot(i);
-			if (testItem != null
-					&& testItem.getItem() instanceof ItemBlock
-					&& ((ItemBlock) (testItem.getItem())).field_150939_a == Blocks.torch) {
+			if (testItem != null && testItem.getItem() instanceof ItemBlock && ((ItemBlock) (testItem.getItem())).field_150939_a == Blocks.torch) {
 				return i;
 			}
 		}

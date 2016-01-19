@@ -18,25 +18,18 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class KeyInputEventHandler {
+@SideOnly(Side.CLIENT) public class KeyInputEventHandler {
 
 	String FIRSTFLY = "firstFlight";
 	String night = "TUCSNight";
 	String nightA = "TUCSNightA";
 
-	@SubscribeEvent
-	public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
-		if (Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly
-				&& ConfigurationHandler.Server_Flying_Allowed) {
+	@SubscribeEvent public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
+		if (Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly && ConfigurationHandler.Server_Flying_Allowed) {
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
-				EntityPlayer entityPlayer = FMLClientHandler.instance()
-						.getClientPlayerEntity();
+				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);
-				if (entityPlayer.inventory.hasItemStack(new ItemStack(
-						ModItems.FlightTalisman))
-						|| entityPlayer.inventory.hasItemStack(new ItemStack(
-								ModItems.TLSOTD))) {
+				if (entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))) {
 					if (!entityPlayer.capabilities.allowFlying) {
 						entityPlayer.capabilities.allowFlying = true;
 						entityPlayer.capabilities.isFlying = true;
@@ -44,8 +37,7 @@ public class KeyInputEventHandler {
 							entityPlayer.capabilities.setFlySpeed(0.1F);
 							nbt.setBoolean(FIRSTFLY, true);
 						}
-					} else if (entityPlayer.capabilities.allowFlying
-							&& !entityPlayer.capabilities.isCreativeMode) {
+					} else if (entityPlayer.capabilities.allowFlying && !entityPlayer.capabilities.isCreativeMode) {
 						entityPlayer.capabilities.allowFlying = false;
 						entityPlayer.capabilities.isFlying = false;
 					}
@@ -54,23 +46,13 @@ public class KeyInputEventHandler {
 			}
 		} else if (Keybindings.flyspeed.isPressed()) {
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
-				EntityPlayer entityPlayer = FMLClientHandler.instance()
-						.getClientPlayerEntity();
-				if (entityPlayer.inventory.hasItemStack(new ItemStack(
-						ModItems.FlightTalisman))
-						|| entityPlayer.inventory.hasItemStack(new ItemStack(
-								ModItems.TLSOTD))) {
-					if (Float.compare(entityPlayer.capabilities.getFlySpeed(),
-							0.1F) == 0) {
-						entityPlayer
-								.addChatMessage(new ChatComponentTranslation(
-										"msg.message_highfly.txt"));
+				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+				if (entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))) {
+					if (Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F) == 0) {
+						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.2F);
-					} else if (Float.compare(
-							entityPlayer.capabilities.getFlySpeed(), 0.2F) == 0) {
-						entityPlayer
-								.addChatMessage(new ChatComponentTranslation(
-										"msg.message_normalfly.txt"));
+					} else if (Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.2F) == 0) {
+						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_normalfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.1F);
 					}
 				}
@@ -78,12 +60,10 @@ public class KeyInputEventHandler {
 			}
 		} else if (Keybindings.night.isPressed()) {
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
-				EntityPlayer entityPlayer = FMLClientHandler.instance()
-						.getClientPlayerEntity();
+				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				NBTTagCompound nbtp = NBTHelper.getPlayerNBT(entityPlayer);
 				if (nbtp.hasKey(night) && !(nbtp.hasKey(nightA))) {
-					entityPlayer.addPotionEffect(new PotionEffect(
-							Potion.nightVision.id, 500, 1, false));
+					entityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 500, 1, false));
 					nbtp.setBoolean(nightA, true);
 				} else if (nbtp.hasKey(night) && nbtp.hasKey(nightA)) {
 					entityPlayer.removePotionEffect(Potion.nightVision.id);

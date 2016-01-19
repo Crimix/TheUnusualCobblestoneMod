@@ -17,16 +17,13 @@ import com.black_dog20.tucs.reference.Reference;
 
 public class ItemBootCobblestonedium extends ItemArmorTUCS {
 
-	public ItemBootCobblestonedium(ArmorMaterial Material, int armortype,
-			String Name) {
+	public ItemBootCobblestonedium(ArmorMaterial Material, int armortype, String Name) {
 		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
-			String type) {
+	@Override public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		if (stack.getItem() instanceof ItemBootCobblestonedium) {
 			return Reference.MOD_ID + ":models/armor/Cobblestonedium_1.png";
 		} else {
@@ -34,9 +31,7 @@ public class ItemBootCobblestonedium extends ItemArmorTUCS {
 		}
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack Item, World world,
-			EntityPlayer player) {
+	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		if (player.isSneaking()) {
 			tucs.Proxy.openToolUpgrade(player);
@@ -48,8 +43,7 @@ public class ItemBootCobblestonedium extends ItemArmorTUCS {
 
 	}
 
-	@Override
-	public boolean hasEffect(ItemStack stack) {
+	@Override public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -57,8 +51,7 @@ public class ItemBootCobblestonedium extends ItemArmorTUCS {
 		if (stack.hasTagCompound()) {
 			NBTTagCompound nbt = stack.getTagCompound();
 
-			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)
-					|| nbt.hasKey("ench")) {
+			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")) {
 				return true;
 			}
 			if (nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")) {
@@ -73,9 +66,7 @@ public class ItemBootCobblestonedium extends ItemArmorTUCS {
 		return false;
 	}
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List List,
-			boolean par) {
+	@Override public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 

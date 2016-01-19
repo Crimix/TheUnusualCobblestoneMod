@@ -13,25 +13,19 @@ import com.black_dog20.tucs.container.ContainerFlightTalisman;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class GuiFlightTalisman extends GuiContainer {
+@SideOnly(Side.CLIENT) public class GuiFlightTalisman extends GuiContainer {
 
-	private ResourceLocation texture = new ResourceLocation(
-			"tucs:textures/gui/upgradeGuiTalisman.png");
+	private ResourceLocation texture = new ResourceLocation("tucs:textures/gui/upgradeGuiTalisman.png");
 
-	public GuiFlightTalisman(World world, int x, int y, int z,
-			EntityPlayer player) {
-		super(new ContainerFlightTalisman(world, x, y, z, player,
-				player.getHeldItem()));
+	public GuiFlightTalisman(World world, int x, int y, int z, EntityPlayer player) {
+		super(new ContainerFlightTalisman(world, x, y, z, player, player.getHeldItem()));
 
 		this.xSize = 175;
 		this.ySize = 165;
 
 	}
 
-	@Override
-	protected void drawGuiContainerBackgroundLayer(float var1, int var2,
-			int var3) {
+	@Override protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 

@@ -79,22 +79,19 @@ public class AncientTableManager {
 			char c0 = s.charAt(i1);
 
 			if (hashmap.containsKey(Character.valueOf(c0))) {
-				aitemstack[i1] = ((ItemStack) hashmap
-						.get(Character.valueOf(c0))).copy();
+				aitemstack[i1] = ((ItemStack) hashmap.get(Character.valueOf(c0))).copy();
 			} else {
 				aitemstack[i1] = null;
 			}
 		}
 
-		AncientTableShapedRecipes shapedrecipes = new AncientTableShapedRecipes(
-				j, k, aitemstack, item);
+		AncientTableShapedRecipes shapedrecipes = new AncientTableShapedRecipes(j, k, aitemstack, item);
 		boolean add = true;
 		Iterator ite = recipes.iterator();
 		while (ite.hasNext()) {
 			Object object = ite.next();
 			if (object instanceof AncientTableShapedRecipes) {
-				if (item.getItem() == ((AncientTableShapedRecipes) object)
-						.getRecipeOutput().getItem()) {
+				if (item.getItem() == ((AncientTableShapedRecipes) object).getRecipeOutput().getItem()) {
 					add = false;
 				}
 			}
@@ -110,8 +107,7 @@ public class AncientTableManager {
 		while (ite.hasNext()) {
 			Object object = ite.next();
 			if (object instanceof AncientTableShapedRecipes) {
-				if (item == ((AncientTableShapedRecipes) object)
-						.getRecipeOutput().getItem()) {
+				if (item == ((AncientTableShapedRecipes) object).getRecipeOutput().getItem()) {
 					ite.remove();
 				}
 			}
@@ -139,8 +135,7 @@ public class AncientTableManager {
 			}
 		}
 
-		AncientTableShapelessRecipes recipe = new AncientTableShapelessRecipes(
-				item, arraylist);
+		AncientTableShapelessRecipes recipe = new AncientTableShapelessRecipes(item, arraylist);
 		this.recipes.add(recipe);
 	}
 
@@ -166,9 +161,7 @@ public class AncientTableManager {
 			}
 		}
 
-		if (i == 2 && itemstack.getItem() == itemstack1.getItem()
-				&& itemstack.stackSize == 1 && itemstack1.stackSize == 1
-				&& itemstack.getItem().isRepairable()) {
+		if (i == 2 && itemstack.getItem() == itemstack1.getItem() && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isRepairable()) {
 			Item item = itemstack.getItem();
 			int j1 = item.getMaxDamage() - itemstack.getItemDamageForDisplay();
 			int k = item.getMaxDamage() - itemstack1.getItemDamageForDisplay();

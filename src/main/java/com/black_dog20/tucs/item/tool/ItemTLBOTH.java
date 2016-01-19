@@ -25,10 +25,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
-	public static final String[] bowPullIconNameArray = new String[] {
-			"pulling_0", "pulling_1", "pulling_2" };
-	@SideOnly(Side.CLIENT)
-	private IIcon[] iconArray;
+	public static final String[] bowPullIconNameArray = new String[] { "pulling_0", "pulling_1", "pulling_2" };
+	@SideOnly(Side.CLIENT) private IIcon[] iconArray;
 
 	public ItemTLBOTH() {
 		this.setFull3D();
@@ -38,15 +36,11 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
 		this.setUnlocalizedName("bowTLBOTH");
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFull3D() {
+	@Override @SideOnly(Side.CLIENT) public boolean isFull3D() {
 		return true;
 	}
 
-	@Override
-	public void onPlayerStoppedUsing(ItemStack stack, World world,
-			EntityPlayer Eplayer, int useCount) {
+	@Override public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer Eplayer, int useCount) {
 		int j = this.getMaxItemUseDuration(stack) - useCount;
 
 		ArrowLooseEvent event = new ArrowLooseEvent(Eplayer, stack, j);
@@ -56,9 +50,7 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
 		}
 		j = event.charge;
 
-		boolean flag = Eplayer.capabilities.isCreativeMode
-				|| (stack.hasTagCompound() && stack.getTagCompound().hasKey(
-						NBTTags.NoArrow));
+		boolean flag = Eplayer.capabilities.isCreativeMode || (stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.NoArrow));
 
 		if (flag || Eplayer.inventory.hasItem(Items.arrow)) {
 
@@ -76,8 +68,7 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
 			EntityArrow entityarrow = spawnArrow(world, Eplayer, f);
 
 			stack.damageItem(1, Eplayer);
-			world.playSoundAtEntity(Eplayer, "random.bow", 1.0F,
-					1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
+			world.playSoundAtEntity(Eplayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 0.5F);
 
 			if (flag) {
 				entityarrow.canBePickedUp = 0;
@@ -92,19 +83,15 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
 		}
 	}
 
-	@Override
-	public int getMaxItemUseDuration(ItemStack stack) {
+	@Override public int getMaxItemUseDuration(ItemStack stack) {
 		return 72000;
 	}
 
-	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
+	@Override public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.bow;
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world,
-			EntityPlayer Eplayer) {
+	@Override public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer Eplayer) {
 
 		if (Eplayer.isSneaking()) {
 			tucs.Proxy.openToolUpgrade(Eplayer);
@@ -115,18 +102,14 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
 				return event.result;
 			}
 
-			if (stack.hasTagCompound()
-					&& stack.getTagCompound().hasKey(NBTTags.MachineBow)) {
+			if (stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.MachineBow)) {
 				EntityArrow entityarrow = spawnArrow(world, Eplayer, 2.0F);
 
 				stack.damageItem(1, Eplayer);
 				if (!world.isRemote) {
 					world.spawnEntityInWorld(entityarrow);
 				}
-			} else if (Eplayer.capabilities.isCreativeMode
-					|| Eplayer.inventory.hasItem(Items.arrow)
-					|| (stack.hasTagCompound() && stack.getTagCompound()
-							.hasKey(NBTTags.NoArrow))) {
+			} else if (Eplayer.capabilities.isCreativeMode || Eplayer.inventory.hasItem(Items.arrow) || (stack.hasTagCompound() && stack.getTagCompound().hasKey(NBTTags.NoArrow))) {
 				Eplayer.setItemInUse(stack, this.getMaxItemUseDuration(stack));
 			}
 		}
@@ -144,25 +127,16 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
 		return entityarrow;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister IIcon) {
-		this.itemIcon = IIcon.registerIcon(this.getUnlocalizedName().substring(
-				this.getUnlocalizedName().indexOf(".") + 1)
-				+ "_standby");
+	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister IIcon) {
+		this.itemIcon = IIcon.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "_standby");
 		this.iconArray = new IIcon[bowPullIconNameArray.length];
 
 		for (int i = 0; i < this.iconArray.length; ++i) {
-			this.iconArray[i] = IIcon.registerIcon(this.getUnlocalizedName()
-					.substring(this.getUnlocalizedName().indexOf(".") + 1)
-					+ "_" + bowPullIconNameArray[i]);
+			this.iconArray[i] = IIcon.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "_" + bowPullIconNameArray[i]);
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player,
-			ItemStack usingItem, int useRemaining) {
+	@Override @SideOnly(Side.CLIENT) public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
 		if (usingItem != null) {
 			int time = getMaxItemUseDuration(stack) - useRemaining;
 			if (time < 8)
@@ -174,14 +148,11 @@ public class ItemTLBOTH extends ItemBowTUCS implements ITucsItem {
 		return getIcon(stack, renderPass);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public IIcon getItemIconForUseDuration(int duration) {
+	@SideOnly(Side.CLIENT) public IIcon getItemIconForUseDuration(int duration) {
 		return this.iconArray[duration];
 	}
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List List,
-			boolean par) {
+	@Override public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 

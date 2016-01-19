@@ -18,8 +18,7 @@ public class AncientTableShapedRecipes implements IRecipe {
 	private boolean field_92101_f;
 	private static final String __OBFID = "CL_00000093";
 
-	public AncientTableShapedRecipes(int par1, int par2,
-			ItemStack[] par3ArrayOfItemStack, ItemStack par4ItemStack) {
+	public AncientTableShapedRecipes(int par1, int par2, ItemStack[] par3ArrayOfItemStack, ItemStack par4ItemStack) {
 		this.recipeWidth = par1;
 		this.recipeHeight = par2;
 		this.recipeItems = par3ArrayOfItemStack;
@@ -52,19 +51,16 @@ public class AncientTableShapedRecipes implements IRecipe {
 	/**
 	 * Checks if the region of a crafting inventory is match for the recipe.
 	 */
-	private boolean checkMatch(InventoryCrafting p_77573_1_, int p_77573_2_,
-			int p_77573_3_, boolean p_77573_4_) {
+	private boolean checkMatch(InventoryCrafting p_77573_1_, int p_77573_2_, int p_77573_3_, boolean p_77573_4_) {
 		for (int k = 0; k < 3; ++k) {
 			for (int l = 0; l < 3; ++l) {
 				int i1 = k - p_77573_2_;
 				int j1 = l - p_77573_3_;
 				ItemStack itemstack = null;
 
-				if (i1 >= 0 && j1 >= 0 && i1 < this.recipeWidth
-						&& j1 < this.recipeHeight) {
+				if (i1 >= 0 && j1 >= 0 && i1 < this.recipeWidth && j1 < this.recipeHeight) {
 					if (p_77573_4_) {
-						itemstack = this.recipeItems[this.recipeWidth - i1 - 1
-								+ j1 * this.recipeWidth];
+						itemstack = this.recipeItems[this.recipeWidth - i1 - 1 + j1 * this.recipeWidth];
 					} else {
 						itemstack = this.recipeItems[i1 + j1 * this.recipeWidth];
 					}
@@ -73,8 +69,7 @@ public class AncientTableShapedRecipes implements IRecipe {
 				ItemStack itemstack1 = p_77573_1_.getStackInRowAndColumn(k, l);
 
 				if (itemstack1 != null || itemstack != null) {
-					if (itemstack1 == null && itemstack != null
-							|| itemstack1 != null && itemstack == null) {
+					if (itemstack1 == null && itemstack != null || itemstack1 != null && itemstack == null) {
 						return false;
 					}
 
@@ -82,9 +77,7 @@ public class AncientTableShapedRecipes implements IRecipe {
 						return false;
 					}
 
-					if (itemstack.getItemDamage() != 32767
-							&& itemstack.getItemDamage() != itemstack1
-									.getItemDamage()) {
+					if (itemstack.getItemDamage() != 32767 && itemstack.getItemDamage() != itemstack1.getItemDamage()) {
 						return false;
 					}
 				}
@@ -105,9 +98,7 @@ public class AncientTableShapedRecipes implements IRecipe {
 				ItemStack itemstack1 = p_77572_1_.getStackInSlot(i);
 
 				if (itemstack1 != null && itemstack1.hasTagCompound()) {
-					itemstack
-							.setTagCompound((NBTTagCompound) itemstack1.stackTagCompound
-									.copy());
+					itemstack.setTagCompound((NBTTagCompound) itemstack1.stackTagCompound.copy());
 				}
 			}
 		}

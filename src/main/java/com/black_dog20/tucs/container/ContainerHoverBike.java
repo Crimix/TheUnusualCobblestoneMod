@@ -22,8 +22,7 @@ public class ContainerHoverBike extends Container {
 	private int rows;
 	private int columns;
 
-	public ContainerHoverBike(EntityPlayer player, World world, int x, int y,
-			int z, Entity entity) {
+	public ContainerHoverBike(EntityPlayer player, World world, int x, int y, int z, Entity entity) {
 		this.worldObj = world;
 		this.posX = x;
 		this.posY = y;
@@ -38,22 +37,18 @@ public class ContainerHoverBike extends Container {
 
 		for (int rowIndex = 0; rowIndex < rows; ++rowIndex) {
 			for (int columnIndex = 0; columnIndex < columns; ++columnIndex) {
-				this.addSlotToContainer(new Slot(iventory, columnIndex
-						+ rowIndex * columns, 8 + columnIndex * 18,
-						18 + rowIndex * 18));
+				this.addSlotToContainer(new Slot(iventory, columnIndex + rowIndex * columns, 8 + columnIndex * 18, 18 + rowIndex * 18));
 			}
 		}
 
 		for (int row = 0; row < 3; ++row) {
 			for (int column = 0; column < 9; ++column) {
-				this.addSlotToContainer(new Slot(player.inventory, column + row
-						* 9 + 9, 8 + column * 18, 84 + row * 18));
+				this.addSlotToContainer(new Slot(player.inventory, column + row * 9 + 9, 8 + column * 18, 84 + row * 18));
 			}
 		}
 
 		for (int row = 0; row < 9; ++row) {
-			this.addSlotToContainer(new Slot(player.inventory, row,
-					8 + row * 18, 142));
+			this.addSlotToContainer(new Slot(player.inventory, row, 8 + row * 18, 142));
 		}
 
 		iventory.read(NBTHelper.getEntityNBT(entity));
@@ -85,8 +80,7 @@ public class ContainerHoverBike extends Container {
 	 * Called when a player shift-clicks on a slot. You must override this or
 	 * you will crash when someone does that.
 	 */
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer EPlayer, int par2) {
+	@Override public ItemStack transferStackInSlot(EntityPlayer EPlayer, int par2) {
 		ItemStack itemstack = null;
 		Slot slot = (Slot) this.inventorySlots.get(par2);
 
@@ -95,12 +89,10 @@ public class ContainerHoverBike extends Container {
 			itemstack = itemstack1.copy();
 
 			if (par2 < this.rows * 9) {
-				if (!this.mergeItemStack(itemstack1, this.rows * 9,
-						this.inventorySlots.size(), true)) {
+				if (!this.mergeItemStack(itemstack1, this.rows * 9, this.inventorySlots.size(), true)) {
 					return null;
 				}
-			} else if (!this
-					.mergeItemStack(itemstack1, 0, this.rows * 9, false)) {
+			} else if (!this.mergeItemStack(itemstack1, 0, this.rows * 9, false)) {
 				return null;
 			}
 

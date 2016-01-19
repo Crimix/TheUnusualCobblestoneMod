@@ -38,9 +38,7 @@ public class ScubaTank extends ModelBiped {
 		this.tank_1.addBox(0.0F, 0.0F, 0.0F, 8, 13, 8, -2.0F);
 	}
 
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3,
-			float f4, float f5) {
+	@Override public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.support_2.render(f5);
 		this.air_flow.render(f5);
 		this.tank_2.render(f5);
@@ -52,8 +50,7 @@ public class ScubaTank extends ModelBiped {
 	/**
 	 * This is a helper function from Tabula to set the rotation of model parts
 	 */
-	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y,
-			float z) {
+	public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;

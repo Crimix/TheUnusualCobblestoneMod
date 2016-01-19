@@ -14,8 +14,7 @@ public class ItemTorchTalisman extends ItemTUCS {
 
 	}
 
-	@Override
-	public boolean hasEffect(ItemStack stack) {
+	@Override public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();

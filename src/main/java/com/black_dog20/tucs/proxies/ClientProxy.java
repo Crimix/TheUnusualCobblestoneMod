@@ -31,32 +31,25 @@ import cpw.mods.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy {
 
-	@Override
-	public void openBook(EntityPlayer player) {
-		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj,
-				(int) player.posX, (int) player.posY, (int) player.posZ);
+	@Override public void openBook(EntityPlayer player) {
+		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 
-	@Override
-	public void openToolUpgrade(EntityPlayer player) {
-		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj,
-				(int) player.posX, (int) player.posY, (int) player.posZ);
+	@Override public void openToolUpgrade(EntityPlayer player) {
+		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 
-	@Override
-	public void registerKeyBindings() {
+	@Override public void registerKeyBindings() {
 		ClientRegistry.registerKeyBinding(Keybindings.fly);
 		ClientRegistry.registerKeyBinding(Keybindings.flyspeed);
 		ClientRegistry.registerKeyBinding(Keybindings.night);
 	}
 
-	@Override
-	public void keyinput() {
+	@Override public void keyinput() {
 		FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
 	}
 
-	@Override
-	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
+	@Override public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
 		switch (ctx.side) {
 		case CLIENT:
 			EntityPlayer entityClientPlayerMP = Minecraft.getMinecraft().thePlayer;
@@ -68,38 +61,28 @@ public class ClientProxy extends CommonProxy {
 		return null;
 	}
 
-	@Override
-	public EntityPlayer getPlayerByIDFromMessageContext(int id,
-			MessageContext ctx) {
+	@Override public EntityPlayer getPlayerByIDFromMessageContext(int id, MessageContext ctx) {
 		if (ctx.side == Side.CLIENT) {
-			EntityPlayer entityClientPlayerMP = (EntityPlayer) Minecraft
-					.getMinecraft().theWorld.getEntityByID(id);
+			EntityPlayer entityClientPlayerMP = (EntityPlayer) Minecraft.getMinecraft().theWorld.getEntityByID(id);
 			return entityClientPlayerMP;
 		}
 		return null;
 	}
 
-	@Override
-	public void registerRenders() {
+	@Override public void registerRenders() {
 
 		for (Item iterable_element : tucs.overlayList) {
-			MinecraftForgeClient.registerItemRenderer(iterable_element,
-					new TUCSOverlay());
+			MinecraftForgeClient.registerItemRenderer(iterable_element, new TUCSOverlay());
 		}
-		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class,
-				new RoundRender());
+		RenderingRegistry.registerEntityRenderingHandler(EntityRound.class, new RoundRender());
 		RenderingRegistry.registerBlockHandler(new SoulForgeRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class,
-				new SoulForgeRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulForge.class, new SoulForgeRender());
 		RenderingRegistry.registerBlockHandler(new AirMakerRender());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirMaker.class,
-				new AirMakerRender());
-		RenderingRegistry.registerEntityRenderingHandler(EntityHoverBike.class,
-				new RenderSpeeder());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirMaker.class, new AirMakerRender());
+		RenderingRegistry.registerEntityRenderingHandler(EntityHoverBike.class, new RenderSpeeder());
 	}
 
-	@Override
-	public void ServerRecipes() {
+	@Override public void ServerRecipes() {
 		Recipes.Upgrades();
 		switch (3 - ConfigurationHandler.Max_Luck_Upgrade) {
 		case 3:

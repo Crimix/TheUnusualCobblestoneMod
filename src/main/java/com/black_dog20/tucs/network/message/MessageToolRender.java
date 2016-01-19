@@ -13,8 +13,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class MessageToolRender implements IMessage,
-		IMessageHandler<MessageToolRender, IMessage> {
+public class MessageToolRender implements IMessage, IMessageHandler<MessageToolRender, IMessage> {
 
 	int reqPlayer;
 	NBTTagCompound nbt;
@@ -29,20 +28,17 @@ public class MessageToolRender implements IMessage,
 
 	}
 
-	@Override
-	public void fromBytes(ByteBuf buf) {
+	@Override public void fromBytes(ByteBuf buf) {
 		this.reqPlayer = buf.readInt();
 		this.nbt = ByteBufUtils.readTag(buf);
 	}
 
-	@Override
-	public void toBytes(ByteBuf buf) {
+	@Override public void toBytes(ByteBuf buf) {
 		buf.writeInt(reqPlayer);
 		ByteBufUtils.writeTag(buf, nbt);
 	}
 
-	@Override
-	public IMessage onMessage(MessageToolRender message, MessageContext ctx) {
+	@Override public IMessage onMessage(MessageToolRender message, MessageContext ctx) {
 		EntityPlayer me = tucs.Proxy.getPlayerFromMessageContext(ctx);
 		NBTTagCompound nbt = message.nbt;
 		NBTTagCompound nbtt = NBTHelper.getPlayerNBT(me);

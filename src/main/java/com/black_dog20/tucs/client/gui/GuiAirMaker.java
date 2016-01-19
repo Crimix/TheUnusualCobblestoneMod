@@ -12,10 +12,8 @@ import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class GuiAirMaker extends GuiContainer {
-	private static final ResourceLocation AirMakerGuiTextures = new ResourceLocation(
-			"tucs:textures/gui/airCompressorGui.png");
+@SideOnly(Side.CLIENT) public class GuiAirMaker extends GuiContainer {
+	private static final ResourceLocation AirMakerGuiTextures = new ResourceLocation("tucs:textures/gui/airCompressorGui.png");
 	private TileEntityAirMaker tileAirMaker;
 
 	public GuiAirMaker(InventoryPlayer IPlayer, TileEntityAirMaker tileEntity) {
@@ -23,8 +21,7 @@ public class GuiAirMaker extends GuiContainer {
 		this.tileAirMaker = tileEntity;
 	}
 
-	protected void drawGuiContainerForegroundLayer(int p_146979_1_,
-			int p_146979_2_) {
+	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
 		// String s = this.tileAirMaker.hasCustomInventoryName() ?
 		// this.tileAirMaker.getInventoryName() :
 		// I18n.format(this.tileAirMaker.getInventoryName(), new Object[0]);
@@ -34,8 +31,7 @@ public class GuiAirMaker extends GuiContainer {
 		// Object[0]), 8, this.ySize - 96 + 2, 4210752);
 	}
 
-	protected void drawGuiContainerBackgroundLayer(float p_146976_1_,
-			int p_146976_2_, int p_146976_3_) {
+	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(AirMakerGuiTextures);
 		int k = (this.width - this.xSize) / 2;

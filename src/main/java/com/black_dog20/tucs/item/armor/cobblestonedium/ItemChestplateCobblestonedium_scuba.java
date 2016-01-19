@@ -25,31 +25,23 @@ import com.black_dog20.tucs.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
-		implements IScubaAirTank {
+public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS implements IScubaAirTank {
 
-	public ItemChestplateCobblestonedium_scuba(ArmorMaterial Material,
-			int armortype, String Name) {
+	public ItemChestplateCobblestonedium_scuba(ArmorMaterial Material, int armortype, String Name) {
 		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
-			String type) {
+	@Override public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		if (stack.getItem() instanceof ItemChestplateCobblestonedium_scuba) {
-			return Reference.MOD_ID
-					+ ":models/armor/Cobblestonedium_1_scuba.png";
+			return Reference.MOD_ID + ":models/armor/Cobblestonedium_1_scuba.png";
 		} else {
 			return null;
 		}
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving,
-			ItemStack itemStack, int armorSlot) {
+	@Override @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
 		ModelBiped armorModel = null;
 		if (itemStack != null) {
 			armorModel = new ScubaTank_armor();
@@ -64,9 +56,7 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
 		return null;
 	}
 
-	@Override
-	public ItemStack onItemRightClick(ItemStack Item, World world,
-			EntityPlayer player) {
+	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		if (player.isSneaking()) {
 			tucs.Proxy.openToolUpgrade(player);
@@ -78,8 +68,7 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
 
 	}
 
-	@Override
-	public boolean hasEffect(ItemStack stack) {
+	@Override public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -87,8 +76,7 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
 		if (stack.hasTagCompound()) {
 			NBTTagCompound nbt = stack.getTagCompound();
 
-			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK)
-					|| nbt.hasKey("ench")) {
+			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")) {
 				return true;
 			}
 			if (nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")) {
@@ -103,27 +91,23 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
 		return false;
 	}
 
-	@Override
-	public double getMaxAir() {
+	@Override public double getMaxAir() {
 		return MAX_AIR;
 	}
 
-	@Override
-	public int getAir(ItemStack Item) {
+	@Override public int getAir(ItemStack Item) {
 		NBTTagCompound nbt = nbtTag(Item);
 		return nbt.getInteger("StoredAir");
 
 	}
 
-	@Override
-	public void decAir(ItemStack Item) {
+	@Override public void decAir(ItemStack Item) {
 		NBTTagCompound nbt = nbtTag(Item);
 		nbt.setInteger("StoredAir", nbt.getInteger("StoredAir") - 1);
 
 	}
 
-	@Override
-	public void addAir(ItemStack Item, int amount) {
+	@Override public void addAir(ItemStack Item, int amount) {
 		NBTTagCompound nbt = nbtTag(Item);
 		if (nbt.getInteger("StoredAir") + amount > MAX_AIR) {
 			nbt.setInteger("StoredAir", MAX_AIR);
@@ -132,8 +116,7 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
 		}
 	}
 
-	@Override
-	public void removeAir(ItemStack Item, int amount) {
+	@Override public void removeAir(ItemStack Item, int amount) {
 		NBTTagCompound nbt = nbtTag(Item);
 		nbt.setInteger("StoredAir", nbt.getInteger("StoredAir") - amount);
 		if (nbt.getInteger("StoredAir") < 0) {
@@ -141,14 +124,12 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
 		}
 	}
 
-	@Override
-	public void setAir(ItemStack Item, int amount) {
+	@Override public void setAir(ItemStack Item, int amount) {
 		NBTTagCompound nbt = nbtTag(Item);
 		nbt.setInteger("StoredAir", amount);
 	}
 
-	@Override
-	public void setMaxAir(ItemStack Item, int amount) {
+	@Override public void setMaxAir(ItemStack Item, int amount) {
 		NBTTagCompound nbt = nbtTag(Item);
 		if (amount == 0) {
 			nbt.setInteger("MaxAir", MAX_AIR);
@@ -166,24 +147,19 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS
 		return item.stackTagCompound;
 	}
 
-	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List subItems) {
-		ItemStack Airtank = new ItemStack(
-				ModItems.chestplateCobblestonedium_scuba);
+	@Override public void getSubItems(Item item, CreativeTabs tab, List subItems) {
+		ItemStack Airtank = new ItemStack(ModItems.chestplateCobblestonedium_scuba);
 		Airtank.stackTagCompound = new NBTTagCompound();
 		setMaxAir(Airtank, 0);
 		setAir(Airtank, MAX_AIR);
 		subItems.add(Airtank);
 	}
 
-	@Override
-	public String GetEnviromentType() {
+	@Override public String GetEnviromentType() {
 		return "Water";
 	}
 
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List List,
-			boolean par) {
+	@Override public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 

@@ -11,15 +11,12 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 public abstract class CommonProxy implements IProxy {
 
 	public void registerNetworkStuff() {
-		NetworkRegistry.INSTANCE.registerGuiHandler(tucs.instance,
-				new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(tucs.instance, new GuiHandler());
 	}
 
-	public void openBook() {
-	}
+	public void openBook() {}
 
-	public void openToolUpgrade() {
-	}
+	public void openToolUpgrade() {}
 
 	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
 		switch (ctx.side) {

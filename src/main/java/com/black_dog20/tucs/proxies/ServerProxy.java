@@ -12,52 +12,41 @@ public class ServerProxy extends CommonProxy {
 	String night = "TUCSNight";
 	String nightA = "TUCSNightA";
 
-	@Override
-	public void openBook(EntityPlayer player) {
-		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj,
-				(int) player.posX, (int) player.posY, (int) player.posZ);
+	@Override public void openBook(EntityPlayer player) {
+		player.openGui(tucs.instance, tucs.guiIDBook, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 
 	}
 
-	@Override
-	public void openToolUpgrade(EntityPlayer player) {
-		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj,
-				(int) player.posX, (int) player.posY, (int) player.posZ);
+	@Override public void openToolUpgrade(EntityPlayer player) {
+		player.openGui(tucs.instance, tucs.guiIDUpgradeTools, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 	}
 
-	@Override
-	public void registerKeyBindings() {
+	@Override public void registerKeyBindings() {
 		// NOOP
 
 	}
 
-	@Override
-	public void keyinput() {
+	@Override public void keyinput() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
+	@Override public EntityPlayer getPlayerFromMessageContext(MessageContext ctx) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public EntityPlayer getPlayerByIDFromMessageContext(int id,
-			MessageContext ctx) {
+	@Override public EntityPlayer getPlayerByIDFromMessageContext(int id, MessageContext ctx) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void registerRenders() {
+	@Override public void registerRenders() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	public void ServerRecipes() {
+	@Override public void ServerRecipes() {
 		// TODO Auto-generated method stub
 
 	}

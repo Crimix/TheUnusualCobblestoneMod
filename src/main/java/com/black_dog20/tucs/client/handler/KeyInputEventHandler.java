@@ -53,7 +53,6 @@ public class KeyInputEventHandler {
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				if (entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))) {
-					System.out.println("wuw");
 					if (Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F) == 0) {
 						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.2F);

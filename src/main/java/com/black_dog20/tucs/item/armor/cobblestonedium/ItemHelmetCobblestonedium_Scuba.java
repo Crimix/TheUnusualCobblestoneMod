@@ -30,7 +30,8 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		if (stack.getItem() instanceof ItemHelmetCobblestonedium_Scuba) {
 			return Reference.MOD_ID + ":models/armor/Cobblestonedium_1_scuba.png";
 		} else {
@@ -38,7 +39,9 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 		}
 	}
 
-	@Override @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
 		ModelBiped armorModel = null;
 		if (itemStack != null) {
 			armorModel = new ScubaMask_armor();
@@ -53,7 +56,8 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 		return null;
 	}
 
-	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		if (player.isSneaking()) {
 			tucs.Proxy.openToolUpgrade(player);
@@ -65,7 +69,8 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 
 	}
 
-	@Override public boolean hasEffect(ItemStack stack) {
+	@Override
+	public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -88,15 +93,18 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemArmorTUCS implements IS
 		return false;
 	}
 
-	@Override public String GetEnviromentType() {
+	@Override
+	public String GetEnviromentType() {
 		return "Effects";
 	}
 
-	@Override public void doSpeciel(EntityPlayer player) {
+	@Override
+	public void doSpeciel(EntityPlayer player) {
 		player.clearActivePotions();
 	}
 
-	@Override public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 

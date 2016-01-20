@@ -28,7 +28,8 @@ import com.black_dog20.tucs.utility.M1911Helper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) public class TUCSOverlay implements IItemRenderer {
+@SideOnly(Side.CLIENT)
+public class TUCSOverlay implements IItemRenderer {
 	private static RenderItem renderItem = new RenderItem();
 	private String text = null;
 	private int color = 0xFFFFFF;
@@ -37,15 +38,18 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 	public TUCSOverlay() {}
 
-	@Override public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+	@Override
+	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 		return type == ItemRenderType.INVENTORY;
 	}
 
-	@Override public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
 		return false;
 	}
 
-	@Override public void renderItem(ItemRenderType type, ItemStack itemStack, Object... data) {
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack itemStack, Object... data) {
 		EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 		FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
 		IIcon icon = itemStack.getIconIndex();

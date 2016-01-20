@@ -10,6 +10,8 @@ import net.minecraft.util.ChatComponentTranslation;
 import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.network.PacketHandler;
+import com.black_dog20.tucs.network.message.MessagePlayerActivateFlight;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.client.FMLClientHandler;
@@ -18,16 +20,19 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) public class KeyInputEventHandler {
+@SideOnly(Side.CLIENT)
+public class KeyInputEventHandler {
 
 	String FIRSTFLY = "firstFlight";
 	String night = "TUCSNight";
 	String nightA = "TUCSNightA";
 
-	@SubscribeEvent public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
-		if (Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly && ConfigurationHandler.Server_Flying_Allowed) {
+	@SubscribeEvent
+	public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
+		if (Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly /*&& ConfigurationHandler.Server_Flying_Allowed*/) {
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+				PacketHandler.network.sendToServer(new MessagePlayerActivateFlight());
 				NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);
 				if (entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))) {
 					if (!entityPlayer.capabilities.allowFlying) {
@@ -48,10 +53,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				if (entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))) {
+					System.out.println("wuw");
 					if (Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.1F) == 0) {
 						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_highfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.2F);
-					} else if (Float.compare(entityPlayer.capabilities.getFlySpeed(), 0.2F) == 0) {
+					} else {
 						entityPlayer.addChatMessage(new ChatComponentTranslation("msg.message_normalfly.txt"));
 						entityPlayer.capabilities.setFlySpeed(0.1F);
 					}

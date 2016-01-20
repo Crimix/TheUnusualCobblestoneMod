@@ -33,8 +33,10 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 	private final Random random = new Random();
 	private final boolean isActive;
 	private static boolean field_149934_M;
-	@SideOnly(Side.CLIENT) private IIcon top;
-	@SideOnly(Side.CLIENT) private IIcon front;
+	@SideOnly(Side.CLIENT)
+	private IIcon top;
+	@SideOnly(Side.CLIENT)
+	private IIcon front;
 
 	public BlockAncientForge(boolean active) {
 		super(Material.rock);
@@ -44,7 +46,8 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		this.setBlockName("ancientForge");
 	}
 
-	@Override public String getUnlocalizedName() {
+	@Override
+	public String getUnlocalizedName() {
 		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
@@ -89,13 +92,15 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		}
 	}
 
-	@SideOnly(Side.CLIENT) public IIcon getIcon(int side, int meta) {
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta) {
 		return meta == 0 && side == 3 ? this.front : side == 1 ? this.top : (side == 0 ? this.top : (side == meta ? this.front : this.blockIcon));
 		// return side == 1 ? this.top : (side == 0 ? this.top : (side != meta ?
 		// this.blockIcon : this.front));
 	}
 
-	@SideOnly(Side.CLIENT) public void registerBlockIcons(IIconRegister IIcon) {
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister IIcon) {
 		this.blockIcon = IIcon.registerIcon(Reference.MOD_ID + ":" + "ancientForge_side");
 		this.front = IIcon.registerIcon(this.isActive ? Reference.MOD_ID + ":" + "ancientForge_front_lit" : Reference.MOD_ID + ":" + "ancientForge_front");
 		this.top = IIcon.registerIcon(Reference.MOD_ID + ":" + "ancientForge_top");
@@ -199,7 +204,8 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		super.breakBlock(world, x, y, z, block, par1);
 	}
 
-	@SideOnly(Side.CLIENT) public void randomDisplayTick(World world, int x, int y, int z, Random par1) {
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(World world, int x, int y, int z, Random par1) {
 		if (this.isActive) {
 			int l = world.getBlockMetadata(x, y, z);
 			float f = (float) x + 0.5F;
@@ -232,7 +238,8 @@ public class BlockAncientForge extends BlockContainer implements ITucsItem {
 		return Container.calcRedstoneFromInventory((IInventory) world.getTileEntity(x, y, z));
 	}
 
-	@SideOnly(Side.CLIENT) public Item getItem(World world, int x, int y, int z) {
+	@SideOnly(Side.CLIENT)
+	public Item getItem(World world, int x, int y, int z) {
 		return Item.getItemFromBlock(ModBlocks.blockAncientForge);
 	}
 }

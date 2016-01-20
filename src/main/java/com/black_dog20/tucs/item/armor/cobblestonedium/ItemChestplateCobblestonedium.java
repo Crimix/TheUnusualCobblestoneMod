@@ -23,7 +23,8 @@ public class ItemChestplateCobblestonedium extends ItemArmorTUCS {
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		if (stack.getItem() instanceof ItemChestplateCobblestonedium) {
 			return Reference.MOD_ID + ":models/armor/Cobblestonedium_1.png";
 		} else {
@@ -31,7 +32,8 @@ public class ItemChestplateCobblestonedium extends ItemArmorTUCS {
 		}
 	}
 
-	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		if (player.isSneaking()) {
 			tucs.Proxy.openToolUpgrade(player);
@@ -43,7 +45,8 @@ public class ItemChestplateCobblestonedium extends ItemArmorTUCS {
 
 	}
 
-	@Override public boolean hasEffect(ItemStack stack) {
+	@Override
+	public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -66,7 +69,8 @@ public class ItemChestplateCobblestonedium extends ItemArmorTUCS {
 		return false;
 	}
 
-	@Override public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
 		List.add(EnumChatFormatting.GOLD + "Upgradeable");
 	}
 

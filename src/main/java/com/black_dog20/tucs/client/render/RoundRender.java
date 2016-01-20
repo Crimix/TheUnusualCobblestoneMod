@@ -11,7 +11,8 @@ import com.black_dog20.tucs.entity.EntityRound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) public class RoundRender extends Render {
+@SideOnly(Side.CLIENT)
+public class RoundRender extends Render {
 
 	private static final ResourceLocation texture = new ResourceLocation("tucs:textures/entity/round.png");
 

@@ -69,7 +69,8 @@ public class ContainerAncientForge extends Container {
 		this.lastItemBurnTime = this.tileFurnace.currentItemBurnTime;
 	}
 
-	@SideOnly(Side.CLIENT) public void updateProgressBar(int par1, int par2) {
+	@SideOnly(Side.CLIENT)
+	public void updateProgressBar(int par1, int par2) {
 		if (par1 == 0) {
 			this.tileFurnace.furnaceCookTime = par2;
 		}

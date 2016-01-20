@@ -58,7 +58,8 @@ public class ContainerFlightTalisman extends Container {
 		}
 	}
 
-	@Override public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 		if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
@@ -85,7 +86,8 @@ public class ContainerFlightTalisman extends Container {
 		return null;
 	}
 
-	@Override public boolean canInteractWith(EntityPlayer player) {
+	@Override
+	public boolean canInteractWith(EntityPlayer player) {
 		if (player.getHeldItem() != null) {
 			boolean test = player.getHeldItem().isItemEqual(invItem);
 
@@ -95,7 +97,8 @@ public class ContainerFlightTalisman extends Container {
 		}
 	}
 
-	@Override public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
+	@Override
+	public ItemStack slotClick(int slot, int button, int flag, EntityPlayer player) {
 		// this will prevent the player from interacting with the item that
 		// opened the inventory:
 		if (slot >= 0 && getSlot(slot) != null && getSlot(slot).getStack() == player.getHeldItem()) {
@@ -104,7 +107,8 @@ public class ContainerFlightTalisman extends Container {
 		return super.slotClick(slot, button, flag, player);
 	}
 
-	@Override public void onContainerClosed(EntityPlayer player) {
+	@Override
+	public void onContainerClosed(EntityPlayer player) {
 
 		super.onContainerClosed(player);
 		ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);

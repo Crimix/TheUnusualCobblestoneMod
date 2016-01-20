@@ -57,7 +57,8 @@ public class EventHandler {
 
 	static final DecimalFormat df = new DecimalFormat("#0.00");
 
-	@SubscribeEvent public void Tool(ItemTooltipEvent event) {
+	@SubscribeEvent
+	public void Tool(ItemTooltipEvent event) {
 		ItemStack item = event.itemStack;
 		List list = event.toolTip;
 		// list.add((item.getMaxDamage()-item.getItemDamage()) + "/" +
@@ -96,7 +97,9 @@ public class EventHandler {
 		}
 	}
 
-	@SideOnly(Side.CLIENT) @SubscribeEvent public void onGuiRender(RenderGameOverlayEvent event) {
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void onGuiRender(RenderGameOverlayEvent event) {
 		if (event.isCancelable() || event.type != ElementType.EXPERIENCE) {
 			return;
 		}
@@ -109,7 +112,8 @@ public class EventHandler {
 		}
 	}
 
-	@SubscribeEvent public void playerBreakSpeed(PlayerEvent.BreakSpeed event) {
+	@SubscribeEvent
+	public void playerBreakSpeed(PlayerEvent.BreakSpeed event) {
 		if (event.entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entity;
 			if (player.isInWater() && checkScubaGear(player)) {
@@ -118,7 +122,8 @@ public class EventHandler {
 		}
 	}
 
-	@SubscribeEvent public void onLivingUpdatePlayer(LivingUpdateEvent event) {
+	@SubscribeEvent
+	public void onLivingUpdatePlayer(LivingUpdateEvent event) {
 		if (event.entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entity;
 			NBTTagCompound nbtt = NBTHelper.getPlayerNBT(player);
@@ -247,7 +252,9 @@ public class EventHandler {
 		}
 	}
 
-	@SubscribeEvent @SideOnly(Side.CLIENT) public void onRenderPlayer(RenderPlayerEvent.Specials.Pre event) {
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void onRenderPlayer(RenderPlayerEvent.Specials.Pre event) {
 		EntityPlayer me = Minecraft.getMinecraft().thePlayer;
 		EntityPlayer player = event.entityPlayer;
 		NBTTagCompound nbt = NBTHelper.getPlayerNBT(me);
@@ -261,7 +268,8 @@ public class EventHandler {
 		}
 	}
 
-	@SideOnly(Side.CLIENT) public void doRenderTools(NBTTagCompound nbt, EntityPlayer player, InventoryPlayer IPlayer) {
+	@SideOnly(Side.CLIENT)
+	public void doRenderTools(NBTTagCompound nbt, EntityPlayer player, InventoryPlayer IPlayer) {
 		renderFlight(nbt, player, IPlayer);
 		renderSwordTLSOC(nbt, player, IPlayer);
 		renderPickaxe(nbt, player, IPlayer);
@@ -405,7 +413,8 @@ public class EventHandler {
 		}
 	}
 
-	@SubscribeEvent public void onFall(LivingFallEvent event) {
+	@SubscribeEvent
+	public void onFall(LivingFallEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entity;
 			if ((player.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || player.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD)))) {
@@ -417,7 +426,8 @@ public class EventHandler {
 		}
 	}
 
-	@SubscribeEvent public void onItemUseUp(PlayerDestroyItemEvent event) {
+	@SubscribeEvent
+	public void onItemUseUp(PlayerDestroyItemEvent event) {
 		EntityPlayer player = (EntityPlayer) event.entity;
 		ItemStack item = event.original;
 		InventoryPlayer inv = player.inventory;

@@ -11,7 +11,8 @@ public class ItemSliktouchUpgrade extends ItemTUCSUpgrades {
 
 	}
 
-	@Override public Enchantment getEnchantment() {
+	@Override
+	public Enchantment getEnchantment() {
 		return Enchantment.silkTouch;
 	}
 

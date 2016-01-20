@@ -27,7 +27,8 @@ public class ScubaTank_armor extends ModelBiped {
 		this.tank_1.addBox(0.0F, 0.0F, 0.0F, 8, 13, 8, -2.0F);
 	}
 
-	@Override public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+	@Override
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		this.air_flow.render(f5);
 		this.tank_2.render(f5);
 		this.tank_1.render(f5);

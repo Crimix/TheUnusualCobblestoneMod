@@ -79,7 +79,8 @@ public class ContainerCraftingTalisman extends Container {
 
 	}
 
-	@Override public boolean canInteractWith(EntityPlayer player) {
+	@Override
+	public boolean canInteractWith(EntityPlayer player) {
 		if (player.getHeldItem() != null) {
 			boolean test = player.getHeldItem().isItemEqual(new ItemStack(ModItems.craftingTalisman));
 

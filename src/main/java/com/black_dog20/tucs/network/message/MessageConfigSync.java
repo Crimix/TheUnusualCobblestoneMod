@@ -12,14 +12,16 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfigSync, IMessage> {
 
-	@Override public IMessage onMessage(MessageConfigSync message, MessageContext context) {
+	@Override
+	public IMessage onMessage(MessageConfigSync message, MessageContext context) {
 		tucs.instance.Proxy.ServerRecipes();
 		return null;
 	}
 
 	public MessageConfigSync() {}
 
-	@Override public void toBytes(ByteBuf buf) {
+	@Override
+	public void toBytes(ByteBuf buf) {
 		buf.writeBoolean(ConfigurationHandler.ToolFire);
 		buf.writeBoolean(ConfigurationHandler.Allow_To_Fly);
 		buf.writeInt(ConfigurationHandler.Max_Luck_Upgrade);
@@ -48,7 +50,8 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 		buf.writeBoolean(MinecraftServer.getServer().isFlightAllowed());
 	}
 
-	@Override public void fromBytes(ByteBuf buf) {
+	@Override
+	public void fromBytes(ByteBuf buf) {
 		ConfigurationHandler.configurationServer = true;
 		ConfigurationHandler.ToolFire = buf.readBoolean();
 		ConfigurationHandler.Allow_To_Fly = buf.readBoolean();

@@ -24,7 +24,8 @@ public class ItemScubaMask extends ItemArmorTUCS implements IScubaMask {
 		this.setMaxDamage(-1);
 	}
 
-	@Override public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 
 		if (stack.getItem() instanceof ItemScubaMask) {
 			return Reference.MOD_ID + ":models/armor/scuba_1.png";
@@ -34,7 +35,9 @@ public class ItemScubaMask extends ItemArmorTUCS implements IScubaMask {
 		}
 	}
 
-	@Override @SideOnly(Side.CLIENT) public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
 		ModelBiped armorModel = null;
 		if (itemStack != null) {
 			armorModel = new ScubaMask();
@@ -49,11 +52,13 @@ public class ItemScubaMask extends ItemArmorTUCS implements IScubaMask {
 		return null;
 	}
 
-	@Override public String GetEnviromentType() {
+	@Override
+	public String GetEnviromentType() {
 		return "Effects";
 	}
 
-	@Override public void doSpeciel(EntityPlayer player) {
+	@Override
+	public void doSpeciel(EntityPlayer player) {
 		player.clearActivePotions();
 	}
 

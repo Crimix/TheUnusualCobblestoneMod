@@ -19,7 +19,8 @@ public class ItemCraftingTalisman extends ItemTUCS {
 
 	}
 
-	@Override public boolean hasEffect(ItemStack stack) {
+	@Override
+	public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -36,7 +37,8 @@ public class ItemCraftingTalisman extends ItemTUCS {
 		return false;
 	}
 
-	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		player.openGui(tucs.instance, tucs.guiIDCraftingTalisman, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 

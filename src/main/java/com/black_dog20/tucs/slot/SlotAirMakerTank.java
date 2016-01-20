@@ -12,11 +12,13 @@ public class SlotAirMakerTank extends Slot {
 		super(inventory, slotIndex, x, y);
 	}
 
-	@Override public boolean isItemValid(ItemStack itemstack) {
+	@Override
+	public boolean isItemValid(ItemStack itemstack) {
 		return (itemstack.getItem() instanceof IScubaAirTank);
 	}
 
-	@Override public int getSlotStackLimit() {
+	@Override
+	public int getSlotStackLimit() {
 		return 1;
 	}
 

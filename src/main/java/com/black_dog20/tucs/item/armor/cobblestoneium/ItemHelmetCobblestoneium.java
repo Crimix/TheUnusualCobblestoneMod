@@ -16,7 +16,8 @@ public class ItemHelmetCobblestoneium extends ItemArmorTUCS {
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		if (stack.getItem() == ModItems.helmetCobblestoneium) {
 			return Reference.MOD_ID + ":models/armor/Cobblestoneium_1.png";
 		} else {

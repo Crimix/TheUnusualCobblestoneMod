@@ -21,4 +21,5 @@ public interface IProxy {
 
 	public void ServerRecipes();
 
+	public void ActivateFlight(EntityPlayer entityPlayer);
 }

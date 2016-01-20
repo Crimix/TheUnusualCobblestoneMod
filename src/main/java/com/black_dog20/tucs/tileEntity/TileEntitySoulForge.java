@@ -69,14 +69,16 @@ public class TileEntitySoulForge extends TileEntity implements IInventory {
 		return "Soul Forge";
 	}
 
-	@Override public void readFromNBT(NBTTagCompound nbt) {
+	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
 		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
 		NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(0);
 		this.slot = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 	}
 
-	@Override public void writeToNBT(NBTTagCompound nbt) {
+	@Override
+	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
 		if (slot != null) {
 			NBTTagList nbttaglist = new NBTTagList();
@@ -96,21 +98,26 @@ public class TileEntitySoulForge extends TileEntity implements IInventory {
 		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 
-	@Override public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
+	@Override
+	public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
 		return slot;
 	}
 
-	@Override public boolean hasCustomInventoryName() {
+	@Override
+	public boolean hasCustomInventoryName() {
 		return false;
 	}
 
-	@Override public void openInventory() {
+	@Override
+	public void openInventory() {
 
 	}
 
-	@Override public void closeInventory() {}
+	@Override
+	public void closeInventory() {}
 
-	@Override public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
+	@Override
+	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
 		return true;
 	}
 }

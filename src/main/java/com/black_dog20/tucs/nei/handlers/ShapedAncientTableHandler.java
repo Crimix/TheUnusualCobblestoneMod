@@ -51,7 +51,8 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 			}
 		}
 
-		@Override public List<PositionedStack> getIngredients() {
+		@Override
+		public List<PositionedStack> getIngredients() {
 			return getCycledIngredients(cycleticks / 20, ingredients);
 		}
 
@@ -65,31 +66,38 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 		}
 	}
 
-	@Override public void loadTransferRects() {
+	@Override
+	public void loadTransferRects() {
 		transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18), Reference.MOD_ID + "AncientTable"));
 	}
 
-	@Override public String getRecipeName() {
+	@Override
+	public String getRecipeName() {
 		return "Ancient Table";
 	}
 
-	@Override public Class<? extends GuiContainer> getGuiClass() {
+	@Override
+	public Class<? extends GuiContainer> getGuiClass() {
 		return GuiAncientTable.class;
 	}
 
-	@Override public String getGuiTexture() {
+	@Override
+	public String getGuiTexture() {
 		return "minecraft:textures/gui/container/crafting_table.png";
 	}
 
-	@Override public int recipiesPerPage() {
+	@Override
+	public int recipiesPerPage() {
 		return 2;
 	}
 
-	@Override public String getOverlayIdentifier() {
+	@Override
+	public String getOverlayIdentifier() {
 		return Reference.MOD_ID + "AncientTable";
 	}
 
-	@Override public void loadCraftingRecipes(String outputId, Object... results) {
+	@Override
+	public void loadCraftingRecipes(String outputId, Object... results) {
 		if (outputId.equals(Reference.MOD_ID + "AncientTable") && getClass() == ShapedAncientTableHandler.class) {
 			for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
 				CachedShapedAncientTableRecipe recipe = null;
@@ -144,7 +152,8 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 		return false;
 	}
 
-	@Override public void loadCraftingRecipes(ItemStack result) {
+	@Override
+	public void loadCraftingRecipes(ItemStack result) {
 		for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
 			if (NEIServerUtils.areStacksSameTypeCrafting(irecipe.getRecipeOutput(), result)) {
 				CachedShapedAncientTableRecipe recipe = null;
@@ -162,7 +171,8 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 		}
 	}
 
-	@Override public void loadUsageRecipes(ItemStack ingredient) {
+	@Override
+	public void loadUsageRecipes(ItemStack ingredient) {
 		for (IRecipe irecipe : (List<IRecipe>) AncientTableManager.getInstance().getRecipeList()) {
 			CachedShapedAncientTableRecipe recipe = null;
 			if (irecipe instanceof AncientTableShapedRecipes)

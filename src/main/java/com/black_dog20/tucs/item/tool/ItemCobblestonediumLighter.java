@@ -19,11 +19,13 @@ public class ItemCobblestonediumLighter extends ItemTUCS {
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override public boolean doesContainerItemLeaveCraftingGrid(ItemStack itemStack) {
+	@Override
+	public boolean doesContainerItemLeaveCraftingGrid(ItemStack itemStack) {
 		return false;
 	}
 
-	@Override public boolean getShareTag() {
+	@Override
+	public boolean getShareTag() {
 		return true;
 	}
 
@@ -31,7 +33,8 @@ public class ItemCobblestonediumLighter extends ItemTUCS {
 		return true;
 	}
 
-	@Override public ItemStack getContainerItem(ItemStack itemStack) {
+	@Override
+	public ItemStack getContainerItem(ItemStack itemStack) {
 		ItemStack stack = itemStack.copy();
 
 		stack.setItemDamage(stack.getItemDamage() + 1);

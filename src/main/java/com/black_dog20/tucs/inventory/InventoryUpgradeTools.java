@@ -53,19 +53,23 @@ public class InventoryUpgradeTools implements IInventory {
 
 	public void markDirty() {}
 
-	@Override public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
 		return true;
 	}
 
-	@Override public void openInventory() {
+	@Override
+	public void openInventory() {
 
 	}
 
-	@Override public void closeInventory() {
+	@Override
+	public void closeInventory() {
 
 	}
 
-	@Override public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
+	@Override
+	public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
 		return false;
 	}
 

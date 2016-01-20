@@ -32,19 +32,24 @@ public class ItemM1911 extends ItemBowTUCS {
 		this.upgradeAble = upgrade;
 	}
 
-	@Override @SideOnly(Side.CLIENT) public boolean isFull3D() {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean isFull3D() {
 		return true;
 	}
 
-	@Override public int getMaxItemUseDuration(ItemStack stack) {
+	@Override
+	public int getMaxItemUseDuration(ItemStack stack) {
 		return 72000;
 	}
 
-	@Override public EnumAction getItemUseAction(ItemStack stack) {
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
 		return EnumAction.bow;
 	}
 
-	@Override public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer Eplayer, int useCount) {
+	@Override
+	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer Eplayer, int useCount) {
 
 		ArrowLooseEvent event = new ArrowLooseEvent(Eplayer, stack, this.getMaxItemUseDuration(stack));
 		MinecraftForge.EVENT_BUS.post(event);
@@ -61,7 +66,8 @@ public class ItemM1911 extends ItemBowTUCS {
 		}
 	}
 
-	@Override public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer Eplayer) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer Eplayer) {
 		ArrowNockEvent event = new ArrowNockEvent(Eplayer, stack);
 		MinecraftForge.EVENT_BUS.post(event);
 
@@ -87,14 +93,18 @@ public class ItemM1911 extends ItemBowTUCS {
 		return round;
 	}
 
-	@Override @SideOnly(Side.CLIENT) public void registerIcons(IIconRegister IIcon) {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister IIcon) {
 		this.itemIcon = IIcon.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
 		this.iconArray = new IIcon[2];
 		this.iconArray[0] = IIcon.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
 		this.iconArray[1] = IIcon.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + "_dev");
 	}
 
-	@Override @SideOnly(Side.CLIENT) public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
 		if (player.getDisplayName().toLowerCase().equals("black_dog20") || player.getDisplayName().toLowerCase().equals("simmebabz"))
 			return iconArray[1];
 		else

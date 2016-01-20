@@ -22,11 +22,13 @@ public class ItemBook extends ItemTUCS {
 
 	}
 
-	@Override public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
 		list.add("by The Lost Writer");
 	}
 
-	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 		nbt = NBTHelper.getPlayerNBT(player);
 		Boolean openBefore = nbt.getBoolean(NBTTags.BOOK_OPEN); // Checks if the
 																// player have

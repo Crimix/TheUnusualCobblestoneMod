@@ -37,7 +37,8 @@ public class ContainerSoulForge extends Container {
 		}
 	}
 
-	@Override public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer entityPlayer, int slot) {
 		Slot slotObject = (Slot) inventorySlots.get(slot);
 		if (slotObject != null && slotObject.getHasStack()) {
 			ItemStack stackInSlot = slotObject.getStack();
@@ -65,7 +66,8 @@ public class ContainerSoulForge extends Container {
 		return null;
 	}
 
-	@Override public boolean canInteractWith(EntityPlayer p_75145_1_) {
+	@Override
+	public boolean canInteractWith(EntityPlayer p_75145_1_) {
 		return true;
 	}
 

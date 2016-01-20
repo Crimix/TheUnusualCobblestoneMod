@@ -9,7 +9,8 @@ public class ContainerDummy extends Container {
 
 	}
 
-	@Override public boolean canInteractWith(EntityPlayer EPlayer) {
+	@Override
+	public boolean canInteractWith(EntityPlayer EPlayer) {
 
 		return true;
 	}

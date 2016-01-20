@@ -20,7 +20,8 @@ public class ItemHealthUpgrade extends ItemTUCS {
 
 	}
 
-	@Override public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
+	@Override
+	public ItemStack onItemRightClick(ItemStack Item, World world, EntityPlayer player) {
 
 		IAttributeInstance attributeinstance = player.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.maxHealth);
 		try {

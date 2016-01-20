@@ -12,7 +12,8 @@ import com.black_dog20.tucs.tileEntity.TileEntityAirMaker;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) public class GuiAirMaker extends GuiContainer {
+@SideOnly(Side.CLIENT)
+public class GuiAirMaker extends GuiContainer {
 	private static final ResourceLocation AirMakerGuiTextures = new ResourceLocation("tucs:textures/gui/airCompressorGui.png");
 	private TileEntityAirMaker tileAirMaker;
 

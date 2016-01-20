@@ -12,7 +12,8 @@ public class SlotAirMakerFuel extends Slot {
 		super(inventory, slotIndex, x, y);
 	}
 
-	@Override public boolean isItemValid(ItemStack itemstack) {
+	@Override
+	public boolean isItemValid(ItemStack itemstack) {
 		if (itemstack.getItem() instanceof ItemBlock && ((ItemBlock) itemstack.getItem()).field_150939_a == Blocks.sapling) {
 			return true;
 		} else {
@@ -20,7 +21,8 @@ public class SlotAirMakerFuel extends Slot {
 		}
 	}
 
-	@Override public int getSlotStackLimit() {
+	@Override
+	public int getSlotStackLimit() {
 		return 64;
 	}
 

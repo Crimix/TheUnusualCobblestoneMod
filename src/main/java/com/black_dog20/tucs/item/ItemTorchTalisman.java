@@ -1,8 +1,14 @@
 package com.black_dog20.tucs.item;
 
+import java.util.List;
+
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import org.lwjgl.input.Keyboard;
+
+import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.reference.NBTTags;
 
 public class ItemTorchTalisman extends ItemTUCS {
@@ -14,7 +20,8 @@ public class ItemTorchTalisman extends ItemTUCS {
 
 	}
 
-	@Override public boolean hasEffect(ItemStack stack) {
+	@Override
+	public boolean hasEffect(ItemStack stack) {
 
 		if (!stack.hasTagCompound()) {
 			stack.stackTagCompound = new NBTTagCompound();
@@ -29,6 +36,12 @@ public class ItemTorchTalisman extends ItemTUCS {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List List, boolean par) {
+		List.add("Press " + Keyboard.getKeyName(Keybindings.night.getKeyCode()) + " to activate night vision");
+
 	}
 
 }

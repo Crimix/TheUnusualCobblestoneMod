@@ -53,11 +53,13 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 			result = new PositionedStack(output, 119, 24);
 		}
 
-		@Override public List<PositionedStack> getIngredients() {
+		@Override
+		public List<PositionedStack> getIngredients() {
 			return getCycledIngredients(cycleticks / 20, ingredients);
 		}
 
-		@Override public PositionedStack getResult() {
+		@Override
+		public PositionedStack getResult() {
 			return result;
 		}
 
@@ -69,19 +71,23 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 		return NEIClientUtils.translate("recipe.shapeless");
 	}
 
-	@Override public String getOverlayIdentifier() {
+	@Override
+	public String getOverlayIdentifier() {
 		return Reference.MOD_ID + "AncientTable";
 	}
 
-	@Override public Class<? extends GuiContainer> getGuiClass() {
+	@Override
+	public Class<? extends GuiContainer> getGuiClass() {
 		return GuiAncientTable.class;
 	}
 
-	@Override public void loadTransferRects() {
+	@Override
+	public void loadTransferRects() {
 		transferRects.add(new RecipeTransferRect(new Rectangle(84, 23, 24, 18), Reference.MOD_ID + "AncientTable"));
 	}
 
-	@Override public void loadCraftingRecipes(String outputId, Object... results) {
+	@Override
+	public void loadCraftingRecipes(String outputId, Object... results) {
 		if (outputId.equals(Reference.MOD_ID + "AncientTable") && getClass() == ShapelessAncientTableHandler.class) {
 			List<IRecipe> allrecipes = AncientTableManager.getInstance().getRecipeList();
 			for (IRecipe irecipe : allrecipes) {
@@ -99,7 +105,8 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 		}
 	}
 
-	@Override public void loadCraftingRecipes(ItemStack result) {
+	@Override
+	public void loadCraftingRecipes(ItemStack result) {
 		List<IRecipe> allrecipes = CraftingManager.getInstance().getRecipeList();
 		for (IRecipe irecipe : allrecipes) {
 			if (NEIServerUtils.areStacksSameTypeCrafting(irecipe.getRecipeOutput(), result)) {
@@ -115,7 +122,8 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 		}
 	}
 
-	@Override public void loadUsageRecipes(ItemStack ingredient) {
+	@Override
+	public void loadUsageRecipes(ItemStack ingredient) {
 		List<IRecipe> allrecipes = AncientTableManager.getInstance().getRecipeList();
 		for (IRecipe irecipe : allrecipes) {
 			CachedShapelessAncientTableRecipe recipe = null;

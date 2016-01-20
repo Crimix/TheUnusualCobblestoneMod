@@ -12,7 +12,8 @@ import com.black_dog20.tucs.utility.TucsRegistry;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@GameRegistry.ObjectHolder(Reference.MOD_ID) public class Recipes {
+@GameRegistry.ObjectHolder(Reference.MOD_ID)
+public class Recipes {
 	static ItemStack yellowstoneium = new ItemStack(ModItems.ingotYellowstoneium);
 
 	public static void init() {

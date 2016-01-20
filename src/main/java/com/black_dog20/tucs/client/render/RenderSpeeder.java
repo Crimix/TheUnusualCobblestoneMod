@@ -13,7 +13,8 @@ import com.black_dog20.tucs.entity.EntityHoverBike;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) public class RenderSpeeder extends Render {
+@SideOnly(Side.CLIENT)
+public class RenderSpeeder extends Render {
 	private ModelBase modelBoat;
 
 	public RenderSpeeder() {
@@ -51,11 +52,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 	 * void func_76986_a(T entity, double d, double d1, double d2, float f,
 	 * float f1). But JAD is pre 1.5 so doesn't do that.
 	 */
-	@Override public void doRender(Entity entity, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_) {
+	@Override
+	public void doRender(Entity entity, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_) {
 		this.doRender((EntityHoverBike) entity, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
 	}
 
-	@Override protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
+	@Override
+	protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
 		return new ResourceLocation("tucs:textures/entity/Speeder-texturemap.png");
 	}
 

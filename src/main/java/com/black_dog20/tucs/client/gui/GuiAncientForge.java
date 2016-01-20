@@ -13,7 +13,8 @@ import com.black_dog20.tucs.tileEntity.TileEntityAncientForge;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) public class GuiAncientForge extends GuiContainer {
+@SideOnly(Side.CLIENT)
+public class GuiAncientForge extends GuiContainer {
 	private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("textures/gui/container/furnace.png");
 	private TileEntityAncientForge tileForge;
 

@@ -50,7 +50,8 @@ public class ConfigurationHandler {
 		}
 	}
 
-	@SubscribeEvent public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
+	@SubscribeEvent
+	public void onConfigurationChangedEvent(ConfigChangedEvent.OnConfigChangedEvent event) {
 
 		if (event.modID.equalsIgnoreCase(Reference.MOD_ID)) {
 			loadConfiguration();

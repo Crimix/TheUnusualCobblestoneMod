@@ -14,7 +14,8 @@ import com.black_dog20.tucs.reference.Reference;
 
 public class NEITucsConfig implements IConfigureNEI {
 
-	@Override public void loadConfig() {
+	@Override
+	public void loadConfig() {
 
 		API.registerRecipeHandler(new ShapedAncientTableHandler());
 		API.registerUsageHandler(new ShapedAncientTableHandler());
@@ -31,11 +32,13 @@ public class NEITucsConfig implements IConfigureNEI {
 		API.registerRecipeHandler(new ItemInfoHandler());
 	}
 
-	@Override public String getName() {
+	@Override
+	public String getName() {
 		return Reference.MOD_NAME;
 	}
 
-	@Override public String getVersion() {
+	@Override
+	public String getVersion() {
 		return Reference.VERSION;
 	}
 

@@ -51,7 +51,8 @@ public class GuiTUCSBook extends GuiScreen {
 
 	}
 
-	@Override public void initGui() {
+	@Override
+	public void initGui() {
 		super.initGui();
 		@SuppressWarnings("unchecked") List<GuiButton> buttons = buttonList;
 		int bookXBegin = (width - 192) / 2;
@@ -61,7 +62,8 @@ public class GuiTUCSBook extends GuiScreen {
 		updateButtonState();
 	}
 
-	@Override protected void actionPerformed(GuiButton button) {
+	@Override
+	protected void actionPerformed(GuiButton button) {
 		switch (button.id) {
 		case BUTTON_NEXT:
 			++pageIndex;
@@ -90,7 +92,8 @@ public class GuiTUCSBook extends GuiScreen {
 		super.onGuiClosed();
 	}
 
-	@Override public void drawScreen(int mouseX, int mouseY, float renderPartials) {
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float renderPartials) {
 		this.MouseX = mouseX;
 		this.MouseY = mouseY;
 		this.RenderPartials = renderPartials;
@@ -267,11 +270,13 @@ public class GuiTUCSBook extends GuiScreen {
 		}
 	}
 
-	@Override public boolean doesGuiPauseGame() {
+	@Override
+	public boolean doesGuiPauseGame() {
 		return false;
 	}
 
-	@Override protected void keyTyped(char c, int key) {
+	@Override
+	protected void keyTyped(char c, int key) {
 		char lowerCase = Character.toLowerCase(c);
 		if (key == Keyboard.KEY_ESCAPE) {
 			mc.thePlayer.closeScreen();

@@ -29,9 +29,12 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 	private double Z;
 	private double Yaw;
 	private double Pitch;
-	@SideOnly(Side.CLIENT) private double velocityX;
-	@SideOnly(Side.CLIENT) private double velocityY;
-	@SideOnly(Side.CLIENT) private double velocityZ;
+	@SideOnly(Side.CLIENT)
+	private double velocityX;
+	@SideOnly(Side.CLIENT)
+	private double velocityY;
+	@SideOnly(Side.CLIENT)
+	private double velocityZ;
 	private String Owner;
 
 	public EntityHoverBike(World world) {
@@ -136,7 +139,8 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 	 * Sets the position and rotation. Only difference from the other one is no
 	 * bounding on the rotation. Args: posX, posY, posZ, yaw, pitch
 	 */
-	@SideOnly(Side.CLIENT) public void setPositionAndRotation2(double posX, double posY, double posZ, float yaw, float pitch, int posRotation) {
+	@SideOnly(Side.CLIENT)
+	public void setPositionAndRotation2(double posX, double posY, double posZ, float yaw, float pitch, int posRotation) {
 		if (this.isEmpty) {
 			this.PosRotationIncrements = posRotation + 5;
 		} else {
@@ -162,7 +166,8 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		this.motionZ = this.velocityZ;
 	}
 
-	@SideOnly(Side.CLIENT) public void setVelocity(double x, double y, double z) {
+	@SideOnly(Side.CLIENT)
+	public void setVelocity(double x, double y, double z) {
 		this.velocityX = this.motionX = x;
 		this.velocityY = this.motionY = y;
 		this.velocityZ = this.motionZ = z;
@@ -291,7 +296,8 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		this.Owner = nbt.getString("Owner");
 	}
 
-	@SideOnly(Side.CLIENT) public float getShadowSize() {
+	@SideOnly(Side.CLIENT)
+	public float getShadowSize() {
 		return 0.5F;
 	}
 
@@ -331,31 +337,38 @@ public class EntityHoverBike extends Entity implements IEntityHoverVehicle {
 		return this.dataWatcher.getWatchableObjectInt(18);
 	}
 
-	@SideOnly(Side.CLIENT) public void setIsEmpty(boolean isEmpty) {
+	@SideOnly(Side.CLIENT)
+	public void setIsEmpty(boolean isEmpty) {
 		this.isEmpty = isEmpty;
 	}
 
-	@Override public double getSpeed() {
+	@Override
+	public double getSpeed() {
 		return 20D;
 	}
 
-	@Override public int getNumberOfSeats() {
+	@Override
+	public int getNumberOfSeats() {
 		return 1;
 	}
 
-	@Override public int getNumberOfSlots() {
+	@Override
+	public int getNumberOfSlots() {
 		return getRows() * getColumns();
 	}
 
-	@Override public String getNameOfVehicle() {
+	@Override
+	public String getNameOfVehicle() {
 		return "Speeder";
 	}
 
-	@Override public int getRows() {
+	@Override
+	public int getRows() {
 		return 3;
 	}
 
-	@Override public int getColumns() {
+	@Override
+	public int getColumns() {
 		return 9;
 	}
 }

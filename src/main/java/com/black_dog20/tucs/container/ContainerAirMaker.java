@@ -62,7 +62,8 @@ public class ContainerAirMaker extends Container {
 			 * Returns the icon index on items.png that is used as background
 			 * image of the slot.
 			 */
-			@SideOnly(Side.CLIENT) public IIcon getBackgroundIconIndex() {
+			@SideOnly(Side.CLIENT)
+			public IIcon getBackgroundIconIndex() {
 				return ItemArmor.func_94602_b(1);
 			}
 		});

@@ -16,7 +16,8 @@ import com.black_dog20.tucs.entity.EntityHoverBike;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT) public class GuiHoverBike extends GuiContainer {
+@SideOnly(Side.CLIENT)
+public class GuiHoverBike extends GuiContainer {
 
 	private ResourceLocation texture = new ResourceLocation("minecraft:textures/gui/container/generic_54.png");
 	private int inventoryRows;
@@ -40,7 +41,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 	}
 
-	@Override protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
+	@Override
+	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 

@@ -11,7 +11,8 @@ public class ItemPowerUpgrade extends ItemTUCSUpgrades {
 
 	}
 
-	@Override public Enchantment getEnchantment() {
+	@Override
+	public Enchantment getEnchantment() {
 		return Enchantment.power;
 	}
 

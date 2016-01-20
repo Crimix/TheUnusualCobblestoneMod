@@ -23,7 +23,8 @@ public class ModLivingDropsEvent {
 	Random r = new Random();
 
 	// Event for dropping items when a entity dies
-	@SubscribeEvent public void onEntityDrop(LivingDropsEvent event) {
+	@SubscribeEvent
+	public void onEntityDrop(LivingDropsEvent event) {
 		boolean isPlayerCaused = event.source.getEntity() instanceof EntityPlayer; // Checks
 																					// if
 																					// the

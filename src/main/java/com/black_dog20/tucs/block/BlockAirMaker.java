@@ -36,8 +36,10 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem, ITileEnt
 	private final Random random = new Random();
 	public static final int renderID = RenderingRegistry.getNextAvailableRenderId();
 	private static boolean field_149934_M;
-	@SideOnly(Side.CLIENT) private IIcon top;
-	@SideOnly(Side.CLIENT) private IIcon front;
+	@SideOnly(Side.CLIENT)
+	private IIcon top;
+	@SideOnly(Side.CLIENT)
+	private IIcon front;
 
 	public BlockAirMaker() {
 		super(Material.rock);
@@ -47,23 +49,28 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem, ITileEnt
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override public int getRenderType() {
+	@Override
+	public int getRenderType() {
 		return renderID;
 	}
 
-	@Override public boolean isOpaqueCube() {
+	@Override
+	public boolean isOpaqueCube() {
 		return false;
 	}
 
-	@Override public boolean renderAsNormalBlock() {
+	@Override
+	public boolean renderAsNormalBlock() {
 		return false;
 	}
 
-	@Override public TileEntity createNewTileEntity(World world, int par) {
+	@Override
+	public TileEntity createNewTileEntity(World world, int par) {
 		return new TileEntityAirMaker();
 	}
 
-	@Override public String getUnlocalizedName() {
+	@Override
+	public String getUnlocalizedName() {
 		return String.format("tile.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
@@ -75,11 +82,13 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem, ITileEnt
 		return Item.getItemFromBlock(ModBlocks.blockAirMaker);
 	}
 
-	@SideOnly(Side.CLIENT) public IIcon getIcon(int side, int meta) {
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta) {
 		return meta == 0 && side == 3 ? this.front : side == 1 ? this.top : (side == 0 ? this.top : (side == meta ? this.front : this.blockIcon));
 	}
 
-	@SideOnly(Side.CLIENT) public void registerBlockIcons(IIconRegister IIcon) {
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister IIcon) {
 		this.blockIcon = IIcon.registerIcon(Reference.MOD_ID + ":" + "airMaker_side");
 		this.front = IIcon.registerIcon(Reference.MOD_ID + ":" + "airMaker_front");
 		this.top = IIcon.registerIcon(Reference.MOD_ID + ":" + "airMaker_top");
@@ -167,7 +176,8 @@ public class BlockAirMaker extends BlockContainer implements ITucsItem, ITileEnt
 		return Container.calcRedstoneFromInventory((IInventory) world.getTileEntity(x, y, z));
 	}
 
-	@SideOnly(Side.CLIENT) public Item getItem(World world, int x, int y, int z) {
+	@SideOnly(Side.CLIENT)
+	public Item getItem(World world, int x, int y, int z) {
 		return Item.getItemFromBlock(ModBlocks.blockAirMaker);
 	}
 }

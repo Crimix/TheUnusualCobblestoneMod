@@ -40,7 +40,8 @@ public class AirCompressor extends ModelBase {
 		this.shape1.addBox(0.0F, 0.0F, 0.0F, 16, 4, 16, 0.0F);
 	}
 
-	@Override public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+	@Override
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		if (tank) {
 			this.air_flow.render(f5);
 			this.tank_1.render(f5);

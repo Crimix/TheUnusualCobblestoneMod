@@ -16,7 +16,8 @@ public class ItemLegCobblestoneium extends ItemArmorTUCS {
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
 	}
 
-	@Override public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+	@Override
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		if (stack.getItem() == ModItems.leggingsCobblestoneium) {
 			return Reference.MOD_ID + ":models/armor/Cobblestoneium_2.png";
 		} else {

@@ -26,7 +26,8 @@ public class AirMakerRender extends TileEntitySpecialRenderer implements ISimple
 		model = new AirCompressor(false);
 	}
 
-	@Override public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
+	@Override
+	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		GL11.glTranslatef(0F, -1F, 0F);
@@ -35,7 +36,8 @@ public class AirMakerRender extends TileEntitySpecialRenderer implements ISimple
 		GL11.glPopMatrix();
 	}
 
-	@Override public void renderTileEntityAt(TileEntity te, double x, double y, double z, float f) {
+	@Override
+	public void renderTileEntityAt(TileEntity te, double x, double y, double z, float f) {
 		if (((TileEntityAirMaker) te).AirTankForModel != null) {
 			model = new AirCompressor(true);
 		} else {
@@ -74,15 +76,18 @@ public class AirMakerRender extends TileEntitySpecialRenderer implements ISimple
 		GL11.glPopMatrix();
 	}
 
-	@Override public boolean shouldRender3DInInventory(int modelId) {
+	@Override
+	public boolean shouldRender3DInInventory(int modelId) {
 		return true;
 	}
 
-	@Override public int getRenderId() {
+	@Override
+	public int getRenderId() {
 		return BlockAirMaker.renderID;
 	}
 
-	@Override public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+	@Override
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
 		return false;
 	}
 

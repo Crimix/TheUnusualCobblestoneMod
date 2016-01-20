@@ -140,11 +140,13 @@ public class TileEntityAncientForge extends TileEntity implements ISidedInventor
 		return 64;
 	}
 
-	@SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) {
+	@SideOnly(Side.CLIENT)
+	public int getCookProgressScaled(int par1) {
 		return this.furnaceCookTime * par1 / 200;
 	}
 
-	@SideOnly(Side.CLIENT) public int getBurnTimeRemainingScaled(int par1) {
+	@SideOnly(Side.CLIENT)
+	public int getBurnTimeRemainingScaled(int par1) {
 		if (this.currentItemBurnTime == 0) {
 			this.currentItemBurnTime = 200;
 		}

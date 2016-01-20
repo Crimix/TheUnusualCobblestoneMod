@@ -16,7 +16,8 @@ public class ItemHoverBike extends ItemTUCS {
 
 	}
 
-	@Override public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float xOffset, float yOffset, float zOffSet) {
+	@Override
+	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float xOffset, float yOffset, float zOffSet) {
 
 		if (!world.isRemote) {
 			EntityHoverBike ent = new EntityHoverBike(world); // change to

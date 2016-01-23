@@ -1,6 +1,7 @@
 package com.black_dog20.tucs.proxies;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
 public interface IProxy {
@@ -22,4 +23,5 @@ public interface IProxy {
 	public void ServerRecipes();
 
 	public void ActivateFlight(EntityPlayer entityPlayer);
+
 }

@@ -7,6 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import com.black_dog20.tucs.item.upgrades.ItemAutoBowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemBeheadingUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemHeartOfTheDestroyerUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemInfiArrowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemSoulboundUpgrade;
@@ -31,6 +32,10 @@ public class EnchantHelper {
 			NBT.setBoolean(NBTTags.Beheading, true);
 		} else if (UpgradeItem.getItem() instanceof ItemInfiArrowUpgrade) {
 			NBT.setBoolean(NBTTags.NoArrow, true);
+		} else if (UpgradeItem.getItem() instanceof ItemHeartOfTheDestroyerUpgrade) {
+			NBT.setBoolean(NBTTags.NO_BREAKING, true);
+			NBT.setInteger(NBTTags.OLD_DAMAGE, ContainerItem.getItemDamage());
+			ContainerItem.setItemDamage(0);
 		} else if (UpgradeItem.getItem() instanceof ItemAutoBowUpgrade) {
 			NBT.setBoolean(NBTTags.MachineBow, true);
 		} else {

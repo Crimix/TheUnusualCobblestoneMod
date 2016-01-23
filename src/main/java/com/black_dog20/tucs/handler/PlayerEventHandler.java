@@ -80,7 +80,6 @@ public class PlayerEventHandler {
 			ItemStack item = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			if (item != null && item.getItem() instanceof ItemArmor) {
 				ItemArmor armor = (ItemArmor) item.getItem();
-				System.out.println(InventoryHelper.getArmorPosition(armor));
 				if (player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] == null) {
 					player.inventory.armorInventory[InventoryHelper.getArmorPosition(armor)] = item;
 				} else {
@@ -99,6 +98,7 @@ public class PlayerEventHandler {
 		if (!event.player.worldObj.isRemote) {
 			if (!MinecraftServer.getServer().isDedicatedServer()) {
 				ConfigurationHandler.loadConfiguration();
+				
 			}
 			PacketHandler.network.sendTo(new MessageConfigSync(), (EntityPlayerMP) event.player);
 

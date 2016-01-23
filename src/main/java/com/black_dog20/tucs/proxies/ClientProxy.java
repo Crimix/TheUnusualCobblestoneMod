@@ -93,202 +93,77 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void ServerRecipes() {
+		TucsRegistry.RemoveRecipe(ModItems.looting1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.looting2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.looting3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Sharpness1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Sharpness2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Sharpness3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Sharpness4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Sharpness5Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Sliktouch1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BeheadingUpgrade);
+		TucsRegistry.RemoveRecipe(ModItems.InfiUpgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BoA1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BoA2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BoA3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BoA4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BoA5Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.AquaAffinityUpgrade);
+		TucsRegistry.RemoveRecipe(ModItems.AutoBowUpgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BlastProtection1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BlastProtection2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BlastProtection3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.BlastProtection4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Efficiency1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Efficiency2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Efficiency3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Efficiency4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Efficiency5Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FeatherFalling1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FeatherFalling2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FeatherFalling3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FeatherFalling4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FireAspect1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FireAspect2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FireProtection1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FireProtection2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FireProtection3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FireProtection4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.FlameUpgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Knockback1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Knockback2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Power1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Power2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Power3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Power4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Power5Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Protection1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Protection2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Protection3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Protection4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Punch1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Punch2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Respiration1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Respiration2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Respiration3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Smite1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Smite2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Smite3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Smite4Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Smite5Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Thorns1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Thorns2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Thorns3Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Unbreaking1Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Unbreaking2Upgrade);
+		TucsRegistry.RemoveRecipe(ModItems.Unbreaking3Upgrade);
 		Recipes.Upgrades();
-		switch (3 - ConfigurationHandler.Max_Luck_Upgrade) {
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.looting1Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.looting2Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.looting3Upgrade);
-			break;
-		}
-		switch (5 - ConfigurationHandler.Max_Sharpness_Upgrade) {
-		case 5:
-			TucsRegistry.RemoveRecipe(ModItems.Sharpness1Upgrade);
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.Sharpness2Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Sharpness3Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Sharpness4Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Sharpness5Upgrade);
-			break;
-		}
-		if (!ConfigurationHandler.Max_Silktouch_Upgrade) {
-			TucsRegistry.RemoveRecipe(ModItems.Sliktouch1Upgrade);
-		}
-		if (!ConfigurationHandler.Max_Beheading_Upgrade) {
-			TucsRegistry.RemoveRecipe(ModItems.BeheadingUpgrade);
-		}
-		if (!ConfigurationHandler.Max_Infi_Upgrade) {
-			TucsRegistry.RemoveRecipe(ModItems.InfiUpgrade);
-		}
-		switch (5 - ConfigurationHandler.Max_Bane_of_Arthropods) {
-		case 5:
-			TucsRegistry.RemoveRecipe(ModItems.BoA1Upgrade);
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.BoA2Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.BoA3Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.BoA4Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.BoA5Upgrade);
-			break;
-		}
-		if (!ConfigurationHandler.Max_Aqua_Affinity) {
-			TucsRegistry.RemoveRecipe(ModItems.AquaAffinityUpgrade);
-		}
-		if (!ConfigurationHandler.Max_Auto_Bow) {
-			TucsRegistry.RemoveRecipe(ModItems.AutoBowUpgrade);
-		}
-		switch (4 - ConfigurationHandler.Max_Blast_Protection) {
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.BlastProtection1Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.BlastProtection2Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.BlastProtection3Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.BlastProtection4Upgrade);
-			break;
-		}
-		switch (5 - ConfigurationHandler.Efficiency) {
-		case 5:
-			TucsRegistry.RemoveRecipe(ModItems.Efficiency1Upgrade);
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.Efficiency2Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Efficiency3Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Efficiency4Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Efficiency5Upgrade);
-			break;
-		}
-		switch (4 - ConfigurationHandler.Feather_Falling) {
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling1Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling2Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling3Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.FeatherFalling4Upgrade);
-			break;
-		}
-		switch (2 - ConfigurationHandler.Fire_Aspect) {
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.FireAspect1Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.FireAspect2Upgrade);
-			break;
-		}
-		switch (4 - ConfigurationHandler.Fire_Protection) {
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.FireProtection1Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.FireProtection2Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.FireProtection3Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.FireProtection4Upgrade);
-			break;
-		}
-		if (!ConfigurationHandler.Max_Flame) {
-			TucsRegistry.RemoveRecipe(ModItems.FlameUpgrade);
-		}
-		switch (2 - ConfigurationHandler.Knockback) {
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Knockback1Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Knockback2Upgrade);
-			break;
-		}
-		switch (5 - ConfigurationHandler.Power) {
-		case 5:
-			TucsRegistry.RemoveRecipe(ModItems.Power1Upgrade);
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.Power2Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Power3Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Power4Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Power5Upgrade);
-			break;
-		}
-		switch (4 - ConfigurationHandler.Projectile_Protection) {
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection1Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection2Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection3Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.ProjectileProtection4Upgrade);
-			break;
-		}
-		switch (4 - ConfigurationHandler.Protection) {
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.Protection1Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Protection2Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Protection3Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Protection4Upgrade);
-			break;
-		}
-		switch (2 - ConfigurationHandler.Punch) {
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Punch1Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Punch2Upgrade);
-			break;
-		}
-		switch (3 - ConfigurationHandler.Respiration) {
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Respiration1Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Respiration2Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Respiration3Upgrade);
-			break;
-		}
-		switch (5 - ConfigurationHandler.Smite) {
-		case 5:
-			TucsRegistry.RemoveRecipe(ModItems.Smite1Upgrade);
-		case 4:
-			TucsRegistry.RemoveRecipe(ModItems.Smite2Upgrade);
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Smite3Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Smite4Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Smite5Upgrade);
-			break;
-		}
-		switch (3 - ConfigurationHandler.Thorns) {
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Thorns1Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Thorns2Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Thorns3Upgrade);
-			break;
-		}
-		switch (3 - ConfigurationHandler.Unbreaking) {
-		case 3:
-			TucsRegistry.RemoveRecipe(ModItems.Unbreaking1Upgrade);
-		case 2:
-			TucsRegistry.RemoveRecipe(ModItems.Unbreaking2Upgrade);
-		case 1:
-			TucsRegistry.RemoveRecipe(ModItems.Unbreaking3Upgrade);
-			break;
-		}
+
 		LogHelper.info("removed " + TucsRegistry.number + " recipes");
 		TucsRegistry.number = 0;
 	}

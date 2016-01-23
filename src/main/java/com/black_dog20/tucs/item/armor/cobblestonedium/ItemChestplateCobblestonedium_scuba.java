@@ -104,7 +104,12 @@ public class ItemChestplateCobblestonedium_scuba extends ItemArmorTUCS implement
 	@Override
 	public int getAir(ItemStack Item) {
 		NBTTagCompound nbt = nbtTag(Item);
-		return nbt.getInteger("StoredAir");
+		if(nbt.hasKey("StoredAir")){
+			return nbt.getInteger("StoredAir");
+		}
+		else{
+			return 0;
+		}
 
 	}
 

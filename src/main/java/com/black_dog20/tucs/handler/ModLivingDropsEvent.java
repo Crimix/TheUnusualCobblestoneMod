@@ -3,12 +3,15 @@ package com.black_dog20.tucs.handler;
 import java.util.Random;
 
 import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 import com.black_dog20.tucs.init.ModItems;
@@ -25,31 +28,9 @@ public class ModLivingDropsEvent {
 	// Event for dropping items when a entity dies
 	@SubscribeEvent
 	public void onEntityDrop(LivingDropsEvent event) {
-		boolean isPlayerCaused = event.source.getEntity() instanceof EntityPlayer; // Checks
-																					// if
-																					// the
-																					// caused
-																					// of
-																					// death
-																					// is
-																					// by
-																					// player
+		boolean isPlayerCaused = event.source.getEntity() instanceof EntityPlayer; 
 		if (isPlayerCaused == true) {
 
-			// if(event.entityLiving instanceof EntityZombie) {
-			// EntityPlayer player = (EntityPlayer) event.source.getEntity();
-			// nbt = NBTHelper.getPlayerNBT(player); //Gets the nbt tag compound
-			// of the player
-			// Boolean cannotGetBook = nbt.getBoolean(NBTTags.BOOK); //Checks if
-			// the player have got the book before
-			// if(cannotGetBook == false){
-			// event.entityLiving.dropItem(ModItems.TUCSbook, 1); //Gives the
-			// player a book
-			// nbt.setBoolean(NBTTags.BOOK, true); //Sets the boolean on the
-			// player for the book to true
-			//
-			// }
-			// }
 			if (event.entityLiving instanceof EntitySkeleton) {
 				double rand = Math.random();
 				EntitySkeleton skeleton = (EntitySkeleton) event.entityLiving;
@@ -112,6 +93,15 @@ public class ModLivingDropsEvent {
 
 				}
 
+			}
+			if (event.entityLiving instanceof EntityEnderman) {
+				int random = r.nextInt(11);
+				EntityEnderman enderman = (EntityEnderman) event.entityLiving;
+				EntityPlayer player = (EntityPlayer) event.source.getEntity();
+				if (player.getHeldItem().getItem() == Items.wooden_sword && random ==1){
+					enderman.entityDropItem(new ItemStack(ModItems.Tier4CraftingMat), 1);
+					player.addChatMessage(new ChatComponentTranslation("msg.message_yrtwisted.txt"));
+				}
 			}
 		}
 

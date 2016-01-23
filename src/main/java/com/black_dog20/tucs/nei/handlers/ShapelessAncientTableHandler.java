@@ -3,17 +3,25 @@ package com.black_dog20.tucs.nei.handlers;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+import codechicken.nei.NEIClientConfig;
 import codechicken.nei.NEIClientUtils;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.ShapelessRecipeHandler.CachedShapelessRecipe;
 
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
+import com.black_dog20.tucs.crafting.AirRecipes;
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapelessRecipes;
 import com.black_dog20.tucs.reference.Reference;
@@ -94,6 +102,10 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 				CachedShapelessAncientTableRecipe recipe = null;
 				if (irecipe instanceof AncientTableShapelessRecipes)
 					recipe = shapelessRecipe((AncientTableShapelessRecipes) irecipe);
+                else if (irecipe instanceof ShapelessOreRecipe)
+                    recipe = forgeShapelessRecipe((ShapelessOreRecipe) irecipe);
+                else if (irecipe instanceof AirRecipes)
+                    recipe = airRecipe((AirRecipes) irecipe);
 
 				if (recipe == null)
 					continue;
@@ -113,6 +125,10 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 				CachedShapelessAncientTableRecipe recipe = null;
 				if (irecipe instanceof AncientTableShapelessRecipes)
 					recipe = shapelessRecipe((AncientTableShapelessRecipes) irecipe);
+                else if (irecipe instanceof ShapelessOreRecipe)
+                    recipe = forgeShapelessRecipe((ShapelessOreRecipe) irecipe);
+                else if (irecipe instanceof AirRecipes)
+                    recipe = airRecipe((AirRecipes) irecipe);
 
 				if (recipe == null)
 					continue;
@@ -129,6 +145,10 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 			CachedShapelessAncientTableRecipe recipe = null;
 			if (irecipe instanceof AncientTableShapelessRecipes)
 				recipe = shapelessRecipe((AncientTableShapelessRecipes) irecipe);
+            else if (irecipe instanceof ShapelessOreRecipe)
+                recipe = forgeShapelessRecipe((ShapelessOreRecipe) irecipe);
+            else if (irecipe instanceof AirRecipes)
+                recipe = airRecipe((AirRecipes) irecipe);
 			if (recipe == null)
 				continue;
 			if (recipe != null) {
@@ -139,6 +159,37 @@ public class ShapelessAncientTableHandler extends ShapedAncientTableHandler {
 			}
 		}
 	}
+	
+	public CachedShapelessAncientTableRecipe forgeShapelessRecipe(ShapelessOreRecipe recipe) {
+        ArrayList<Object> items = recipe.getInput();
+
+        for (Object item : items)
+            if (item instanceof List && ((List<?>) item).isEmpty())//ore handler, no ores
+                return null;
+
+        try {
+            return new CachedShapelessAncientTableRecipe(items, recipe.getRecipeOutput());
+        } catch (Exception e) {
+            NEIClientConfig.logger.error("Error loading recipe: ", e);
+            return null;
+        }
+    }
+	
+	public CachedShapelessAncientTableRecipe airRecipe(AirRecipes recipe) {
+		ItemStack[] item = recipe.getInput();
+		ArrayList<ItemStack> input = new ArrayList<ItemStack>();
+
+		for(int i=0;i<item.length;i++){
+			input.add(item[i]);
+		}
+		
+        try {
+            return new CachedShapelessAncientTableRecipe(input, recipe.getRecipeOutput());
+        } catch (Exception e) {
+            NEIClientConfig.logger.error("Error loading recipe: ", e);
+            return null;
+        }
+    }
 
 	private CachedShapelessAncientTableRecipe shapelessRecipe(AncientTableShapelessRecipes recipe) {
 		if (recipe.recipeItems == null)

@@ -25,11 +25,12 @@ public class TucsRegistry {
 		AncientTableManager.getInstance().addShapelessRecipe(output, params);
 	}
 
-	/*
-	 * @SuppressWarnings("unchecked") public static void addRecipe(IRecipe
-	 * recipe) { AncientTableManager.getInstance().getRecipeList().add(recipe);
-	 * }
-	 */
+	
+	@SuppressWarnings("unchecked") 
+	public static void addRecipe(IRecipe recipe) { 
+		AncientTableManager.getInstance().getRecipeList().add(recipe);
+	}
+
 
 	public static void RemoveRecipe(Item item) {
 		AncientTableManager.getInstance().RemoveRecipe(item);

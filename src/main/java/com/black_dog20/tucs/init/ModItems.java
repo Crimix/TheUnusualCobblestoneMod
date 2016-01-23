@@ -73,6 +73,7 @@ import com.black_dog20.tucs.item.upgrades.ItemFeatherFallingUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemFireAspectUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemFireProtectionUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemFlameUpgrade;
+import com.black_dog20.tucs.item.upgrades.ItemHeartOfTheDestroyerUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemInfiArrowUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemKnockbackUpgrade;
 import com.black_dog20.tucs.item.upgrades.ItemLootingUpgrade;
@@ -146,6 +147,8 @@ public class ModItems {
 	public static final ItemTUCS Tier1CraftingMat = new ItemTUCS("tier1CraftingMat");
 	public static final ItemTUCS Tier2CraftingMat = new ItemTUCS("tier2CraftingMat");
 	public static final ItemTUCS Tier3CraftingMat = new ItemTUCS("tier3CraftingMat");
+	public static final ItemTUCS Tier4CraftingMat = new ItemTUCS("tier4CraftingMat");
+	public static final ItemTUCS FragmentHeartDestroyer = new ItemTUCS("fragmentHeartDestroyer");
 
 	// Lighters
 	public static final ItemCobblestonediumLighter cobblestonediumLighter = new ItemCobblestonediumLighter();
@@ -251,6 +254,7 @@ public class ModItems {
 	public static final ItemThornsUpgrade Thorns1Upgrade = new ItemThornsUpgrade(1);
 	public static final ItemThornsUpgrade Thorns2Upgrade = new ItemThornsUpgrade(2);
 	public static final ItemThornsUpgrade Thorns3Upgrade = new ItemThornsUpgrade(3);
+	public static final ItemHeartOfTheDestroyerUpgrade HeartOfTheDestroyerUpgrade = new ItemHeartOfTheDestroyerUpgrade();
 
 	public static void init() {
 
@@ -305,6 +309,8 @@ public class ModItems {
 		TucsRegistry.registerItem(Tier1CraftingMat, "Tier1CraftingMat");
 		TucsRegistry.registerItem(Tier2CraftingMat, "Tier2CraftingMat");
 		TucsRegistry.registerItem(Tier3CraftingMat, "Tier3CraftingMat");
+		TucsRegistry.registerItem(Tier4CraftingMat, "Tier4CraftingMat");
+		TucsRegistry.registerItem(FragmentHeartDestroyer, "FragmentHeartDestroyer");
 		// TucsRegistry.registerItem(HealthUpgrade, "HealthUpgrade");
 		// TucsRegistry.registerItem(HoverBike, "HoverBike");
 
@@ -384,6 +390,7 @@ public class ModItems {
 		TucsRegistry.registerItem(Protection2Upgrade, "Protection2Upgrade");
 		TucsRegistry.registerItem(Protection3Upgrade, "Protection3Upgrade");
 		TucsRegistry.registerItem(Protection4Upgrade, "Protection4Upgrade");
+		TucsRegistry.registerItem(HeartOfTheDestroyerUpgrade, "HeartOfTheDestroyerUpgrade");
 
 		// TOOL PARTS
 		TucsRegistry.registerItem(SwordBlade, "SwordBlade");

@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class AncientTableManager {
 	/** The static instance of this class */
@@ -108,6 +109,11 @@ public class AncientTableManager {
 			Object object = ite.next();
 			if (object instanceof AncientTableShapedRecipes) {
 				if (item == ((AncientTableShapedRecipes) object).getRecipeOutput().getItem()) {
+					ite.remove();
+				}
+			}
+			else if(object instanceof ShapedOreRecipe){
+				if (item == ((ShapedOreRecipe) object).getRecipeOutput().getItem()) {
 					ite.remove();
 				}
 			}

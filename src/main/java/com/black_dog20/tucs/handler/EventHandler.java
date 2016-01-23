@@ -89,8 +89,9 @@ public class EventHandler {
 			} else if (!nbtTagCompound.hasKey(NBTTags.NoArrow)) {
 				list.remove(I18n.format("tucs.tips.infinity"));
 			}
-			if (nbtTagCompound.hasKey("StoredAir")) {
-				double procent = (nbtTagCompound.getInteger("StoredAir") / nbtTagCompound.getDouble("MaxAir")) * 100;
+			if(item.getItem() instanceof IScubaAirTank){
+				IScubaAirTank tank = (IScubaAirTank)item.getItem();
+				double procent = (tank.getAir(item) / tank.getMaxAir())*100;
 				list.add("Air: " + df.format(procent) + "%");
 			}
 
@@ -499,18 +500,22 @@ public class EventHandler {
 	}
 
 	private void giveUpgrades(ItemStack item, InventoryPlayer inv) {
-		NBTTagCompound nbt = item.getTagCompound();
-		NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);
-		for (int i = 0; i <= nbttaglist.tagCount(); i++) {
-			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-			int b0 = nbttagcompound1.getInteger("Slot");
-			ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-			if (slotItem != null) {
-				if (!inv.addItemStackToInventory(slotItem)) {
-					inv.player.dropPlayerItemWithRandomChoice(slotItem, false);
+		if(item.hasTagCompound()){
+			NBTTagCompound nbt = item.getTagCompound();
+			if(nbt.hasKey("upgradeItems")){
+				NBTTagList nbttaglist = nbt.getTagList("upgradeItems", Constants.NBT.TAG_COMPOUND);
+				for (int i = 0; i <= nbttaglist.tagCount(); i++) {
+					NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+					int b0 = nbttagcompound1.getInteger("Slot");
+					ItemStack slotItem = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+					if (slotItem != null) {
+						if (!inv.addItemStackToInventory(slotItem)) {
+							inv.player.dropPlayerItemWithRandomChoice(slotItem, false);
+						}
+					}
+					nbt.removeTag("upgradeItems");
 				}
 			}
-			nbt.removeTag("upgradeItems");
 		}
 	}
 
@@ -546,12 +551,16 @@ public class EventHandler {
 			}
 
 		} else if (chest != null && chest.getItem() instanceof ItemChestplateCobblestonedium_scuba) {
-			if (
-
-			chest.getMaxDamage() - chest.getItemDamage() <= 1) {
+			if (chest.getMaxDamage() - chest.getItemDamage() <= 1) {
 				ItemStack arrmor = new ItemStack(ModItems.chestplateCobblestonediumBroken);
+				IScubaAirTank tank = (IScubaAirTank) chest.getItem();
+				ItemStack airTank = new ItemStack(ModItems.AirTank);
+				tank.setAir(airTank, tank.getAir(chest));
 				if (!inv.addItemStackToInventory(arrmor)) {
 					player.dropPlayerItemWithRandomChoice(arrmor, false);
+				}
+				if (!inv.addItemStackToInventory(airTank)) {
+					player.dropPlayerItemWithRandomChoice(airTank, false);
 				}
 				giveUpgrades(chest, inv);
 				player.inventory.armorInventory[2] = null;

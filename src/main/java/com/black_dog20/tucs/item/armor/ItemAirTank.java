@@ -65,7 +65,12 @@ public class ItemAirTank extends ItemArmorTUCS implements IScubaAirTank {
 	@Override
 	public int getAir(ItemStack Item) {
 		NBTTagCompound nbt = nbtTag(Item);
-		return nbt.getInteger("StoredAir");
+		if(nbt.hasKey("StoredAir")){
+			return nbt.getInteger("StoredAir");
+		}
+		else{
+			return 0;
+		}
 
 	}
 

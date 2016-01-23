@@ -59,6 +59,8 @@ item.tucs:chestplateCobblestonedium_scuba.name=The Legendary Chestplate of The W
 item.tucs:tier1CraftingMat.name=Tier 1 Crafting Material
 item.tucs:tier2CraftingMat.name=Tier 2 Crafting Material
 item.tucs:tier3CraftingMat.name=Tier 3 Crafting Material
+item.tucs:tier4CraftingMat.name=Tier 4 Crafting Material
+item.tucs:fragmentHeartDestroyer.name=§cFragment of the "Heart" of the Destroyer
 
 //Upgrades
 item.tucs:looting1Upgrade.name=Luck 1 Upgrade
@@ -130,6 +132,7 @@ item.tucs:knockback2Upgrade.name=Knockback 2 Upgrade
 item.tucs:unbreaking1Upgrade.name=Unbreaking 1 Upgrade
 item.tucs:unbreaking2Upgrade.name=Unbreaking 2 Upgrade
 item.tucs:unbreaking3Upgrade.name=Unbreaking 3 Upgrade
+item.tucs:heartOfTheDestroyerUpgrade.name=§c"Heart" Of the Destroyer Upgrade
 
 
 //Blocks
@@ -195,9 +198,13 @@ item.tucs:chestplateCobblestonedium.info=Part of an upgradeable powerful armor s
 item.tucs:m1911.info=Cobblestone gun, WHAT! Oh its OP never mind it.
 item.tucs:TLSOTD.info=The sword that has been know to even destroy compillers. It's recipe has long been lost
 item.tucs:helmetCobblestonedium_scuba.info=The Legendary Helmet of The Warrior combinded with a scuba mask. When it breaks it gives a broken helmet and a scuba mask
-item.tucs:tier1CraftingMat.info=The hunting season for creepers has begun. A low drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
-item.tucs:tier2CraftingMat.info=The hunting season for creepers has begun. A very low drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
-item.tucs:tier3CraftingMat.info=The hunting season for creepers has begun. A very rare drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
+item.tucs:tier1CraftingMat.info=The hunting season for Creepers has begun. A low drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
+item.tucs:tier2CraftingMat.info=The hunting season for Creepers has begun. A very low drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
+item.tucs:tier3CraftingMat.info=The hunting season for Creepers has begun. A very rare drop from creepers slain by §lCobblestone sword§r, §lCobblestoneium Sword §r and §lThe Legendary Sword of The true fighter
+item.tucs:tier4CraftingMat.info=The Endermen has been laughing at the Creepers for a long time. Well Karma. A 10% drop chance form Endermen slain by §lWooden Sword§r.
+item.tucs:heartOfTheDestroyerUpgrade.info=An upgrade so twisted that the item it is upgraded with becomes stuck between two worlds. Which in turns make it unbreakable
+
+
 
 //Lore
 tile.tucs:soulbinder.lore=No one knows how and when the table was made.
@@ -218,9 +225,13 @@ item.tucs:chestplateCobblestonedium.lore=Used by a god. You know it is good
 item.tucs:m1911.lore=Maybe it was the wired farmer who made it to protect his crops
 item.tucs:TLSOTD.lore=§kunknown lore, it has not been know to man the last 1000 years. No man has ever been able to wield it.
 tile.stonebrick.lore=Once used by an ancient society to create powerful weapons, research has found many recipes of relics of great power.
+item.tucs:fragmentHeartDestroyer.lore=§cThe Destroyer of Worlds §0 was so powerful that when he was defeated the fragments of his heart was given to the friendly Enderman. Then the Enderman turned evil
+item.tucs:heartOfTheDestroyerUpgrade.lore=Only a real hero can withstand the twisted evil in this upgrade. Let's hope you are a real hero
+
 
 //MSG
 msg.message_book.txt=I found a book, it looks to be very old. Maybe I should open it and have a look!
 msg.message_normalfly.txt=Normal flight speed activated
 msg.message_highfly.txt=High speed flight activated
+msg.message_yrtwisted.txt=§4You are twisted, watch yourself
 msg.message_landspeederOwner.txt=You can't break this, you are not the owner. The Owner is:

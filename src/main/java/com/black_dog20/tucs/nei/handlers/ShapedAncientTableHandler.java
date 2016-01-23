@@ -11,11 +11,16 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import codechicken.core.ReflectionManager;
+import codechicken.nei.NEIClientConfig;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
+import codechicken.nei.recipe.ShapedRecipeHandler.CachedShapedRecipe;
 
 import com.black_dog20.tucs.client.gui.GuiAncientTable;
+import com.black_dog20.tucs.crafting.AirRecipes;
 import com.black_dog20.tucs.crafting.AncientTableManager;
 import com.black_dog20.tucs.crafting.AncientTableShapedRecipes;
 import com.black_dog20.tucs.init.ModItems;
@@ -103,6 +108,10 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 				CachedShapedAncientTableRecipe recipe = null;
 				if (irecipe instanceof AncientTableShapedRecipes)
 					recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
+				else if (irecipe instanceof ShapedOreRecipe)
+                    recipe = forgeShapedRecipe((ShapedOreRecipe) irecipe);
+	            else if (irecipe instanceof AirRecipes)
+	                recipe = AirRecipe((AirRecipes) irecipe);
 
 				if (recipe == null)
 					continue;
@@ -159,6 +168,10 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 				CachedShapedAncientTableRecipe recipe = null;
 				if (irecipe instanceof AncientTableShapedRecipes)
 					recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
+                else if (irecipe instanceof ShapedOreRecipe)
+                    recipe = forgeShapedRecipe((ShapedOreRecipe) irecipe);
+                else if (irecipe instanceof AirRecipes)
+                    recipe = AirRecipe((AirRecipes) irecipe);
 
 				if (recipe == null)
 					continue;
@@ -177,6 +190,10 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 			CachedShapedAncientTableRecipe recipe = null;
 			if (irecipe instanceof AncientTableShapedRecipes)
 				recipe = new CachedShapedAncientTableRecipe((AncientTableShapedRecipes) irecipe);
+            else if (irecipe instanceof ShapedOreRecipe)
+                recipe = forgeShapedRecipe((ShapedOreRecipe) irecipe);
+            else if (irecipe instanceof AirRecipes)
+                recipe = AirRecipe((AirRecipes) irecipe);
 			if (recipe != null) {
 				recipe.computeVisuals();
 				if (recipe.contains(recipe.ingredients, ingredient)) {
@@ -188,5 +205,36 @@ public class ShapedAncientTableHandler extends TemplateRecipeHandler {
 			}
 		}
 	}
+	
+	public CachedShapedAncientTableRecipe forgeShapedRecipe(ShapedOreRecipe recipe) {
+        try {
+            int width = ReflectionManager.getField(ShapedOreRecipe.class, Integer.class, recipe, 4);
+            int height = ReflectionManager.getField(ShapedOreRecipe.class, Integer.class, recipe, 5);
+
+            Object[] items = recipe.getInput();
+            for (Object item : items)
+                if (item instanceof List && ((List<?>) item).isEmpty())//ore handler, no ores
+                    return null;
+
+            return new CachedShapedAncientTableRecipe(width, height, items, recipe.getRecipeOutput());
+        } catch (Exception e) {
+            NEIClientConfig.logger.error("Error loading recipe: ", e);
+            return null;
+        }
+    }
+	
+	public CachedShapedAncientTableRecipe AirRecipe(AirRecipes recipe) {
+        try {
+            int width = 2;
+            int height = 1;
+
+            Object[] items = recipe.getInput();
+
+            return new CachedShapedAncientTableRecipe(width, height, items, recipe.getRecipeOutput());
+        } catch (Exception e) {
+            NEIClientConfig.logger.error("Error loading recipe: ", e);
+            return null;
+        }
+    }
 
 }

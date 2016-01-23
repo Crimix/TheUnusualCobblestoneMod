@@ -18,5 +18,7 @@ public class NBTTags {
 	public static final String MachineBow = "TUCSMachineBow";
 	public static final String TLSOTD = "TUCSTLSOTD";
 	public static final String m1119 = "TUCSM1911";
+	public static final String NO_BREAKING = "Unbreakable";
+	public static final String OLD_DAMAGE = "TUCSOldDamage";
 
 }

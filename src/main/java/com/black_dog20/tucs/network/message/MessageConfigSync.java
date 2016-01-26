@@ -46,8 +46,6 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 		buf.writeInt(ConfigurationHandler.Respiration);
 		buf.writeInt(ConfigurationHandler.Punch);
 		buf.writeInt(ConfigurationHandler.Protection);
-
-		buf.writeBoolean(MinecraftServer.getServer().isFlightAllowed());
 	}
 
 	@Override
@@ -77,8 +75,6 @@ public class MessageConfigSync implements IMessage, IMessageHandler<MessageConfi
 		ConfigurationHandler.Respiration = buf.readInt();
 		ConfigurationHandler.Punch = buf.readInt();
 		ConfigurationHandler.Protection = buf.readInt();
-
-		ConfigurationHandler.Server_Flying_Allowed = buf.readBoolean();
 
 	}
 }

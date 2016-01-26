@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.model.ScubaMask_armor;
+import com.black_dog20.tucs.client.model.ScubaMaskeV2;
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
 import com.black_dog20.tucs.item.ItemArmorTUCS;
 import com.black_dog20.tucs.item.ItemUpgradableArmorTUCS;
@@ -23,9 +24,9 @@ import com.black_dog20.tucs.reference.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemHelmetCobblestonedium_Scuba extends ItemUpgradableArmorTUCS implements IScubaMask {
+public class ItemHelmetCobblestonedium_Scuba_v2 extends ItemUpgradableArmorTUCS implements IScubaMask {
 
-	public ItemHelmetCobblestonedium_Scuba(ArmorMaterial Material, int armortype, String Name) {
+	public ItemHelmetCobblestonedium_Scuba_v2(ArmorMaterial Material, int armortype, String Name) {
 		super(Material, 2, armortype);
 		this.setUnlocalizedName(Name);
 		this.setCreativeTab(CreativeTabTUCS.TUCS_TAB);
@@ -33,8 +34,8 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemUpgradableArmorTUCS imp
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-		if (stack.getItem() instanceof ItemHelmetCobblestonedium_Scuba) {
-			return Reference.MOD_ID + ":models/armor/Cobblestonedium_1_scuba.png";
+		if (stack.getItem() instanceof ItemHelmetCobblestonedium_Scuba_v2) {
+			return Reference.MOD_ID + ":models/armor/scuba_1_v2.png";
 		} else {
 			return null;
 		}
@@ -45,7 +46,7 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemUpgradableArmorTUCS imp
 	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
 		ModelBiped armorModel = null;
 		if (itemStack != null) {
-			armorModel = new ScubaMask_armor();
+			armorModel = new ScubaMaskeV2();
 			if (armorModel != null) {
 				armorModel.bipedHead.showModel = armorSlot == 0;
 				armorModel.isSneak = entityLiving.isSneaking();
@@ -56,6 +57,7 @@ public class ItemHelmetCobblestonedium_Scuba extends ItemUpgradableArmorTUCS imp
 		}
 		return null;
 	}
+
 
 	@Override
 	public String GetEnviromentType() {

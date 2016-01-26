@@ -125,8 +125,7 @@ public class Recipes {
 		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chestplateCobblestonedium), new Object[] { "c c", "ehe", "dyd", 'y', yellowstoneium, 'c', cobblestonedium, 'h', Items.golden_chestplate, 'e', ModItems.Tier2CraftingMat, 'd', ModItems.Tier1CraftingMat }));
 		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.leggingsCobblestonedium), new Object[] { "yyy", "chc", "c c", 'y', yellowstoneium, 'c', cobblestonedium, 'h', Items.golden_leggings}));
 		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.bootsCobblestonedium), new Object[] { "c c", "yhy", "   ", 'y', yellowstoneium, 'c', cobblestonedium, 'h', Items.golden_boots }));
-		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.helmetCobblestonedium_scuba), new Object[] { "yhy", "csc", "   ", 'y', yellowstoneium, 'c', cobblestoneium, 'h', ModItems.helmetCobblestonedium }));
-		//TucsRegistry.addRecipe(new ItemStack(ModItems.chestplateCobblestonedium_scuba), new Object[] { "yyy", "chc", "yyy", 'y', yellowstoneium, 'c', cobblestoneium, 'h', ModItems.chestplateCobblestonedium});
+		TucsRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.helmetCobblestonedium_scuba), new Object[] { "yhy", "csc", "   ", 'y', yellowstoneium, 'c', cobblestoneium, 'h', ModItems.helmetCobblestonedium, 's', ModItems.ScubaMask }));
 		TucsRegistry.addRecipe(new AirRecipes(new ItemStack(ModItems.chestplateCobblestonedium_scuba), new ItemStack(ModItems.chestplateCobblestonedium),new ItemStack(ModItems.AirTank)));
 		
 		// Ranged

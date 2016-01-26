@@ -69,12 +69,12 @@ public class ModLivingDropsEvent {
 
 			}
 			if (event.entityLiving instanceof EntityCreeper) {
-				int random = r.nextInt(300);
+				int random = r.nextInt(100);
 				double rand = Math.random();
 				EntityCreeper creeper = (EntityCreeper) event.entityLiving;
 				EntityPlayer player = (EntityPlayer) event.source.getEntity();
 				if (player.getHeldItem().getItem() == Items.stone_sword || player.getHeldItem().getItem() instanceof ItemTLSOC || player.getHeldItem().getItem() instanceof ItemSwordCobblestoneium) {
-					int T3 = 5, T2 = 35, T1 = 50;
+					int T3 = 10, T2 = 30, T1 = 50;
 					if (random < 90 && random >= T1) {
 						creeper.entityDropItem(new ItemStack(ModItems.Tier1CraftingMat, 1), 1);
 					}

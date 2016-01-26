@@ -5,9 +5,11 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import com.black_dog20.tucs.creativetab.CreativeTabTUCS;
+import com.black_dog20.tucs.reference.NBTTags;
 import com.black_dog20.tucs.reference.Reference;
 
 import cpw.mods.fml.relauncher.Side;
@@ -56,6 +58,30 @@ public class ItemArmorTUCS extends ItemArmor implements ITucsItem {
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
 		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+	}
+	
+	@Override
+	public boolean hasEffect(ItemStack stack) {
+
+		if (!stack.hasTagCompound()) {
+			stack.stackTagCompound = new NBTTagCompound();
+		}
+		if (stack.hasTagCompound()) {
+			NBTTagCompound nbt = stack.getTagCompound();
+
+			if (nbt.getString(NBTTags.SOULBOUND).equals(NBTTags.OK) || nbt.hasKey("ench")) {
+				return true;
+			}
+			else if (nbt.hasKey(NBTTags.SOULBOUND_P) || nbt.hasKey("ench")) {
+				return true;
+			}
+			else if (nbt.hasKey(NBTTags.Beheading) || nbt.hasKey("ench")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
 	}
 
 }

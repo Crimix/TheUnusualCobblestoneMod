@@ -7,6 +7,8 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.init.ModItems;
+import com.black_dog20.tucs.network.PacketHandler;
+import com.black_dog20.tucs.network.message.MessagePlayerSpeed;
 import com.black_dog20.tucs.utility.NBTHelper;
 
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
@@ -73,6 +75,7 @@ public class ServerProxy extends CommonProxy {
 				if (!EMP.capabilities.allowFlying) {
 					EMP.capabilities.allowFlying = true;
 					EMP.capabilities.isFlying = true;
+					PacketHandler.network.sendTo(new MessagePlayerSpeed(), EMP);
 				} else if (EMP.capabilities.allowFlying && !EMP.capabilities.isCreativeMode) {
 					EMP.capabilities.allowFlying = false;
 					EMP.capabilities.isFlying = false;
@@ -82,5 +85,11 @@ public class ServerProxy extends CommonProxy {
 			entityPlayer.sendPlayerAbilities();
 		}
 
+	}
+
+	@Override
+	public void Speed() {
+		// TODO Auto-generated method stub
+		
 	}
 }

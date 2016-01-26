@@ -20,7 +20,6 @@ public class ConfigurationHandler {
 	public static boolean Max_Beheading_Upgrade = true;
 	public static boolean Max_Infi_Upgrade = true;
 	public static boolean configurationServer = false;
-	public static boolean Server_Flying_Allowed = false;
 	public static int Max_Bane_of_Arthropods = 5;
 	public static boolean Max_Aqua_Affinity = true;
 	public static boolean Max_Auto_Bow = true;

@@ -27,12 +27,17 @@ import com.black_dog20.tucs.item.armor.cobblestonedium.ItemChestplateCobblestone
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium;
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium_Scuba;
+import com.black_dog20.tucs.item.armor.cobblestonedium.ItemHelmetCobblestonedium_Scuba_v2;
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemLegCobblestonedium;
 import com.black_dog20.tucs.item.armor.cobblestonedium.ItemLegCobblestonediumBroken;
 import com.black_dog20.tucs.item.armor.cobblestoneium.ItemBootCobblestoneium;
 import com.black_dog20.tucs.item.armor.cobblestoneium.ItemChestplateCobblestoneium;
 import com.black_dog20.tucs.item.armor.cobblestoneium.ItemHelmetCobblestoneium;
 import com.black_dog20.tucs.item.armor.cobblestoneium.ItemLegCobblestoneium;
+import com.black_dog20.tucs.item.armor.destroyer.ItemBootDestroyer;
+import com.black_dog20.tucs.item.armor.destroyer.ItemChestplateDestroyer;
+import com.black_dog20.tucs.item.armor.destroyer.ItemHelmetDestroyer;
+import com.black_dog20.tucs.item.armor.destroyer.ItemLegDestroyer;
 import com.black_dog20.tucs.item.crafting.ItemHatchetHead;
 import com.black_dog20.tucs.item.crafting.ItemHoeHead;
 import com.black_dog20.tucs.item.crafting.ItemPickaxeHead;
@@ -99,9 +104,10 @@ public class ModItems {
 	public static ToolMaterial COBBLESTONEDIUM_MATERIAL = EnumHelper.addToolMaterial("COBBLESTONEDIUM_MATERIAL", 3, 1692, 8.0F, 10.0F, 22);
 	public static ToolMaterial COBBLESTONEIUM_MATERIAL = EnumHelper.addToolMaterial("COBBLESTONEIUM_MATERIAL", 2, 381, 6.0F, 3.0F, 15);
 	public static ArmorMaterial COBBLESTONEIUM_ARMORMATERIAL = EnumHelper.addArmorMaterial("Cobblestoneium", 17, new int[] { 3, 7, 6, 3 }, 10);
-	public static ArmorMaterial COBBLESTONEdIUM_ARMORMATERIAL = EnumHelper.addArmorMaterial("Cobblestonedium", 66, new int[] { 4, 9, 7, 4 }, 0);
+	public static ArmorMaterial COBBLESTONEDIUM_ARMORMATERIAL = EnumHelper.addArmorMaterial("Cobblestonedium", 66, new int[] { 4, 9, 7, 4 }, 0);
 	public static ToolMaterial COBBLESTONEDIUM_UBER_MATERIAL = EnumHelper.addToolMaterial("COBBLESTONEDIUM_UBER_MATERIAL", 3, -100, 16.0F, 20.0F, 22);
-
+	public static ArmorMaterial DESTROYER_ARMORMATERIAL = EnumHelper.addArmorMaterial("DESTROYER_ARMORMATERIAL", 1000, new int[] { 10, 10, 10, 10 }, 0);
+	
 	// Ingots
 	public static final ItemIngotCobblestoneium ingotCobblestoneium = new ItemIngotCobblestoneium();
 	public static final ItemIngotCobblestonedium ingotCobblestonedium = new ItemIngotCobblestonedium();
@@ -119,13 +125,24 @@ public class ModItems {
 	public static final ItemChestplateCobblestoneium chestplateCobblestoneium = new ItemChestplateCobblestoneium(COBBLESTONEIUM_ARMORMATERIAL, 1, "chestplateCobblestoneium");
 
 	// Cobblestondium armor
-	public static final ItemHelmetCobblestonedium helmetCobblestonedium = new ItemHelmetCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 0, "helmetCobblestonedium");
-	public static final ItemLegCobblestonedium leggingsCobblestonedium = new ItemLegCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 2, "leggingsCobblestonedium");
-	public static final ItemBootCobblestonedium bootsCobblestonedium = new ItemBootCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 3, "bootsCobblestonedium");
-	public static final ItemChestplateCobblestonedium chestplateCobblestonedium = new ItemChestplateCobblestonedium(COBBLESTONEdIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium");
-	public static final ItemHelmetCobblestonedium_Scuba helmetCobblestonedium_scuba = new ItemHelmetCobblestonedium_Scuba(COBBLESTONEdIUM_ARMORMATERIAL, 0, "helmetCobblestonedium_scuba");
-	public static final ItemChestplateCobblestonedium_scuba chestplateCobblestonedium_scuba = new ItemChestplateCobblestonedium_scuba(COBBLESTONEdIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium_scuba");
+	public static final ItemHelmetCobblestonedium helmetCobblestonedium = new ItemHelmetCobblestonedium(COBBLESTONEDIUM_ARMORMATERIAL, 0, "helmetCobblestonedium");
+	public static final ItemLegCobblestonedium leggingsCobblestonedium = new ItemLegCobblestonedium(COBBLESTONEDIUM_ARMORMATERIAL, 2, "leggingsCobblestonedium");
+	public static final ItemBootCobblestonedium bootsCobblestonedium = new ItemBootCobblestonedium(COBBLESTONEDIUM_ARMORMATERIAL, 3, "bootsCobblestonedium");
+	public static final ItemChestplateCobblestonedium chestplateCobblestonedium = new ItemChestplateCobblestonedium(COBBLESTONEDIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium");
+	public static final ItemHelmetCobblestonedium_Scuba helmetCobblestonedium_scuba = new ItemHelmetCobblestonedium_Scuba(COBBLESTONEDIUM_ARMORMATERIAL, 0, "helmetCobblestonedium_scuba");
+	public static final ItemChestplateCobblestonedium_scuba chestplateCobblestonedium_scuba = new ItemChestplateCobblestonedium_scuba(COBBLESTONEDIUM_ARMORMATERIAL, 1, "chestplateCobblestonedium_scuba");
+	public static final ItemHelmetCobblestonedium_Scuba_v2 helmetCobblestonedium_scuba_v2 = new ItemHelmetCobblestonedium_Scuba_v2(COBBLESTONEDIUM_ARMORMATERIAL, 0, "helmetCobblestonedium_scuba_v2");
+	
+	
+	//Destroyer armor
+	public static final ItemHelmetDestroyer helmetDestroyer = new ItemHelmetDestroyer(DESTROYER_ARMORMATERIAL, 0, "helmetDestroyer");
+	public static final ItemLegDestroyer leggingsDestroyer = new ItemLegDestroyer(DESTROYER_ARMORMATERIAL, 2, "leggingsDestroyer");
+	public static final ItemBootDestroyer bootsDestroyer = new ItemBootDestroyer(DESTROYER_ARMORMATERIAL, 3, "bootsDestroyer");
+	public static final ItemChestplateDestroyer chestplateDestroyer = new ItemChestplateDestroyer(DESTROYER_ARMORMATERIAL, 1, "chestplateDestroyer");
 
+	
+	//Broken Cobblestondium armor
+	
 	public static final ItemHelmetCobblestonediumBroken helmetCobblestonediumBroken = new ItemHelmetCobblestonediumBroken();
 	public static final ItemLegCobblestonediumBroken leggingsCobblestonediumBroken = new ItemLegCobblestonediumBroken();
 	public static final ItemBootCobblestonediumBroken bootsCobblestonediumBroken = new ItemBootCobblestonediumBroken();
@@ -285,6 +302,11 @@ public class ModItems {
 		TucsRegistry.registerItem(AirTank, "AirTank");
 		TucsRegistry.registerItem(helmetCobblestonedium_scuba, "helmetCobblestonedium_scuba");
 		TucsRegistry.registerItem(chestplateCobblestonedium_scuba, "chestplateCobblestonedium_scuba");
+		TucsRegistry.registerItem(helmetCobblestonedium_scuba_v2, "helmetCobblestonedium_scuba_v2");
+		TucsRegistry.registerItem(helmetDestroyer, "helmetDestroyer");
+		TucsRegistry.registerItem(leggingsDestroyer, "leggingsDestroyer");
+		TucsRegistry.registerItem(bootsDestroyer, "bootsDestroyer");
+		TucsRegistry.registerItem(chestplateDestroyer, "chestplateDestroyer");
 
 		// INGOTS
 		TucsRegistry.registerItem(ingotCobblestoneium, "ingotCobblestoneium");

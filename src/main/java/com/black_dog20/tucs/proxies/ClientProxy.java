@@ -23,6 +23,7 @@ import com.black_dog20.tucs.tileEntity.TileEntitySoulForge;
 import com.black_dog20.tucs.utility.LogHelper;
 import com.black_dog20.tucs.utility.TucsRegistry;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -169,6 +170,14 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void ActivateFlight(EntityPlayer entityPlayer) {}
+	public void ActivateFlight(EntityPlayer entityPlayer) {
+	}
+
+	@Override
+	public void Speed() {
+		EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
+		entityPlayer.capabilities.setFlySpeed(0.1F);
+		entityPlayer.sendPlayerAbilities();	
+	}
 
 }

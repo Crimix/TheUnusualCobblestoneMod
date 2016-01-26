@@ -7,6 +7,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 
+import com.black_dog20.tucs.tucs;
 import com.black_dog20.tucs.client.settings.Keybindings;
 import com.black_dog20.tucs.handler.ConfigurationHandler;
 import com.black_dog20.tucs.init.ModItems;
@@ -29,12 +30,13 @@ public class KeyInputEventHandler {
 
 	@SubscribeEvent
 	public void handleKeyInputEvent(InputEvent.KeyInputEvent event) {
-		if (Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly /*&& ConfigurationHandler.Server_Flying_Allowed*/) {
+		if (Keybindings.fly.isPressed() && ConfigurationHandler.Allow_To_Fly) {
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
 				EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 				PacketHandler.network.sendToServer(new MessagePlayerActivateFlight());
 				NBTTagCompound nbt = NBTHelper.getPlayerNBT(entityPlayer);
 				if (entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.FlightTalisman)) || entityPlayer.inventory.hasItemStack(new ItemStack(ModItems.TLSOTD))) {
+					
 					if (!entityPlayer.capabilities.allowFlying) {
 						entityPlayer.capabilities.allowFlying = true;
 						entityPlayer.capabilities.isFlying = true;
@@ -46,8 +48,8 @@ public class KeyInputEventHandler {
 						entityPlayer.capabilities.allowFlying = false;
 						entityPlayer.capabilities.isFlying = false;
 					}
+					entityPlayer.sendPlayerAbilities();
 				}
-				entityPlayer.sendPlayerAbilities();
 			}
 		} else if (Keybindings.flyspeed.isPressed()) {
 			if (FMLClientHandler.instance().getClientPlayerEntity() != null) {
